@@ -1,13 +1,22 @@
+%% Metadaten
+\begin{filecontents}{\jobname.xmpdata}
+    \Title{TODO}
+    \Author{Dominic Luidold, BSc}
+    \Language{de-AT}
+    \Keywords{TODO}
+\end{filecontents}
+
 \documentclass[a4paper,12pt,twoside]{scrreprt}
 % Autor der Vorlage: Klaus Rheinberger, FH Vorarlberg, 2017-02-20
 
 %% Pakete
 % Dokumenteneigenschaften
-\usepackage[ngerman]{babel}              % Deutsche Sprachanpassungen
-\usepackage[T1]{fontenc}                 % Silbentrennung bei Sonderzeichen
-\usepackage[bindingoffset=8mm]{geometry} % Bindeverlust von 8mm einbeziehen
-\usepackage{minted}                      % Code Highlighting/Import
-\usepackage{setspace}                    % Zeilenabstand
+\usepackage[ngerman]{babel}                 % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}                    % Silbentrennung bei Sonderzeichen
+\usepackage[bindingoffset=8mm]{geometry}    % Bindeverlust von 8mm einbeziehen
+\usepackage{minted}                         % Code Highlighting/Import
+\usepackage[a-3b,mathxmp]{pdfx}[2018/12/22] % PDF/A
+\usepackage{setspace}                       % Zeilenabstand
 
 % Bilder
 \usepackage{graphicx} % Bilder einbinden
@@ -21,17 +30,13 @@
     style=ieee,
     backend=biber
 ]{biblatex}                           % Literaturverweise
-\usepackage[
-    linktocpage=true,
-    pdfauthor={Dominic Luidold, BSc},
-    pdftitle={TODO}
-]{hyperref}                           % Links
 \usepackage{xcolor}                   % Farbige Hervorhebungen
 
 %% Einstellungen
 \addbibresource{references.bib}
-\setcounter{secnumdepth}{4} % Nummerierungstiefe
-\setcounter{tocdepth}{3}    % Gliederungstiefe Inhaltsverzeichnis
+\onehalfspacing
+\setcounter{secnumdepth}{4}     % Nummerierungstiefe
+\setcounter{tocdepth}{3}        % Gliederungstiefe Inhaltsverzeichnis
 
 %% Dokument
 \begin{document}
