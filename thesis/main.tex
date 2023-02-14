@@ -1,0 +1,145 @@
+\documentclass[a4paper,12pt,twoside]{scrreprt}
+% Autor der Vorlage: Klaus Rheinberger, FH Vorarlberg, 2017-02-20
+
+%% Pakete
+% Dokumenteneigenschaften
+\usepackage[ngerman]{babel}              % Deutsche Sprachanpassungen
+\usepackage[T1]{fontenc}                 % Silbentrennung bei Sonderzeichen
+\usepackage[bindingoffset=8mm]{geometry} % Bindeverlust von 8mm einbeziehen
+\usepackage{minted}                      % Code Highlighting/Import
+\usepackage{setspace}                    % Zeilenabstand
+
+% Bilder
+\usepackage{graphicx} % Bilder einbinden
+\usepackage{wrapfig}  % Bilder positionieren
+
+% Zitate & Verweise, Sonstiges
+\usepackage[nohyperlinks]{acronym}    % Abkürzungsverzeichnis
+\usepackage{caption}                  % Abbildungslegenden
+\usepackage{csquotes}                 % Anführungszeichen und Zitieren
+\usepackage[
+    style=ieee,
+    backend=biber
+]{biblatex}                           % Literaturverweise
+\usepackage[
+    linktocpage=true,
+    pdfauthor={Dominic Luidold, BSc},
+    pdftitle={TODO}
+]{hyperref}                           % Links
+\usepackage{xcolor}                   % Farbige Hervorhebungen
+
+%% Einstellungen
+\addbibresource{references.bib}
+\setcounter{secnumdepth}{4} % Nummerierungstiefe
+\setcounter{tocdepth}{3}    % Gliederungstiefe Inhaltsverzeichnis
+
+%% Dokument
+\begin{document}
+
+% Titelblatt
+\pagenumbering{roman}
+
+\begin{titlepage}
+    \begin{flushright}
+    \includegraphics[width=0.4\linewidth]{images/FHV_FHV-Logo.png}
+    \end{flushright}
+
+    \begin{flushleft}
+    \section*{[Titel der Arbeit]}
+    \subsection*{[Untertitel der Arbeit]}
+    \vspace{1cm}
+
+    Masterarbeit\\
+    zur Erlangung des akademischen Grades
+    \vspace{0.5cm}
+
+    \textbf{Master of Science in Engineering (MSc)}
+
+    \vspace{1cm}
+    Fachhochschule Vorarlberg\newline
+    Informatik Master
+
+    \vspace{0.5cm}
+
+    Betreut von\newline
+    Karin Trommelschläger, MSc
+
+    \vspace{0.5cm}
+
+    Vorgelegt von\newline
+    Dominic Luidold, BSc\newline
+    Dornbirn, [Monat Jahr]
+    \end{flushleft}
+\end{titlepage}
+
+% Widmung
+\newpage
+\section*{Widmung}
+\label{sec:widmung}
+
+\colorbox{yellow}{TODO - Widmung}
+
+% Abstract [DE]
+\newpage
+\section*{Kurzreferat}
+\label{sec:abstract-de}
+
+\subsection*{Titel [DE]}
+
+\colorbox{yellow}{TODO - Kurzreferat}
+
+% Abstract [EN]
+\newpage
+\section*{Abstract}
+\label{sec:abstract-en}
+
+\subsection*{Titel [EN]}
+
+\colorbox{yellow}{TODO - Abstract}
+
+% Inhaltsverzeichnis
+\cleardoublepage
+\tableofcontents
+
+% Abbildungsverzeichnis
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures
+
+% Abkürzungsverzeichnis
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\chapter*{Abkürzungsverzeichnis}
+
+\begin{acronym}
+    % TODO
+\end{acronym}
+
+% Inhalt
+\cleardoublepage
+\pagenumbering{arabic}
+
+\chapter{Einleitung}
+\label{chap:einleitung}
+
+\colorbox{yellow}{TODO - Einleitung}
+
+% Literaturverzeichnis
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\printbibliography
+
+% Eidesstattliche Erklärung
+\clearpage
+\chapter*{Eidesstattliche Erklärung}
+\addcontentsline{toc}{chapter}{Eidesstattliche Erklärung}
+Ich erkläre hiermit an Eides statt, dass ich die vorliegende Masterarbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
+
+\vspace{5cm}
+\noindent
+Dornbirn, am [Tag. Monat Jahr anführen]\hfill Dominic Luidold, BSc
+
+\end{document}

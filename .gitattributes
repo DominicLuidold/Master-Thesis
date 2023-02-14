@@ -1,0 +1,11 @@
+# General
+* text=auto
+
+# Documents
+*.pdf diff=astextplain
+*.tex text
+
+# Images
+*.jpg binary
+*.jpeg binary
+*.png binary
