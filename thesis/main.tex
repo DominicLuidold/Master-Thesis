@@ -120,6 +120,10 @@
 \chapter*{Abkürzungsverzeichnis}
 
 \begin{acronym}
+    \acro{ecs}[ECS]{Ethic Commission System}
+    \acro{fhv}[FHV]{Fachhochschule Vorarlberg}
+    \acro{föe}[FÖE]{Forum Österreichischer Ethikkommissionen}
+    \acro{ieb}[IEB]{Institutionelle Ethikboard der Fachhochschule Gesundheitsberufe OÖ}
     \acro{poc}[PoC]{Proof of Concept}
     \acro{ux}[UX]{User Experience}
 \end{acronym}
@@ -131,12 +135,12 @@
 \chapter{Einleitung}
 \label{chap:einleitung}
 
-Die vorliegende Masterarbeit beschäftigt sich mit dem Erstellen und Einreichen von Ethikanträgen, die bei der Forschungsethik-Kommission der Fachhochschule Vorarlberg\footnote{\href{https://www.fhv.at/forschung/forschungsethik-kommission/}{Forschungsethik-Kommission: Analyse von Forschungstätigkeiten und deren ethischer Grundsatzfragen (https://www.fhv.at/forschung/forschungsethik-kommission/)}} eingereicht werden können. Ziel dieser Arbeit ist es, Lösungsvorschläge auszuarbeiten, die das auf Word-Dokumentenvorlagen aufbauende System langfristig ablösen können.
+Die vorliegende Masterarbeit beschäftigt sich mit dem Erstellen und Einreichen von Ethikanträgen, die bei der Forschungsethik-Kommission der Fachhochschule Vorarlberg\footnote{\href{https://www.fhv.at/forschung/forschungsethik-kommission/}{Forschungsethik-Kommission: Analyse von Forschungstätigkeiten und deren ethischer Grundsatzfragen (\url{https://www.fhv.at/forschung/forschungsethik-kommission/)}}} eingereicht werden können. Ziel dieser Arbeit ist es, Lösungsvorschläge auszuarbeiten, die das auf Word-Dokumentenvorlagen aufbauende System langfristig ablösen können.
 
 \section{Motivation}
 \label{sec:motivation}
 
-An der Fachhochschule Vorarlberg finden in einer Forschungsgruppe und fünf verschiedenen Forschungszentren, darunter beispielsweise die Forschungszentren \enquote{Nutzerzentrierte Technologien} und \enquote{Business Informatics}, Forschung und Entwicklung mit vermehrtem Augenmerk auf regionaler Zusammenarbeit aber auch internationaler Kooperationen statt. \cite{fachhochschule_vorarlberg_gmbh_forschung_2021} Um etwaige ethische Aspekte von Forschungsprojekten oder Entwicklungsarbeiten abwägen zu können, stehen den genannten Forschungseinrichtungen sowie allen Master-Studierenden der Fachhochschule Vorarlberg (im Rahmen ihres Kontextstudiums\footnote{\href{https://www.fhv.at/studium/kontextstudium-der-masterstudien/}{Kontextstudium der Masterstudien (https://www.fhv.at/studium/kontextstudium-der-masterstudien/)}} oder der Masterarbeit) eine direkt an der Fachhochschule ansässige Forschungsethik-Kommission zur Verfügung. Die Kommission gibt auf Antrag eine Stellungnahme beziehungsweise ein Votum zu einer geplanten wissenschaftlichen Untersuchung oder einem Forschungsvorhaben ab. Das Hauptaugenmerk der Ethikkommission liegt hierbei vor allem auf der Beurteilung von Projekten und Entwicklungsarbeiten, bei denen Menschen beteiligt sind, untersucht werden oder bei denen Folgen für die Beteiligten zu erwarten sind. Der bei einem entsprechenden Forschungsvorhaben einzureichende Antrag wird, zum Zeitpunkt dieser Arbeit im Sommersemester 2023, mittels einer Word-Dokumentenvorlage abgebildet. Um ein Votum von der Forschungsethik-Kommission zu erhalten, muss -- vereinfacht zusammengefasst -- die entsprechende Vorlage ausgefüllt und per E-Mail an den Vorsitz der Kommission gesendet werden. \cite{fachhochschule_vorarlberg_gmbh_forschungsethik-kommission_2021}
+An der Fachhochschule Vorarlberg finden in einer Forschungsgruppe und fünf verschiedenen Forschungszentren, darunter beispielsweise die Forschungszentren \enquote{Nutzerzentrierte Technologien} und \enquote{Business Informatics}, Forschung und Entwicklung mit vermehrtem Augenmerk auf regionaler Zusammenarbeit aber auch internationaler Kooperationen statt.\cite{fachhochschule_vorarlberg_gmbh_forschung_2021} Um etwaige ethische Aspekte von Forschungsprojekten oder Entwicklungsarbeiten abwägen zu können, stehen den genannten Forschungseinrichtungen sowie allen Master-Studierenden der Fachhochschule Vorarlberg (im Rahmen ihres Kontextstudiums\footnote{\href{https://www.fhv.at/studium/kontextstudium-der-masterstudien/}{Kontextstudium der Masterstudien (\url{https://www.fhv.at/studium/kontextstudium-der-masterstudien/)}}} oder der Masterarbeit) eine direkt an der Fachhochschule ansässige Forschungsethik-Kommission zur Verfügung. Die Kommission gibt auf Antrag eine Stellungnahme beziehungsweise ein Votum zu einer geplanten wissenschaftlichen Untersuchung oder einem Forschungsvorhaben ab. Das Hauptaugenmerk der Ethikkommission liegt hierbei vor allem auf der Beurteilung von Projekten und Entwicklungsarbeiten, bei denen Menschen beteiligt sind, untersucht werden oder bei denen Folgen für die Beteiligten zu erwarten sind. Der bei einem entsprechenden Forschungsvorhaben einzureichende Antrag wird, zum Zeitpunkt dieser Arbeit im Sommersemester 2023, mittels einer Word-Dokumentenvorlage abgebildet. Um ein Votum von der Forschungsethik-Kommission zu erhalten, muss -- vereinfacht zusammengefasst -- die entsprechende Vorlage ausgefüllt und per E-Mail an den Vorsitz der Kommission gesendet werden.\cite{fachhochschule_vorarlberg_gmbh_forschungsethik-kommission_2021}
 
 \medskip
 
@@ -214,8 +218,98 @@ Diese Masterarbeit beschäftigt sich, wie in diesem Einleitungskapitel mehrfach 
 
 Von Beginn an anzunehmen, dass lediglich die Word-Dokumentenvorlage und nicht anderweitige Gründe von der Einreichung eines Ethikantrages abhalten, wäre unangebracht. Die wissenschaftliche Komponente ergibt sich daher aus dem Versuch der Annäherung an die zugrundeliegenden Probleme, Stärken und Anforderungen des bestehenden Ethikantrag-Prozesses in Zusammenspiel mit einer gleichzeitigen Ausarbeitung einer technischen Lösung anhand nutzerzentrierter Prinzipien und dem User-Centered Design Ansatz.
 
-\chapter{Detaillierte Ist-Analyse}
-\label{chap:ist-analyse}
+\chapter{Analyse des bestehenden Prozesses}
+\label{chap:analyse-bestehender-prozess}
+
+\section{Objektive Analyse}
+
+\section{Analyse Anhand von Interviews}
+
+\section{Erfahrung aus eigener Einreichung}
+
+\chapter{Analyse anderer Systeme}
+\label{chap:analyse-anderer-systeme}
+
+Um neben der Analyse des bestehenden Systems beziehungsweise Prozesses rund um die Word-Dokumentenvorlage Vergleichswerte sammeln zu können, werden weitere Systeme sowohl mit spezifischem Fokus auf Ethikanträgen als auch Systeme ohne direkten Bezug genauer betrachtet und Unterschiede sowie Gemeinsamkeiten herausgearbeitet.
+
+Durch die breiter gefasste Erhebung zum Stand der Technik können so zusätzliche Herangehensweisen oder Anforderungen, die in der Analyse in Kapitel \ref{chap:analyse-bestehender-prozess} ab Seite \pageref{chap:analyse-anderer-systeme} nicht aufgegriffen werden konnten, abgedeckt werden. Ebenso kann dadurch eruiert werden, ob ein bestehendes System die Möglichkeit bietet, soweit an die Anforderungen der Forschungsethik-Kommission sowie der Antragssteller:innen angepasst werden zu können, als das eine gänzliche Neuentwicklung nicht mehr notwendig ist.
+
+\section{Systeme mit Fokus auf Ethikanträgen}
+\label{sec:systeme-mit-fokkus-ethikantrage}
+
+\subsection{Vorlage des Forums Österreichischer Ethikkommissionen}
+\label{sub-sec:vorlage-föe}
+
+Das \ac{föe}\footnote{\href{https://me001ned.edis.at/ethikkommission/Forum/index.htm}{Forum Österreichischer Ethikkommissionen (\url{https://me001ned.edis.at/ethikkommission/Forum/)}}} ist ein freiwilliger Zusammenschluss von Ethikkommissionen in Österreich mit medizinischem Fokus und mit dem Hintergrund, einheitliche Arbeitsweisen und Formulare (für beispielsweise Meldungen, Anträge etc.) für österreichiche Ethikkommissionen zu schaffen.\cite{ethikkommission_der_medizinischen_universitat_graz_forum_2019}
+
+Ähnlich zur Herangehensweise der Forschungsethik-Kommission der Fachhochschule Vorarlberg basieren die vom \ac{föe} bereitgestellten Unterlagen auf Dokumentenvorlagen im \texttt{.dot} beziehungsweise \texttt{.rtf} Dateiformat, wobei die Nutzung von Microsoft Word vom Forum explizit empfohlen wird. Neben dem zum Download angebotenen Antrag\footnote{\href{https://me001ned.edis.at/ethikkommission/Forum/Download/Files/Antr.dot}{Antragsformular in der Version 6.4 vom 12.06.2012 (\url{https://me001ned.edis.at/ethikkommission/Forum/Download/Files/Antr.dot})}} werden zusätzlich ein ausgefülltes Muster sowie Erläuterungen zum Antrag im \texttt{.pdf} Dateiformat beigelegt, welche erklären, wie die Vorlage geöffnet, ausgefüllt und gespeichert werden kann.\footnote{Die bereitgestellten Erläuterungen stammen aus dem Jahr 2004, weshalb diese aller Wahrscheinlichkeit nach so detailliert ausfallen (beispielsweise die Bezugnahme auf die Menüführung des damaligen \enquote{WinWord}).} \cite{ethikkommission_der_medizinischen_universitat_graz_download_2012}
+
+Die in Abbildung \ref{fig:dokumentenvorlage-föe} auf Seite \pageref{fig:dokumentenvorlage-föe} dargestellte Dokumentenvorlage führt die Antragssteller:innen durch zwei verschiedene Teile (\enquote{Teil A} und \enquote{Teil B}), in denen unterschiedliche Angaben entweder in Freitext-Feldern oder in entsprechend anzukreuzenden Auswahl-Feldern getätigt und Fragen beantwortet werden können. Alle zu befüllenden Felder sind dabei mit einer eindeutigen Nummer gekennzeichnet und umfassen vom Projekttitel bis hin zur detaillierten Angabe von geplanten Therapie- und Diagnostikverfahren alle benötigten Informationen für die Bewertung der medizinischen Studie.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.21]{thesis/images/Luidold_Word-Vorlage-Forum-Oesterreichischer-Ethikkommissionen.png}
+    \caption[Screenshot der Word-Dokumentenvorlage des Forums Österreichischer Ethikkommissionen]{Screenshot des Antragsformulares auf Basis einer Word-Dokumentenvorlage des \ac{föe} (Quelle: eigene Abbildung)}
+    \label{fig:dokumentenvorlage-föe}
+\end{figure}
+
+Bei der Durchsicht des Antrages fallen dabei folgende Punkte auf:
+\begin{itemize}
+    \item Die Vorlage enthält sowohl für die finale Beurteilung benötigte Informationen (die durch die Antragssteller:innen bereitgestellt werden) als auch Ausfüllhilfen und Hilfestellungen, die zwischen den einzelnen Punkten und Fragen eingebettet sind.
+    \item Gewisse Tabellen (wie beispielsweise die Tabellen bei Punkt \enquote{6. Angaben zur durchzuführenden Therapie und Diagnostik} auf Seite 5 des Antrages) lassen nur eine gewisse Anzahl an Einträgen zu, ohne den Antragsstellenden die Möglichkeit zu geben, weitere Punkte hinzufügen zu können.
+    \item Es stehen keinerlei Formatierungsmöglichkeiten zur Verfügung, um ausgefüllte Informationen beispielsweise mit kursiver oder farbig hinterlegter Schrift zu strukturieren. Alle getätigten Informationen sind automatisch in fetter Schrift angegeben, um sie von der Vorlage unterscheiden zu können.
+\end{itemize}
+
+Da das \ac{föe} keine eigene Ethikkommission darstellt, hängt der Prozess des Einreichens des erstellten und ausgefüllten Ethikantrages von der jeweiligen Ethikkommmission ab. Das Forum weißt jedoch darauf hin, dass es trotz der einheitlichen Formulare zusätzliche Anforderungen der Kommissionen geben kann oder das Formular gar nicht mehr in Form der zum Download angebotenen Dokumentenvorlage angenommen wird (für weitere Informationen siehe dazu Kapitel \ref{sub-sec:ecs} ab Seite \pageref{sub-sec:ecs}).\cite{ethikkommission_der_medizinischen_universitat_graz_download_2012}
+
+Aufgrund des inhaltlichen Fokus des \acl{föe} auf medizinische Ethikkommissionen lassen sich aus dem Antrag nur bedingt Anforderungen für den in dieser Masterarbeit auszuarbeitenden Lösungsansatz ableiten. Vor auch aber deswegen nicht, da es sich ebenfalls um eine Dokumentenvorlage mit ähnlichen Problemen zur Vorlage der Forschungsethik-Kommission der Fachhochschule Vorarlberg handelt.
+
+\subsection{Vorlage der FH Gesundheitsberufe OÖ}
+\label{sub-cec:vorlage-fh-oö}
+
+Das \ac{ieb}\footnote{\href{https://www.fh-gesundheitsberufe.at/f-e/institutionelles-ethikboard/}{Institutionelles Ethikboard der FH Gesundheitsberufe OÖ (\url{https://www.fh-gesundheitsberufe.at/f-e/institutionelles-ethikboard/})}} fokussiert sich auf die Überprüfung ethischer Aspekte bei eingereichten Forschungsprojekten an oder mit Menschen und darauf, ob eine zusätzliche Einreichung bei einer spezialisierten Ethikkommission notwendig ist.\cite{fh_gesundheitsberufe_oo_gmbh_institutionelles_2023}
+
+Das \ac{ieb} greif dabei -- ebenso wie das \ac{föe} und die Forschungsethik-Kommission der Fachhochschule Vorarlberg -- auf eine Dokumentenvorlage\footnote{\href{https://www.fh-gesundheitsberufe.at/assets/files/IEB-Antragsformular_V1.00_21.09.2022.docx}{Antragsformular Version1 vom 21.09.2022 (\url{https://www.fh-gesundheitsberufe.at/assets/files/IEB-Antragsformular_V1.00_21.09.2022.docx)}}} im mit Microsoft Word kompatiblen \texttt{.docx} Dateiformat zurück. Diese Vorlage wird Antragssteller:innen zum Download angeboten und kann sowohl digital als auch in Printversion beim Ethikboard zur Begutachtung eingereicht werden. \cite{fh_gesundheitsberufe_oo_gmbh_einreichung_2023} Abbildung \ref{fig:dokumentenvorlage-ieb} auf Seite \pageref{fig:dokumentenvorlage-ieb} zeigt einen Ausschnitt des Dokumentes, welches mittels Freitext-Feldern und Kontrollkächsten vom Projekttitel bis hin zu detaillierten Fragen zum Studiendesign und Datenschutz abfragt.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.21]{thesis/images/Luidold_Word-Vorlage-IEB-FH-Gesundheitsberufe-OOE.png}
+    \caption[Screenshot der Word-Dokumentenvorlage des Institutionellen Ethikboards der FH Gesundheitsberufe OÖ]{Screenshot des Antragsformulares auf Basis einer Word-Dokumentenvorlage des \ac{ieb} (Quelle: eigene Abbildung)}
+    \label{fig:dokumentenvorlage-ieb}
+\end{figure}
+
+Bei der Durchsicht des Antrages fallen dabei folgende Punkte auf, die sich stellenweise von den Erkenntnissen zu der in Kapitel \ref{fig:dokumentenvorlage-föe} ab Seite \pageref{sub-sec:vorlage-föe} behandelten Antragsvorlage der \ac{föe} unterscheiden:
+\begin{itemize}
+    \item Die Vorlage enthält zusätzliche Punkte in Form von Ausfüllhilfen und Hilfestellungen, die die Antragsstellenden unterstützen sollen, nicht aber relevant für die finale Beurteilung sind.
+    \item Konträr zur Dokumentenvorlage des \ac{föe} ist der Antrag keine strikte Umsetzung eines Formulars, sondern Antragsstellende können das Dokument und alle seine Elemente frei bearbeiten. Dadurch sind Anpassungen sowie auch das Hervorheben von Text mit beispielsweise unterstrichener, kursiver oder farbig hinterlegter Schrift möglich.
+    \item Das Antragsformular weicht, trotz des Fokus der Fachhochschule und des \ac{ieb} auf medizinische Studien, sowohl vom Aufbau als auch vom abgefragten Inhalt 
+\end{itemize}
+
+\colorbox{yellow}{TODO - Rückmeldung IEB einbauen}
+
+Der Prozess der Einreichung eines Ethikantrages wird vom \ac{ieb} in einen zweistufigen Prozess unterteilt, welcher detailliert in Abbildung \ref{fig:prozess-ethikantrag-ieb} auf Seite \pageref{fig:dokumentenvorlage-ieb} dargestellt wird. Nach initialer Überprüfung der Vollständigkeit wird der eingereichte Ethikantrag von zwei dem Ethikboard angehörigen Mitgliedern geprüft und entschieden, ob eine direkte Behandlung durch das \ac{ieb} möglich ist oder ob dieser bei einer spezialisierten Kommission eingereicht werden muss. Verläuft die weitere Prüfung positiv, kann dem Antrag entweder eine \enquote{Unbedenklichkeitsbescheinigung} ausgestellt werden oder es findet eine detaillierte Prüfung in einer Vollversammlung des \ac{ieb} statt, die bei Erfülllung etwaiger Auflagen in einem positiven Votum endet.\cite{fh_gesundheitsberufe_oo_gmbh_einreichung_2023}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.15]{thesis/images/FHGOOE_Prozess-Ethikantrag.jpg}
+    \caption[Prozessdiagramm zur Einreichung eines Ethikantrages beim Institutionellen Ethikboard der FH Gesundheitsberufe OÖ]{Prozessdiagramm zur Einreichung eines Ethikantrages beim Institutionellen Ethikboard der FH Gesundheitsberufe OÖ \cite{fh_gesundheitsberufe_oo_gmbh_einreichung_2023}}
+    \label{fig:prozess-ethikantrag-ieb}
+\end{figure}
+
+\colorbox{yellow}{TODO - Mögliche Ableitungen für eigene Umsetzung einbauen}
+
+\subsection{Einreichplattform der FH Campus Wien}
+\label{sub-sec:einreichplattform-fh-campus-wien}
+
+todo
+
+\subsection{Ethic Commission System (ECS)}
+\label{sub-sec:ecs}
+
+todo
+
+\section{Systeme ohne konkreten Bezug}
+\label{sec:systeme-ohne-bezug}
 
 todo
 
