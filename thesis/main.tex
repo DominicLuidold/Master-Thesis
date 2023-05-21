@@ -115,6 +115,8 @@
 \chapter*{Abkürzungsverzeichnis}
 
 \begin{acronym}
+    \acro{cms}[CMS]{Content Management System}
+    \acroplural{cms}[CMS]{Content Management Systeme}
     \acro{dbms}[DBMS]{Datenbankmanagementsystem}
     \acro{ecs}[ECS]{Ethics Committee System}
     \acro{fek}[FE-K]{Forschungsethik"=Kommission}
@@ -646,7 +648,7 @@ Die Erstellung und Einreichung von Ethikanträgen basiert im genannten System au
     \begin{minipage}[b]{.99\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_Einreichplattform-Formular-Schritt-2.png}
     \end{minipage}
-    \caption[Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien]{Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien (Quelle: eigene Abbildungen)}
+    \caption[Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien]{Schritt 1 (oben) und Schritt 7 (unten) der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien (Quelle: eigene Abbildungen)}
     \label{fig:einreichplattform-fhcw-schritt-1-7}
 \end{figure}
 
@@ -712,7 +714,7 @@ Das \ac{ecs} hat die Besonderheit, dass die Antragsstellung sich auf die in Absc
     \label{fig:abschnitt-sponsor-ecs}
 \end{figure}
 
-Die Ethikkommissionen der Medizinischen Universitäten Wien und Innsbruck akzeptieren Einreichungen von Ethikanträgen, trotz der Abhängigkeit und dem inhaltlichen Ursprung, nur noch mittels der jeweils eigenen \ac{ecs}-Instanz und nicht mehr mittels der Word"=Dokumentenvorlage des \ac{föe}. \cite{ethikkommission_der_medizinischen_universitat_wien_ethik_2023, medizinische_universitat_innsbruck_einreichungen_2023} Die Ethikkommission der Medizinischen Universität Graz verlinkt auf ihrer Website ebenso auf die eigene \ac{ecs}-Instanz, bittet zum Zeitpunkt dieser Arbeit jedoch um die Einreichung etwaiger Anträge über die Word"=Dokumentenvorlage des \ac{föe}, da es zu technischen Schwierigkeiten bei der Einreichung mittels \ac{ecs} kommt. \cite{medizinische_universitat_graz_ethikkommission_2023}
+Die Ethikkommissionen der Medizinischen Universitäten Wien und Innsbruck akzeptieren Einreichungen von Ethikanträgen, trotz der Abhängigkeit und dem inhaltlichen Ursprung, nur noch mittels der jeweils eigenen \ac{ecs}-Instanz und nicht mehr mittels der Word"=Dokumentenvorlage des \ac{föe}. \cite{ethikkommission_der_medizinischen_universitat_wien_ethik_2023, medizinische_universitat_innsbruck_einreichungen_2023} Die Ethikkommission der Medizinischen Universität Graz verlinkt auf ihrer Website ebenso auf die eigene \ac{ecs}-Instanz, bittet zum Zeitpunkt dieser Arbeit jedoch um die Einreichung etwaiger Anträge über die Word"=Dokumentenvorlage des \ac{föe}, da es zu technischen Schwierigkeiten bei der Einreichung mittels dem \ac{ecs} kommt. \cite{medizinische_universitat_graz_ethikkommission_2023}
 
 \subsubsection*{Technischer Aufbau}
 \label{sub-sub-sec:ecs-technischer-aufbau}
@@ -721,25 +723,23 @@ Die Entwickler:innen des \acl{ecs} stellen, als einziges der in dieser Arbeit bi
 
 \medskip
 
-Vergleichbar zur Einreichplattform der FH Campus Wien (siehe Abschnitt \ref{sub-sec:einreichplattform-fh-campus-wien} ab Seite \pageref{sub-sec:einreichplattform-fh-campus-wien}) basiert die Antragsstellung von Ethikanträgen, aus Sicht von Antragssteller:innen, aus mehreren Formular-Masken, die sowohl mit Freitext-Feldern, Kontrollkästchen als auch Dropdown-Elementen arbeiten und dabei in 12 verschiedene Kategorien beziehungsweise Unterpunkte aufgeteilt sind. Ebenfalls ähnlich zur Einreichplattform können dem Ethikantrag über den Unterpunkt \enquote{Unterlagen} im \ac{ecs} beliebig viele Dokumente und Unterlagen hinzugefügt werden, wobei auch hier verschiedene Kategorien und Typen als mögliche Anhaltspunkte bereitgestellt werden. Im Gegensatz zum Einreichplattform der FH Campus Wien findet jeodch keine automatische Speicherung der eingegebenen Daten und Informationen statt -- das (Zwischen-)Speicher der Daten erfolgt im \ac{ecs} über einen dedizierten Button im rechten oberen Bereich der Benutzeroberfläche. Das freie Wechseln zwischen den einzelnen Abschnitten ist während der Bearbeitung des Antrages dennoch möglich.
-
-\medskip
+Vergleichbar zur Einreichplattform der FH Campus Wien (siehe Abschnitt \ref{sub-sec:einreichplattform-fh-campus-wien} ab Seite \pageref{sub-sec:einreichplattform-fh-campus-wien}) basiert die Antragsstellung von Ethikanträgen, aus Sicht von Antragssteller:innen, aus mehreren Formular-Masken, die sowohl mit Freitext-Feldern, Kontrollkästchen als auch Dropdown-Elementen arbeiten und dabei in 12 verschiedene Kategorien beziehungsweise Unterpunkte aufgeteilt sind. Ebenfalls ähnlich zur Einreichplattform können dem Ethikantrag über den Unterpunkt \enquote{Unterlagen} im \ac{ecs} beliebig viele Dokumente und Unterlagen hinzugefügt werden, wobei auch hier verschiedene Kategorien und Typen als mögliche Anhaltspunkte bereitgestellt werden. Im Gegensatz zur Einreichplattform der FH Campus Wien findet jedoch keine automatische Speicherung der eingegebenen Daten und Informationen statt -- das (Zwischen-)Speicher der Daten erfolgt im \ac{ecs} über einen dedizierten Button im rechten oberen Bereich der Benutzeroberfläche. Das freie Wechseln zwischen den einzelnen Abschnitten ist während der Bearbeitung des Antrages dennoch möglich.
 
 Wie in Abbildung \ref{fig:ecs-studien-nachrichten-notizen} auf Seite \pageref{fig:ecs-studien-nachrichten-notizen} zu sehen ist, bietet das \ac{ecs} den antragsstellenden Personen, neben der konkreten Möglichkeit zur Einreichung von Ethikantrage, zudem eine Nachrichten- sowie Notiz-Funktion an, die für den Erhalt von Informationen sowie zum erstellen persönlicher Notizen genutzt werden kann.
 
-\begin{figure}[htp]
+\begin{figure}[ht!]
     \centering
-    \begin{minipage}[t]{.49\linewidth}
+    \begin{minipage}[t]{.85\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Studien-Überblick.png}
     \end{minipage}
-    \begin{minipage}[b]{.49\linewidth}
+    \begin{minipage}[b]{.85\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Nachrichten-Notizen.png}
     \end{minipage}
-    \caption[Übersicht eingereichter und offener Studien sowie der Nachrichten- und Notizen-Funktion des \acl{ecs}]{Übersicht eingereichter und offener Studien sowie der Nachrichten- und Notizen-Funktion des \acl{ecs} (Quelle: eigene Abbildungen)}
+    \caption[Übersicht eingereichter und offener Studien (oben) sowie der Nachrichten- und Notizen-Funktion (unten) des \acl{ecs}]{Übersicht eingereichter und offener Studien sowie der Nachrichten- und Notizen-Funktion des \acl{ecs} (Quelle: eigene Abbildungen)}
     \label{fig:ecs-studien-nachrichten-notizen}
 \end{figure}
 
-Das \acl{ecs} basiert dabei auf einer mittels Python\footnote{Python (\url{https://www.python.org/})} und dem dafür zur Verfügung stehenden Webframework Django\footnote{Django Webframework (\url{https://www.djangoproject.com/})} umgesetzten Webapplikation, welche die Applikationsdaten in einer mit dem PostgreSQL\footnote{PostgreSQL (\url{https://www.postgresql.org/)}} \ac{dbms} verwalteten Datenbank ablegt. Die Webapplikation beziehungsweise die Python-Umgebung läuft dabei auf einem Ubuntu Xenial Cloud Image\footnote{Ubuntu 16.04 LTS (Xenial Xerus) (\url{https://cloud-images.ubuntu.com/releases/server/xenial/release/})} der Version \texttt{16.04 LTS}. Das \ac{ecs} bedient sich zusätzlich weiterer Technologien, um die gesamte Anwendung (und auch die Anwendungsfälle, die in dieser Analyse bisher außen vor gelassen wurden) anbieten zu können. In Abbildung \ref{fig:ecs-service-architektur} auf Seite \pageref{fig:ecs-service-architektur} ist ersichtlich, welche weiteren Technologien, Frameworks und Services zum Einsatz kommen und die Abbildung gibt gleichzeitig auch ein Überblick über die Service-Architektur der gesamten Web-Applikation. \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_ecs_2021}
+Das \acl{ecs} basiert dabei auf einer mittels Python\footnote{Python (\url{https://www.python.org/})} und dem dafür zur Verfügung stehenden Webframework Django\footnote{Django Webframework (\url{https://www.djangoproject.com/})} umgesetzten Webapplikation, welche die Applikationsdaten in einer mit dem PostgreSQL\footnote{PostgreSQL (\url{https://www.postgresql.org/)}} \ac{dbms} verwalteten Datenbank ablegt. Die Webapplikation beziehungsweise die Python-Umgebung läuft dabei auf einem Ubuntu Xenial Cloud Image\footnote{Ubuntu 16.04 LTS (Xenial Xerus) (\url{https://cloud-images.ubuntu.com/releases/server/xenial/release/})} der Version \texttt{16.04 LTS}. Das \ac{ecs} bedient sich zusätzlich weiterer Technologien, um die gesamte Anwendung (und auch die Anwendungsfälle, die in dieser Analyse außen vor gelassen werden) anbieten zu können. In Abbildung \ref{fig:ecs-service-architektur} auf Seite \pageref{fig:ecs-service-architektur} ist ersichtlich, welche weiteren Technologien, Frameworks und Services zum Einsatz kommen und die Abbildung gibt gleichzeitig auch ein Überblick über die Service-Architektur der gesamten Web-Applikation. \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_ecs_2021}
 
 \begin{figure}[ht]
     \centering
@@ -748,7 +748,7 @@ Das \acl{ecs} basiert dabei auf einer mittels Python\footnote{Python (\url{https
     \label{fig:ecs-service-architektur}
 \end{figure}
 
-Das Django Framework ist laut Definition der Django Software Foundation mittels einer \ac{mvt} Architektur umgesetzt, die bei genauerer Betrachtung auch einer \ac{mvc} Architektur zugeordnet werden kann. In beiden Architektur-Ansätzen gibt es sowohl ein sogenanntes \texttt{Model}, während Djangos \texttt{Template} dem \texttt{View} der \ac{mvc}-Architektur und Djangos \texttt{View} dem \texttt{Controller} der \ac{mvc}-Architektur entspricht beziehungsweise zugeordnet werden kann. Die unterschiedliche Namensgebung der einzelnen Komponenten geht dabei auf die Auffassung zurück, dass die \texttt{View} nicht entscheidet, \textit{wie} Daten aussehen, sondern \textit{welche} Daten zur Verfügung gestellt werden, während das \texttt{Template} entscheidet, \textit{wie} die Daten präsentiert werden. Der \texttt{Controller} ist laut der Foundation das Framework selbst. \cite{django_software_foundation_faq_2023}
+Das eingesetzte Django Framework ist laut Definition der Django Software Foundation mittels einer \ac{mvt} Architektur umgesetzt, die bei genauerer Betrachtung auch einer \ac{mvc} Architektur zugeordnet werden kann. In beiden Architektur-Ansätzen gibt es sowohl ein sogenanntes \texttt{Model}, während Djangos \texttt{Template} dem \texttt{View} der \ac{mvc}-Architektur und Djangos \texttt{View} dem \texttt{Controller} der \ac{mvc}-Architektur entspricht beziehungsweise zugeordnet werden kann. Die unterschiedliche Namensgebung der einzelnen Komponenten geht dabei auf die Auffassung zurück, dass die \texttt{View} nicht entscheidet, \textit{wie} Daten aussehen, sondern \textit{welche} Daten zur Verfügung gestellt werden, während das \texttt{Template} entscheidet, \textit{wie} die Daten präsentiert werden. Der \texttt{Controller} ist laut der Foundation das Framework selbst. \cite{django_software_foundation_faq_2023}
 
 \medskip
 
@@ -782,14 +782,60 @@ Unabhängig von den bereits genannten Punkten nutzt das \ac{ecs} auch die indivi
 \subsubsection*{Schlussfolgerungen}
 \label{sub-sub-sec:schlussfolgerungen-ecs}
 
-Zwar bietet das \acl{ecs} als gesamte Applikation deutlich mehr Funktionalitäten als die ursprüngliche Word"=Antragsvorlage des \ac{föe} und geht über die reine Antragsstellung hinaus, die Erstellung eines Antrages selbst entspricht jedoch einer beinahe Eins-zu-Eins Umsetzung. Im zu erarbeitenden Lösungsansatz dieser Masterarbeit soll jedoch, wie in Abschnitt \ref{sec:frage-problemstellung} ab Seite \pageref{sec:frage-problemstellung} erwähnt, eine tiefere Einarbietung in etwaige Lösungsansätze erfolgen.
+Zwar bietet das \acl{ecs} als gesamte Applikation deutlich mehr Funktionalitäten als die ursprüngliche Word"=Antragsvorlage des \ac{föe} und geht über die reine Antragsstellung hinaus, die Erstellung eines Antrages selbst entspricht jedoch einer beinahe Eins-zu-Eins Umsetzung. Im zu erarbeitenden Lösungsansatz dieser Masterarbeit soll, wie in Abschnitt \ref{sec:frage-problemstellung} ab Seite \pageref{sec:frage-problemstellung} erwähnt, eine tiefere Einarbietung in etwaige Lösungsansätze erfolgen.
 
 Nichtsdestotrotz bietet das \ac{ecs}, welches von verschiedenen Ethikkommissionen verwendet wird und gewisse Ähnlichkeiten zur Einreichplattform der FH Campus Wien hat, in einigen Bereichen Anhaltspunkte und Ideen, die in die Umsetzung des Lösungsansatzes dieser Masterarbeit einfließen könnten. Die zusätzliche Bereitstellung von Informationen über farbliche gekennzeichnete Banner, ein klares und verständliches Konzept des (Zwischen-)Speicherns bei freier Navigation und womöglich auch der Verweis auf externe Anleitungen und Hilfestellungen der Ethikkommission zählen, unter anderem, dazu.
 
 \section{Systeme ohne konkreten Bezug}
 \label{sec:systeme-ohne-bezug}
 
-\colorbox{yellow}{todo}
+Die Anforderungen an eine Neuentwicklung des Ethikantrag-Tools der \ac{fek} der \ac{fhv} werden zwar erst in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} definiert, jedoch ist bereits im Vorfeld ersichtlich, dass der Datenschutz sowie die Anpassungs- und Erweiterungsmöglichkeiten bei der potenziellen Auswahl anderer Systeme eine wichtige Rolle spielen. Dies ergibt sich sowohl aus dem Prozess als auch aus den von den Antragssteller:innen bereitgestellten Daten, mit denen die \acl{fek} arbeitet. Die nachfolgend analysierten Systeme werden daher vor allem auf diese Aspekte hin beleuchtet, neben den Möglichkeiten, die diese unabhängig davon bieten.
+
+\subsection{\aclp{cms}}
+\label{sub-sec:cms-syteme}
+
+\acp{cms} wie beispielsweise WordPress\footnote{WordPress (\url{https://wordpress.org/})}, Joomla!\footnote{Joomla! (\url{https://www.joomla.de/})} oder TYPO3\footnote{TYPO3 \url{https://typo3.org/}} bieten grundlegend eine Vielzahl an Möglichkeiten, eigene Inhalte zu erstellen, zu editieren und auf einer Website zu veröffentlichen sowie eigene Workflows abzubilden. \cite{oracle_corporation_who_2022} Alle der drei genannten Systeme können dabei mit Plugins beziehungsweise Extensions erweitert werden, um Funktionen, die nicht standardmäßig enthalten sind, nachträglich hinzufügen zu können.\footnote{WordPress nennt diese Erweiterungen \enquote{Plugins} (siehe \url{https://wordpress.org/plugins/}) während Jommla! und TYPO3 diese Erweiterungen \enquote{Extensions} nennt (siehe \url{https://extensions.joomla.org/} sowie \url{https://extensions.typo3.org/}).}
+
+\medskip
+
+Von den drei genannten \aclp{cms}n hat WordPress den höchsten Marktanteil mit über 63\% an Websites, die mittels eines \ac{cms} betrieben werden und einen Marktanteil von insgesamt über 43\% aller Websites, die von \cite{q-success_di_gelbmann_gmbh_usage_2023} analysiert wurden. Die nachfolgende Analyse von etwaigen Möglichkeiten zur Umsetzung eines Ethikantrag-Tools fokussiert sich daher auf den Marktführer, für den es -- laut eigenen Angaben \cite{wordpress_foundation_wordpress_2023} -- über 60.000 kostenlose Plugins im offiziellen Verzeichnis gibt.
+
+\subsubsection*{WordPress}
+\label{sub-sub-sec:wordpress}
+
+WordPress unterstützt die Erstellung von Formularen beziehungsweise ähnlicher Workflows nicht von Haus aus. Dank der Vielzahl an zur Verfügung stehenden Plugins kann diese Funktionalität jedoch nachträglich zum Funktionsumfang hinzugefügt werden.
+
+Die grundlegende Erstellung einer Eins-zu-Eins Umsetzung der bestehenden Word"=Antragsvorlage der \ac{fek} der \ac{fhv} ließe sich mit einem entsprechenden Formular-Plugin umsetzen. Nach kurzer Recherche liefert \cite{morris_8_2023} eine Liste von sowohl kostenlosen als auch kostenpflichtigen Erweiterungen, die sich dafür eignen könnten:
+\begin{itemize}
+    \item Formidable Forms\footnote{Formidable Forms (\url{https://formidableforms.com/})}
+    \item Gravity Forms\footnote{Gravity Forms (\url{https://www.gravityforms.com/})}
+    \item Ninja Forms\footnote{Ninja Forms (\url{https://ninjaforms.com/})}
+    \item WPForms\footnote{WPForms (\url{https://wpforms.com/})}
+    \item ...\footnote{Siehe \cite{morris_8_2023} für eine vollständige Aufzählung inklusive detaillierterer Informationen der von Morris genannten Erweiterungsmöglichkeiten.}
+\end{itemize}
+
+Die weiterführende Antragsverwaltung und der Votums-Prozess laut der Verfahrensordnung der \ac{fek} (siehe \cite{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}) können mit den genannten Erweiterungen jedoch nur teilweise abgebildet werden. Im weiteren Verlauf wäre eine entsprechende Analyse der in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} gestellten Anforderungen notwendig, um festzumachen, in wie weit die von den Plugins bereitgestellten Formular-Masken und weitere Schritte potenziell davon betroffen sein könnten. Unabhängig davon kann WordPress ohne großen Aufwand selbständig heruntergeladen und installiert werden, wobei der dafür benötigte Speicherort -- beispielsweise ein Server der \acl{fhv} -- und die Zugangsberechtigungen selbstständig gewählt und verwaltet werden können.
+
+\subsection{Online Formular-Tools}
+\label{sub-sec:formular-tools}
+
+Neben den gängigen \acp{cms}-Lösungen gibt es sowohl von Google als auch Microsoft und anderen Anbietern Online Formular-Tools, mit denen theoretisch ebenso eine Eins-zu-Eins Umsetzung der Word"=Antragsvorlage möglich ist. Abbildung \ref{fig:microsoft-google-forms-testformulare} auf Seite \pageref{fig:microsoft-google-forms-testformulare} zeigt zwei Test-Formulare, welche Beispielhaft mit  Microsoft Forms\footnote{Microsoft Forms (\url{https://www.microsoft.com/de-de/microsoft-365/online-surveys-polls-quizzes})} und mittels Google Forms\footnote{Google Forms (\url{https://www.google.com/forms/about/})} umgesetzt wurden.
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{.49\textwidth}
+        \centering
+        \includegraphics[width=.95\linewidth]{thesis/images/Luidold_Microsoft-Forms-Testformular.png}
+    \end{minipage}
+    \begin{minipage}{.49\textwidth}
+        \centering
+        \includegraphics[width=.95\linewidth]{thesis/images/Luidold_Google-Forms-Testformular.png}
+    \end{minipage}
+    \caption[Test-Formulare umgesetzt mit Microsoft Forms und Google Forms]{Test-Formulare umgesetzt mit Microsoft Forms (links) und Google Forms (rechts) (Quelle: eigene Abbildungen)}
+    \label{fig:microsoft-google-forms-testformulare}
+\end{figure}
+
+Ähnlich zu den in Abschnitt \ref{sub-sec:cms-syteme} ab Seite \pageref{sub-sec:cms-syteme} behandelten \aclp{cms} stellt sich die weiterführende Umsetzung  als schwierig beziehungsweise nicht möglich dar, wenn sowohl die für den Prozess notwendigen als auch die von den Antragssteller:innen sowie der \ac{fek} gewünschten Funktionalitäten umgesetzt werden sollen. Eingelangte Antworten werden bei beiden Tools aggregiert gesammelt und können lediglich als Excel-Datei exportiert und von dort aus weiter behandelt werden. \cite{microsoft_corporation_wie_2021, google_ireland_limited_ergebnisse_2023} Unabhängig davon stellt sich bei beiden Tools die Frage, in wie weit die hohen Anforderungen der \acl{fek} an den Datenschutz erfüllt werden können, da die schlussendliche Datenspeicherung bei den jeweiligen Tools -- in diesem Fall Microsoft beziehungsweise Google -- liegt und keine direkte Kontrolle möglich ist.\footnote{\cite{visitor_analytics_gmbh_ist_2022} erklärt in diesem Zusammenhang, dass Google Forms nur stellenweise der seit 2018 in Kraft getretenen Datenschutzgrundverordnung entspricht und neben einer vorhandenen Premium- oder Geschäftslizenz mehrere Schritte unternommen werden müssen, um Konformität gewährleisten zu können.}
 
 \chapter{Anforderungen an das neue System}
 \label{chap:anforderung-neues-system}
