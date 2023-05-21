@@ -115,12 +115,17 @@
 \chapter*{Abkürzungsverzeichnis}
 
 \begin{acronym}
-    \acro{ecs}[ECS]{Ethic Commission System}
+    \acro{dbms}[DBMS]{Datenbankmanagementsystem}
+    \acro{ecs}[ECS]{Ethics Committee System}
     \acro{fek}[FE-K]{Forschungsethik"=Kommission}
     \acro{fhv}[FHV]{Fachhochschule Vorarlberg}
     \acro{föe}[FÖE]{Forum Österreichischer Ethikkommissionen}
     \acro{ieb}[IEB]{Institutionelle Ethikboard der Fachhochschule Gesundheitsberufe OÖ}
+    \acro{mvc}[MVC]{Model-View-Controller}
+    \acro{mvt}[MVT]{Model-View-Template}
+    \acro{oss}[OSS]{Open-Source-Software}
     \acro{poc}[PoC]{Proof of Concept}
+    \acro{ui}[UI]{User Interface}
 \end{acronym}
 
 % Inhalt
@@ -359,7 +364,7 @@ Abbildung \ref{fig:dokumentenvorlage-fek} auf Seite \pageref{fig:dokumentenvorla
     \begin{minipage}[b]{.49\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_Word-Vorlage-FHV-2.png}
     \end{minipage}
-    \caption[{Screenshot von Seite 1 und Seite 6 der Word"=Antragsvorlage der \acs{fek} der \acs{fhv}}]{Screenshot von Seite 1 und Seite 6 der Word"=Antragsvorlage der \acs{fek} der \acs{fhv} (Quelle: eigene Abbildung)}
+    \caption[{Seite 1 und Seite 6 der Word"=Antragsvorlage der \acl{fek} der \acl{fhv}}]{Seite 1 und Seite 6 der Word"=Antragsvorlage der \acs{fek} der \acs{fhv} (Quelle: eigene Abbildungen)}
     \label{fig:dokumentenvorlage-fek}
 \end{figure}
 
@@ -378,7 +383,7 @@ Als konkrete Konsequenz ergibt sich dadurch die in Abschnitt \ref{sec:ablauf-eth
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{thesis/images/Luidold_Word-Vorlage-FHV-Textformularfeld.png}
-    \caption[Übersicht der Optionen für Steuerelemente des Typs \texttt{Textfeld (Formularsteuerelement)} sowie die der Bearbeitungseinschränkung]{Übersicht der Optionen für Steuerelemente des Typs \texttt{Textfeld (Formularsteuerelement)} sowie die der Bearbeitungseinschränkung (Quelle: eigene Abbildung)}
+    \caption[Übersicht der Optionen für Steuerelemente des Typs \texttt{Textfeld (Formularsteuerelement)} sowie die der Bearbeitungseinschränkung in Microsoft Word]{Übersicht der Optionen für Steuerelemente des Typs \texttt{Textfeld (Formularsteuerelement)} sowie die der Bearbeitungseinschränkung in Microsoft Word (Quelle: eigene Abbildung)}
     \label{fig:optionen-textformularfeld-bearbeitungsmöglichkeiten}
 \end{figure}
 
@@ -535,7 +540,7 @@ Die in Abbildung \ref{fig:dokumentenvorlage-föe} auf Seite \pageref{fig:dokumen
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.21]{thesis/images/Luidold_Word-Vorlage-Forum-Oesterreichischer-Ethikkommissionen.png}
-    \caption[Screenshot der Word-Antragsvorlage des Forums Österreichischer Ethikkommissionen]{Screenshot des Antragsformulares auf Basis einer Word-Antragsvorlage des \ac{föe} (Quelle: eigene Abbildung)}
+    \caption[Word"=Antragsvorlage des Forums Österreichischer Ethikkommissionen]{Word"=Antragsvorlage des Forums Österreichischer Ethikkommissionen (Quelle: eigene Abbildung)}
     \label{fig:dokumentenvorlage-föe}
 \end{figure}
 
@@ -589,7 +594,7 @@ Abbildung \ref{fig:dokumentenvorlage-ieb} auf Seite \pageref{fig:dokumentenvorla
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.21]{thesis/images/Luidold_Word-Vorlage-IEB-FH-Gesundheitsberufe-OOE.png}
-    \caption[Screenshot der Word-Antragsvorlage des Institutionellen Ethikboards der FH Gesundheitsberufe OÖ]{Screenshot des Antragsformulares auf Basis einer Word-Antragsvorlage des \ac{ieb} (Quelle: eigene Abbildung)}
+    \caption[Word"=Antragsvorlage des Institutionellen Ethikboards der Fachhochschule Gesundheitsberufe OÖ]{Word"=Antragsvorlage des Institutionellen Ethikboards der Fachhochschule Gesundheitsberufe OÖ (Quelle: eigene Abbildung)}
     \label{fig:dokumentenvorlage-ieb}
 \end{figure}
 
@@ -600,13 +605,12 @@ Das vom \ac{ieb} zum Download angebotene Antragsformular weicht, trotz des Fokus
 
 \medskip
 
-Unabhängig vom abweichenden Aufbau fokussiert sich der Antrag auf Angaben zur geplanten Studie und stellt Fragen in Bezug auf die konkrete Projektumwelt anhand von teilnehmenden Institutionen und Prüfer:innen, Datenschutzmaßnahmen, Studiendesign und methodische Aspekte. Das Antragsformular bietet auf Seite 2 zudem die Möglichkeit, eine Zusammenfassung des Exposés oder des Abstracts der Forschungsarbeit einzureichen. \footnote{Dieser Schritt wird von der \ac{fek} der \ac{fhv} ebenso als Möglichkeit gesehen (siehe Anhang \ref{appendix:gruppendiskussion-transkript} ab Seite \pageref{appendix:gruppendiskussion-transkript}), um die Anzahl an Fragen im Antragsformular zur verringern und Antragssteller:innen die Möglichkeit zu geben, bereits ausgearbeitete Informationen wiederzuverwenden.}
+Unabhängig vom abweichenden Aufbau fokussiert sich der Antrag auf Angaben zur geplanten Studie und stellt Fragen in Bezug auf die konkrete Projektumwelt anhand von teilnehmenden Institutionen und Prüfer:innen, Datenschutzmaßnahmen, Studiendesign und methodische Aspekte. Das Antragsformular bietet auf Seite 2 zudem die Möglichkeit, eine Zusammenfassung des Exposés oder des Abstracts der Forschungsarbeit einzureichen.\footnote{Dieser Schritt wird von der \ac{fek} der \ac{fhv} ebenso als Möglichkeit gesehen (siehe Anhang \ref{appendix:gruppendiskussion-transkript} ab Seite \pageref{appendix:gruppendiskussion-transkript}), um die Anzahl an Fragen im Antragsformular zur verringern und Antragssteller:innen die Möglichkeit zu geben, bereits ausgearbeitete Informationen wiederzuverwenden.}
 
 \subsubsection*{Ähnlichkeiten \& Auffälligkeiten}
 \label{sub-sub-sec:ähnlichkeiten-auffälligkeiten-fh-oö}
 
 Laut dem \ac{ieb} sind derzeit zwei digitale Lösungen in Entwicklung, die die erst seit September 2022 veröffentlichte Word"=Antragsvorlage langfristig ablösen sollen, um den Prozess zu vereinfachen und den Arbeitsaufwand sowie aktuell auftretende Übertragungsfehler zu minimieren. Der erste der zwei geplanten Lösungsansätze basiert dabei auf einem Webformular, das eingelangte Informationen per E-Mail an das \ac{ieb} übermitteln soll, während die schlussendlich angedachte Lösung den gesamten Prozess und das Antragswesen in einem konkret dafür ausgelegten System abbilden soll. \cite{rosendahl-huber_extern-erfahrungen_2023}
-
 
 \subsubsection*{Schlussfolgerungen}
 \label{sub-sub-sec:schlussfolgerungen-fh-oö}
@@ -642,7 +646,7 @@ Die Erstellung und Einreichung von Ethikanträgen basiert im genannten System au
     \begin{minipage}[b]{.99\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_Einreichplattform-Formular-Schritt-2.png}
     \end{minipage}
-    \caption[Screenshot von Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien]{Screenshot von Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien (Quelle: eigene Abbildung)}
+    \caption[Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien]{Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien (Quelle: eigene Abbildungen)}
     \label{fig:einreichplattform-fhcw-schritt-1-7}
 \end{figure}
 
@@ -679,7 +683,7 @@ Wie bereits in Abschnitt \ref{sub-sub-sec:möglichkeiten-funktionseinschränkung
 
 \medskip
 
-Ähnlich zu der in Abschnitt \ref{sub-sub-sec:möglichkeiten-funktionseinschränkungen} auf Seite \pageref{sub-sub-sec:möglichkeiten-funktionseinschränkungen} hervorgehobenen Einschränkung der Word"=Antragsvorlage der \ac{fek} der \ac{fhv} bietet auch das Online-Portal keinerlei Möglichkeiten, Text zu formatieren oder gesondert hervorzuheben und fokussiert sich auf ausschließlich auf Zeichen und Zeichenlimits.
+Ähnlich zu der in Abschnitt \ref{sub-sub-sec:möglichkeiten-funktionseinschränkungen} auf Seite \pageref{sub-sub-sec:möglichkeiten-funktionseinschränkungen} hervorgehobenen Einschränkung der Word"=Antragsvorlage der \ac{fek} der \ac{fhv} bietet auch das Online-Portal keinerlei Möglichkeiten, Text zu formatieren oder gesondert hervorzuheben und fokussiert sich ausschließlich auf Zeichen und Zeichenlimits.
 
 \medskip
 
@@ -690,27 +694,112 @@ Neben den bereits genannten Punkten ist bei der Analyse des Prozesses und des On
 
 Die Einreichplattform der Ethikkommission der FH Campus Wien bietet in verschiedenen Bereichen Anhaltspunkte und Ideen, wie eine etwaiger Lösungsansatz im Rahmen dieser Masterarbeit aussehen könnte.
 
-Unabhängig vom inhaltlichen Aspekt des Ethikantrages, der im Regelfall von der jeweiligen (Forschungs-)Ethikkommission bestimmt wird, sind vor allem das nahtlose Zwischenspeichern (trotz der Limitierungen) und freie navigieren zwischen den einzelnen Abschnitten, das freie Hinzufügen und Hochladen von Dokumenten sowie der Fokus auf die wesentlichen Bestandteile entsprechende Anhaltspunkte. Der im Download-Bereich zur Verfügung gestellte Kriterienkatalog, um festlegen zu können, ob ein Ethikantrag notwenig ist, könnte ebenso Einfluss auf den den Lösungsansatz nehmen, da ähnliche Hilfestellungen auch in Abschnitt \ref{sub-sub-sec:kommunikation-email} auf Seite \pageref{sub-sub-sec:kommunikation-email} von Antragssteller:innen angesprochen wurden.
+Unabhängig vom inhaltlichen Aspekt des Ethikantrages, der im Regelfall von der jeweiligen (Forschungs-)Ethikkommission bestimmt wird, sind vor allem das nahtlose Zwischenspeichern (trotz der Limitierungen) und freie Navigieren zwischen den einzelnen Abschnitten, das freie Hinzufügen und Hochladen von Dokumenten sowie der Fokus auf die wesentlichen Bestandteile entsprechende Anhaltspunkte. Der im Download-Bereich zur Verfügung gestellte Kriterienkatalog, um festlegen zu können, ob ein Ethikantrag notwenig ist, könnte ebenso Einfluss auf den den Lösungsansatz nehmen, da ähnliche Hilfestellungen auch in Abschnitt \ref{sub-sub-sec:kommunikation-email} auf Seite \pageref{sub-sub-sec:kommunikation-email} von Antragssteller:innen angesprochen wurden.
 
-\subsection{Ethic Commission System (ECS)}
+\subsection{Ethics Committee System}
 \label{sub-sec:ecs}
 
-todo
+Das \enquote{\ac{ecs}} beziehunsweise \enquote{Ethic Commission System} -- beide Namen werden mehrfach genannt -- wird von den Medizinischen Universitäten Wien, Innsbruck und Graz sowie weiterer Einrichtungen entwickelt und ist ein Webservice, der das Erstellen und Einreichen von Ethikanträgen zu klinischen Studien, den Votums-Prozess sowie das dazugehörige Antragswesen in einem System vereint. \cite{medizinische_universitat_wien_ecs_2021-1}
+
+\medskip
+
+Das \ac{ecs} hat die Besonderheit, dass die Antragsstellung sich auf die in Abschnitt \ref{sub-sec:vorlage-föe} ab Seite \pageref{sub-sec:vorlage-föe} behandelten Antragsvorlage stützt und das Online auszufüllende Formular beinahe einer Eins-zu-Eins Umsetzung des Word-Dokumentes entspricht. Abbildung \ref{fig:abschnitt-sponsor-ecs} auf Seite \pageref{fig:abschnitt-sponsor-ecs} zeigt beispielhaft den Abschnitt \enquote{Sponsor}, der in der Word"=Dokumentenvorlage in Teil A ab Seite 1 zu finden ist. Auf der linken Seite der Abbildung lässt sich dabei gut erkennen, dass die einzelnen Formular-Felder mit einer Nummerierungen versehen sind, die mit der Nummerierung  der Dokumentenvorlage des \ac{föe} übereinstimmen.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Schritt-Eckdaten.png}
+    \caption[Ausschnitt des Abschnittes \enquote{Sponsor} der Antragsstellung des \acl{ecs}]{Ausschnitt des Abschnittes \enquote{Sponsor} der Antragsstellung des \acl{ecs} (Quelle: eigene Abbildung)}
+    \label{fig:abschnitt-sponsor-ecs}
+\end{figure}
+
+Die Ethikkommissionen der Medizinischen Universitäten Wien und Innsbruck akzeptieren Einreichungen von Ethikanträgen, trotz der Abhängigkeit und dem inhaltlichen Ursprung, nur noch mittels der jeweils eigenen \ac{ecs}-Instanz und nicht mehr mittels der Word"=Dokumentenvorlage des \ac{föe}. \cite{ethikkommission_der_medizinischen_universitat_wien_ethik_2023, medizinische_universitat_innsbruck_einreichungen_2023} Die Ethikkommission der Medizinischen Universität Graz verlinkt auf ihrer Website ebenso auf die eigene \ac{ecs}-Instanz, bittet zum Zeitpunkt dieser Arbeit jedoch um die Einreichung etwaiger Anträge über die Word"=Dokumentenvorlage des \ac{föe}, da es zu technischen Schwierigkeiten bei der Einreichung mittels \ac{ecs} kommt. \cite{medizinische_universitat_graz_ethikkommission_2023}
+
+\subsubsection*{Technischer Aufbau}
+\label{sub-sub-sec:ecs-technischer-aufbau}
+
+Die Entwickler:innen des \acl{ecs} stellen, als einziges der in dieser Arbeit bisher analysierten Systeme auf Online-Basis, den Quellcode zur gesamten Applikation offen zur Verfügung\footnote{\ac{ecs} Quellcode online abrufbar auf GitHub (\url{https://github.com/ecs-org/ecs})} und bieten zusätzlich eine ausführliche Online-Dokumentation sowohl für die Nutzung als auch für die Entwicklung an. \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_development_2021, medizinische_universitat_wien_installationusage_2021}
+
+\medskip
+
+Vergleichbar zur Einreichplattform der FH Campus Wien (siehe Abschnitt \ref{sub-sec:einreichplattform-fh-campus-wien} ab Seite \pageref{sub-sec:einreichplattform-fh-campus-wien}) basiert die Antragsstellung von Ethikanträgen, aus Sicht von Antragssteller:innen, aus mehreren Formular-Masken, die sowohl mit Freitext-Feldern, Kontrollkästchen als auch Dropdown-Elementen arbeiten und dabei in 12 verschiedene Kategorien beziehungsweise Unterpunkte aufgeteilt sind. Ebenfalls ähnlich zur Einreichplattform können dem Ethikantrag über den Unterpunkt \enquote{Unterlagen} im \ac{ecs} beliebig viele Dokumente und Unterlagen hinzugefügt werden, wobei auch hier verschiedene Kategorien und Typen als mögliche Anhaltspunkte bereitgestellt werden. Im Gegensatz zum Einreichplattform der FH Campus Wien findet jeodch keine automatische Speicherung der eingegebenen Daten und Informationen statt -- das (Zwischen-)Speicher der Daten erfolgt im \ac{ecs} über einen dedizierten Button im rechten oberen Bereich der Benutzeroberfläche. Das freie Wechseln zwischen den einzelnen Abschnitten ist während der Bearbeitung des Antrages dennoch möglich.
+
+\medskip
+
+Wie in Abbildung \ref{fig:ecs-studien-nachrichten-notizen} auf Seite \pageref{fig:ecs-studien-nachrichten-notizen} zu sehen ist, bietet das \ac{ecs} den antragsstellenden Personen, neben der konkreten Möglichkeit zur Einreichung von Ethikantrage, zudem eine Nachrichten- sowie Notiz-Funktion an, die für den Erhalt von Informationen sowie zum erstellen persönlicher Notizen genutzt werden kann.
+
+\begin{figure}[htp]
+    \centering
+    \begin{minipage}[t]{.49\linewidth}
+        \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Studien-Überblick.png}
+    \end{minipage}
+    \begin{minipage}[b]{.49\linewidth}
+        \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Nachrichten-Notizen.png}
+    \end{minipage}
+    \caption[Übersicht eingereichter und offener Studien sowie der Nachrichten- und Notizen-Funktion des \acl{ecs}]{Übersicht eingereichter und offener Studien sowie der Nachrichten- und Notizen-Funktion des \acl{ecs} (Quelle: eigene Abbildungen)}
+    \label{fig:ecs-studien-nachrichten-notizen}
+\end{figure}
+
+Das \acl{ecs} basiert dabei auf einer mittels Python\footnote{Python (\url{https://www.python.org/})} und dem dafür zur Verfügung stehenden Webframework Django\footnote{Django Webframework (\url{https://www.djangoproject.com/})} umgesetzten Webapplikation, welche die Applikationsdaten in einer mit dem PostgreSQL\footnote{PostgreSQL (\url{https://www.postgresql.org/)}} \ac{dbms} verwalteten Datenbank ablegt. Die Webapplikation beziehungsweise die Python-Umgebung läuft dabei auf einem Ubuntu Xenial Cloud Image\footnote{Ubuntu 16.04 LTS (Xenial Xerus) (\url{https://cloud-images.ubuntu.com/releases/server/xenial/release/})} der Version \texttt{16.04 LTS}. Das \ac{ecs} bedient sich zusätzlich weiterer Technologien, um die gesamte Anwendung (und auch die Anwendungsfälle, die in dieser Analyse bisher außen vor gelassen wurden) anbieten zu können. In Abbildung \ref{fig:ecs-service-architektur} auf Seite \pageref{fig:ecs-service-architektur} ist ersichtlich, welche weiteren Technologien, Frameworks und Services zum Einsatz kommen und die Abbildung gibt gleichzeitig auch ein Überblick über die Service-Architektur der gesamten Web-Applikation. \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_ecs_2021}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/ECS_Service-Architecture.png}
+    \caption[Übersicht verwendeter Technologien und Frameworks sowie der Service-Architektur des \acl{ecs}]{Übersicht verwendeter Technologien und Frameworks sowie der Service-Architektur des \acl{ecs} \cite{medizinische_universitat_wien_ecs_2021}}
+    \label{fig:ecs-service-architektur}
+\end{figure}
+
+Das Django Framework ist laut Definition der Django Software Foundation mittels einer \ac{mvt} Architektur umgesetzt, die bei genauerer Betrachtung auch einer \ac{mvc} Architektur zugeordnet werden kann. In beiden Architektur-Ansätzen gibt es sowohl ein sogenanntes \texttt{Model}, während Djangos \texttt{Template} dem \texttt{View} der \ac{mvc}-Architektur und Djangos \texttt{View} dem \texttt{Controller} der \ac{mvc}-Architektur entspricht beziehungsweise zugeordnet werden kann. Die unterschiedliche Namensgebung der einzelnen Komponenten geht dabei auf die Auffassung zurück, dass die \texttt{View} nicht entscheidet, \textit{wie} Daten aussehen, sondern \textit{welche} Daten zur Verfügung gestellt werden, während das \texttt{Template} entscheidet, \textit{wie} die Daten präsentiert werden. Der \texttt{Controller} ist laut der Foundation das Framework selbst. \cite{django_software_foundation_faq_2023}
+
+\medskip
+
+Django ist als \ac{mvt}/\ac{mvc}-Framework darauf ausgelegt, sowohl für die Domänen- und Applikationslogik im für Antragssteller:innen nicht sichtbaren Teil der Applikation (sprich dem \texttt{Model} und dem \texttt{Controller} im Sinne von \ac{mvc}) als auch für das direkt im Browser sichtbare \ac{ui} (sprich dem \texttt{View} im Sinne von \ac{mvc}) genutzt zu werden, wovon das \ac{ecs} nach grundlegender Durchsicht des Quellcodes entsprechend auch Gebrauch macht. \cite{ethics_commission_system_organization_ecs_2021}
+
+\subsubsection*{Inhaltlicher Aufbau}
+\label{sub-sub-sec:ecs-inhaltlicher-aufbau}
+
+Da das \ac{ecs} sich an den vom \acl{föe} herausgegebenen Antrag sowohl inhaltlich als auch strukturell orientiert, entfällt an dieser Stelle eine erneute Analyse zum inhaltlichen Aufbau. Weiterführende Informationen können diesbezüglich in Abschnitt \ref{sub-sub-sec:föe-inhaltlicher-aufbau} ab Seite \pageref{sub-sub-sec:föe-inhaltlicher-aufbau} entnommen werden.
+
+\subsubsection*{Ähnlichkeiten \& Auffälligkeiten}
+\label{sub-sub-sec:ähnlichkeiten-auffälligkeiten-ecs}
+
+Das \acl{ecs} verfügt als \ac{oss} über eine sehr ausführliche und detailreiche Dokumentation (siehe dazu \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_development_2021, medizinische_universitat_wien_installationusage_2021, medizinische_universitat_wien_ecs_2021, ethics_commission_system_organization_ecs_2021}), sowohl für die Nutzung aus Sicht als Antragssteller:in beziehungsweise Verwalter:in des Systems als auch für Entwickler:innen, die die Applikation potenziell weiterentwickeln oder betreuen möchten. Diese Hilfestellungen stehen dabei nicht nur über das Entwicklerportal zur Verfügung, sondern werden auch direkt in den jeweiligen Instanzen des Systems verlink und Benutzer:innen als Hilfestellung angeboten.\footnote{Siehe beispielsweise die \ac{ecs}-Instanz der Ethikkommission der Medizinischen Universität Innsbruck: \url{https://ek-mui-tirol.at/help/}}
+
+\medskip
+
+Ähnlich zu der in Abschnitt \ref{sub-sub-sec:möglichkeiten-funktionseinschränkungen} auf Seite \pageref{sub-sub-sec:möglichkeiten-funktionseinschränkungen} hervorgehobenen Einschränkung der Word"=Antragsvorlage der \ac{fek} der \ac{fhv} und auch zur in Abschnitt \ref{sub-sec:einreichplattform-fh-campus-wien} ab Seite \pageref{sub-sec:einreichplattform-fh-campus-wien} analysierten Einreichplattform der FH Campus Wien bietet das \acl{ecs} keinerlei Möglichkeiten, Text zu formatieren oder gesondert hervorzuheben und fokussiert sich ausschließlich auf Zeichen und Zeichenlimits.
+
+\medskip
+
+Unabhängig von den bereits genannten Punkten nutzt das \ac{ecs} auch die individuellen Formular-Masken, um während der Antragsstellung zusätzliche Informationen und Hilfestellungen bereitzustellen. Diese sollen die Antragsteller:innen sowohl bei der Bearbeitung unterstützen als auch weiterführende Informationen liefern. Dabei werden sowohl Texte angezeigt, die sich direkt auf bestimmte Formularfelder beziehen, als auch allgemeine Hinweise in Form eines Banners am Anfang eines Formulars. Ein Beispiel hierfür ist in Abbildung \ref{fig:ecs-banner-hilfestellung} auf Seite \pageref{fig:ecs-banner-hilfestellung} dargestellt.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Banner-Hilfestellung.png}
+    \caption[Hilfestellung in Form eines Banners im \acl{ecs}]{Hilfestellung in Form eines Banners im \acl{ecs} (Quelle: eigene Abbildung)}
+    \label{fig:ecs-banner-hilfestellung}
+\end{figure}
+
+\subsubsection*{Schlussfolgerungen}
+\label{sub-sub-sec:schlussfolgerungen-ecs}
+
+Zwar bietet das \acl{ecs} als gesamte Applikation deutlich mehr Funktionalitäten als die ursprüngliche Word"=Antragsvorlage des \ac{föe} und geht über die reine Antragsstellung hinaus, die Erstellung eines Antrages selbst entspricht jedoch einer beinahe Eins-zu-Eins Umsetzung. Im zu erarbeitenden Lösungsansatz dieser Masterarbeit soll jedoch, wie in Abschnitt \ref{sec:frage-problemstellung} ab Seite \pageref{sec:frage-problemstellung} erwähnt, eine tiefere Einarbietung in etwaige Lösungsansätze erfolgen.
+
+Nichtsdestotrotz bietet das \ac{ecs}, welches von verschiedenen Ethikkommissionen verwendet wird und gewisse Ähnlichkeiten zur Einreichplattform der FH Campus Wien hat, in einigen Bereichen Anhaltspunkte und Ideen, die in die Umsetzung des Lösungsansatzes dieser Masterarbeit einfließen könnten. Die zusätzliche Bereitstellung von Informationen über farbliche gekennzeichnete Banner, ein klares und verständliches Konzept des (Zwischen-)Speicherns bei freier Navigation und womöglich auch der Verweis auf externe Anleitungen und Hilfestellungen der Ethikkommission zählen, unter anderem, dazu.
 
 \section{Systeme ohne konkreten Bezug}
 \label{sec:systeme-ohne-bezug}
 
-todo
+\colorbox{yellow}{todo}
 
 \chapter{Anforderungen an das neue System}
 \label{chap:anforderung-neues-system}
 
-todo
+\colorbox{yellow}{todo}
 
 \chapter{Prinzipien des User-Centered Designs}
 \label{chap:prinzipien-user-centered-design}
 
-todo
+\colorbox{yellow}{todo}
 
 % Literaturverzeichnis
 \clearpage
@@ -724,28 +813,28 @@ todo
 \chapter{Eingereichter Ethikantrag}
 \label{appendix:eingereichter-ethikantrag}
 
-todo
+\colorbox{yellow}{todo}
 
 \includepdf[pages=-]{documents/Luidold_Ethikantrag.pdf}
 
 \chapter{Rückmeldung der \acs{fek} zu eingereichtem Ethikantrag}
 \label{appendix:rückmeldung-fek}
 
-todo
+\colorbox{yellow}{todo}
 
 \includepdf[pages=-]{documents/Forschungsethik-Kommission-FHV_Votum-Ethikantrag.pdf}
 
 \chapter{Einwilligungserklärung zur Teilnahme an einem Einzelinterview}
 \label{appendix:informed-consent-einzelinterview}
 
-todo
+\colorbox{yellow}{todo}
 
 \includepdf[pages=-]{documents/Luidold_Informed_Consent-Einzelinterview.pdf}
 
 \chapter{Einwilligungserklärung zur Teilnahme an einer Gruppendiskussion}
 \label{appendix:informed-consent-gruppendiskussion}
 
-todo
+\colorbox{yellow}{todo}
 
 \includepdf[pages=-]{documents/Luidold_Informed_Consent-Gruppendiskussion.pdf}
 
