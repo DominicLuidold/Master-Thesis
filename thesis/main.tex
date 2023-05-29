@@ -25,6 +25,7 @@
     backend=biber
 ]{biblatex}                         % Literaturverweise
 \usepackage{xcolor}                 % Farbige Hervorhebungen
+\usepackage{enumitem}               % Angepasste Aufzählungspunkte in Enumerations
 
 %% Einstellungen
 \addbibresource{references.bib}
@@ -108,6 +109,12 @@
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
 
+% Tabellenverzeichnis
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\listoftables
+
 % Abkürzungsverzeichnis
 \clearpage
 \phantomsection
@@ -127,6 +134,7 @@
     \acro{mvt}[MVT]{Model-View-Template}
     \acro{oss}[OSS]{Open-Source-Software}
     \acro{poc}[PoC]{Proof of Concept}
+    \acro{qda}[QDA]{Quality Data Analysis}
     \acro{ui}[UI]{User Interface}
 \end{acronym}
 
@@ -435,7 +443,7 @@ Um als vollständiger Ethikantrag eingereicht werden zu können, umfasst der Ant
 
 Wie in Kapitel \ref{chap:einleitung} ab Seite \pageref{chap:einleitung} bereits initial angesprochen wurde, stößt die aktuell eingesetzte Word"=Antragsvorlage stellenweise sowohl auf technische als auch auf inhaltliche Limitierungen. Diese Limitierungen kommen nicht nur während des Erstellens und Ausfüllens des Ethikantrages auf, sondern sind auch im Vorfeld zur Entscheidung für einen Ethikantrag und im weiteren Verlauf des Prozesses bemerkbar.
 
-Der nachfolgende Abschnitt beschäftigt sich daher mit den Schwächen \& Problemen des aktuellen Systems, sowohl aus Sicht der \ac{fek} als auch aus Sicht von Antragsstellenden. Etwaige Stärken, die das aktuelle System vorweist, werden dabei nicht außer Acht gelassen und ebenso genauer betrachtet und hervorgehoben. Eine detaillierte Analyse einschließlich einer entsprechenden Kategorisierung der Interviews findet in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} statt.
+Der nachfolgende Abschnitt beschäftigt sich daher auf Basis der Analyse der Interviews sowie der Gruppendiskussion mit den Schwächen und Problemen des aktuellen Systems, sowohl aus Sicht der \ac{fek} als auch aus Sicht von Antragsstellenden (eine detaillierte Analyse einschließlich einer entsprechenden Kategorisierung der Interviews sowie der Gruppendiskussion findet in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} statt). Etwaige Stärken, die das aktuelle System vorweist, werden dabei nicht außer Acht gelassen und ebenso genauer betrachtet und hervorgehoben. 
 
 \subsection{Sicht der Antragssteller:innen}
 \label{sub-sec:probleme-sicht-antragssteller}
@@ -656,8 +664,6 @@ Die Erstellung und Einreichung von Ethikanträgen basiert im genannten System au
 
 Nach einer initialen Recherche und Begutachtung des über die Einreichplattform direkt einsehbaren Quellcodes im Browser konnten keine Anhaltspunkte dazu gefunden werden, wie die technische Umsetzung im Hintergrund der Einreichplattform aussieht und ob der gesamte Quellcode öffentlich zur Einsicht beziehungsweise zum Download zur Verfügung steht.
 
-Auf Anfrage informiert die Ethikkommission der FH Campus Wien, dass \colorbox{yellow}{Rückmeldung hier einbauen...}
-
 \subsubsection*{Inhaltlicher Aufbau}
 \label{sub-sub-sec:fhcw-inhaltlicher-aufbau}
 
@@ -705,7 +711,7 @@ Das \enquote{\ac{ecs}} beziehunsweise \enquote{Ethic Commission System} -- beide
 
 \medskip
 
-Das \ac{ecs} hat die Besonderheit, dass die Antragsstellung sich auf die in Abschnitt \ref{sub-sec:vorlage-föe} ab Seite \pageref{sub-sec:vorlage-föe} behandelten Antragsvorlage stützt und das Online auszufüllende Formular beinahe einer Eins-zu-Eins Umsetzung des Word-Dokumentes entspricht. Abbildung \ref{fig:abschnitt-sponsor-ecs} auf Seite \pageref{fig:abschnitt-sponsor-ecs} zeigt beispielhaft den Abschnitt \enquote{Sponsor}, der in der Word"=Dokumentenvorlage in Teil A ab Seite 1 zu finden ist. Auf der linken Seite der Abbildung lässt sich dabei gut erkennen, dass die einzelnen Formular-Felder mit einer Nummerierungen versehen sind, die mit der Nummerierung  der Dokumentenvorlage des \ac{föe} übereinstimmen.
+Das \ac{ecs} hat die Besonderheit, dass die Antragsstellung sich auf die in Abschnitt \ref{sub-sec:vorlage-föe} ab Seite \pageref{sub-sec:vorlage-föe} behandelten Antragsvorlage stützt und das Online auszufüllende Formular beinahe einer Eins-zu-Eins Umsetzung des Word-Dokumentes entspricht. Abbildung \ref{fig:abschnitt-sponsor-ecs} auf Seite \pageref{fig:abschnitt-sponsor-ecs} zeigt beispielhaft den Abschnitt \enquote{Sponsor}, der in der Word"=Dokumentenvorlage in Teil A ab Seite 1 zu finden ist. Auf der linken Seite der Abbildung lässt sich dabei gut erkennen, dass die einzelnen Formular-Felder mit einer Nummerierungen versehen sind, die mit der Nummerierung der Dokumentenvorlage des \ac{föe} übereinstimmen.
 
 \begin{figure}[ht]
     \centering
@@ -819,7 +825,7 @@ Die weiterführende Antragsverwaltung und der Votums-Prozess laut der Verfahrens
 \subsection{Online Formular-Tools}
 \label{sub-sec:formular-tools}
 
-Neben den gängigen \acp{cms}-Lösungen gibt es sowohl von Google als auch Microsoft und anderen Anbietern Online Formular-Tools, mit denen theoretisch ebenso eine Eins-zu-Eins Umsetzung der Word"=Antragsvorlage möglich ist. Abbildung \ref{fig:microsoft-google-forms-testformulare} auf Seite \pageref{fig:microsoft-google-forms-testformulare} zeigt zwei Test-Formulare, welche Beispielhaft mit  Microsoft Forms\footnote{Microsoft Forms (\url{https://www.microsoft.com/de-de/microsoft-365/online-surveys-polls-quizzes})} und mittels Google Forms\footnote{Google Forms (\url{https://www.google.com/forms/about/})} umgesetzt wurden.
+Neben den gängigen \acp{cms}-Lösungen gibt es sowohl von Google als auch Microsoft und anderen Anbietern Online Formular-Tools, mit denen theoretisch ebenso eine Eins-zu-Eins Umsetzung der Word"=Antragsvorlage möglich ist. Abbildung \ref{fig:microsoft-google-forms-testformulare} auf Seite \pageref{fig:microsoft-google-forms-testformulare} zeigt zwei Test-Formulare, welche Beispielhaft mit Microsoft Forms\footnote{Microsoft Forms (\url{https://www.microsoft.com/de-de/microsoft-365/online-surveys-polls-quizzes})} und mittels Google Forms\footnote{Google Forms (\url{https://www.google.com/forms/about/})} umgesetzt wurden.
 
 \begin{figure}[ht]
     \centering
@@ -835,14 +841,14 @@ Neben den gängigen \acp{cms}-Lösungen gibt es sowohl von Google als auch Micro
     \label{fig:microsoft-google-forms-testformulare}
 \end{figure}
 
-Ähnlich zu den in Abschnitt \ref{sub-sec:cms-syteme} ab Seite \pageref{sub-sec:cms-syteme} behandelten \aclp{cms} stellt sich die weiterführende Umsetzung  als schwierig beziehungsweise nicht möglich dar, wenn sowohl die für den Prozess notwendigen als auch die von den Antragssteller:innen sowie der \ac{fek} gewünschten Funktionalitäten umgesetzt werden sollen. Eingelangte Antworten werden bei beiden Tools aggregiert gesammelt und können lediglich als Excel-Datei exportiert und von dort aus weiter bearbeitet werden. \cite{microsoft_corporation_wie_2021, google_ireland_limited_ergebnisse_2023} Unabhängig davon stellt sich bei beiden Tools die Frage, in wie weit die hohen Anforderungen der \acl{fek} an den Datenschutz erfüllt werden können, da die schlussendliche Datenspeicherung bei den jeweiligen Tools -- in diesem Fall Microsoft beziehungsweise Google -- liegt und keine direkte Kontrolle möglich ist.\footnote{\cite{visitor_analytics_gmbh_ist_2022} erklärt in diesem Zusammenhang, dass Google Forms nur stellenweise der seit 2018 in Kraft getretenen Datenschutzgrundverordnung entspricht und neben einer vorhandenen Premium- oder Geschäftslizenz mehrere Schritte unternommen werden müssen, um Konformität gewährleisten zu können.}
+Ähnlich zu den in Abschnitt \ref{sub-sec:cms-syteme} ab Seite \pageref{sub-sec:cms-syteme} behandelten \aclp{cms} stellt sich die weiterführende Umsetzung als schwierig beziehungsweise nicht möglich dar, wenn sowohl die für den Prozess notwendigen als auch die von den Antragssteller:innen sowie der \ac{fek} gewünschten Funktionalitäten umgesetzt werden sollen. Eingelangte Antworten werden bei beiden Tools aggregiert gesammelt und können lediglich als Excel-Datei exportiert und von dort aus weiter bearbeitet werden. \cite{microsoft_corporation_wie_2021, google_ireland_limited_ergebnisse_2023} Unabhängig davon stellt sich bei beiden Tools die Frage, in wie weit die hohen Anforderungen der \acl{fek} an den Datenschutz erfüllt werden können, da die schlussendliche Datenspeicherung bei den jeweiligen Tools -- in diesem Fall Microsoft beziehungsweise Google -- liegt und keine direkte Kontrolle möglich ist.\footnote{\cite{visitor_analytics_gmbh_ist_2022} erklärt in diesem Zusammenhang, dass Google Forms nur stellenweise der seit 2018 in Kraft getretenen Datenschutzgrundverordnung entspricht und neben einer vorhandenen Premium- oder Geschäftslizenz mehrere Schritte unternommen werden müssen, um Konformität gewährleisten zu können.}
 
 \chapter{Anforderungen an das neue System}
 \label{chap:anforderung-neues-system}
 
 Im Rahmen der Neuentwicklung des Systems und Prozesses spielen die Anforderungen und Wünsche der betroffenen Anwender:innen einen zentrale Rolle, um sowohl die Stärken des bestehenden Systems übernehmen als auch die identifizierten Schwächen und Probleme verbessern und Wünsche umsetzen zu können. Im Rahmen des angewandten User-Centered Design Ansatzes, der in Kapitel \ref{chap:prinzipien-user-centered-design} ab Seite \pageref{chap:prinzipien-user-centered-design} genauer erläutert wird, wurden mehrere Interviews sowie eine Gruppendiskussion durchgeführt.
 
-Im folgenden Kapitel werden die durch die Interviews gesammelten Anforderungen daher analysiert und es wird erläutert, wie diese Anforderungen mithilfe einer grundlegenden qualitativen Inhaltsanalyse konkret ermittelt wurden. Zunächst wird dabei kurz darauf eingegangen, wie die qualitative Inhaltsanalyse im Rahmen dieser Masterarbeit konkret ausfällt, bevor die Anforderungen genauer definiert werden.
+Im folgenden Kapitel werden die durch die Interviews gesammelten Anforderungen analysiert und es wird erläutert, wie diese Anforderungen mithilfe einer grundlegenden qualitativen Inhaltsanalyse konkret ermittelt werden. Zunächst wird dabei kurz darauf eingegangen, wie die qualitative Inhaltsanalyse im Rahmen dieser Masterarbeit konkret ausfällt, bevor die Anforderungen genauer definiert werden.
 
 \section{Durchgeführte Interviews \& Gruppendiskussion}
 \label{sec:durchgeführte-interviews-gruppendiskussion}
@@ -851,12 +857,12 @@ Die durchgeführten Interviews erstrecken sich auf zwei Personen der Gruppe der 
 
 \medskip
 
-Im Verlauf der Erstellung dieser Arbeit hat sich der Leitfaden mehrfach weiterentwickelt und grundlegend verändert. Der ursprünglich geplante Leitfaden ist im Anhang \ref{appendix:ursprünglicher-leitfaden} ab Seite \pageref{appendix:ursprünglicher-leitfaden} ersichtlich und umfasst neben den Interviewfragen für die Forschenden und die Gruppendiskussion auch verschiedene Fragen, die für unterschiedliche Fragebögen vorgesehen waren. Wie in Fußnote \ref{footnote:ursprüngliche-planung-leitfaden} auf Seite \pageref{footnote:ursprüngliche-planung-leitfaden} bereits erwähnt wurde, hat die \ac{fek} in ihrer Rückmeldung zum gestellten Ethikantrag empfohlen, den Fokus auf gezielte Gespräche zu legen und allgemeine sowie offene Fragestellungen in Form eines Fragebogens weniger stark zu priorisieren.
+Im Verlauf der Erstellung dieser Arbeit hat sich der Leitfaden mehrfach weiterentwickelt und grundlegend verändert. Der ursprünglich geplante Leitfaden ist in Anhang \ref{appendix:ursprünglicher-leitfaden} ab Seite \pageref{appendix:ursprünglicher-leitfaden} ersichtlich und umfasst neben den Interviewfragen für die Forschenden und die Gruppendiskussion auch verschiedene Fragen, die für unterschiedliche Fragebögen vorgesehen waren. Wie in Fußnote \ref{footnote:ursprüngliche-planung-leitfaden} auf Seite \pageref{footnote:ursprüngliche-planung-leitfaden} bereits erwähnt wurde, hat die \ac{fek} in ihrer Rückmeldung zum gestellten Ethikantrag empfohlen, den Fokus auf gezielte Gespräche zu legen und allgemeine sowie offene Fragestellungen in Form eines Fragebogens weniger stark zu priorisieren.
 
 Der schlussendlich verwendete Leitfaden für die Gespräche findet sich in Anhang \ref{appendix:interview-leitfaden} ab Seite \pageref{appendix:interview-leitfaden} wieder, wobei dieser nur mehr die Fragen für die Einzelinterviews und die Gruppendiskussion in leicht adaptierter Form und Anzahl enthält. Die im weiteren Verlauf des Kapitels durchgeführte Inhaltsanalyse und auch Kategorisierung orientiert sich entsprechend an diesen Fragen und den darin bereits enthaltenen Themenschwerpunkten.
 
 \section{Qualitative Inhaltsanalyse}
-\label{sec:qualitativer-inhaltsanalyse}
+\label{sec:qualitative-inhaltsanalyse}
 
 Die qualitative Inhaltsanalyse orentiert sich an den von Kuckartz in \cite{kuckartz_qualitative_2018} beschriebenen Herangehensweisen sowie Prinzipien und stützt sich dabei grundlegend auf die inhaltlich strukturierende Analyse (\cite[97-122]{kuckartz_qualitative_2018}). Aufgrund der geringen Anzahl an durchgeführten Interviews und der zeitlichen Komponente, die diese Masterarbeit maßgeblich einschränkt, werden jedoch nicht alle Schritte im kompletten Ausmaß durchgeführt, sondern bei Bedarf auf ein verhältnismäßiges Ausmaß angepasst.
 
@@ -874,12 +880,265 @@ Die zwei durchgeführten Interviews sowie die Gruppendiskussion werden konkret a
 \subsection{Thematische Hauptkategorien}
 \label{sub-sec:thematische-hauptkategorien}
 
-Anhand der 
+Anhand der von Kuckartz beschriebenen Herangehensweise stellt der erste Schritt der inhaltlich strukturierenden Analyse die Bildung von thematischen Hauptkategorien dar, die als Kategorien zur Auswertung verwendet werden. Die Themen beziehungsweise Kategorien beziehen sich dabei häufig auf die Forschungsfrage der Arbeit oder finden sich im Leitfaden der durchgeführten Interviews wieder. Die Kategorien können dabei sowohl anhand des vorliegenden Materials als auch im Vorhinein erstellt und im Anschluss zur Klassifizierung angewandt werden. \cite[101\psq]{kuckartz_qualitative_2018}
+
+\medskip
+
+Anhand des Interviewleitfadens, welcher in Anhang \ref{appendix:interview-leitfaden} ab Seite \pageref{appendix:interview-leitfaden} ersichtlich ist, sowie der beiden Einzelinterviews (siehe Anhang \ref{appendix:interview-1} ab Seite \pageref{appendix:interview-1} sowie Anhang \ref{appendix:interview-2} ab Seite \pageref{appendix:interview-2}) und der Gruppendiskussion (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}) können die folgenden Themenschwerpunkte für die anschließende Kategorisierung definiert werden\footnote{Die in den Einzelinterviews und der Gruppendiskussion gestellten Fragen und erhaltenen Antworten enthalten stellenweise Themenbereiche, die nur eine untergeordnete Rolle spielen oder keine Relevanz für die tatsächliche Analyse der Anforderungen für ein neues Ethikantrag-Tool haben. Diese Fragen und auch Antworten werden bei der Findung der Hauptthemen und auch in der darauf aufbauenden qualitativen Inhaltsanalyse außen vor gelassen.}:
+\begin{itemize}
+    \item Prozess beziehungsweise Ablauf eines Ethikantrages
+    \item Feedback, Kritik und Verbesserungsvorschläge
+    \item Anforderungen an ein überarbeitetes System oder Tool
+\end{itemize}
+
+\subsubsection*{Anmerkungen}
+\label{sub-sub-sec:thematische-hauptkategorien-anmerkungen}
+
+Die Anzahl an Hauptthemen fällt relativ gering aus, da der Fokus der geführten Interviews -- mit der Erstellung und Einreichung von Ethikanträgen und dem zugrundeliegenden Prozess -- relativ eng gesteckt ist.
+
+Die Kategorien \textit{Feedback, Kritik und Verbesserungsvorschläge} und \textit{Anforderungen an ein überarbeitetes System oder Tool} ähneln sich zudem auf den ersten Blick dahingehend, dass beide zu einem gewissen Teil sowohl Feedback, Anforderung und Verbesserungsvorschlag als auch Wunsch in einem enthalten. Die beiden Themen sind jedoch spezifisch getrennt worden, da im Zuge der Codierung eine unverbindlich vorgeschlagene Idee beziehungsweise Verbesserung von einem absoluten \enquote{Must Have} oder auch einer eindeutig geforderten Änderung unterschieden werden.
+
+\subsubsection*{Zwischenergebnis der Kategorisierung anhand der Hauptkategorien}
+\label{sub-sub-sec:zwischenstand-hauptkategorisisierung}
+
+Abbildung \ref{fig:zwischenstand-hauptkategorisierung} auf Seite \pageref{fig:zwischenstand-hauptkategorisierung} zeigt das Zwischenergebnis der initialen Kategorisierung der zwei Einzelinterviews sowie der Gruppendiskussion. Im jeweiligen Feld lässt sich dabei die Anzahl der Kategorisierungen der entsprechenden Hauptkategorie (im Kontext der \ac{qda}-Software MAXQDA\footnote{MAXQDA (\url{https://www.maxqda.com/de/})} \enquote{Code} beziehungsweise \enquote{Codesystem}) erkennen.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_Hauptkategorien-Zwischenergebnis.png}
+    \caption[Zwischenergebnis der initialen Kategorisierung anhand der Hauptkategorien]{Zwischenergebnis der initialen Kategorisierung anhand der Hauptkategorien (Quelle: eigene Abbildung)}
+    \label{fig:zwischenstand-hauptkategorisierung}
+\end{figure}
+
+Bereits nach der initialen Kategorisierung lässt sich grundlegend feststellen, dass beim Thematisieren des \textit{Prozesses beziehungsweise Ablaufes eines Ethikantrages} häufig auch \textit{Feedback, Kritik und Verbesserungsvorschläge} zur Sprache kommen oder \textit{Anforderungen an ein überarbeitetes System oder Tool} gestellt werden.
 
 \subsection{Thematische Subkategorien anhand des Materials}
 \label{sub-sec:thematische-subkategorien}
 
-todo
+Um ein genaueres Verständnis über die Zusammenhänge gewinnen und Anforderungen ableiten zu können, schlägt Kuckartz als nächsten Schritt vor, Subkategorien auf Basis des Materials zu definieren, welches bereits mit den Hauptkategorien klassifiziert wurde. \cite[106]{kuckartz_qualitative_2018}
+
+Im Zuge der erneuten Durchsicht des Materials und der anschließenden zweiten Codierung der Einzelinterviews und der Gruppendiskussion konnten insgesamt elf Subkategorien ausfindig gemacht und definiert werden. Das in MAXQDA schlussendlich definierte \enquote{Codesystem} kann in Abbildung \ref{fig:angewandtes-codesystem} auf Seite \pageref{fig:angewandtes-codesystem} nachvollzogen werden.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_Codesystem.png}
+    \caption[Ausgearbeitetes und angewandtes Codesystem zur Codierung der Interviews und Gruppendsikussion]{Ausgearbeitetes und angewandtes Codesystem zur Codierung der Interviews und Gruppendsikussion (Quelle: eigene Abbildung)}
+    \label{fig:angewandtes-codesystem}
+\end{figure}
+
+\subsection{Ergebnis der Klassifizierung}
+\label{sub-sec:ergebnis-klassifizierung}
+
+Das Ergebnis der Klassifizierung wird laut Kuckartz nun eigentlich mittels detaillierter fallbezogener thematischer Zusammenfassung genauer aufgearbeitet und auf Basis dessen analysiert und visualisiert. \cite[111-121]{kuckartz_qualitative_2018} Aufgrund der angesprochenen zeitlichen Einschränkung beschränkt sich die fallbezogene thematische Zusammenfassung auf die in Abschnitt \ref{sec:stärken-schwächen-probleme} ab Seite \pageref{sec:stärken-schwächen-probleme} durchgeführte Analyse der Stärken, Schwächen und Probleme, welche auf den Ergebnissen dieses Kapitels basiert.
+
+\medskip
+
+Eine detailliertere Analyse lässt sich nun Anhand der von MAXQDA bereitgestellten \enquote{Code-Relations-Browser} Funktionalität umsetzen, welche auch schon in Abbildung \ref{fig:zwischenstand-hauptkategorisierung} auf Seite \pageref{fig:zwischenstand-hauptkategorisierung} zum Einsatz gekommen ist. Abbildung \ref{fig:feedback-x-prozess} auf Seite \pageref{fig:feedback-x-prozess} stellt dabei als ersten Schritt den Zusammenhang zwischen dem in den Interviews und der Gruppendiskussion geäußerten Feedback mit den jeweiligen Prozessabschnitten dar.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_Feedback-Prozess.png}
+    \caption[Zusammenhang zwischen genanntem Feedback und den einzelnen Prozessabschnitten]{Zusammenhang zwischen genanntem Feedback und den einzelnen Prozessabschnitten (Quelle: eigene Abbildung)}
+    \label{fig:feedback-x-prozess}
+\end{figure}
+
+Anhand der Auswertung lässt sich feststellen, dass eingebrachtes Feedback vor allem die Erstellung und Einreichung eines Ethikantrages betrifft, während es im Vorfeld zu einem Antrag und auch nach der Einreichung sowie dem Erhalt des Votums deutlich weniger Anregungen und Probleme gibt. Diese Feststellung deckt sich auch mit der in der in Abschnitt \ref{sec:motivation} sowie Abschnitt \ref{sec:frage-problemstellung} ab Seite \pageref{sec:motivation} beziehungsweise \pageref{sec:frage-problemstellung} dargelegten Motivation und Problemstellung.
+
+\medskip
+
+Neben dem getätigten Feedback konnten in den Interviews und der Gruppendiskussion auch Aussagen klassifiziert werden, die aufgrund der expliziten Nennung nicht nur als Verbesserungsvorschlag oder Wunsch sondern als konkrete Anforderung zu definieren sind. Abbildung \ref{fig:anforderungen-x-prozess} auf Seite \pageref{fig:anforderungen-x-prozess} zeigt die Verteilung der Anforderungen in Bezug auf die einzelnen Prozessschritte. Es ist deutlich erkennbar, dass diese hauptsächlich die Erstellung und Einreichung eines Ethikantrages sowie den Prozess nach der Einreichung durch die Antragssteller:innen betreffen.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_Anforderungen-Prozess.png}
+    \caption[Zusammenhang zwischen genannten Anforderungen und den einzelnen Prozessabschnitten]{Zusammenhang zwischen genannten Anforderungen und den einzelnen Prozessabschnitten (Quelle: eigene Abbildung)}
+    \label{fig:anforderungen-x-prozess}
+\end{figure}
+
+Insgesamt wurden die drei Hauptkategorien und elf Subkategorien 114 Mal zur Codierung von relevanten Passagen und Ausschnitten der Interviews sowie der Gruppendiskussion verwendet. Abbildung \ref{fig:codesystem-anzahl} auf Seite \pageref{fig:codesystem-anzahl} zeigt das Codesystem noch einmal in einer anderen Darstellungsart, wobei neben jedem einzelnen Code die entsprechende Anzahl an Codierungen aufgelistet ist.
+
+Entgegen Kuckartz Empfehlungen (\cite[108]{kuckartz_qualitative_2018}) gibt es mehrere Textpassagen und Antworten, die zwar mit einer Hauptkategorie, nicht aber mit einer Subkategorie (beispielsweise der Kategorie \enquote{Sonstiges}) codiert wurden. Diese Entscheidung wurde bewusst getroffen, um das Codesystem schlank und die Auswertung auf dem sehr überschaubaren Material zielgerichtet zu halten.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.8\linewidth]{thesis/images/Luidold_Codesystem-Anzahl.png}
+    \caption[Angewandtes Codesystem inklusive Anzahl der vorgenommenen Codierungen je Code]{Angewandtes Codesystem inklusive Anzahl der vorgenommenen Codierungen je Code (Quelle: eigene Abbildung)}
+    \label{fig:codesystem-anzahl}
+\end{figure}
+
+\section{Definition der Anforderungen}
+\label{sec:definition-anforderungen}
+
+Anhand der in Abschnitt \ref{sec:qualitative-inhaltsanalyse} ab Seite \pageref{sec:qualitative-inhaltsanalyse} durchgeführten qualitativen Inhaltsanalyse lassen sich im abschließenden Schritt nun die konkreten Anforderungen an ein neues System und gegebenenfalls einen neuen Prozess definieren. Die Anforderungen werden dabei mit codierten Textstellen aus den Interviews und der Gruppendiskussion belegt, wobei inhaltlich doppelte Nennungen zusammengefasst beziehungsweise weggelassen werden. Ebenso werden Textpassagen außen vor gelassen, die zwar codiert wurden, im Rahmen anderer Anforderungen aber bereits abgedeckt werden können und starke inhaltliche Ähnlichkeiten aufweisen.
+
+\subsection{Im Vorfeld eines Antrages}
+\label{sub-sec:vorfeld-antrag}
+
+Tabelle \ref{tab:anforderungen-vorfeld-antrag} auf Seite \pageref{tab:anforderungen-vorfeld-antrag} zeigt sämtliche Textausschnitte auf, die entweder der Haupt- oder Subkategorie \textit{Feedback, Kritik und Verbesserungsvorschläge} oder \textit{Anforderungen an ein überarbeitetes System oder Tool} zugeordnet sind und im Rahmen der Kategorie \textit{Im Vorfeld eines Antrages} vorkommen.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{p{.05\linewidth} | p{.2\linewidth} | p{.65\linewidth}}
+        \# & \textbf{Interview} & \textbf{Textausschnitt}\\
+        \hline
+        1 & Einzelinterview \#2 & \textit{Dominic:} In dem Fall für dich ganz klar gewesen oder für euch im Forschungsprojekt, dass da ein Ethikantrag wirklich notwendig ist?\newline \textit{Interviewpartner:in B:} [...] Es ist natürlich immer etwas schwierig, ab wann braucht man sowas, braucht man für einen normalen Usability-Test einen Ethikantrag? Also da sind die Grenzen schon noch etwas schwammig und da wär eine Unterstützung von einem Tool sicher hilfreich das zu entscheiden, ob es überhaupt einen Ethikantrag braucht.
+    \end{tabular}
+    \caption{Textausschnitte der Interviews und Gruppendiskussion zu Punkten im Vorfeld eines Ethikantrages}
+    \label{tab:anforderungen-vorfeld-antrag}
+\end{table}
+
+\subsubsection*{Analyse}
+\label{sub-sub-sec:analyse-vorfeld-antrag}
+
+\textit{Interviewpartner:in B} äußert eine Aussage (\hyperref[tab:anforderungen-vorfeld-antrag]{\#1}), die als \textit{Konkrete Hilfestellung} codiert ist und darauf hinweist, dass es nicht immer eindeutig ist, wann ein Ethikantrag erforderlich ist. Als konkretes Beispiel wird ein \enquote{Usability-Test} genannt, bei dem Unsicherheit besteht, ob ein entsprechendes Votum der \ac{fek} erforderlich ist oder nicht.
+
+\subsubsection*{Abgeleitete Anforderungen}
+\label{sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag}
+
+Daraus abgeleitet lassen sich folgende Anforderungen definieren:
+\begin{enumerate}[label=\textbf{\#\arabic*}]
+    \item Das Ethikantrags-Tool soll klarere Richtlinien und auch Hilfestellungen bereitstellen, um die Entscheidung zu unterstützen, ob ein Ethikantrag erforderlich ist.
+\end{enumerate}
+
+\subsection{Während der Erstellung \& Einreichung}
+\label{sub-sec:während-erstellung-einreichung}
+
+Tabelle \ref{tab:anforderungen-während-erstellung-einreichung} auf Seite \pageref{tab:anforderungen-während-erstellung-einreichung} fasst die Textausschnitte zusammen, die entweder der Haupt- oder Subkategorie \textit{Feedback, Kritik und Verbesserungsvorschläge} oder \textit{Anforderungen an ein überarbeitetes System oder Tool} zugeordnet sind und im Rahmen der Kategorie \textit{Während der Erstellung \& und Einreichung eines Antrages} vorkommen. Wie eingangs erwähnt, werden inhaltliche Überschneidungen und doppelte Nennungen zugunsten der Übersicht auf einzelne, gleichwertige Textausschnitte heruntergebrochen.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{p{.05\linewidth} | p{.2\linewidth} | p{.65\linewidth}}
+        \# & \textbf{Interview} & \textbf{Textausschnitt}\\
+        \hline
+        2 & Einzelinterview \#1 & \textit{Interviewpartner:in A:} [...] Vielleicht wäre das eine Vereinfachung, wenn man das alles in digitaler Form einreichen kann, dass das nicht per E-Mail hin und her geschickt werden muss. [...] \\
+        \hline
+        3 & Einzelinterview \#2 & \textit{Interviewpartner:in B:} [...] Also es sind auch einige Dinge die einem so vorkommen zumindest, dass sie doppelt ausgefüllt werden müssen, je nachdem, ob es ein Produkt wird oder ob es nur eine Forschung ist, dass man da unterschiedliche Blätter ausfüllen muss. \\
+        \hline
+        4 & Einzelinterview \#2 & \textit{Interviewpartner:in B:} [...]  Das wäre vielleicht auch so eine Idee, dass man da mittracken kann, wer was hinzu geschrieben hat und von wem welcher Input gekommen ist. \\
+        \hline
+        5 & Gruppen-diskussion & \textit{Dominic:} Wenn ich da eingreifen darf, was wären denn für euch Formatierungsmöglichkeiten? [...]\newline
+        \textit{Interviewpartner:in E:} Bulletpoints, das wäre gut. Strukturierungselemente in irgend einer Form.\newline\
+        \textit{Interviewpartner:in C:} Nichts fett. Keine Bilder.\newline
+        \textit{Interviewpartner:in F:} Ich bin auch eher der hermeneutische Typ. Ich hätte null Möglichkeiten vorgesehen, aber Bulletpoints sind Okay. Aber sonsten nada. \\
+        \hline
+        6 & Gruppen-diskussion & \textit{Interviewpartner:in D:} [...] Nicht mühsam sein soll es, dieses Formular auszufüllen. Da soll es wirklich nicht daran scheitern, dass man nicht irgendwo in einem anderen Dokument vorschreiben und es dann hineinkopieren kann. Das muss eigentlich klappen. Und auch, dass man innerhalb des Dokumentes ordentlich zitieren kann [...]. [...] das Ausfüllen des Formulares [...] soll eben einfach von statten gehen. \\
+    \end{tabular}
+    \caption{Textausschnitte der Interviews und Gruppendiskussion zu Punkten während der Erstellung \& Einreichung eines Ethikantrages}
+    \label{tab:anforderungen-während-erstellung-einreichung}
+\end{table}
+
+\subsubsection*{Analyse}
+\label{sub-sub-sec:analyse-während-erstellung-einreichung}
+
+\textit{Interviewpartner:in A} erwähnt während des Interviews (\hyperref[tab:anforderungen-während-erstellung-einreichung]{\#2}) zur \textit{Art der Datenübermittlung}, dass eine Einreichung der Unterlagen sowie dem Ethikantrag selbst per E-Mail nicht optimal ist. Ähnliches wurde auch von den Mitgliedern der \ac{fek} rückgemeldet.
+
+\medskip
+
+\textit{Interviewpartner:in B} nennt zum Thema \textit{Inhalt und Fragestellung} (\hyperref[tab:anforderungen-während-erstellung-einreichung]{\#3}), dass im Antragsformular gewisse Themenaspekte mehrfach angegeben werden müssen, abhängig davon, was für ein Forschungsprojekt umgesetzt wird. Vereinzelt haben Mitglieder der \ac{fek} dazu ähnliches Feedback geäußert.
+
+\medskip
+
+\textit{Interviewpartner:in B} schlägt als \textit{konkrete Hilfestellung} vor (\hyperref[tab:anforderungen-während-erstellung-einreichung]{\#4}), dass protokolliert werden könnte, wer welche Änderungen an einem Antrag vornimmt, sofern dieser von mehren Personen innerhalb des Forschungsprojektes bearbeitet wird.
+
+\medskip
+
+\textit{Interviewpartner:innen C, E und F} stellen während der Diskussion (\hyperref[tab:anforderungen-während-erstellung-einreichung]{\#5}) die Anforderung an die \textit{Bedienbarkeit und technische Limitierung}, dass Formatierungsmöglichkeiten in einem neuen System ebenfalls rein auf Text und Zeichen beschränkt werden sollen. Lediglich Bulletpoints sollen als Strukturelemente ermöglicht werden.
+
+\medskip
+
+\textit{Interviewpartner:in D} stellt die Anforderung (\hyperref[tab:anforderungen-während-erstellung-einreichung]{\#6 }) sowohl an die \textit{Verringerung der Komplexität} als auch die \textit{Bedienbarkeit und technischen Limitierungen}, dass das Formular einfach auszufüllen sein muss und dass sowohl grundlegende Funktionen wie das Kopieren und Einfügen von Text als auch Literaturverwaltungsprogramme unterstützt werden sollen.
+
+\subsubsection*{Abgeleitete Anforderungen}
+\label{sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung}
+
+Daraus abgeleitet lassen sich folgende Anforderungen definieren:
+\begin{enumerate}[label=\textbf{\#\arabic*}]
+    \setcounter{enumi}{1}
+    \item Die Übermittlung eines Ethikantrages sowie zugehöriger Unterlagen soll nicht mehr mittels E-Mail erfolgen.
+    \item Der Ethikantrag soll berücksichtigen, dass es unterschiedliche Typen von Forschungsvorhaben gibt und die Fragen darauf abstimmen, um doppelte Fragestellungen dazu vermeiden zu können.
+    \item Das System soll protokollieren, wer welche Änderungen an einem (noch nicht eingereichten) Ethikantrag vorgenommen hat.
+    \item Das System soll ausschließlich Zeichen und keine weiteren Formatierungen mit Außnahme von Bulletpoints zulassen.
+    \item Das System soll weiterführende Funktionen wie beispielsweise die Integration von Literaturverwaltungsprogrammen unterstützen.
+\end{enumerate}
+
+\subsection{Nach der Einreichung}
+\label{sub-sec:nach-einreichung}
+
+Tabelle \ref{tab:anforderungen-nach-einreichung} auf Seite \pageref{tab:anforderungen-nach-einreichung} fasst die Textausschnitte zusammen, die entweder der Haupt- oder Subkategorie \textit{Feedback, Kritik und Verbesserungsvorschläge} oder \textit{Anforderungen an ein überarbeitetes System oder Tool} zugeordnet sind und im Rahmen der Kategorie \textit{Nach der Einreichung} vorkommen. Wie eingangs erwähnt, werden inhaltliche Überschneidungen und doppelte Nennungen zugunsten der Übersicht auf einzelne, gleichwertige Textausschnitte heruntergebrochen.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{p{.05\linewidth} | p{.2\linewidth} | p{.65\linewidth}}
+        \# & \textbf{Interview} & \textbf{Textausschnitt}\\
+        \hline
+        7 & Einzelinterview \#2 & \textit{Interviewpartner:in B:} [...] Da wäre es interessant, wenn es so eine Prozessansicht geben würde, wo man sieht, wo steckt der Antrag gerade, er ist jetzt in Begutachtung, die Kommission muss zusammentreffen und das nächste Treffen findet dann und dann statt. \\
+        \hline
+        8 & Gruppen-diskussion & \textit{Interviewpartner:in E:} [...] Zur Entlastung des:der Vorsitzenden würde ich aktuell sagen [...] automatisierte Eingangsbestätigungen, vielleicht eine automatisierte Mail wenn es um gewisse Prozesse, administrative Informationsaspekte geht, die automatisierbar sind. [...]\newline
+        \textit{Interviewpartner:in D:} Also gerade der formale Check könnte sich durchaus automatisieren lassen. Das wäre schon eine E-Mail, zwei E-Mails weniger. \\
+        \hline
+        9 & Gruppen-diskussion & \textit{Interviewpartner:in F:} [...] Wir müssen, wenn wir zusammen kommen und eine Entscheidung über einen Antrag stellen, ein gemeinsames verbindliches Dokument haben, auf Basis dessen wir entscheiden. Das heißt, wir müssen auch die Möglichkeit haben, die Meta-Daten aus so einem Dokument, egal wie lange aber Minimum die üblichen drei Jahre, oder sieben Jahre, das kann man definieren, die müssen gesichert irgendwo gespeichert sein. [...]
+    \end{tabular}
+    \caption{Textausschnitte der Interviews und Gruppendiskussion zu Punkten nach der Einreichung eines Ethikantrages}
+    \label{tab:anforderungen-nach-einreichung}
+\end{table}
+
+\subsubsection*{Analyse}
+\label{sub-sub-sec:analyse-nach-einreichung}
+
+\textit{Interviewpartner:in B} schlägt als \textit{konkrete Hilfestellung} vor (\hyperref[tab:anforderungen-nach-einreichung]{\#7}), dass nach der Einreichung eines Antrages genauere Informationen darüber bereitgestellt werden könnten, in welchem Stadium sich der eingereichte Antrag gerade befindet.
+
+\medskip
+
+\textit{Interviewpartner:in E und F} schlagen als \textit{konkrete Hilfestellung} vor (\hyperref[tab:anforderungen-nach-einreichung]{\#8}), dass zur Entlastung des Vorsitzes der \ac{fek} genereische E-Mails automatisiert versendet und auch ein initialer formaler Check automatisch vorgenommen werden könnte.
+
+\medskip
+
+\textit{Interviewpartner:in D} stellt eine Anforderung (\hyperref[tab:anforderungen-nach-einreichung]{\#9}) an den \textit{Datenschutz und die Nachvollziehbarkeit}, dass eingereichte Anträge für einen bestimmten Zeitraum gespeichert werden müssen und dass die enthaltenen (Meta-)Informationen während dieser Zeit zugänglich sein sollen.
+
+\subsubsection*{Abgeleitete Anforderungen}
+\label{sub-sub-sec:abgeleitete-anforderungen-nach-einreichung}
+
+Daraus abgeleitet lassen sich folgende Anforderungen definieren:
+\begin{enumerate}[label=\textbf{\#\arabic*}]
+    \setcounter{enumi}{6}
+    \item Das System soll eine Möglichkeit bieten, nachvollziehen zu können, in welchem Stadium sich ein eingereichter Ethikantrag befindet.
+    \item Das System soll automatisierbare Arbeitsschritte wie den E-Mail-Versand und den formalen Check von Unterlagen selbstständig übernehmen.
+    \item Das System soll eine nachvollziehbare, eindeutige und sichere Speicherung der Daten für einen beliebig langen Zeitraum ermöglichen.
+\end{enumerate}
+
+\subsection{Nach Erhalt des Votums}
+\label{sub-sec:nach-erhalt-votum}
+
+Es wurden zwar mehrere Codierungen mittels dem Code \textit{Nach Erhalt des Votums} vorgenommen, es lassen sich jedoch daraus keine neuen Schlüsse ziehen, die nicht schon durch die vorherigen Definitionen etwaiger Anforderungen abgedeckt werden konnten.
+
+\section{Priorisierung der Anforderungen}
+\label{sec:priorisierung-anforderungen}
+
+Der Rahmen dieser Masterarbeit erstreckt sich, wie in Abschnitt \ref{sec:zielsetzung} ab Seite \pageref{sec:zielsetzung} bereits erläutert, auf die Umsetzung eines \ac{poc} anhand eines Prototyps. Die in Abschnitt \ref{sec:definition-anforderungen} ab Seite \pageref{sec:definition-anforderungen} definierten neun Anforderungen können und sollen im Zuge dessen nicht vollständig umgesetzt werden, weshalb eine entsprechende Priorisierung vorgenommen werden muss.
+
+\medskip
+
+Der Fokus des angestrebten \ac{poc} beruht dabei vor allem auf der Erstellung und Einreichung eines Ethikantrages, während die weiterführende Behandlung eines Antrages durch die \ac{fek} nicht zu den unmittelbaren Zielen gehört. Tabelle \ref{tab:priorisierung-anforderungen} auf Seite \pageref{tab:priorisierung-anforderungen} berücksichtigt diesen Umstand und nimmt die Priorisierung anhand des in \cite{chai_what_2020} definierten Eisenhower-Prinzips vor.
+
+\begin{table}[ht!]
+    \begin{tabular}{p{.15\linewidth} | p{.35\linewidth} | p{.35\linewidth}}
+        & \textbf{Dringend} & \textbf{Nicht Dringend} \\
+        \hline
+        \textbf{Wichtig} & \hyperref[sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag]{\#1}, \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#2}, \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3}, \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#5},  \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#8} & \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#4}, \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#6}, \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#7}, \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#9} \\
+        \hline
+        \textbf{Nicht Wichtig} & / & /
+    \end{tabular}
+    \caption{Priorisierung der definierten Anforderungen nach dem Eisenhower-Prinzip}
+    \label{tab:priorisierung-anforderungen}
+\end{table}
+
+Das zur Priorisierung angewandte Eisehower-Prinzp basiert darauf, dass Frage- beziehungsweise Problemstellungen oder geplante Aufgaben in vier Quadranten aufgeteilt werden können, die durch die Einteilung in die Spalten \textit{Dringend} und \textit{Nicht Dringend} sowie die Zeilen \textit{Wichtig} und \textit{Nicht Wichtig} zustande kommen. Die Quadranten entsprechen dabei gleichzeitig auch der Priorisierung, wobei \textit{Dringend und Wichtig} die höchste und \textit{Nicht Dringend und Nicht Wichtig} die niedrigste Priorisierung darstellt. \cite{chai_what_2020}
+
+Alle definierten Anforderungen finden sich in den ersten beiden Quadranten wieder. Dies lässt sich grundlegend damit erklären, dass die von den Interviewpartner:innen angesprochenen Themenpunkte eine wichtige Rolle bei einer Neuentwicklung des Systems und gegebenenfalls auch des Prozesses spielen, während weniger wichtige Themen kaum oder gar nicht angesprochen wurden.
+
+\medskip
+
+Im Zusammenhang mit der Priorisierung kann Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3} genauer betrachtet und möglicherweise eine Zeile nach unten verschoben werden. Die inhaltliche Ausarbeitung des Ethikantrags liegt letztendlich bei der \ac{fek} der \ac{fhv} und kann während dieser Umsetzung nur begrenzt angepasst werden. Dennoch wird diese Anforderung in derselben Priorisierungsstufe beibehalten, da sie technische Implikationen für zukünftige Änderungen mit sich bringt.
 
 \chapter{Prinzipien des User-Centered Designs}
 \label{chap:prinzipien-user-centered-design}
@@ -934,7 +1193,7 @@ Anhang \ref{appendix:informed-consent-einzelinterview} ab Seite \pageref{appendi
 
 \includepdf[pages=-]{documents/Luidold_Ursprüngliches-Informed-Consent-Formular.pdf}
 
-\chapter{Rückmeldung der \acs{fek} zu eingereichtem Ethikantrag}
+\chapter{Rückmeldung der \acl{fek} zum eingereichten Ethikantrag}
 \label{appendix:rückmeldung-fek}
 
 Anhang \ref{appendix:rückmeldung-fek} enthält die Rückmeldung sowie das ethische Votum der \acl{fek} der \acl{fhv}, welches in der Sitzung vom Mittwoch, den 22.03.2023, auf Einlangen des eingereichten Ethikantrages (siehe Anhang \ref{appendix:eingereichter-ethikantrag} ab Seite \pageref{appendix:eingereichter-ethikantrag}) hin erstellt wurde.
@@ -1103,7 +1362,7 @@ Ich würde jetzt direkt einfach mit der ersten Frage ganz frech schon starten: W
 
 \textbf{Interviewpartner:in B:} Weil wir Forschung mit Menschen machen und es da eben wichtig ist, zu berücksichtigen, ob da Risiken auftreten und was das eben für Folgen haben könnten.
 
-\textbf{Dominic:} In dem Fall für dich ganz klar gewesen oder für euch im Forschungsprojekt, dass da ein Ethikantrag wirklich notwendig ist.
+\textbf{Dominic:} In dem Fall für dich ganz klar gewesen oder für euch im Forschungsprojekt, dass da ein Ethikantrag wirklich notwendig ist?
 
 \textbf{Interviewpartner:in B:} Ja, gerade wenn es um Menschen geht. Es ist natürlich immer etwas schwierig, ab wann braucht man sowas, braucht man für einen normalen Usability-Test einen Ethikantrag? Also da sind die Grenzen schon noch etwas schwammig und da wär eine Unterstützung von einem Tool sicher hilfreich das zu entscheiden, ob es überhaupt einen Ethikantrag braucht.
 
@@ -1183,7 +1442,7 @@ Ich würde jetzt direkt einfach mit der ersten Frage ganz frech schon starten: W
 
 \textbf{Interviewpartner:in B:} Gerne.
 
-\chapter{Gruppendiskussion mit der \acs{fek}}
+\chapter{Gruppendiskussion mit der \acl{fek}}
 \label{appendix:gruppendiskussion}
 
 \section{Informationen zur Gruppendiskussion}
@@ -1236,7 +1495,7 @@ Das Transkript des Interviews enthält beinahe 1:1 das gesprochene Wort, wobei F
 
 Mit dem Wissen im Hintergrund würde ich euch gerne mehr zum Prozess des Ethikantrages bringen und fragen, wie sieht denn der Prozess aus eurer Sicht aus, zum einen, und aus Sicht der Antragssteller:innen als andere Sichtweise? Welche Schritte durchlauft ihr und welche Schritte müssen die Antragssteller:innen ebenfalls durchlaufen? Oder wie seht denn da das Ganze aus?
 
-\textbf{Interviewpartner:in D:} Aus Sicht des:der Vorsitzenden gesprochen, kommen die ersten Kontaktanfragen per E-Mail, so es ist ja auf der Hompage  hinterlegt. Entweder kommt jemand zurecht mit den Antragsunterlagen, also es gibt ein Antragsformular das auszufüllen ist auf Deutsch oder Englisch mit den entsprechenden Anlagen wie Informed Consent oder Fragebogeninstrumente, sodass wir uns ein Bild von diesem Forschungsvorhaben und den Methoden machen können. Entweder erreicht uns eine E-Mail mit den entsprechenden Anlagen oder aber es gibt Vorab-Fragen, die zu klären sind. Dann macht man einen formalen Check, das ist eine DIN-A4-Seite. Da schaut man, ist eine Unterschrift vom Betreuer drauf, wenn es eine Masterarbeit ist; sind alle Punkte, die wichtig sind, ausgefüllt, also ist er vollständig, sind die Anlagen dabei. Wenn ja, dann geht eine Nachricht an die Antragsstellenden wo drin steht, die Kommission wird informiert und der Bewertungs- beziehungsweise Begutachtungsprozess wird eingeleitet und eben wann die Sitzung stattfindet und wann man sich wieder austauscht. Dann geht die Mail an die Kollegen raus mit der Bitte, den Kriterienkatalog heranzuziehen, den Antrag zu sichten mit den Anlagen und entsprechend individuell eine Bewertung anhand des Kritierienkataloges vorzunehmen. In der nächsten Sitzung kommen wir dann, die stimmberechtigten Mitglieder -- das ist auch noch einmal wichtig, da wird noch einmal festgelegt, wer stimmberechtigt ist und wer nicht. Wenn jetzt jemand Antragsstellender aus der Kommission ist, dann ist klar, dass man nicht stimmberechtigt ist. Oder aber wenn man direkt als Betreuender tätig ist, oder aber, wenn man stark involviert ist in das Projekt, dann entfällt die Stimmberechtigung -- dann kommen wir in der Sitzung zusammen, diskutieren. Also der Diskurs ist entscheidend, ein entscheidendes Qualitätsmerkmal aus meiner Sicht. Der Kriterienkatalog ist immens hilfreich plus der Diskurs, der geführt wird. Dann wird in der Regel von dem:der Vorsitzenden das Gesprochene protokolliert und verfasst dann das Votum, das im Umlauf an die Kommissionsmitglieder geschickt wird, die stimmmberechtigt sind und holt noch einmal das Okay, so wie ausformuliert aussenden zu dürfen. Es werden dann vielleicht noch kleinere Korrekturen vorgenommen, dann erfolgt die Aussendung des Votums an die Antragssteller:in. Genau. Ein Votum kann eigentlich drei Formen haben. Gar keine Bedenken, keine Empfehlungen und keine Auflagen. Kam glaube ich noch nie vor, also es war mindestens eine Auflage oder eine Empfehlung.\footnote{Anmerkung: In diesem Absatz kamen mehrfach indirekt Informationen vor, die Rückschluss auf Personen möglich gemacht hätten. Diese Formulierungen wurden ohne Abänderung des ursprünglichen Inhaltes durch generische Formen und Formulierungen ersetzt.}
+\textbf{Interviewpartner:in D:} Aus Sicht des:der Vorsitzenden gesprochen, kommen die ersten Kontaktanfragen per E-Mail, so es ist ja auf der Hompage hinterlegt. Entweder kommt jemand zurecht mit den Antragsunterlagen, also es gibt ein Antragsformular das auszufüllen ist auf Deutsch oder Englisch mit den entsprechenden Anlagen wie Informed Consent oder Fragebogeninstrumente, sodass wir uns ein Bild von diesem Forschungsvorhaben und den Methoden machen können. Entweder erreicht uns eine E-Mail mit den entsprechenden Anlagen oder aber es gibt Vorab-Fragen, die zu klären sind. Dann macht man einen formalen Check, das ist eine DIN-A4-Seite. Da schaut man, ist eine Unterschrift vom Betreuer drauf, wenn es eine Masterarbeit ist; sind alle Punkte, die wichtig sind, ausgefüllt, also ist er vollständig, sind die Anlagen dabei. Wenn ja, dann geht eine Nachricht an die Antragsstellenden wo drin steht, die Kommission wird informiert und der Bewertungs- beziehungsweise Begutachtungsprozess wird eingeleitet und eben wann die Sitzung stattfindet und wann man sich wieder austauscht. Dann geht die Mail an die Kollegen raus mit der Bitte, den Kriterienkatalog heranzuziehen, den Antrag zu sichten mit den Anlagen und entsprechend individuell eine Bewertung anhand des Kritierienkataloges vorzunehmen. In der nächsten Sitzung kommen wir dann, die stimmberechtigten Mitglieder -- das ist auch noch einmal wichtig, da wird noch einmal festgelegt, wer stimmberechtigt ist und wer nicht. Wenn jetzt jemand Antragsstellender aus der Kommission ist, dann ist klar, dass man nicht stimmberechtigt ist. Oder aber wenn man direkt als Betreuender tätig ist, oder aber, wenn man stark involviert ist in das Projekt, dann entfällt die Stimmberechtigung -- dann kommen wir in der Sitzung zusammen, diskutieren. Also der Diskurs ist entscheidend, ein entscheidendes Qualitätsmerkmal aus meiner Sicht. Der Kriterienkatalog ist immens hilfreich plus der Diskurs, der geführt wird. Dann wird in der Regel von dem:der Vorsitzenden das Gesprochene protokolliert und verfasst dann das Votum, das im Umlauf an die Kommissionsmitglieder geschickt wird, die stimmmberechtigt sind und holt noch einmal das Okay, so wie ausformuliert aussenden zu dürfen. Es werden dann vielleicht noch kleinere Korrekturen vorgenommen, dann erfolgt die Aussendung des Votums an die Antragssteller:in. Genau. Ein Votum kann eigentlich drei Formen haben. Gar keine Bedenken, keine Empfehlungen und keine Auflagen. Kam glaube ich noch nie vor, also es war mindestens eine Auflage oder eine Empfehlung.\footnote{Anmerkung: In diesem Absatz kamen mehrfach indirekt Informationen vor, die Rückschluss auf Personen möglich gemacht hätten. Diese Formulierungen wurden ohne Abänderung des ursprünglichen Inhaltes durch generische Formen und Formulierungen ersetzt.}
 
 \textbf{Interviewpartner:in E:} Bisschen anstrengend.
 
@@ -1266,7 +1525,7 @@ Jetzt kommt vielleicht eine interessante Frage. Sie kennen den Prozess in und au
 
 \textbf{Interviewpartner:in E:} Darf ich da starten? Also das wäre mir tatsächlich ein Anliegen, ich weiß allerdings beziehungsweise wars bisher noch nie mehrheitsfähig in der Ethikommission und würde das jetzt es der nächsten Legislaturperiode überlassen, das zu entscheiden. Ich bin tatsächlich der Meinung, dass wir, und ich sag das jetzt nicht aus trotz oder so, sondern das hat was damit zu tun, wie dieser Antrag dann auch gestaltet werden kann. Die Ethikkommission des Landes Vorarlberg hat den Prozess so organisiert, dass man auch einen Antrag schreibt, dann zu einem spezifischen Termin vorgeladen wird vor die Kommission, mit dieser Kommission den Antrag diskutiert, Fragen beantwortet, kurz rausgebeten wird, wieder reinkommt, das Ergebnis mitgeteilt bekommt und wieder von dannen zieht. Später dann, wenn man die Auflagen vielleicht nachgewiesen hat, bekommt man seinen Wisch zugeschickt. Wenn man das so macht, kann man mit einem schlankeren Antragsformular arbeiten, weil man nicht mehr jedes Detail aus jeder Perspektive auf jedem Konkretisierungsgrad abfragen muss. Sondern man kann ins Gespräch kommen, nachfragen. Wir haben auch schon oft genug Anträge gehabt, wo wir gefragt haben, wie das denn gemeint war, ist es ein Copy-Paste-Fehler, stammt es au dem Template? Oder ist das wirklich so? So Dinge muss man dann nicht mehr, die kann man einfach im Gespräch klären. Ich glaube, wenn man das Ziel hätte, den Komplexitätsgrad und die Anzahl der Dubletten, je nach dem, wie umfangreich man was beantwortet, zu reduzieren, dann wäre viel geholfen, wenn man den Prozess auch insgesamt mal reflektiert.
 
-\textbf{Interviewpartner:in D:} Mir ist es ein Anliegen, ich finde die Antragsstellung darf schon in sofern mühsam sein, als dass man sich sehr gründlich Gedanken machen muss über das eigene Vorgehen. Nicht mühsam sein soll es, dieses Formular auszufüllen. Da soll es wirklich nicht daran scheitern, dass man nicht irgendwo in einem anderen Dokument vorschreiben und es dann hineinkopieren kann. Das muss eigentlich klappen. Und auch, dass man innerhalb des Dokumentes ordentlich zitieren kann, also mit Zotero oder  was auch immer für einem Literaturverwaltungsprogramm, dass das damit kompatibel ist. Das wäre ein großes Anliegen, dass das Ausfüllen des Formulares nicht, also inhaltlich soll man sich viele Gedanken machen müssen, aber es soll eben einfach von statten gehen. Da gibt es natürlich Verbesserungspotenzial. Ich merke es selber. Ich weiß nicht, aber wir gehen davon aus dass Word auf fast allen Rechnern installiert ist und jeder damit arbeitet, aber das mag möglicherweise gar nicht mehr so State of the Art sein. Ich nehme wahr, dass verschiedene Fördergeber, man wegkommt, von den Dokumenten, hin zu Formularen, die man online direkt ausfüllt. Was da die Vor- und Nachteile sind kann ich gar nicht aufzählen.
+\textbf{Interviewpartner:in D:} Mir ist es ein Anliegen, ich finde die Antragsstellung darf schon in sofern mühsam sein, als dass man sich sehr gründlich Gedanken machen muss über das eigene Vorgehen. Nicht mühsam sein soll es, dieses Formular auszufüllen. Da soll es wirklich nicht daran scheitern, dass man nicht irgendwo in einem anderen Dokument vorschreiben und es dann hineinkopieren kann. Das muss eigentlich klappen. Und auch, dass man innerhalb des Dokumentes ordentlich zitieren kann, also mit Zotero oder was auch immer für einem Literaturverwaltungsprogramm, dass das damit kompatibel ist. Das wäre ein großes Anliegen, dass das Ausfüllen des Formulares nicht, also inhaltlich soll man sich viele Gedanken machen müssen, aber es soll eben einfach von statten gehen. Da gibt es natürlich Verbesserungspotenzial. Ich merke es selber. Ich weiß nicht, aber wir gehen davon aus dass Word auf fast allen Rechnern installiert ist und jeder damit arbeitet, aber das mag möglicherweise gar nicht mehr so State of the Art sein. Ich nehme wahr, dass verschiedene Fördergeber, man wegkommt, von den Dokumenten, hin zu Formularen, die man online direkt ausfüllt. Was da die Vor- und Nachteile sind kann ich gar nicht aufzählen.
 
 \textbf{Interviewpartner:in C:} Genau, ob das jetzt Word ist oder was auch immer oder ein Formular. Das sollte nicht das große Kriterium sein. Das große Kriterium ist, ob die Fragen alle adäquat, auch in Bezug auf den Aufwand, den man betreiben muss, um sie zu beantworten. Ehrlich gesagt, ich habe noch nie einen Antrag gestellt, ich sitze immer auf der anderen Seite, ich kann es nicht sagen. Die Beantwortung, kannst du selber dir besser geben. Alle technischen Hindernisse müssen sofort ausgeräumt werden. Da bin ich sofort dabei. Was \textit{Interviewpartner:in E} vorhin sagte, wäre jetzt ein Wandel im Prozess selber. Kann ich mir gut vorstellen, aber es müsste auch dann zeitlich sehr gut definiert sein, wie lange haben sie Zeit, was ist das System. Es darf nur nicht ausarten, es soll auch nicht ausarten. Ich mache es gern, aber es ist nicht mein Haupthobby.
 
