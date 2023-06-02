@@ -26,6 +26,7 @@
 ]{biblatex}                         % Literaturverweise
 \usepackage{xcolor}                 % Farbige Hervorhebungen
 \usepackage{enumitem}               % Angepasste Aufzählungspunkte in Enumerations
+\usepackage{multirow}               % Kombinierte Zeilen & Spalten in Tabellen
 
 %% Einstellungen
 \addbibresource{references.bib}
@@ -129,12 +130,14 @@
     \acro{fek}[FE-K]{Forschungsethik"=Kommission}
     \acro{fhv}[FHV]{Fachhochschule Vorarlberg}
     \acro{föe}[FÖE]{Forum Österreichischer Ethikkommissionen}
+    \acro{hcd}[HCD]{Human-Centered Design}
     \acro{ieb}[IEB]{Institutionelle Ethikboard der Fachhochschule Gesundheitsberufe OÖ}
     \acro{mvc}[MVC]{Model-View-Controller}
     \acro{mvt}[MVT]{Model-View-Template}
     \acro{oss}[OSS]{Open-Source-Software}
     \acro{poc}[PoC]{Proof of Concept}
     \acro{qda}[QDA]{Quality Data Analysis}
+    \acro{ucd}[UCD]{User-Centered Design}
     \acro{ui}[UI]{User Interface}
 \end{acronym}
 
@@ -145,41 +148,38 @@
 \chapter{Einleitung}
 \label{chap:einleitung}
 
-Die vorliegende Masterarbeit beschäftigt sich mit dem Erstellen und Einreichen von Ethikanträgen, die bei der \ac{fek} der \ac{fhv}\footnote{Forschungsethik-Kommission: Analyse von Forschungstätigkeiten und deren ethischer Grundsatzfragen (\url{https://www.fhv.at/forschung/forschungsethik-kommission/})} eingereicht werden können. Ziel dieser Arbeit ist es, Lösungsvorschläge auszuarbeiten, die das auf einer Word-Antragsvorlage aufbauende System langfristig ablösen können.
+Die vorliegende Masterarbeit beschäftigt sich mit dem Erstellen und Einreichen von Ethikanträgen, die bei der \ac{fek} der \ac{fhv}\footnote{Forschungsethik-Kommission: Analyse von Forschungstätigkeiten und deren ethischer Grundsatzfragen (\url{https://www.fhv.at/forschung/forschungsethik-kommission/})} eingereicht werden können. Ziel dieser Arbeit ist es, eine Software"=Lösung auszuarbeiten, die das auf einer Word-Antragsvorlage aufbauende System langfristig ablösen kann.
 
 \section{Motivation}
 \label{sec:motivation}
 
-An der Fachhochschule Vorarlberg finden in einer Forschungsgruppe und fünf verschiedenen Forschungszentren, darunter beispielsweise die Forschungszentren \enquote{Nutzerzentrierte Technologien} und \enquote{Business Informatics}, Forschung und Entwicklung mit vermehrtem Augenmerk auf regionaler Zusammenarbeit aber auch internationaler Kooperationen statt. \cite{fachhochschule_vorarlberg_gmbh_forschung_2021} Um etwaige ethische Aspekte von Forschungsprojekten oder Entwicklungsarbeiten abwägen zu können, stehen den genannten Forschungseinrichtungen sowie allen Master-Studierenden der Fachhochschule Vorarlberg (im Rahmen ihres Kontextstudiums\footnote{Kontextstudium der Masterstudien (\url{https://www.fhv.at/studium/kontextstudium-der-masterstudien/})} oder der Masterarbeit) eine direkt an der Fachhochschule ansässige \acl{fek} zur Verfügung. Die Kommission gibt auf Antrag eine Stellungnahme beziehungsweise ein Votum zu einer geplanten wissenschaftlichen Untersuchung oder einem Forschungsvorhaben ab. Das Hauptaugenmerk der Ethikkommission liegt hierbei vor allem auf der Beurteilung von Projekten und Entwicklungsarbeiten, bei denen Menschen beteiligt sind, untersucht werden oder bei denen Folgen für die Beteiligten zu erwarten sind. Der bei einem entsprechenden Forschungsvorhaben einzureichende Antrag wird, zum Zeitpunkt dieser Arbeit im Sommersemester 2023, mittels einer Word"=Antragsvorlage abgebildet. Um ein Votum von der \acl{fek} zu erhalten, muss -- vereinfacht zusammengefasst -- die entsprechende Vorlage ausgefüllt und per E-Mail an den Vorsitz der Kommission gesendet werden. \cite{fachhochschule_vorarlberg_gmbh_forschungsethik-kommission_2021}
+An der \acl{fhv} finden in einer Forschungsgruppe und fünf verschiedenen Forschungszentren, darunter beispielsweise die Forschungszentren \enquote{Nutzerzentrierte Technologien} und \enquote{Business Informatics}, Forschung und Entwicklung mit vermehrtem Augenmerk auf regionale Zusammenarbeit aber auch internationale Kooperationen statt. \cite{fachhochschule_vorarlberg_gmbh_forschung_2021} Um etwaige ethische Aspekte von Forschungsprojekten oder Entwicklungsarbeiten abwägen zu können, stehen den genannten Forschungseinrichtungen sowie allen Master-Studierenden der \acl{fhv} (im Rahmen ihres Kontextstudiums\footnote{Kontextstudium der Masterstudien (\url{https://www.fhv.at/studium/kontextstudium-der-masterstudien/})} oder der Masterarbeit) eine direkt an der Fachhochschule ansässige \acl{fek} zur Verfügung. Die Kommission gibt auf Antrag eine Stellungnahme beziehungsweise ein Votum zu einer geplanten wissenschaftlichen Untersuchung oder einem Forschungsvorhaben ab. Das Hauptaugenmerk der Ethikkommission liegt hierbei vor allem auf der Beurteilung von Projekten und Entwicklungsarbeiten, bei denen Menschen beteiligt sind, untersucht werden oder bei denen Folgen für die Beteiligten zu erwarten sind. Zum Zeitpunkt dieser Arbeit im Sommersemester 2023 wird für den einzureichenden Antrag eine Word"=Antragsvorlage bereitgestellt. Um ein Votum von der \acl{fek} zu erhalten, muss -- vereinfacht zusammengefasst -- die entsprechende Vorlage ausgefüllt und per E-Mail an den Vorsitz der Kommission gesendet werden. \cite{fachhochschule_vorarlberg_gmbh_forschungsethik-kommission_2021}
 
 \medskip
 
-Aufgrund von Feedback von Mitgliedern der Kommission und durch Anregungen von ehemaligen Antragssteller:innen ergibt sich für die \acl{fek} die Situation, dass der gesamte Prozess von der Erstellung hin bis zum Einreichen eines Ethikantrages überdacht werden soll -- vor allem auch in Hinblick auf die technischen und inhaltlichen Limitierungen der Word-Antragsvorlage. Die Motivation dieser Arbeit ergibt sich daher aus dem Umstand, dass das aktuelle System rund um die zu behandelnden Ethikanträge nicht mehr den Anforderungen und Wünschen der Foschungsethik-Kommission der Fachhochschule Vorarlberg entspricht. Als weitere Motivation dient der Ausblick darauf, dass die grundlegende Analyse des Prozesses sowie der Vorschlag möglicher Lösungsansätze beziehungsweise eine etwaige Umsetzung eines Prototyps den Grundstein für weitere Schritte in Richtung einer angepassten und nutzerzentrierten Herangehensweise für alle Beteiligten bereitstellen kann. 
+Aufgrund von Feedback von Mitgliedern der Kommission und durch Anregungen von ehemaligen Antragssteller:innen ergibt sich für die \acl{fek} die Situation, dass der gesamte Prozess von der Erstellung hin bis zum Einreichen eines Ethikantrages überdacht werden soll -- vor allem auch in Hinblick auf die technischen und inhaltlichen Limitierungen der Word"=Antragsvorlage. Die Motivation dieser Arbeit ergibt sich daher aus dem Umstand, dass das aktuelle System rund um die zu behandelnden Ethikanträge nicht mehr den Anforderungen und Wünschen der \acl{fek} der \acl{fhv} entspricht. Als weitere Motivation dient der Ausblick darauf, dass die grundlegende Analyse des Prozesses sowie möglicher Lösungsansätze beziehungsweise eine etwaige Umsetzung eines Prototyps den Grundstein für weitere Schritte in Richtung einer angepassten und nutzerzentrierten Herangehensweise für alle Beteiligten bereitstellen kann. 
 
 \section{Frage-/Problemstellung}
 \label{sec:frage-problemstellung}
 
-Aufgrund der gegebenen Ausgangssituation ergibt sich die Frage, wie der Prozess des Erstellens und Einreichens eines Ethikantrages für die Forschungsethik-Kommission an der \acl{fhv} sinnvollerweise neu gestaltet und potenziell umgesetzt werden kann. Hauptaugenmerk soll dabei, unter anderem, auf dem Aspekt einer verbesserten Usability beziehungsweise auf der Anwendung der Prinzipien des Human/User-Centered Designs liegen. Ebenso soll die Vermittlung der universellen Relevanz von ethischen Aspekten in der Forschung eine wichtige Rolle darstellen und etabliert werden.
+Aufgrund der gegebenen Ausgangssituation ergibt sich die Frage, wie der Prozess des Erstellens und Einreichens eines Ethikantrages für die \acl{fek} an der \acl{fhv} sinnvollerweise neu gestaltet und potenziell umgesetzt werden kann. Hauptaugenmerk soll dabei, unter anderem, auf dem Aspekt einer verbesserten Usability beziehungsweise auf der Anwendung der Prinzipien des Human/User-Centered Designs liegen. Ebenso soll die Vermittlung der universellen Relevanz von ethischen Aspekten in der Forschung eine wichtige Rolle darstellen und etabliert werden.
 
 Die Frage- beziehungsweise Problemstellung weitet sich zudem dahingehend aus, wie verhindert werden kann, dass die durch diese Masterarbeit erarbeiteten Lösungsansätze lediglich einer Eins-zu-Eins Umsetzung der Word"=Antragsvorlage entsprechen. Hauptaugenmerk der Arbeit soll weiterhin eine entsprechend tiefe Einarbeitung in die Materie und in die Prinzipien des Human/User-Centered Designs sein.
 
 \medskip
 
+Die konkrete Fragestellung, die im Rahmen dieser Masterarbeit behandelt wird, lautet daher:\newline
+\textbf{Welche technischen Lösungen können eingesetzt werden, um den Prozess der Erstellung und Einreichung eines Ethikantrages weitestgehend zu automatisieren und für alle Beteiligten zu vereinfachen?}
 
-Folgende Frage- beziehungsweise Problemstellungen könnten daher in dieser Masterarbeit behandelt werden::
+\medskip
+
+Die Fragestellung beinhaltet dabei folgende Unterpunkte, die eine wichtige Rolle spielen und im Zuge der Ausarbeitung ebenfalls genauer betrachtet werden:
 \begin{itemize}
     \item Wie kann eine Neuentwicklung des Systems beziehungsweise Tools zur Erstellung und Einreichung eines Ethikantrages für die \acl{fek} der \acl{fhv} anhand der User-Centered Design Prinzipien aussehen?
     \item Wie kann die Beteiligung der Anwender:innen am Designprozess sichergestellt werden, um ihre Bedürfnisse und Erwartungen besser zu verstehen und zu berücksichtigen?
-    \item Welche technischen Lösungen können eingesetzt werden, um den Prozess der Erstellung und Einreichung eines Ethikantrages zu vereinfachen und weitestgehend zu automatisieren?
     \item Wie kann im Rahmen der Erstellung und Einreichung eines Antrages die grundlegende ethische Komponente und Wichtigkeit vermittelt werden?
     \item Wie kann sichergestellt werden, dass der Prozess der Erstellung und Einreichung eines Ethikantrages den Datenschutz- und Datensicherheitsanforderungen entspricht?
 \end{itemize}
-
-\noindent Der konkrete Fokus dieser Arbeit und die damit verbundene Forschungsfrage soll jedoch über die technische Umsetzung und auch die Prinzipien des User-Centered Designs hinaus gehen und die Wichtigkeit und auch Allgegenwärtigkeit von Ethik in der Forschung vermitteln.
-
-\clearpage
-
-Die abschließend gewählte Fragestellung dieser Masterarbeit lautet daher: \textbf{\enquote{Inwiefern können die Grundsätze des User-Centered Designs auf die Erstellung und Einreichung von Ethikanträgen für die \acl{fek} an der \acl{fhv} angewendet werden, um sowohl das Feedback und die Wünsche der Ethikkommission als auch der ehemaligen Antragssteller:innen zu berücksichtigen und dabei gleichzeitig die Relevanz der ethischen Komponente in der Forschung zu vermitteln?}}
 
 \section{Zielsetzung}
 \label{sec:zielsetzung}
@@ -193,9 +193,9 @@ Die Zielsetzung dieser Masterarbeit lässt sich in zwei verschiedene Kategorien 
 \subsection{Unmittelbare Ziele}
 \label{sub-sec:unmittelbare-ziele}
 
-Die Masterarbeit hat das grundlegende Ziel, den aktuellen Prozess des Erstellens und Einreichens eines Ethikantrages für die Forschungsethik-Kommission der Fachhochschule Vorarlberg zu analysieren, um die bestehenden Probleme und Schwachstellen detailliert zu identifizieren und festzustellen. Durch die gewonnenen Informationen sowie die Erkenntnisse aus einer ebenfalls detailliert durchgeführten Ist-Analyse anderer Systeme soll ein Lösungsansatz entwickelt werden, dessen Umsetzung sich an den Prinzipien des User-Centered Designs orientiert.
+Die Masterarbeit hat das grundlegende Ziel, den aktuellen Prozess des Erstellens und Einreichens eines Ethikantrages für die \acl{fek} der \acl{fhv} zu analysieren, um die bestehenden Probleme und Schwachstellen detailliert zu identifizieren und festzustellen. Durch die gewonnenen Informationen sowie die Erkenntnisse aus einer ebenfalls detailliert durchgeführten Ist-Analyse anderer Systeme soll ein Lösungsansatz entwickelt werden, dessen Umsetzung sich an den Prinzipien des User-Centered Designs orientiert.
 
-Der angestrebte Lösungsansatz, in Form eines \ac{poc} anhand eines Prototyps mit grundlegenden Funktionen, soll während der Konzeptions"= und Implementierungsphase evaluiert werden, um sicherzustellen, dass die Bedürfnisse der Antragssteller:innen und der Forschungsethik-Kommission zielgerichtet erfüllt werden. Der \ac{poc} beziehungsweise Prototyp kann und soll als Grundlage für weitere Entwicklungen und Optimierungen dienen können.
+Der angestrebte Lösungsansatz, in Form eines \ac{poc} anhand eines Prototyps mit grundlegenden Funktionen, soll während der Konzeptions"= und Implementierungsphase evaluiert werden, um sicherzustellen, dass die Bedürfnisse der Antragssteller:innen und der \acl{fek} zielgerichtet erfüllt werden. Der \ac{poc} beziehungsweise Prototyp kann und soll als Grundlage für weitere Entwicklungen und Optimierungen dienen können.
 
 Ein weiterer wichtiger Aspekt und somit Ziel der Masterarbeit ist die Auseinandersetzung mit den Anforderungen an die Sicherheit und den Datenschutz im Prozess des Erstellens und Einreichens eines Ethikantrages. Dieser Aspekt soll in die Analyse und die Entwicklung von Lösungsansätzen einbezogen werden, um sicherzustellen, dass der neue Prozess nicht nur benutzerfreundlicher, sondern auch auf die Aspekte der Datensicherheit und Datenschutz abgestimmt ist.
 
@@ -208,7 +208,7 @@ Als wichtigstes Ergebnis zählt vor allem, dass die gewonnenen Erkenntnisse für
 
 \medskip
 
-Unabhängig davon lassen sich weitere Ergebnisse definieren, die aufgrund der zeitlichen Komponente außerhalb des Rahmens dieser Masterarbeit sowohl betrachtet werden sollen als auch müssen:
+Unabhängig davon lassen sich weitere Ergebnisse definieren, die aufgrund der zeitlichen Komponente außerhalb des Rahmens dieser Masterarbeit sowohl betrachtet werden sollen als auch müssen (wobei ungeachtet dessen eine grundlegende Analyse im Rahmen der Umsetzung und Evaluation des Prototyps erfolgt):
 \begin{itemize}
     \item Ein verbesserter und anwenderfreundlicherer Prozess des Erstellens und Einreichens eines Ethikantrages für die \acl{fek} an der \acl{fhv} wurde geschaffen.
     \item Eine höhere Transparenz und Nachvollziehbarkeit des Prozesses für alle Beteiligten sowie eine verbesserte Zusammenarbeit zwischen der \acl{fek} und den Forschenden beziehungsweise Master-Studierenden ist bemerkbar, vor allem im Bezug auf die Wichtigkeit von Ethik in der Forschung.
@@ -219,22 +219,124 @@ Unabhängig davon lassen sich weitere Ergebnisse definieren, die aufgrund der ze
 \section{Vorgehensweise}
 \label{sec:vorgehensweise}
 
-Um ein grundlegendes Verständnis über die Thematik sowie den bestehenden Ablauf eines Ethikantrages zu erlangen, wird zu Beginn der Arbeit auf den Aufgabenbereich und die Arbeitsweise der Forschungsethik-Kommission eingegangen sowie der aktuelle Prozess rund um das Erstellen und Einreichen von Ethikanträgen beleuchtet. Dabei werden mittels gezielt geführter Interviews mit Mitgliedern der Forschungsethik-Kommission sowie ehemaligen Antragssteller:innen allfällige Schwachstellen aufgearbeitet und etwaige Wünsche für ein neues System erörtert.
+Um ein grundlegendes Verständnis über die Thematik sowie den bestehenden Ablauf eines Ethikantrages zu erlangen, wird zu Beginn der Arbeit auf den Aufgabenbereich und die Arbeitsweise der \acl{fek} eingegangen sowie der aktuelle Prozess rund um das Erstellen und Einreichen von Ethikanträgen beleuchtet. Dabei werden mittels gezielt geführter Interviews mit Mitgliedern der \acl{fek} sowie ehemaligen Antragssteller:innen allfällige Schwachstellen aufgearbeitet und etwaige Wünsche für ein neues System erörtert.
 
-Im Zuge der detaillierten Ist-Analyse des bestehenden Systems wird zudem die Herangehensweise von anderen Ethikkommissionen an Hochschulen und Universitäten innerhalb Österreichs analysiert, um Vergleichswerte zu sammeln und Unterschiede oder Gemeinsamkeiten definieren zu können. Ebenso werden Systeme evaluiert, die den Anforderungen der Forschungsethik-Kommission bereits entsprechen könnten, ohne jedoch einen spezifischen Bezug zur Erstellung und Einreichung von Ethikanträgen zu haben.
+Im Zuge der detaillierten Ist-Analyse des bestehenden Systems wird zudem die Herangehensweise von anderen Ethikkommissionen an Hochschulen und Universitäten innerhalb Österreichs analysiert, um Vergleichswerte zu sammeln und Unterschiede oder Gemeinsamkeiten definieren zu können. Ebenso werden Systeme evaluiert, die den Anforderungen der \acl{fek} bereits entsprechen könnten, ohne jedoch einen spezifischen Bezug zur Erstellung und Einreichung von Ethikanträgen zu haben.
 
 Bevor mit der praktischen Anwendung der User-Centered Design Prinzipien für die Neuentwicklung des Systems begonnen wird, wird das zugrundeliegende Konzept genauer erläutert. Dabei wird auf die Konzepte und Begrifflichkeiten eingegangen, die für die spezifischen Anwendungsfälle dieser Masterarbeit benötigt und angewendet werden.
 
 \colorbox{yellow}{TODO - Auswertung, Endergebnis, Ausblick, etc.}
 
-\section{Wissenschaftliche Komponente}
-\label{sec:wissenschaftliche-komponente}
+\chapter{User-Centered Design}
+\label{chap:user-centered-design}
 
-Die Anwendung der User-Centered Design Prinzipien und die nutzerzentrierte Umsetzung von Software-Lösungen sind an sich keine neuen oder unerforschten Themengebiete. Das an der Fachhochschule Vorarlberg ansässige Forschungszentrum \enquote{Nutzerzentrierte Technologien} beschäftigt sich etwa bereits seit 2004 mit der Schnittstelle zwischen Mensch und Technik in den unterschiedlichsten Gegebenheiten. \cite{fachhochschule_vorarlberg_gmbh_nutzerzentrierte_2021}
+Das folgende Kapitel widmet sich der detaillierten Erläuterung und Definition der Prinzipien, Konzepte und Begrifflichkeiten des \ac{ucd}. Es leitet außerdem an die nachfolgenden Kapitel über, indem es die Erkenntnisse und Ausarbeitungen dieser Arbeit in Bezug zum \acl{ucd} setzt und das weitere Vorgehen für die Umsetzung des Prototyps anhand eines \ac{poc} aufgezeigt.
 
-Diese Masterarbeit beschäftigt sich, wie in diesem Einleitungskapitel mehrfach ausgeführt, vor allem mit der Erstellung und Einreichung von Ethikanträgen. Der Fokus der Arbeit liegt dabei nicht nur auf der technischen Umsetzung und der Anwendung der User-Centered Design Prinzipien, sondern vor allem auf der breit gefassten Analyse des gesamten Prozesses. Diese Masterarbeit soll -- wie den langfristigen Ergebnissen in Kapitel \ref{sub-sec:langfristige-ergebnisse} auf Seite \pageref{sub-sec:langfristige-ergebnisse} zu entnehmen ist -- eine Verbesserung sowohl für die Forschungsethik-Kommission als auch etwaigen Antragssteller:innen bringen, um die allgemeine Beteiligung am Prozess, die Transparenz und schlussendlich die Anzahl an Ethikanträgen zu steigern und die Wichtigkeit der ethischen Komponente in der Forschung zu vermitteln.
+\section{User-Centered Design im Überblick}
+\label{sec:überblick-ucd}
 
-Die wissenschaftliche Komponente ergibt sich aus dem Versuch der Annäherung an die zugrundeliegenden Probleme, Stärken und Anforderungen des bestehenden Ethikantrag-Prozesses in Zusammenspiel mit einer gleichzeitigen Ausarbeitung einer technischen Lösung anhand nutzerzentrierter Prinzipien und dem User-Centered Design Ansatz.
+Das \ac{ucd} und der zugrundeliegende Ansatz sowie Prozess finden bereits seit den 1990er Jahren Anwendung und sind im Zuge dessen auch in einer eigenen ISO-Norm\footnote{ISO-Norm 9241-210:2019: \url{https://www.iso.org/standard/77520.html}} standardisiert worden. Das Hauptziel des \ac{ucd} besteht darin, die Bedürfnisse der zukünftigen Anwender:innen (beziehungsweise \enquote{User} im Englischen) in den Mittelpunkt zu stellen und die Entwicklung eines Produkts, einer Software oder einer Dienstleistungen darauf auszurichten. Ein wesentlicher Bestandteil ist dabei vor allem der iterative Ansatz, bei dem regelmäßig Feedback eingeholt, Rückmeldungen eingearbeitet und erneute Evaluationen durchgeführt werden. \cite{frieling_user_2019}
+
+\medskip
+
+Bei der Umsetzung des \ac{ucd} wird dabei großen Wert auf die Einbindung der Benutzer:innen während des gesamten (Design-/Entwicklungs-)Prozesses gelegt. Durch aktives Beobachten, Befragen und vor allem auch Verstehen werden die Bedürfnisse, Präferenzen und Anforderungen aufgegriffen, wobei der \ac{ucd}-Prozess einem  mehrstufigen Ablauf folgt: Im ersten Schritt erfolgt eine detaillierte Analyse der Benutzer:innen, um ein umfassendes Verständnis der Anforderungen und der jeweiligen Kontexte zu erhalten. Anschließend werden die konkreten Anforderungen definiert und auf Basis dessen ein oder mehrere Konzepte erstellt. Diese Konzepte werden in Form von Prototypen visualisiert, um sie mit den späteren Anwender:innen zu teilen und Feedback dazu einzuholen. Das Feedback der Benutzer:innen wird in Folge dessen sorgfältig ausgewertet und fließt in weitere Iterationen und Schleifen des Designs, beispielsweise des Produkts oder der Software, ein. Der Prototyp wird im Zuge dessen entsprechend angepasst und erneut getestet, um sicherzustellen, dass er den Bedürfnissen und Erwartungen der Anwender:innen entspricht. Dieser iterative Prozess wird so lange durchgeführt, bis ein adäquater Lösungsansatz gefunden werden kann, der dann zum Einsatz kommt und als Basis für weitere Entwicklungen dient. \cite{frieling_user_2019, ionos_se_user-centered_2022}
+
+\medskip
+
+Abbildung \ref{fig:ucd-prozess-ablauf} auf Seite \pageref{fig:ucd-prozess-ablauf} veranschaulicht den eben beschriebenen Ablauf des \ac{ucd}-Prozesses und zeigt auf, dass an verschiedenen Stellen des Prozesses beliebig viele Iterationen und Schleifen eingebaut werden können. Dies ermöglicht die angesprochene kontinuierliche Verbesserung und Anpassung des Designs und der Funktionalität im Hinblick auf die Bedürfnisse der Benutzer:innen.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.75\linewidth]{thesis/images/Frieling_UCD-Prozess.png}
+    \caption[Ablauf des User-Centered Design Prozesses]{Ablauf des User-Centered Design Prozesses \cite{frieling_user_2019}}
+    \label{fig:ucd-prozess-ablauf}
+\end{figure}
+
+\subsection{Prinzipien \& Phasen}
+\label{sub-sec:prinzipien-phasen-ucd}
+
+In Abschnitt \ref{sec:überblick-ucd} ab Seite \pageref{sec:überblick-ucd} findet sich ein grober Überblick darüber, was genau \acl{ucd} ist und wie der Ablauf aussieht beziehungsweise aussehen könnte. Anhand der genannten Informationen und Herangehensweise können die Prinzipien und Phasen des \ac{ucd} jedoch noch einmal detaillierter beschrieben werden.
+
+Frieling beschreibt in \cite{frieling_user_2019}, dass der angesprochene iterative Prozess aus insgesamt vier Schritten (exklusive etwaiger Iterationen) besteht, welche auch in Abbildung \ref{fig:ucd-prozess-ablauf} auf Seite \pageref{fig:ucd-prozess-ablauf} zu finden sind:
+\begin{itemize}
+    \item Analyse der Nutzerkontexte
+    \item Definition konkreter Anforderungen
+    \item Entwicklung eines Konzeptes und Prototyps
+    \item Evaluation und Testung
+\end{itemize}
+
+Frieling unterteilt diese vier Phasen in Abbildung \ref{fig:ucd-prozess-teildisziplinen} auf Seite \pageref{fig:ucd-prozess-teildisziplinen} noch einmal in drei Teildisziplinen: dem \enquote{User Requirements Engineering}, dem \enquote{Konzept} und der \enquote{User Research}.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.75\linewidth]{thesis/images/Frieling_UCD-Prozess-Teildisziplinen.png}
+    \caption[User-Centered Design Prozesses aufgeteilt in drei Teildisziplinen]{User-Centered Design Prozesses aufgeteilt in drei Teildisziplinen \cite{frieling_user_2019}}
+    \label{fig:ucd-prozess-teildisziplinen}
+\end{figure}
+
+\subsubsection*{User Requirements Engineering}
+\label{sub-sub-sec:user-requirements-engineering}
+Beim Requirements Engineering geht es um das bestmögliche Verständnis des jeweiligen Kontexts der Nutzer:innen, welches sowohl Aufgaben, zu Verfügung stehende Ressourcen sowie die Umgebung, in der das Produkt oder die Software genutzt wird, umfasst. \cite{frieling_user_2019}
+
+\medskip
+
+Durch die Definition und Ausarbeitung von Nutzergruppen können direkte und indirekte Nutzer:innen unterschieden werden. Direkte User:innen interagieren direkt mit dem System, während indirekte User:innen mit den Ergebnissen des Systems arbeiten. Die Analyse hilft dabei, relevante Merkmale der Anwender:innen zu identifizieren und auf dieser Grundlage beispielsweise Personas zu erstellen. Diese Personas sind fiktive Personen, die jedoch auf den gesammelten Informationen und Merkmalen basieren. Sie dienen dazu, ein besseres Verständnis für die Bedürfnisse und möglichen Anforderungen der User:innen zu entwickeln und um dieses schlussendlich während der weiteren Entwicklung einsetzen zu können. \cite{frieling_user_2019}
+
+\medskip
+
+Neben den jeweiligen Nutzergruppen und Personas sind auch die verfügbaren Ressourcen und die Umgebung, in der ein Produkt oder eine Software genutzt wird, von großer Bedeutung. Zeit, technische Ressourcen und die Geduld der Anwender:innen spielen eine wichtige Rolle und beeinflussen die Anforderungen an ein System. Zusätzlich haben die soziale, technische und psychische Umgebung einen Einfluss auf die Reaktionen und Wahrnehmung der Nutzer:innen bei der Durchführung von Aufgaben und Tätigkeiten und dürfen daher nicht außer Acht gelassen werden. \cite{frieling_user_2019}
+
+\subsubsection*{Konzept}
+\label{sub-sub-sec:konzept}
+
+Nach der entsprechenden Umsetzung und Analyse des Requirements Engineering fokussiert sich die nächste Phase laut \cite{frieling_user_2019} auf die Ausarbeitung und Umsetzung eines Konzeptes sowie eines Prototyps anhand der ausgearbeiteten Anforderungen. Dabei sollten, je nach Art des Vorhabens, die unterschiedlichen Teams und Fachbereiche an einer gemeinsamen Ausarbeitung beteiligt sein. Neben der Ausarbeitung eines Konzeptes kann parallel dazu auch bereits die erste Ausarbeitung eines Prototyps erfolgen, um frühzeitig auf technische Limitierungen und daraus entstehende Ideen reagieren zu können. \cite{frieling_user_2019}
+
+\subsubsection*{User Research}
+\label{sub-sub-sec:user-research}
+
+Als \enquote{letzte} Phase im iterativen Prozess definiert Frieling in \cite{frieling_user_2019} die Evaluation des umgesetzten Systems, Produkts oder der Software. Das Ziel der Evaluation besteht darin, Erkenntnisse zu gewinnen und die Entwicklung zu kontrollieren. Während der Entwicklung kann eine formative Evaluation durchgeführt werden, bei der Hypothesen getestet werden, um weitere oder neue Erkenntnisse zu gewinnen. Eine summative Evaluation findet am Ende der Entwicklung statt und dient oft zur abschließenden Abnahme einer Version oder eines Projektzwischenstandes. Die Art der Evaluation hängt vom Projekt und den spezifischen Anforderungen ab, wobei Usability-Tests oder andere Verfahren in der Softwareentwicklung häufig verwendet werden. \cite{frieling_user_2019}
+
+\section{Unterschied zwischen User- und Human-Centered Design}
+\label{sec:unterschied-ucd-hcd}
+
+Im Zuge der Recherche zum \acl{ucd} ist oftmals auch der Begriff des \ac{hcd} zur Sprache gekommen. Obwohl die Unterscheidung zwischen den beiden Konzepten je nach Auslegung sehr subtil ausfällt, ist sie dennoch klar erkennbar und kann benannt werden.
+
+\medskip
+
+\cite{ionos_se_user-centered_2022} beschreibt den Unterschied darin, dass sich das \ac{ucd} auf eine spezifische Gruppe an Anwender:innen fokussiert, während beim \ac{hcd} nicht nur die konkreten Nutzer:innen selbst, sondern auch anderweitige Stakeholder betrachtet und in den beschriebenen Prozess und die Entwicklung mit eingebunden werden.
+
+\medskip
+
+Weimer stellt den Unterschied zwischen den beiden Ansätzen klarer dar: Während das \ac{hcd} die Zielgruppe in der gesamten Menschheit sieht und sich bei der Entwicklung von Konzepten, Prototypen und Lösungen vorrangig auf universelle Prinzipien aus Psychologie, Soziologie, Anthropologie und anderen Wissenschaften stützt, um menschliche Bedürfnisse zu priorisieren, verfolgt das \ac{ucd} einen fokussierteren Ansatz. Der \ac{ucd}-Ansatz richtet die Aufmerksamkeit auf spezifische Gruppen von Menschen, sprich Nutzer:innen, die durch gemeinsame Eigenschaften, Fähigkeiten sowie vor allem durch gemeinsame Aufgaben und Ziele verbunden sind. Bei der Anwendung greift der \ac{ucd}-Ansatz meist auch auf die Methoden des \ac{hcd} zurück. \cite{weimer_difference_2022}
+
+\section{Verknüpfung mit dieser Arbeit}
+\label{sec:ucd-verknüpfung-arbeit}
+
+Die nachfolgenden Kapitel dieser Arbeit behandeln verschiedene Themenbereiche und Schwerpunkte. Neben der Analyse des bestehenden Systems wird, unter anderem, die angewandte Forschungsethik der \acl{fek} der \acl{fhv} genauer betrachtet und es werden Anforderungen an ein neues System definiert.
+
+Tabelle \ref{tab:zurordnung-kapitel-ucd} auf Seite \pageref{tab:zurordnung-kapitel-ucd} gibt einen Ausblick auf die kommenden Kapitel und zeigt zeitgleich auf, dass die Kapitel dieser Arbeit (mit der bewussten Ausnahme des Kapitel \ref{chap:einleitung} -- \nameref{chap:einleitung}) einer der Phasen des \acl{ucd} zugeordnet werden können, da im Rahmen der Vorbereitung dieser Mastearbeit wurde gezielt darauf geachtet, den allgemeinen Aufbau dem des \ac{ucd} anzupassen.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{p{.35\linewidth} | p{.55\linewidth}}
+        \textbf{Phase} & \textbf{Kapitel} \\ \hline
+        \multirow{3}{\linewidth}{Analyse des Nutzerkontextes} & Kapitel \ref{chap:kriterien-forschungsethik} -- \nameref{chap:kriterien-forschungsethik} \\ \cline{2-2} 
+         & Kapitel \ref{chap:analyse-bestehendes-system-prozess} -- \nameref{chap:analyse-bestehendes-system-prozess} \\ \cline{2-2} 
+         & Kapitel \ref{chap:analyse-anderer-prozesse} -- \nameref{chap:analyse-anderer-prozesse} \\ \hline
+        Definition konkreter Anforderungen & Kapitel \ref{chap:anforderung-neues-system} -- \nameref{chap:anforderung-neues-system} \\ \hline
+        Entwicklung eines Konzeptes und Prototyps & \colorbox{yellow}{Kapitel 7} \\ \hline
+        Evaluation und Testung & \colorbox{yellow}{Kapitel 8}
+    \end{tabular}
+    \caption{Zuordnung der Kapitel dieser Masterarbeit zu den Phasen des \acl{ucd}}
+    \label{tab:zurordnung-kapitel-ucd}
+\end{table}
+
+\subsubsection*{Anmerkung}
+\label{sub-sub-sec:ucd-verknüpfung-anmerkung}
+
+Die Ausarbeitung von Nutzerkontexten und Personas, wie in Abschnitt \ref{sub-sec:prinzipien-phasen-ucd} ab Seite \pageref{sub-sec:prinzipien-phasen-ucd} erwähnt, wurde aufgrund des begrenzten Rahmens dieser Masterarbeit und der zeitlichen Beschränkungen ausgelassen. Aufgrund der ersten Problemanalyse und Fragestellung, die in Kapitel \ref{chap:einleitung} ab Seite \pageref{chap:einleitung} durchgeführt wurde, können die Anwender:innen jedoch einer eng definierten Gruppe von Mitarbeitenden der \ac{fhv} zugeordnet werden, deren Kontexte sich den Interviews entnehmen lassen.
+
+Sollte der entwickelte Prototyp und das System außerhalb der \acl{fhv} verwendet werden und weitere Funktionalitäten und Arbeitsprozesse abdecken müssen, würde es Sinn machen, eine detaillierte Ausarbeitung der Nutzerkontexte sowie Personas und eine erneute Analyse der Anforderungen durchzuführen.
 
 \chapter{Kriterien der Forschungsethik}
 \label{chap:kriterien-forschungsethik}
@@ -257,7 +359,7 @@ Die \ac{fek} gibt in ihrer Satzung \cite[1]{forschungsethik-kommission_der_fachh
 
 Bei der Beurteilung eines Ethikantrages wird, unter Zuhilfenahme der genannten Dokumente und Leitlinien, vor allem geprüft, ob ein vertretbares Verhältnis zwischen dem zu erwartenden Nutzen und den mit der Forschung verbundenen Risiken besteht, ob identifizierte Risiken so gering wie möglich gehalten werden und ob eine ausreichende Einwilligung etwaiger Proband:innen sichergestellt ist. Ebenso werden eingereichte Ethikanträge dahingehend geprüft, ob Angaben zu beispielsweise der geplanten Stichprobe, der Zielgruppen, der Aufklärung von betroffenen Personen und Angaben zu den Rechten für Betroffene in korrekter Weise gemacht und geplant wurden. \cite[1\psq]{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}
 
-Teilaspekte, die den Datenschutz oder das Forschungsdesign sowie die Forschungsqualität betreffen, werden von der \ac{fek} nur grundlegend und nicht immer im konkreten Rahmen der ethischen Beurteilung betrachtet. Grobe Fehler und allgemeines Feedback werden im angefertigten Protokoll, welches Antragssteller:innen nach abschließendem Votum übermittelt wird, dennoch mitgeteilt, um das potenzielle Vergeuden von (Zeit-)Ressourcen zu vermeiden und auf Fehler sowie Bedenken der Kommission hinweisen zu können.\footnote{Um ein konkretes Beispiel dafür zu nennen: In der ursprünglichen Planung für diese Masterarbeit war ein Fragebogen vorgesehen, der sowohl an Master-Studierende als auch Forschungsmitarbeitende der \ac{fhv} ausgesendet werden sollte (siehe dazu Anhang \ref{appendix:eingereichter-ethikantrag} ab Seite \pageref{appendix:eingereichter-ethikantrag}). Nach entsprechender Rückmeldung der \ac{fek} (siehe dazu Anhang \ref{appendix:rückmeldung-fek} ab Seite \pageref{appendix:rückmeldung-fek}) wurde diese Idee jedoch weitestgehend verworfen.\label{footnote:ursprüngliche-planung-leitfaden}} \cite[1\psq]{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}
+Teilaspekte, die den Datenschutz oder das Forschungsdesign sowie die Forschungsqualität betreffen, werden von der \ac{fek} auch außerhalb des konkreten Rahmens der ethischen Beurteilung betrachtet. Grobe Fehler und allgemeines Feedback werden im angefertigten Protokoll, welches Antragssteller:innen nach abschließendem Votum übermittelt wird, mitgeteilt, um das potenzielle Vergeuden von (Zeit-)Ressourcen zu vermeiden und auf Fehler sowie Bedenken der Kommission hinweisen zu können.\footnote{Um ein konkretes Beispiel dafür zu nennen: In der ursprünglichen Planung für diese Masterarbeit war ein Fragebogen vorgesehen, der sowohl an Master-Studierende als auch Forschungsmitarbeitende der \ac{fhv} ausgesendet werden sollte (siehe dazu Anhang \ref{appendix:eingereichter-ethikantrag} ab Seite \pageref{appendix:eingereichter-ethikantrag}). Nach entsprechender Rückmeldung der \ac{fek} (siehe dazu Anhang \ref{appendix:rückmeldung-fek} ab Seite \pageref{appendix:rückmeldung-fek}) wurde diese Idee jedoch weitestgehend verworfen.\label{footnote:ursprüngliche-planung-leitfaden}} \cite[1\psq]{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}
 
 \medskip
 
@@ -374,7 +476,7 @@ Abbildung \ref{fig:dokumentenvorlage-fek} auf Seite \pageref{fig:dokumentenvorla
     \begin{minipage}[b]{.49\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_Word-Vorlage-FHV-2.png}
     \end{minipage}
-    \caption[{Seite 1 und Seite 6 der Word"=Antragsvorlage der \acl{fek} der \acl{fhv}}]{Seite 1 und Seite 6 der Word"=Antragsvorlage der \acs{fek} der \acs{fhv} (Quelle: eigene Abbildungen)}
+    \caption[{Seite 1 und Seite 6 der Word"=Antragsvorlage der \acl{fek} der \acl{fhv}}]{Seite 1 und Seite 6 der Word"=Antragsvorlage der \acs{fek} der \acs{fhv} \cite{fachhochschule_vorarlberg_gmbh_forschungsethik-kommission_2021}}
     \label{fig:dokumentenvorlage-fek}
 \end{figure}
 
@@ -523,12 +625,12 @@ Im Verlauf des Gespräch mit der \acl{fek} kommen sowohl gezielte als auch ungew
 
 Ein Mitglied der \ac{fek} äußert während des Interviews den Vorschlag, den Prozess grundlegend zu überdenken, um sowohl den administrativen Aufwand als auch die Belastung der Antragsteller:innen zu reduzieren und inhaltliche Wiederholungen in den Fragestellungen des Ethikantrages zu vermeiden. Die Kommission sieht die Möglichkeit, anstelle eines sehr detaillierten Antragsformulars einen kürzeren Antrag in Kombination mit einer verpflichtenden Präsentation des Forschungsvorhabens zu verwenden, ähnlich wie es andere Ethikkommissionen handhaben. Im Verlauf des Gesprächs stimmen einige der Mitglieder zu und sehen darin eine alternative Möglichkeit, auf bestimmte Aspekte des Antrages in der Präsentation genauer einzugehen um auf einem gleichen Qualitätsniveau bleiben zu können.
 
-\chapter{Analyse anderer Systeme}
-\label{chap:analyse-anderer-systeme}
+\chapter{Analyse anderer Prozesse}
+\label{chap:analyse-anderer-prozesse}
 
-Um neben der Analyse des bestehenden Systems beziehungsweise Prozesses rund um die Word-Antragsvorlage Vergleichswerte sammeln zu können, werden weitere Systeme sowohl mit spezifischem Fokus auf Ethikanträgen als auch Systeme ohne direkten Bezug genauer betrachtet und Unterschiede sowie Gemeinsamkeiten herausgearbeitet.
+Um neben der Analyse des bestehenden Systems beziehungsweise Prozesses rund um die Word-Antragsvorlage Vergleichswerte sammeln zu können, werden weitere Prozesse und Systeme sowohl mit spezifischem Fokus auf Ethikanträgen als auch Systeme ohne direkten Bezug genauer betrachtet und Unterschiede sowie Gemeinsamkeiten herausgearbeitet.
 
-Durch die breiter gefasste Erhebung zum Stand der Technik können so zusätzliche Herangehensweisen, die in der Analyse in Kapitel \ref{chap:analyse-bestehendes-system-prozess} ab Seite \pageref{chap:analyse-anderer-systeme} nicht aufgegriffen werden konnten, abgedeckt werden. Ebenso kann dadurch eruiert werden, ob ein bestehendes System die Möglichkeit bietet, soweit an die in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} gestellten Anforderungen der Forschungsethik-Kommission sowie der Antragssteller:innen angepasst werden zu können, als das eine gänzliche Neuentwicklung nicht mehr notwendig ist.
+Durch die breiter gefasste Erhebung zum Stand der Technik können so zusätzliche Herangehensweisen, die in der Analyse in Kapitel \ref{chap:analyse-bestehendes-system-prozess} ab Seite \pageref{chap:analyse-bestehendes-system-prozess} nicht aufgegriffen werden konnten, abgedeckt werden. Ebenso kann dadurch eruiert werden, ob ein bestehendes System die Möglichkeit bietet, soweit an die in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} gestellten Anforderungen der \acl{fek} sowie der Antragssteller:innen angepasst werden zu können, als das eine gänzliche Neuentwicklung nicht mehr notwendig ist.
 
 \section{Systeme mit Fokus auf Ethikanträgen}
 \label{sec:systeme-mit-fokkus-ethikantrage}
@@ -538,10 +640,10 @@ Durch die breiter gefasste Erhebung zum Stand der Technik können so zusätzlich
 
 Das \ac{föe}\footnote{Forum Österreichischer Ethikkommissionen (\url{https://me001ned.edis.at/ethikkommission/Forum/})} ist ein freiwilliger Zusammenschluss von Ethikkommissionen in Österreich mit medizinischem Fokus und mit dem Hintergrund, einheitliche Arbeitsweisen und Formulare (für beispielsweise Meldungen, Anträge etc.) für österreichiche Ethikkommissionen zu schaffen. \cite{ethikkommission_der_medizinischen_universitat_graz_forum_2019}
 
-\subsubsection*{Technischer Aufbau}
-\label{sub-sub-sec:föe-technischer-aufbau}
+\subsubsection*{Allgemeiner Aufbau}
+\label{sub-sub-sec:föe-allgemeiner-aufbau}
 
-Ähnlich zur Herangehensweise der Forschungsethik-Kommission der Fachhochschule Vorarlberg basieren die vom \ac{föe} bereitgestellten Unterlagen auf Dokumentenvorlagen im \texttt{.dot} beziehungsweise \texttt{.rtf} Dateiformat, wobei die Nutzung von Microsoft Word vom Forum ausdrücklich empfohlen wird. Neben dem zum Download angebotenen Antrag\footnote{Antragsformular in der Version 6.4 vom 12.06.2012 (\url{https://me001ned.edis.at/ethikkommission/Forum/Download/Files/Antr.dot})} werden zusätzlich ein ausgefülltes Muster sowie Erläuterungen zum Antrag im \texttt{.pdf} Dateiformat beigelegt, welche erklären, wie die Vorlage geöffnet, ausgefüllt und gespeichert werden kann.\footnote{Die bereitgestellten Erläuterungen stammen aus dem Jahr 2004, weshalb diese aller Wahrscheinlichkeit nach so detailliert ausfallen (beispielsweise die Bezugnahme auf die Menüführung des damaligen \enquote{WinWord}).} \cite{ethikkommission_der_medizinischen_universitat_graz_download_2012}
+Ähnlich zur Herangehensweise der \acl{fek} der \acl{fhv} basieren die vom \ac{föe} bereitgestellten Unterlagen auf Dokumentenvorlagen im \texttt{.dot} beziehungsweise \texttt{.rtf} Dateiformat, wobei die Nutzung von Microsoft Word vom Forum ausdrücklich empfohlen wird. Neben dem zum Download angebotenen Antrag\footnote{Antragsformular in der Version 6.4 vom 12.06.2012 (\url{https://me001ned.edis.at/ethikkommission/Forum/Download/Files/Antr.dot})} werden zusätzlich ein ausgefülltes Muster sowie Erläuterungen zum Antrag im \texttt{.pdf} Dateiformat beigelegt, welche erklären, wie die Vorlage geöffnet, ausgefüllt und gespeichert werden kann.\footnote{Die bereitgestellten Erläuterungen stammen aus dem Jahr 2004, weshalb diese aller Wahrscheinlichkeit nach so detailliert ausfallen (beispielsweise die Bezugnahme auf die Menüführung des damaligen \enquote{WinWord}).} \cite{ethikkommission_der_medizinischen_universitat_graz_download_2012}
 
 \medskip
 
@@ -550,7 +652,7 @@ Die in Abbildung \ref{fig:dokumentenvorlage-föe} auf Seite \pageref{fig:dokumen
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.21]{thesis/images/Luidold_Word-Vorlage-Forum-Oesterreichischer-Ethikkommissionen.png}
-    \caption[Word"=Antragsvorlage des Forums Österreichischer Ethikkommissionen]{Word"=Antragsvorlage des Forums Österreichischer Ethikkommissionen (Quelle: eigene Abbildung)}
+    \caption[Word"=Antragsvorlage des Forums Österreichischer Ethikkommissionen]{Word"=Antragsvorlage des Forums Österreichischer Ethikkommissionen \cite{ethikkommission_der_medizinischen_universitat_graz_download_2012}}
     \label{fig:dokumentenvorlage-föe}
 \end{figure}
 
@@ -592,8 +694,8 @@ Der Prozess der Einreichung eines Ethikantrages wird vom \ac{ieb} in einen zweis
     \label{fig:prozess-ethikantrag-ieb}
 \end{figure}
 
-\subsubsection*{Technischer Aufbau}
-\label{sub-sub-sec:fh-oö-technischer-aufbau}
+\subsubsection*{Allgemeiner Aufbau}
+\label{sub-sub-sec:fh-oö-allgemeiner-aufbau}
 
 Das \ac{ieb} greift -- ebenso wie das \ac{föe} und die \ac{fek} der \ac{fhv} -- auf eine Antragsvorlage\footnote{Antragsformular Version 1 vom 21.09.2022 (\url{https://www.fh-gesundheitsberufe.at/assets/files/IEB-Antragsformular_V1.00_21.09.2022.docx})} im mit Microsoft Word kompatiblen \texttt{.docx} Dateiformat zurück. Diese Vorlage wird Antragssteller:innen zum Download angeboten und kann sowohl digital als auch in einer Printversion beim Ethikboard zur Begutachtung eingereicht werden. \cite{fh_gesundheitsberufe_oo_gmbh_einreichung_2023}
 
@@ -604,7 +706,7 @@ Abbildung \ref{fig:dokumentenvorlage-ieb} auf Seite \pageref{fig:dokumentenvorla
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.21]{thesis/images/Luidold_Word-Vorlage-IEB-FH-Gesundheitsberufe-OOE.png}
-    \caption[Word"=Antragsvorlage des Institutionellen Ethikboards der Fachhochschule Gesundheitsberufe OÖ]{Word"=Antragsvorlage des Institutionellen Ethikboards der Fachhochschule Gesundheitsberufe OÖ (Quelle: eigene Abbildung)}
+    \caption[Word"=Antragsvorlage des Institutionellen Ethikboards der Fachhochschule Gesundheitsberufe OÖ]{Word"=Antragsvorlage des Institutionellen Ethikboards der Fachhochschule Gesundheitsberufe OÖ \cite{fh_gesundheitsberufe_oo_gmbh_dokumente_2023}}
     \label{fig:dokumentenvorlage-ieb}
 \end{figure}
 
@@ -632,15 +734,15 @@ Vergleichbar zu der in Abschnitt \ref{sub-sec:vorlage-föe} ab Seite \pageref{su
 
 Die FH Campus Wien verfügt seit 2021 über eine eigene Ethikkommission\footnote{Ethikkommission für Forschungsaktivitäten (\url{https://www.fh-campuswien.ac.at/forschung/ethikkommission-fuer-forschungsaktivitaeten.html})}, die ihren Ursprung im 2014 an der FH Campus Wien gegründeten Ethik-Komitee hat. Die Ethikkommission unterstützt dabei Forschende bei Anliegen und Fragen im Bereich von ethischen Fragestellungen sowie zu Rechtsvorschriften und Themen, die den Datenschutz betreffen und prüft Forschungsprojekte sowie Forschungsarbeiten auf ethische Aspekte. \cite{fh_campus_wien_ethikkommission_2023}
 
-\subsubsection*{Technischer Aufbau}
-\label{sub-sub-sec:fh-cw-technischer-aufbau}
+\subsubsection*{Allgemeiner Aufbau}
+\label{sub-sub-sec:fh-cw-allgemeiner-aufbau}
 
 Die Ethikkommission der FH Campus Wien setzt auf eine online abrufbare Einreichplattform\footnote{Einreichplattform für Anträge bei der Ethikkommission der FH Campus Wien (\url{https://ethikantrag.fh-campuswien.org/})}, die von Antragssteller:innen genutzt werden kann, um Ethikanträge digital erstellen und einreichen zu können. \cite{ethikkommission_fh_campus_wien_fh_2023} Die Einreichplattform ermöglicht Antragstellenden dabei die Verwaltung und Einsichtnahme von offenen, eingereichten und abgeschlossenen Ethikanträgen. Abbildung \ref{fig:startseite-einreichplattform-fhcw} auf Seite \pageref{fig:startseite-einreichplattform-fhcw} zeigt die Start- beziehungsweise Übersichtsseite im eingeloggtem Zustand, auf der die Anträge in den drei genannten Kategorien eingesehen werden können. Neben der Möglichkeit zur Einsicht in bestehende Anträge bietet die Startseite auch die Möglichkeit, einen neuen Ethikantrag zu stellen sowie über die Menü-Leiste zum Download-Bereich zu navigieren.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{thesis/images/Luidold_Einreichplattform-FH-Campus-Wien.png}
-    \caption[Startseite der Einreichplattform der FH Campus Wien im eingeloggten Zustand]{Startseite der Einreichplattform der FH Campus Wien im eingeloggten Zustand (Quelle: eigene Abbildung)}
+    \caption[Startseite der Einreichplattform der FH Campus Wien im eingeloggten Zustand]{Startseite der Einreichplattform der FH Campus Wien im eingeloggten Zustand \cite{ethikkommission_fh_campus_wien_fh_2023}}
     \label{fig:startseite-einreichplattform-fhcw}
 \end{figure}
 
@@ -656,7 +758,7 @@ Die Erstellung und Einreichung von Ethikanträgen basiert im genannten System au
     \begin{minipage}[b]{.99\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_Einreichplattform-Formular-Schritt-2.png}
     \end{minipage}
-    \caption[Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien]{Schritt 1 (oben) und Schritt 7 (unten) der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien (Quelle: eigene Abbildungen)}
+    \caption[Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien]{Schritt 1 (oben) und Schritt 7 (unten) der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien \cite{ethikkommission_fh_campus_wien_fh_2023}}
     \label{fig:einreichplattform-fhcw-schritt-1-7}
 \end{figure}
 
@@ -716,7 +818,7 @@ Das \ac{ecs} hat die Besonderheit, dass die Antragsstellung sich auf die in Absc
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Schritt-Eckdaten.png}
-    \caption[Ausschnitt des Abschnittes \enquote{Sponsor} der Antragsstellung des \acl{ecs}]{Ausschnitt des Abschnittes \enquote{Sponsor} der Antragsstellung des \acl{ecs} (Quelle: eigene Abbildung)}
+    \caption[Ausschnitt des Abschnittes \enquote{Sponsor} der Antragsstellung des \acl{ecs}]{Ausschnitt des Abschnittes \enquote{Sponsor} der Antragsstellung des \acl{ecs} \cite{ethikkommission_der_medizinischen_universitat_innsbruck_ethikkommission_2023}}
     \label{fig:abschnitt-sponsor-ecs}
 \end{figure}
 
@@ -741,7 +843,7 @@ Wie in Abbildung \ref{fig:ecs-studien-nachrichten-notizen} auf Seite \pageref{fi
     \begin{minipage}[b]{.85\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Nachrichten-Notizen.png}
     \end{minipage}
-    \caption[Übersicht eingereichter und offener Studien (oben) sowie der Nachrichten- und Notizen-Funktion (unten) des \acl{ecs}]{Übersicht eingereichter und offener Studien sowie der Nachrichten- und Notizen-Funktion des \acl{ecs} (Quelle: eigene Abbildungen)}
+    \caption[Übersicht eingereichter und offener Studien (oben) sowie der Nachrichten- und Notizen-Funktion (unten) des \acl{ecs}]{Übersicht eingereichter und offener Studien sowie der Nachrichten- und Notizen-Funktion des \acl{ecs} \cite{ethikkommission_der_medizinischen_universitat_innsbruck_ethikkommission_2023}}
     \label{fig:ecs-studien-nachrichten-notizen}
 \end{figure}
 
@@ -768,7 +870,7 @@ Da das \ac{ecs} sich an den vom \acl{föe} herausgegebenen Antrag sowohl inhaltl
 \subsubsection*{Ähnlichkeiten \& Auffälligkeiten}
 \label{sub-sub-sec:ähnlichkeiten-auffälligkeiten-ecs}
 
-Das \acl{ecs} verfügt als \ac{oss} über eine sehr ausführliche und detailreiche Dokumentation (siehe dazu \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_development_2021, medizinische_universitat_wien_installationusage_2021, medizinische_universitat_wien_ecs_2021, ethics_commission_system_organization_ecs_2021}), sowohl für die Nutzung aus Sicht als Antragssteller:in beziehungsweise Verwalter:in des Systems als auch für Entwickler:innen, die die Applikation potenziell weiterentwickeln oder betreuen möchten. Diese Hilfestellungen stehen dabei nicht nur über das Entwicklerportal zur Verfügung, sondern werden auch direkt in den jeweiligen Instanzen des Systems verlink und Benutzer:innen als Hilfestellung angeboten.\footnote{Siehe beispielsweise die \ac{ecs}-Instanz der Ethikkommission der Medizinischen Universität Innsbruck: \url{https://ek-mui-tirol.at/help/}}
+Das \acl{ecs} verfügt als \ac{oss} über eine sehr ausführliche und detailreiche Dokumentation (siehe dazu \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_development_2021, medizinische_universitat_wien_installationusage_2021, medizinische_universitat_wien_ecs_2021, ethics_commission_system_organization_ecs_2021}), sowohl für die Nutzung aus Sicht als Antragssteller:in beziehungsweise Verwalter:in des Systems als auch für Entwickler:innen, die die Applikation potenziell weiterentwickeln oder betreuen möchten. Diese Hilfestellungen stehen dabei nicht nur über das Entwicklerportal zur Verfügung, sondern werden auch direkt in den jeweiligen Instanzen des Systems verlinkt und Benutzer:innen als Hilfestellung angeboten.\footnote{Siehe beispielsweise die \ac{ecs}-Instanz der Ethikkommission der Medizinischen Universität Innsbruck: \url{https://ek-mui-tirol.at/help/}}
 
 \medskip
 
@@ -781,7 +883,7 @@ Unabhängig von den bereits genannten Punkten nutzt das \ac{ecs} auch die indivi
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{thesis/images/Luidold_ECS-Banner-Hilfestellung.png}
-    \caption[Hilfestellung in Form eines Banners im \acl{ecs}]{Hilfestellung in Form eines Banners im \acl{ecs} (Quelle: eigene Abbildung)}
+    \caption[Hilfestellung in Form eines Banners im \acl{ecs}]{Hilfestellung in Form eines Banners im \acl{ecs} \cite{ethikkommission_der_medizinischen_universitat_innsbruck_ethikkommission_2023}}
     \label{fig:ecs-banner-hilfestellung}
 \end{figure}
 
@@ -846,14 +948,14 @@ Neben den gängigen \acp{cms}-Lösungen gibt es sowohl von Google als auch Micro
 \chapter{Anforderungen an das neue System}
 \label{chap:anforderung-neues-system}
 
-Im Rahmen der Neuentwicklung des Systems und Prozesses spielen die Anforderungen und Wünsche der betroffenen Anwender:innen einen zentrale Rolle, um sowohl die Stärken des bestehenden Systems übernehmen als auch die identifizierten Schwächen und Probleme verbessern und Wünsche umsetzen zu können. Im Rahmen des angewandten User-Centered Design Ansatzes, der in Kapitel \ref{chap:prinzipien-user-centered-design} ab Seite \pageref{chap:prinzipien-user-centered-design} genauer erläutert wird, wurden mehrere Interviews sowie eine Gruppendiskussion durchgeführt.
+Im Rahmen der Neuentwicklung des Systems und Prozesses spielen die Anforderungen und Wünsche der betroffenen Anwender:innen einen zentrale Rolle, um sowohl die Stärken des bestehenden Systems übernehmen als auch die identifizierten Schwächen und Probleme verbessern und Wünsche umsetzen zu können. Im Rahmen des angewandten User-Centered Design Ansatzes, der in Kapitel \ref{chap:user-centered-design} ab Seite \pageref{chap:user-centered-design} genauer erläutert wird, wurden mehrere Interviews sowie eine Gruppendiskussion durchgeführt.
 
-Im folgenden Kapitel werden die durch die Interviews gesammelten Anforderungen analysiert und es wird erläutert, wie diese Anforderungen mithilfe einer grundlegenden qualitativen Inhaltsanalyse konkret ermittelt werden. Zunächst wird dabei kurz darauf eingegangen, wie die qualitative Inhaltsanalyse im Rahmen dieser Masterarbeit konkret ausfällt, bevor die Anforderungen genauer definiert werden.
+Im folgenden Kapitel werden die durch die Interviews gesammelten Anforderungen analysiert und es wird erläutert, wie diese Anforderungen mithilfe einer grundlegenden qualitativen Inhaltsanalyse konkret ermittelt wurden. Zunächst wird dabei kurz darauf eingegangen, wie die qualitative Inhaltsanalyse im Rahmen dieser Masterarbeit konkret ausfällt, bevor die Anforderungen genauer definiert werden.
 
 \section{Durchgeführte Interviews \& Gruppendiskussion}
 \label{sec:durchgeführte-interviews-gruppendiskussion}
 
-Die durchgeführten Interviews erstrecken sich auf zwei Personen der Gruppe der Forschenden, die bereits einen Ethikantrag im Rahmen ihrer Forschungstätigkeiten an der \acl{fhv} erstellt und eingereicht haben sowie eine Gruppendiskussion mit der \ac{fek} selbst -- siehe dazu Anhang \ref{appendix:interview-1}, \ref{appendix:interview-2} sowie \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:interview-1}, \pageref{appendix:interview-2} beziehungsweise \pageref{appendix:gruppendiskussion}. Sowohl die Interviews als auch die Gruppendiskussion basieren auf einem im Vorhinein erstellten Leitfaden, der unterschiedliche Fragen zum Thema Forschungsethik sowie dem bestehenden Prozess der Antragserstellung und -einreichung als auch der verwendeten Word"=Antragsvorlage enthält.
+Die durchgeführten Interviews erstrecken sich auf zwei Personen aus der Gruppe der Forschenden, die bereits einen Ethikantrag im Rahmen ihrer Forschungstätigkeiten an der \acl{fhv} erstellt und eingereicht haben sowie eine Gruppendiskussion mit der \ac{fek} selbst -- siehe dazu Anhang \ref{appendix:interview-1}, \ref{appendix:interview-2} sowie \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:interview-1}, \pageref{appendix:interview-2} beziehungsweise \pageref{appendix:gruppendiskussion}. Sowohl die Interviews als auch die Gruppendiskussion basieren auf einem im Vorhinein erstellten Leitfaden, der unterschiedliche Fragen zum Thema Forschungsethik sowie dem bestehenden Prozess der Antragserstellung und -einreichung als auch der verwendeten Word"=Antragsvorlage enthält.
 
 \medskip
 
@@ -969,7 +1071,7 @@ Entgegen Kuckartz Empfehlungen (\cite[108]{kuckartz_qualitative_2018}) gibt es m
 \section{Definition der Anforderungen}
 \label{sec:definition-anforderungen}
 
-Anhand der in Abschnitt \ref{sec:qualitative-inhaltsanalyse} ab Seite \pageref{sec:qualitative-inhaltsanalyse} durchgeführten qualitativen Inhaltsanalyse lassen sich im abschließenden Schritt nun die konkreten Anforderungen an ein neues System und gegebenenfalls einen neuen Prozess definieren. Die Anforderungen werden dabei mit codierten Textstellen aus den Interviews und der Gruppendiskussion belegt, wobei inhaltlich doppelte Nennungen zusammengefasst beziehungsweise weggelassen werden. Ebenso werden Textpassagen außen vor gelassen, die zwar codiert wurden, im Rahmen anderer Anforderungen aber bereits abgedeckt werden können und starke inhaltliche Ähnlichkeiten aufweisen.
+Anhand der in Abschnitt \ref{sec:qualitative-inhaltsanalyse} ab Seite \pageref{sec:qualitative-inhaltsanalyse} durchgeführten qualitativen Inhaltsanalyse lassen sich im abschließenden Schritt nun die konkreten Anforderungen an ein neues System und gegebenenfalls einen neuen Prozess definieren. Die Anforderungen werden dabei mit codierten Textstellen aus den Interviews und der Gruppendiskussion belegt, wobei inhaltlich doppelte Nennungen zusammengefasst beziehungsweise weggelassen werden. Ebenso werden Textpassagen außen vor gelassen, die zwar codiert wurden, im Rahmen anderer Anforderungen aber bereits abgedeckt werden konnten und starke inhaltliche Ähnlichkeiten aufweisen.
 
 \subsection{Im Vorfeld eines Antrages}
 \label{sub-sec:vorfeld-antrag}
@@ -1121,6 +1223,7 @@ Der Rahmen dieser Masterarbeit erstreckt sich, wie in Abschnitt \ref{sec:zielset
 Der Fokus des angestrebten \ac{poc} beruht dabei vor allem auf der Erstellung und Einreichung eines Ethikantrages, während die weiterführende Behandlung eines Antrages durch die \ac{fek} nicht zu den unmittelbaren Zielen gehört. Tabelle \ref{tab:priorisierung-anforderungen} auf Seite \pageref{tab:priorisierung-anforderungen} berücksichtigt diesen Umstand und nimmt die Priorisierung anhand des in \cite{chai_what_2020} definierten Eisenhower-Prinzips vor.
 
 \begin{table}[ht!]
+    \centering
     \begin{tabular}{p{.15\linewidth} | p{.35\linewidth} | p{.35\linewidth}}
         & \textbf{Dringend} & \textbf{Nicht Dringend} \\
         \hline
@@ -1132,18 +1235,13 @@ Der Fokus des angestrebten \ac{poc} beruht dabei vor allem auf der Erstellung un
     \label{tab:priorisierung-anforderungen}
 \end{table}
 
-Das zur Priorisierung angewandte Eisehower-Prinzp basiert darauf, dass Frage- beziehungsweise Problemstellungen oder geplante Aufgaben in vier Quadranten aufgeteilt werden können, die durch die Einteilung in die Spalten \textit{Dringend} und \textit{Nicht Dringend} sowie die Zeilen \textit{Wichtig} und \textit{Nicht Wichtig} zustande kommen. Die Quadranten entsprechen dabei gleichzeitig auch der Priorisierung, wobei \textit{Dringend und Wichtig} die höchste und \textit{Nicht Dringend und Nicht Wichtig} die niedrigste Priorisierung darstellt. \cite{chai_what_2020}
+Das zur Priorisierung angewandte Eisenhower-Prinzip basiert darauf, dass Frage- beziehungsweise Problemstellungen oder geplante Aufgaben in vier Quadranten aufgeteilt werden können, die durch die Einteilung in die Spalten \textit{Dringend} und \textit{Nicht Dringend} sowie die Zeilen \textit{Wichtig} und \textit{Nicht Wichtig} zustande kommen. Die Quadranten entsprechen dabei gleichzeitig auch der Priorisierung, wobei \textit{Dringend und Wichtig} die höchste und \textit{Nicht Dringend und Nicht Wichtig} die niedrigste Priorisierung darstellt. \cite{chai_what_2020}
 
 Alle definierten Anforderungen finden sich in den ersten beiden Quadranten wieder. Dies lässt sich grundlegend damit erklären, dass die von den Interviewpartner:innen angesprochenen Themenpunkte eine wichtige Rolle bei einer Neuentwicklung des Systems und gegebenenfalls auch des Prozesses spielen, während weniger wichtige Themen kaum oder gar nicht angesprochen wurden.
 
 \medskip
 
 Im Zusammenhang mit der Priorisierung kann Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3} genauer betrachtet und möglicherweise eine Zeile nach unten verschoben werden. Die inhaltliche Ausarbeitung des Ethikantrags liegt letztendlich bei der \ac{fek} der \ac{fhv} und kann während dieser Umsetzung nur begrenzt angepasst werden. Dennoch wird diese Anforderung in derselben Priorisierungsstufe beibehalten, da sie technische Implikationen für zukünftige Änderungen mit sich bringt.
-
-\chapter{Prinzipien des User-Centered Designs}
-\label{chap:prinzipien-user-centered-design}
-
-\colorbox{yellow}{todo}
 
 % Literaturverzeichnis
 \clearpage
