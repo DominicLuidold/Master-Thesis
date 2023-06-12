@@ -1,0 +1,4 @@
+[submodule "ethics-vision"]
+	path = ethics-vision
+	url = git@github.com:DominicLuidold/ethics-vision.git
+	branch = main
