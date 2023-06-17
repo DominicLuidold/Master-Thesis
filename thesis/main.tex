@@ -34,6 +34,12 @@
 \setcounter{secnumdepth}{4} % Nummerierungstiefe
 \setcounter{tocdepth}{3}    % Gliederungstiefe Inhaltsverzeichnis
 
+% Eigne Commands
+\newcommand{\coloredSquare}[1]{%
+  \textcolor{white}{\rule{1em}{1em}}%
+  \textcolor[HTML]{#1}{\rule{0.8em}{0.8em}}%
+}
+
 %% Dokument
 \begin{document}
 
@@ -126,6 +132,7 @@
     \acro{cms}[CMS]{Content Management System}
     \acroplural{cms}[CMS]{Content Management Systeme}
     \acro{dbms}[DBMS]{Datenbankmanagementsystem}
+    \acro{dx}[DX]{Development Experience}
     \acro{ecs}[ECS]{Ethics Committee System}
     \acro{fek}[FE-K]{Forschungsethik"=Kommission}
     \acro{fhv}[FHV]{Fachhochschule Vorarlberg}
@@ -137,8 +144,10 @@
     \acro{oss}[OSS]{Open-Source-Software}
     \acro{poc}[PoC]{Proof of Concept}
     \acro{qda}[QDA]{Quality Data Analysis}
+    \acro{spa}[SPA]{Single-page Application}
     \acro{ucd}[UCD]{User-Centered Design}
     \acro{ui}[UI]{User Interface}
+    \acro{ux}[UX]{User Experience}
 \end{acronym}
 
 % Inhalt
@@ -157,7 +166,7 @@ An der \acl{fhv} finden in einer Forschungsgruppe und fünf verschiedenen Forsch
 
 \medskip
 
-Aufgrund von Feedback von Mitgliedern der Kommission und durch Anregungen von ehemaligen Antragssteller:innen ergibt sich für die \acl{fek} die Situation, dass der gesamte Prozess von der Erstellung hin bis zum Einreichen eines Ethikantrages überdacht werden soll -- vor allem auch in Hinblick auf die technischen und inhaltlichen Limitierungen der Word"=Antragsvorlage. Die Motivation dieser Arbeit ergibt sich daher aus dem Umstand, dass das aktuelle System rund um die zu behandelnden Ethikanträge nicht mehr den Anforderungen und Wünschen der \acl{fek} der \acl{fhv} entspricht. Als weitere Motivation dient der Ausblick darauf, dass die grundlegende Analyse des Prozesses sowie möglicher Lösungsansätze beziehungsweise eine etwaige Umsetzung eines Prototyps den Grundstein für weitere Schritte in Richtung einer angepassten und nutzerzentrierten Herangehensweise für alle Beteiligten bereitstellen kann. 
+Aufgrund von Feedback von Mitgliedern der Kommission und durch Anregungen von ehemaligen Antragsteller:innen ergibt sich für die \acl{fek} die Situation, dass der gesamte Prozess von der Erstellung hin bis zum Einreichen eines Ethikantrages überdacht werden soll -- vor allem auch in Hinblick auf die technischen und inhaltlichen Limitierungen der Word"=Antragsvorlage. Die Motivation dieser Arbeit ergibt sich daher aus dem Umstand, dass das aktuelle System rund um die zu behandelnden Ethikanträge nicht mehr den Anforderungen und Wünschen der \acl{fek} der \acl{fhv} entspricht. Als weitere Motivation dient der Ausblick darauf, dass die grundlegende Analyse des Prozesses sowie möglicher Lösungsansätze beziehungsweise eine etwaige Umsetzung eines Prototyps den Grundstein für weitere Schritte in Richtung einer angepassten und nutzerzentrierten Herangehensweise für alle Beteiligten bereitstellen kann. 
 
 \section{Frage-/Problemstellung}
 \label{sec:frage-problemstellung}
@@ -195,7 +204,7 @@ Die Zielsetzung dieser Masterarbeit lässt sich in zwei verschiedene Kategorien 
 
 Die Masterarbeit hat das grundlegende Ziel, den aktuellen Prozess des Erstellens und Einreichens eines Ethikantrages für die \acl{fek} der \acl{fhv} zu analysieren, um die bestehenden Probleme und Schwachstellen detailliert zu identifizieren und festzustellen. Durch die gewonnenen Informationen sowie die Erkenntnisse aus einer ebenfalls detailliert durchgeführten Ist-Analyse anderer Systeme soll ein Lösungsansatz entwickelt werden, dessen Umsetzung sich an den Prinzipien des User-Centered Designs orientiert.
 
-Der angestrebte Lösungsansatz, in Form eines \ac{poc} anhand eines Prototyps mit grundlegenden Funktionen, soll während der Konzeptions"= und Implementierungsphase evaluiert werden, um sicherzustellen, dass die Bedürfnisse der Antragssteller:innen und der \acl{fek} zielgerichtet erfüllt werden. Der \ac{poc} beziehungsweise Prototyp kann und soll als Grundlage für weitere Entwicklungen und Optimierungen dienen können.
+Der angestrebte Lösungsansatz, in Form eines \ac{poc} anhand eines Prototyps mit grundlegenden Funktionen, soll während der Konzeptions"= und Implementierungsphase evaluiert werden, um sicherzustellen, dass die Bedürfnisse der Antragsteller:innen und der \acl{fek} zielgerichtet erfüllt werden. Der \ac{poc} beziehungsweise Prototyp kann und soll als Grundlage für weitere Entwicklungen und Optimierungen dienen können.
 
 Ein weiterer wichtiger Aspekt und somit Ziel der Masterarbeit ist die Auseinandersetzung mit den Anforderungen an die Sicherheit und den Datenschutz im Prozess des Erstellens und Einreichens eines Ethikantrages. Dieser Aspekt soll in die Analyse und die Entwicklung von Lösungsansätzen einbezogen werden, um sicherzustellen, dass der neue Prozess nicht nur benutzerfreundlicher, sondern auch auf die Aspekte der Datensicherheit und Datenschutz abgestimmt ist.
 
@@ -204,7 +213,7 @@ Ein weiterer wichtiger Aspekt und somit Ziel der Masterarbeit ist die Auseinande
 
 Neben den in Abschnitt \ref{sub-sec:unmittelbare-ziele} auf Seite \pageref{sub-sec:unmittelbare-ziele} definierten unmittelbaren Zielen können weitere, längerfristige Ergebnisse abgesteckt werden, die wiederum als Kriterium zur Erfolgsmessung dieser Masterarbeit herangezogen werden können.
 
-Als wichtigstes Ergebnis zählt vor allem, dass die gewonnenen Erkenntnisse für die weiterführende Entwicklung und Optimierung des Prozesses, und bestenfalls des Prototyps, von Personen aufgegriffen und verwendet werden können, die nicht direkt an der Ausarbeitung dieser Arbeit beteiligt waren. Voraussetzung dafür ist das Ergebnis des \ac{poc} am Ende der Ausarbeitung dieser Masterarbeit. Sollte der Prototyp anhand des Feedbacks der \acl{fek} sowie beteiligter Antragssteller:innen als vielversprechend beurteilt werden, kann die aktuelle Word-Antragsvorlage als langfristiges Ergebnis durch den entwickelten Lösungsansatz abgelöst werden.
+Als wichtigstes Ergebnis zählt vor allem, dass die gewonnenen Erkenntnisse für die weiterführende Entwicklung und Optimierung des Prozesses, und bestenfalls des Prototyps, von Personen aufgegriffen und verwendet werden können, die nicht direkt an der Ausarbeitung dieser Arbeit beteiligt waren. Voraussetzung dafür ist das Ergebnis des \ac{poc} am Ende der Ausarbeitung dieser Masterarbeit. Sollte der Prototyp anhand des Feedbacks der \acl{fek} sowie beteiligter Antragsteller:innen als vielversprechend beurteilt werden, kann die aktuelle Word-Antragsvorlage als langfristiges Ergebnis durch den entwickelten Lösungsansatz abgelöst werden.
 
 \medskip
 
@@ -219,7 +228,7 @@ Unabhängig davon lassen sich weitere Ergebnisse definieren, die aufgrund der ze
 \section{Vorgehensweise}
 \label{sec:vorgehensweise}
 
-Um ein grundlegendes Verständnis über die Thematik sowie den bestehenden Ablauf eines Ethikantrages zu erlangen, wird zu Beginn der Arbeit auf den Aufgabenbereich und die Arbeitsweise der \acl{fek} eingegangen sowie der aktuelle Prozess rund um das Erstellen und Einreichen von Ethikanträgen beleuchtet. Dabei werden mittels gezielt geführter Interviews mit Mitgliedern der \acl{fek} sowie ehemaligen Antragssteller:innen allfällige Schwachstellen aufgearbeitet und etwaige Wünsche für ein neues System erörtert.
+Um ein grundlegendes Verständnis über die Thematik sowie den bestehenden Ablauf eines Ethikantrages zu erlangen, wird zu Beginn der Arbeit auf den Aufgabenbereich und die Arbeitsweise der \acl{fek} eingegangen sowie der aktuelle Prozess rund um das Erstellen und Einreichen von Ethikanträgen beleuchtet. Dabei werden mittels gezielt geführter Interviews mit Mitgliedern der \acl{fek} sowie ehemaligen Antragsteller:innen allfällige Schwachstellen aufgearbeitet und etwaige Wünsche für ein neues System erörtert.
 
 Im Zuge der detaillierten Ist-Analyse des bestehenden Systems wird zudem die Herangehensweise von anderen Ethikkommissionen an Hochschulen und Universitäten innerhalb Österreichs analysiert, um Vergleichswerte zu sammeln und Unterschiede oder Gemeinsamkeiten definieren zu können. Ebenso werden Systeme evaluiert, die den Anforderungen der \acl{fek} bereits entsprechen könnten, ohne jedoch einen spezifischen Bezug zur Erstellung und Einreichung von Ethikanträgen zu haben.
 
@@ -324,7 +333,7 @@ Tabelle \ref{tab:zurordnung-kapitel-ucd} auf Seite \pageref{tab:zurordnung-kapit
          & Kapitel \ref{chap:analyse-bestehendes-system-prozess} -- \nameref{chap:analyse-bestehendes-system-prozess} \\ \cline{2-2} 
          & Kapitel \ref{chap:analyse-anderer-prozesse} -- \nameref{chap:analyse-anderer-prozesse} \\ \hline
         Definition konkreter Anforderungen & Kapitel \ref{chap:anforderung-neues-system} -- \nameref{chap:anforderung-neues-system} \\ \hline
-        Entwicklung eines Konzeptes und Prototyps & \colorbox{yellow}{Kapitel 7} \\ \hline
+        Entwicklung eines Konzeptes und Prototyps & \ref{chap:ausarbeitung-umsetzung-prototyp} -- \nameref{chap:ausarbeitung-umsetzung-prototyp} \\ \hline
         Evaluation und Testung & \colorbox{yellow}{Kapitel 8}
     \end{tabular}
     \caption{Zuordnung der Kapitel dieser Masterarbeit zu den Phasen des \acl{ucd}}
@@ -359,7 +368,7 @@ Die \ac{fek} gibt in ihrer Satzung \cite[1]{forschungsethik-kommission_der_fachh
 
 Bei der Beurteilung eines Ethikantrages wird, unter Zuhilfenahme der genannten Dokumente und Leitlinien, vor allem geprüft, ob ein vertretbares Verhältnis zwischen dem zu erwartenden Nutzen und den mit der Forschung verbundenen Risiken besteht, ob identifizierte Risiken so gering wie möglich gehalten werden und ob eine ausreichende Einwilligung etwaiger Proband:innen sichergestellt ist. Ebenso werden eingereichte Ethikanträge dahingehend geprüft, ob Angaben zu beispielsweise der geplanten Stichprobe, der Zielgruppen, der Aufklärung von betroffenen Personen und Angaben zu den Rechten für Betroffene in korrekter Weise gemacht und geplant wurden. \cite[1\psq]{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}
 
-Teilaspekte, die den Datenschutz oder das Forschungsdesign sowie die Forschungsqualität betreffen, werden von der \ac{fek} auch außerhalb des konkreten Rahmens der ethischen Beurteilung betrachtet. Grobe Fehler und allgemeines Feedback werden im angefertigten Protokoll, welches Antragssteller:innen nach abschließendem Votum übermittelt wird, mitgeteilt, um das potenzielle Vergeuden von (Zeit-)Ressourcen zu vermeiden und auf Fehler sowie Bedenken der Kommission hinweisen zu können.\footnote{Um ein konkretes Beispiel dafür zu nennen: In der ursprünglichen Planung für diese Masterarbeit war ein Fragebogen vorgesehen, der sowohl an Master-Studierende als auch Forschungsmitarbeitende der \ac{fhv} ausgesendet werden sollte (siehe dazu Anhang \ref{appendix:eingereichter-ethikantrag} ab Seite \pageref{appendix:eingereichter-ethikantrag}). Nach entsprechender Rückmeldung der \ac{fek} (siehe dazu Anhang \ref{appendix:rückmeldung-fek} ab Seite \pageref{appendix:rückmeldung-fek}) wurde diese Idee jedoch weitestgehend verworfen.\label{footnote:ursprüngliche-planung-leitfaden}} \cite[1\psq]{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}
+Teilaspekte, die den Datenschutz oder das Forschungsdesign sowie die Forschungsqualität betreffen, werden von der \ac{fek} auch außerhalb des konkreten Rahmens der ethischen Beurteilung betrachtet. Grobe Fehler und allgemeines Feedback werden im angefertigten Protokoll, welches Antragsteller:innen nach abschließendem Votum übermittelt wird, mitgeteilt, um das potenzielle Vergeuden von (Zeit-)Ressourcen zu vermeiden und auf Fehler sowie Bedenken der Kommission hinweisen zu können.\footnote{Um ein konkretes Beispiel dafür zu nennen: In der ursprünglichen Planung für diese Masterarbeit war ein Fragebogen vorgesehen, der sowohl an Master-Studierende als auch Forschungsmitarbeitende der \ac{fhv} ausgesendet werden sollte (siehe dazu Anhang \ref{appendix:eingereichter-ethikantrag} ab Seite \pageref{appendix:eingereichter-ethikantrag}). Nach entsprechender Rückmeldung der \ac{fek} (siehe dazu Anhang \ref{appendix:rückmeldung-fek} ab Seite \pageref{appendix:rückmeldung-fek}) wurde diese Idee jedoch weitestgehend verworfen.\label{footnote:ursprüngliche-planung-leitfaden}} \cite[1\psq]{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}
 
 \medskip
 
@@ -368,7 +377,7 @@ Abseits von den in der Satzung und Verfahrensordnung definierten Leitlinien und 
 \section{Angewandter Kriterienkatalog}
 \label{sec:angewandter-kriterienkatalog}
 
-Die schlussendlich durchgeführte Begutachtung eines Ethikantrages und der damit verbundenen Forschungsarbeit wird Antragssteller:innen in Form einer schriftlichen Entscheidung beziehungsweise Stellungnahme übermittelt. \cite[4]{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020} Wie in Anhang \ref{appendix:rückmeldung-fek} ab Seite \pageref{appendix:rückmeldung-fek} ersichtlich ist, ist diese Rückmeldung in einen schriftlichen Teil mit Hinweisen und Anmerkungen sowie einen Teil mit der jeweiligen Bewertung der einzelnen Kriterien des Kriterienkataloges aufgeteilt.
+Die schlussendlich durchgeführte Begutachtung eines Ethikantrages und der damit verbundenen Forschungsarbeit wird Antragsteller:innen in Form einer schriftlichen Entscheidung beziehungsweise Stellungnahme übermittelt. \cite[4]{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020} Wie in Anhang \ref{appendix:rückmeldung-fek} ab Seite \pageref{appendix:rückmeldung-fek} ersichtlich ist, ist diese Rückmeldung in einen schriftlichen Teil mit Hinweisen und Anmerkungen sowie einen Teil mit der jeweiligen Bewertung der einzelnen Kriterien des Kriterienkataloges aufgeteilt.
 
 Die einzelnen Bewertungskriterien orientieren sich dabei an unterschiedlichen Quellen (unter anderem \cite{manzeschke_meestar_2015, marckmann_was_2000, schuchter_care_2018}) und decken Gesichtspunkte von der menschlichen Interaktion auf Augenhöhe über die technische Datenspeicherung in anonymisierter Form oder der Auslegung des sozialen Settings bis hin zur Forschungsintegrität ab. Eine darauf aufbauende Beurteilung der Kriterien findet in einem dreistufigen System statt, bei dem unterschieden wird, ob ethische Unbedenklichkeit (\enquote{Stufe I}) herrscht, Maßnahmen ergriffen werden müssen, um ethische Unbedenklichkeit (\enquote{Stufe II}) gewährleisten zu können oder ob einzelne Gesichtspunkte als ethisch bedenklich (\enquote{Stufe III}) einzustufen sind. \cite[1]{forschungsethik-kommission_der_fachhochschule_vorarlberg_kriterienkatalog_2021}
 
@@ -397,7 +406,7 @@ Die in Kapitel \ref{chap:kriterien-forschungsethik} ab Seite \pageref{chap:krite
 
 \medskip
 
-Das nachfolgende Kapitel fokussiert sich in der Analyse zuerst auf die Sichtweise aus der \enquote{Vogelperspektive}, bevor die einzelnen Prozess-Schritte aus der Sicht von Antragssteller:innen und der Sicht der \ac{fek} genauer beleuchtet und die Word"=Antragsvorlage sowie die bestehenden Stärken und Probleme im Detail skizziert werden.
+Das nachfolgende Kapitel fokussiert sich in der Analyse zuerst auf die Sichtweise aus der \enquote{Vogelperspektive}, bevor die einzelnen Prozess-Schritte aus der Sicht von Antragsteller:innen und der Sicht der \ac{fek} genauer beleuchtet und die Word"=Antragsvorlage sowie die bestehenden Stärken und Probleme im Detail skizziert werden.
 
 \section{Ablauf eines Ethikantrages}
 \label{sec:ablauf-ethikantrag}
@@ -405,11 +414,11 @@ Das nachfolgende Kapitel fokussiert sich in der Analyse zuerst auf die Sichtweis
 Der Ablauf eines Ethikantrages kann in die folgenden zehn Schritte unterteilt werden (\cite{fachhochschule_vorarlberg_gmbh_forschungsethik-kommission_2021, forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020} sowie Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}):
 
 \begin{itemize}
-    \item \textbf{Schritt 1:} Herunterladen der Antragsvorlage in Form einer Word"=Antragsvorlage durch den:die Antragssteller:in
-    \item \textbf{Schritt 2:} Ausfüllen der Antragsvorlage durch den:die Antragssteller:in
-    \item \textbf{Schritt 3:} Übermittlung des ausgefüllten Antrages sowie allfälliger Anlagen an den:die Vorsitzende:n der Kommission durch den:die Antragssteller:in
+    \item \textbf{Schritt 1:} Herunterladen der Antragsvorlage in Form einer Word"=Antragsvorlage durch den:die Antragsteller:in
+    \item \textbf{Schritt 2:} Ausfüllen der Antragsvorlage durch den:die Antragsteller:in
+    \item \textbf{Schritt 3:} Übermittlung des ausgefüllten Antrages sowie allfälliger Anlagen an den:die Vorsitzende:n der Kommission durch den:die Antragsteller:in
     \item \textbf{Schritt 4:} Formale Überprüfung auf Antragsberechtigung und Vollständigkeit durch den:die Vorsitzende:n der \ac{fek}
-    \item \textbf{Schritt 5:} Rückmeldung an Antragssteller:in sowie Weiterleitung der Unterlagen an stimmberechtigte Mitglieder der \ac{fek} durch den:die Vorsitzende:n
+    \item \textbf{Schritt 5:} Rückmeldung an Antragsteller:in sowie Weiterleitung der Unterlagen an stimmberechtigte Mitglieder der \ac{fek} durch den:die Vorsitzende:n
     \item \textbf{Schritt 6:} Individuelle Begutachtung der eingereichten Unterlagen durch die stimmberechtigten Mitglieder der \ac{fek}
     \item \textbf{Schritt 7:} Diskussion und Bewertung der eingereichten Unterlagen in der nächsten Sitzung der \ac{fek} durch die stimmberechtigten Mitglieder
     \item \textbf{Schritt 8:} Anfertigung des Protokolls sowie des Votums und Aussendung dieser vorläufigen Stellungnahme an die stimmberechtigten Mitglieder durch den:die Vorsitzende:n der \ac{fek}
@@ -419,8 +428,8 @@ Der Ablauf eines Ethikantrages kann in die folgenden zehn Schritte unterteilt we
 
 Bei Bedarf weiten sich die aufgezählten Schritte aus, wenn von der \ac{fek} festgestellt wird, dass die eingereichten Unterlagen entweder nicht vollständig sind oder Informationen fehlen, sodass das Nachliefern von Informationen oder eine erneute Einreichung notwendig ist.
 
-\subsection{Sicht der Antragssteller:innen}
-\label{sub-sec:ablauf-sicht-antragssteller}
+\subsection{Sicht der Antragsteller:innen}
+\label{sub-sec:ablauf-sicht-Antragsteller}
 
 Der grundlegende Ablauf und der Prozess eines Ethikantrages kann von potenziellen Antragsstellenden sowohl auf der Website der \ac{fhv} auf der Unterseite der \ac{fek} (\cite{fachhochschule_vorarlberg_gmbh_forschungsethik-kommission_2021}) als auch in der öffentlich einsehbaren Verfahrensordnung (\cite{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}) der Kommission in vollem Detail nachvollzogen werden.
 
@@ -435,7 +444,7 @@ Die in Abschnitt \ref{sec:ablauf-ethikantrag} ab Seite \ref{sec:ablauf-ethikantr
     \item \textit{Schritt 3} mit der Übermittlung des Antrages sowie allfälliger Anlagen an die \ac{fek}
 \end{itemize}
 
-\noindent\textit{Schritt 5} und \textit{Schritt 10} betreffen die Antragssteller:innen insoweit ebenso, als dass sie dort Informationen zum weiteren Vorgehen beziehungsweise das finale Votum erhalten.
+\noindent\textit{Schritt 5} und \textit{Schritt 10} betreffen die Antragsteller:innen insoweit ebenso, als dass sie dort Informationen zum weiteren Vorgehen beziehungsweise das finale Votum erhalten.
 
 Ein Punkt, der in der Auflistung lediglich implizit angenommen wird, ist die Entscheidung zur Einreichung eines Ethikantrages und der Weg dorthin (insbesondere wenn es Unklarheiten darüber gibt, ob ein Ethikantrag überhaupt notwendig ist oder ob das Forschungsvorhaben antragsberechtigt ist). Dieser Umstand wird im weiteren Verlauf dieses Kapitels noch genauer behandelt.
 
@@ -444,7 +453,7 @@ Ein Punkt, der in der Auflistung lediglich implizit angenommen wird, ist die Ent
 
 Die \acl{fek} hat den Ablauf eines Ethikantrages sowie des zugrundeliegenden Prozesses in ihrer Verfahrensordnung (\cite{forschungsethik-kommission_der_fachhochschule_vorarlberg_verfahrensordnung_2020}) sowie stichpunktartig auf der Website der \ac{fhv} auf der Unterseite der \ac{fek} (\cite{fachhochschule_vorarlberg_gmbh_forschungsethik-kommission_2021}) festgelegt und veröffentlicht.
 
-Die in Abschnitt \ref{sec:ablauf-ethikantrag} ab Seite \pageref{sec:ablauf-ethikantrag} beschriebenen Schritte entsprechen nicht nur dem in der Verfahrensordnung theoretisch festgelegten Ablauf, sondern auch der praktischen Vorgehensweise der \ac{fek} (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}). Die zehn identifizierten Punkte betreffen dabei zu einem Großteil die Mitglieder der Kommission direkt, wobei die Antragssteller:innen nur indirekt involviert sind:
+Die in Abschnitt \ref{sec:ablauf-ethikantrag} ab Seite \pageref{sec:ablauf-ethikantrag} beschriebenen Schritte entsprechen nicht nur dem in der Verfahrensordnung theoretisch festgelegten Ablauf, sondern auch der praktischen Vorgehensweise der \ac{fek} (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}). Die zehn identifizierten Punkte betreffen dabei zu einem Großteil die Mitglieder der Kommission direkt, wobei die Antragsteller:innen nur indirekt involviert sind:
 \begin{itemize}
     \item \textit{Schritt 4} mit der Überprüfung auf Antragsberechtigung und Vollständigkeitk,
     \item \textit{Schritt 5} mit der Rückmeldung beziehungsweise Weiterleitung an alle Beteiligten,
@@ -455,7 +464,7 @@ Die in Abschnitt \ref{sec:ablauf-ethikantrag} ab Seite \pageref{sec:ablauf-ethik
     \item \textit{Schritt 10} mit der Rückmeldung an den:die Antragsstellende:n
 \end{itemize}
 
-\noindent Zusätzlich dazu werden, wie in der Gruppendiskussion (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}) zur Sprache gekommen ist, im Vorhinein zu \textit{Schritt 3} (beziehungsweise \textit{Schritt 1} aus Sicht von Antragssteller:innen) Fragen oder Unklarheiten bei Bedarf beantwortet, ehe es zu einer Einreichung der Unterlagen und dem Start des Prozesses kommt.
+\noindent Zusätzlich dazu werden, wie in der Gruppendiskussion (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}) zur Sprache gekommen ist, im Vorhinein zu \textit{Schritt 3} (beziehungsweise \textit{Schritt 1} aus Sicht von Antragsteller:innen) Fragen oder Unklarheiten bei Bedarf beantwortet, ehe es zu einer Einreichung der Unterlagen und dem Start des Prozesses kommt.
 
 \medskip
 
@@ -495,7 +504,7 @@ Als konkrete Konsequenz ergibt sich dadurch die in Abschnitt \ref{sec:ablauf-eth
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{thesis/images/Luidold_Word-Vorlage-FHV-Textformularfeld.png}
-    \caption[Übersicht der Optionen für Steuerelemente des Typs \texttt{Textfeld (Formularsteuerelement)} sowie die der Bearbeitungseinschränkung in Microsoft Word]{Übersicht der Optionen für Steuerelemente des Typs \texttt{Textfeld (Formularsteuerelement)} sowie die der Bearbeitungseinschränkung in Microsoft Word (Quelle: eigene Abbildung)}
+    \caption{Übersicht der Optionen für Steuerelemente des Typs \texttt{Textfeld (Formularsteuerelement)} sowie die der Bearbeitungseinschränkung in Microsoft Word}
     \label{fig:optionen-textformularfeld-bearbeitungsmöglichkeiten}
 \end{figure}
 
@@ -547,14 +556,14 @@ Wie in Kapitel \ref{chap:einleitung} ab Seite \pageref{chap:einleitung} bereits 
 
 Der nachfolgende Abschnitt beschäftigt sich daher auf Basis der Analyse der Interviews sowie der Gruppendiskussion mit den Schwächen und Problemen des aktuellen Systems, sowohl aus Sicht der \ac{fek} als auch aus Sicht von Antragsstellenden (eine detaillierte Analyse einschließlich einer entsprechenden Kategorisierung der Interviews sowie der Gruppendiskussion findet in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} statt). Etwaige Stärken, die das aktuelle System vorweist, werden dabei nicht außer Acht gelassen und ebenso genauer betrachtet und hervorgehoben. 
 
-\subsection{Sicht der Antragssteller:innen}
-\label{sub-sec:probleme-sicht-antragssteller}
+\subsection{Sicht der Antragsteller:innen}
+\label{sub-sec:probleme-sicht-Antragsteller}
 
 In den durchgeführten Interviews mit Forschenden der \ac{fhv} (siehe Anhang \ref{appendix:interview-1} ab Seite \pageref{appendix:interview-1} sowie Anhang \ref{appendix:interview-2} ab Seite \pageref{appendix:interview-2}), die bereits einen Ethikantrag gestellt und eingereicht haben, sind unterschiedliche Themen und Anliegen zur Sprache gekommen, die den allgemeinen Prozess und auch konkret die Word"=Antragsvorlage betreffen.
 
 Grundlegend wird die Arbeit der \ac{fek} von beiden Interviewpartner:innen geschätzt und als wichtiges Instrument empfunden, um Feedback für Forschungsprojekte und -vorhaben zu erhalten. Auch der zugrundeliegende Prozess wurde in beiden Interviews als überwiegend klar und verständlich eingeschätzt. Im Verlauf der Interviews und bei genauerem Nachfragen wurden dennoch einige Punkte angeführt, welche bei den Forschenden \enquote{negativ} in Erinnerung geblieben sind beziehungsweise laut ihnen auch Verbesserungspotenzial aufweisen:
 \begin{itemize}
-    \item die Kommunikation und Einreichung des Ethikantrages mittels E-Mail zwischen Antragssteller:in und \ac{fek},
+    \item die Kommunikation und Einreichung des Ethikantrages mittels E-Mail zwischen Antragsteller:in und \ac{fek},
     \item eine fehlende Hilfestellung in der Entscheidung zum Ethikantrag und weitere Unterstützung,
     \item Schwierigkeiten beim Ausfüllen des Ethikantrages aufgrund technischer Hürden,
     \item die inhaltliche Wiederholungen in den Fragestellungen der Themenschwerpunkte sowie
@@ -589,7 +598,7 @@ Im Verlauf beider Interviews wird der Erhalt der abschließenden Stellungnahme m
 \subsection{Sicht der \acl{fek}}
 \label{sub-sec:probleme-sicht-fek}
 
-Aus Sicht der \acl{fek} gibt es im Rahmen der Gruppendiskussion (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}) grundsätzlich nur wenige konkrete Bedenken oder Probleme am aktuell festgelegten Prozess und der Word"=Antragsvorlage, die Antragssteller:innen zur Verfügung gestellt wird. Primär deshalb, da der Prozess und die angebotene Antragsvorlage von den aktuellen Kommissionsmitgliedern maßgeblich mitgestaltet und erstellt wurde.
+Aus Sicht der \acl{fek} gibt es im Rahmen der Gruppendiskussion (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}) grundsätzlich nur wenige konkrete Bedenken oder Probleme am aktuell festgelegten Prozess und der Word"=Antragsvorlage, die Antragsteller:innen zur Verfügung gestellt wird. Primär deshalb, da der Prozess und die angebotene Antragsvorlage von den aktuellen Kommissionsmitgliedern maßgeblich mitgestaltet und erstellt wurde.
 
 Nichtsdestotrotz sind im Verlauf des Gespräches mehrere Themen zur Sprache gekommen, bei denen die Kommission selbst sowohl Stärken in der Vorgehensweise als auch Potenzial für Veränderungsmöglichkeiten sieht, die sowohl für diese Masterarbeit relevant sind als auch solche, die diese unberührt lassen:
 \begin{itemize}
@@ -630,7 +639,7 @@ Ein Mitglied der \ac{fek} äußert während des Interviews den Vorschlag, den Pr
 
 Um neben der Analyse des bestehenden Systems beziehungsweise Prozesses rund um die Word-Antragsvorlage Vergleichswerte sammeln zu können, werden weitere Prozesse und Systeme sowohl mit spezifischem Fokus auf Ethikanträgen als auch Systeme ohne direkten Bezug genauer betrachtet und Unterschiede sowie Gemeinsamkeiten herausgearbeitet.
 
-Durch die breiter gefasste Erhebung zum Stand der Technik können so zusätzliche Herangehensweisen, die in der Analyse in Kapitel \ref{chap:analyse-bestehendes-system-prozess} ab Seite \pageref{chap:analyse-bestehendes-system-prozess} nicht aufgegriffen werden konnten, abgedeckt werden. Ebenso kann dadurch eruiert werden, ob ein bestehendes System die Möglichkeit bietet, soweit an die in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} gestellten Anforderungen der \acl{fek} sowie der Antragssteller:innen angepasst werden zu können, als das eine gänzliche Neuentwicklung nicht mehr notwendig ist.
+Durch die breiter gefasste Erhebung zum Stand der Technik können so zusätzliche Herangehensweisen, die in der Analyse in Kapitel \ref{chap:analyse-bestehendes-system-prozess} ab Seite \pageref{chap:analyse-bestehendes-system-prozess} nicht aufgegriffen werden konnten, abgedeckt werden. Ebenso kann dadurch eruiert werden, ob ein bestehendes System die Möglichkeit bietet, soweit an die in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} gestellten Anforderungen der \acl{fek} sowie der Antragsteller:innen angepasst werden zu können, als das eine gänzliche Neuentwicklung nicht mehr notwendig ist.
 
 \section{Systeme mit Fokus auf Ethikanträgen}
 \label{sec:systeme-mit-fokkus-ethikantrage}
@@ -647,7 +656,7 @@ Das \ac{föe}\footnote{Forum Österreichischer Ethikkommissionen (\url{https://m
 
 \medskip
 
-Die in Abbildung \ref{fig:dokumentenvorlage-föe} auf Seite \pageref{fig:dokumentenvorlage-föe} dargestellte Antragsvorlage führt die Antragssteller:innen durch zwei verschiedene Teile (\enquote{Teil A} und \enquote{Teil B}), in denen unterschiedliche Angaben entweder in Freitext-Formularfeldern oder in entsprechend anzukreuzenden Auswahl-Feldern\footnote{Aufgrund der verwendeten Einschränkung der Bearbeitungsmöglichkeiten (siehe vergleichsweise dazu Abschnitt \ref{sub-sec:technischer-aufbau-word-antragsvorlage} ab Seite \pageref{sub-sec:technischer-aufbau-word-antragsvorlage}) mit zusätzlichem Passwordschutz kann nicht nachvollzogen werden, welchen Typ diese Felder haben.} gemacht und Fragen beantwortet werden können.
+Die in Abbildung \ref{fig:dokumentenvorlage-föe} auf Seite \pageref{fig:dokumentenvorlage-föe} dargestellte Antragsvorlage führt die Antragsteller:innen durch zwei verschiedene Teile (\enquote{Teil A} und \enquote{Teil B}), in denen unterschiedliche Angaben entweder in Freitext-Formularfeldern oder in entsprechend anzukreuzenden Auswahl-Feldern\footnote{Aufgrund der verwendeten Einschränkung der Bearbeitungsmöglichkeiten (siehe vergleichsweise dazu Abschnitt \ref{sub-sec:technischer-aufbau-word-antragsvorlage} ab Seite \pageref{sub-sec:technischer-aufbau-word-antragsvorlage}) mit zusätzlichem Passwordschutz kann nicht nachvollzogen werden, welchen Typ diese Felder haben.} gemacht und Fragen beantwortet werden können.
 
 \begin{figure}[ht]
     \centering
@@ -666,7 +675,7 @@ Alle zu befüllenden Felder sind mit einer eindeutigen Nummer gekennzeichnet und
 
 Bei der Durchsicht des Antrages fallen folgende Punkte im Vergleich zur Herangehensweise der \ac{fek} konkret auf:
 \begin{itemize}
-    \item Die Vorlage enthält sowohl für die finale Beurteilung benötigte Informationen (die durch die Antragssteller:innen bereitgestellt werden) als auch Ausfüllhilfen und Hilfestellungen, die zwischen den einzelnen Punkten und Fragen eingebettet sind.
+    \item Die Vorlage enthält sowohl für die finale Beurteilung benötigte Informationen (die durch die Antragsteller:innen bereitgestellt werden) als auch Ausfüllhilfen und Hilfestellungen, die zwischen den einzelnen Punkten und Fragen eingebettet sind.
     \item Gewisse Tabellen (wie beispielsweise die Tabellen bei Punkt \enquote{6. Angaben zur durchzuführenden Therapie und Diagnostik} auf Seite 5 des Antrages) lassen nur eine gewisse Anzahl an Einträgen zu, ohne den Antragsstellenden die Möglichkeit zu geben, weitere Punkte hinzufügen zu können.
     \item Es stehen ebenso keinerlei Formatierungsmöglichkeiten zur Verfügung, um ausgefüllte Informationen beispielsweise mit kursiver oder farbig hinterlegter Schrift zu strukturieren. Alle getätigten Informationen sind automatisch in fetter Schrift angegeben, um sie von der Vorlage unterscheiden zu können.
 \end{itemize}
@@ -697,7 +706,7 @@ Der Prozess der Einreichung eines Ethikantrages wird vom \ac{ieb} in einen zweis
 \subsubsection*{Allgemeiner Aufbau}
 \label{sub-sub-sec:fh-oö-allgemeiner-aufbau}
 
-Das \ac{ieb} greift -- ebenso wie das \ac{föe} und die \ac{fek} der \ac{fhv} -- auf eine Antragsvorlage\footnote{Antragsformular Version 1 vom 21.09.2022 (\url{https://www.fh-gesundheitsberufe.at/assets/files/IEB-Antragsformular_V1.00_21.09.2022.docx})} im mit Microsoft Word kompatiblen \texttt{.docx} Dateiformat zurück. Diese Vorlage wird Antragssteller:innen zum Download angeboten und kann sowohl digital als auch in einer Printversion beim Ethikboard zur Begutachtung eingereicht werden. \cite{fh_gesundheitsberufe_oo_gmbh_einreichung_2023}
+Das \ac{ieb} greift -- ebenso wie das \ac{föe} und die \ac{fek} der \ac{fhv} -- auf eine Antragsvorlage\footnote{Antragsformular Version 1 vom 21.09.2022 (\url{https://www.fh-gesundheitsberufe.at/assets/files/IEB-Antragsformular_V1.00_21.09.2022.docx})} im mit Microsoft Word kompatiblen \texttt{.docx} Dateiformat zurück. Diese Vorlage wird Antragsteller:innen zum Download angeboten und kann sowohl digital als auch in einer Printversion beim Ethikboard zur Begutachtung eingereicht werden. \cite{fh_gesundheitsberufe_oo_gmbh_einreichung_2023}
 
 \medskip
 
@@ -713,11 +722,11 @@ Abbildung \ref{fig:dokumentenvorlage-ieb} auf Seite \pageref{fig:dokumentenvorla
 \subsubsection*{Inhaltlicher Aufbau}
 \label{sub-sub-sec:fh-oö-inhaltlicher-aufbau}
 
-Das vom \ac{ieb} zum Download angebotene Antragsformular weicht, trotz des Fokus auf medizinische Studien der Fachhochschule und des Boards, sowohl vom Aufbau als auch vom abgefragten Inhalt von der Antragsvorlage des \ac{föe} ab. Das \ac{ieb} erläutert, dass die eigens umgesetzte Word"=Antragsvorlage gezielt nicht an jene des \ac{föe} angelehnt ist, da sich das Formular des \ac{föe} als zu detailliert und zeitaufwendig in der Bearbeitung herausstellt, sowohl für Antragssteller:innen als auch für die Prüfung selbst. Als zweiter Grund wird auch beziehungsweise vor allem der Umstand genannt, dass vom \ac{ieb} alle Arbeiten geprüft und behandelt werden müssen, die nicht ausschließlich eine Literaturarbeit darstellen. \cite{rosendahl-huber_extern-erfahrungen_2023}
+Das vom \ac{ieb} zum Download angebotene Antragsformular weicht, trotz des Fokus auf medizinische Studien der Fachhochschule und des Boards, sowohl vom Aufbau als auch vom abgefragten Inhalt von der Antragsvorlage des \ac{föe} ab. Das \ac{ieb} erläutert, dass die eigens umgesetzte Word"=Antragsvorlage gezielt nicht an jene des \ac{föe} angelehnt ist, da sich das Formular des \ac{föe} als zu detailliert und zeitaufwendig in der Bearbeitung herausstellt, sowohl für Antragsteller:innen als auch für die Prüfung selbst. Als zweiter Grund wird auch beziehungsweise vor allem der Umstand genannt, dass vom \ac{ieb} alle Arbeiten geprüft und behandelt werden müssen, die nicht ausschließlich eine Literaturarbeit darstellen. \cite{rosendahl-huber_extern-erfahrungen_2023}
 
 \medskip
 
-Unabhängig vom abweichenden Aufbau fokussiert sich der Antrag auf Angaben zur geplanten Studie und stellt Fragen in Bezug auf die konkrete Projektumwelt anhand von teilnehmenden Institutionen und Prüfer:innen, Datenschutzmaßnahmen, Studiendesign und methodische Aspekte. Das Antragsformular bietet auf Seite 2 zudem die Möglichkeit, eine Zusammenfassung des Exposés oder des Abstracts der Forschungsarbeit einzureichen.\footnote{Dieser Schritt wird von der \ac{fek} der \ac{fhv} ebenso als Möglichkeit gesehen (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}), um die Anzahl an Fragen im Antragsformular zur verringern und Antragssteller:innen die Möglichkeit zu geben, bereits ausgearbeitete Informationen wiederzuverwenden.}
+Unabhängig vom abweichenden Aufbau fokussiert sich der Antrag auf Angaben zur geplanten Studie und stellt Fragen in Bezug auf die konkrete Projektumwelt anhand von teilnehmenden Institutionen und Prüfer:innen, Datenschutzmaßnahmen, Studiendesign und methodische Aspekte. Das Antragsformular bietet auf Seite 2 zudem die Möglichkeit, eine Zusammenfassung des Exposés oder des Abstracts der Forschungsarbeit einzureichen.\footnote{Dieser Schritt wird von der \ac{fek} der \ac{fhv} ebenso als Möglichkeit gesehen (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}), um die Anzahl an Fragen im Antragsformular zur verringern und Antragsteller:innen die Möglichkeit zu geben, bereits ausgearbeitete Informationen wiederzuverwenden.}
 
 \subsubsection*{Ähnlichkeiten \& Auffälligkeiten}
 \label{sub-sub-sec:ähnlichkeiten-auffälligkeiten-fh-oö}
@@ -727,7 +736,7 @@ Laut dem \ac{ieb} sind derzeit zwei digitale Lösungen in Entwicklung, die die e
 \subsubsection*{Schlussfolgerungen}
 \label{sub-sub-sec:schlussfolgerungen-fh-oö}
 
-Vergleichbar zu der in Abschnitt \ref{sub-sec:vorlage-föe} ab Seite \pageref{sub-sec:vorlage-föe} durchgeführten Analyse des \ac{föe} lassen sich auf Basis des Systems des \ac{ieb} keine konkreten Schlüsse für die praktische Ausarbeitung eines neuen Systems ziehen, da zum Zeitpunkt der Ausarbeitung dieser Arbeit ebenfalls eine Word"=Antragsvorlage zum Einsatz kommt. Als möglicher Anhaltspunkt dient jedoch das in Abbildung \ref{fig:prozess-ethikantrag-ieb} auf Seite \pageref{fig:prozess-ethikantrag-ieb} dargestellte Prozessdiagramm, welches in adaptierter Form in die Neuentwicklung des Systems als Hilfestellung einfließen könnte, um Antragssteller:innen den gesamten Prozess der \ac{fek} der \ac{fhv} übersichtlich darstellen zu können. Die geplanten Lösungsansätze des \ac{ieb} zur Ablösung der bisherigen Vorlage bieten zudem einen Anhaltspunkt, wie eine ähnliche Umsetzung im Rahmen dieser Masterarbeit aussehen könnte.
+Vergleichbar zu der in Abschnitt \ref{sub-sec:vorlage-föe} ab Seite \pageref{sub-sec:vorlage-föe} durchgeführten Analyse des \ac{föe} lassen sich auf Basis des Systems des \ac{ieb} keine konkreten Schlüsse für die praktische Ausarbeitung eines neuen Systems ziehen, da zum Zeitpunkt der Ausarbeitung dieser Arbeit ebenfalls eine Word"=Antragsvorlage zum Einsatz kommt. Als möglicher Anhaltspunkt dient jedoch das in Abbildung \ref{fig:prozess-ethikantrag-ieb} auf Seite \pageref{fig:prozess-ethikantrag-ieb} dargestellte Prozessdiagramm, welches in adaptierter Form in die Neuentwicklung des Systems als Hilfestellung einfließen könnte, um Antragsteller:innen den gesamten Prozess der \ac{fek} der \ac{fhv} übersichtlich darstellen zu können. Die geplanten Lösungsansätze des \ac{ieb} zur Ablösung der bisherigen Vorlage bieten zudem einen Anhaltspunkt, wie eine ähnliche Umsetzung im Rahmen dieser Masterarbeit aussehen könnte.
 
 \subsection{Einreichplattform der FH Campus Wien}
 \label{sub-sec:einreichplattform-fh-campus-wien}
@@ -737,7 +746,7 @@ Die FH Campus Wien verfügt seit 2021 über eine eigene Ethikkommission\footnote
 \subsubsection*{Allgemeiner Aufbau}
 \label{sub-sub-sec:fh-cw-allgemeiner-aufbau}
 
-Die Ethikkommission der FH Campus Wien setzt auf eine online abrufbare Einreichplattform\footnote{Einreichplattform für Anträge bei der Ethikkommission der FH Campus Wien (\url{https://ethikantrag.fh-campuswien.org/})}, die von Antragssteller:innen genutzt werden kann, um Ethikanträge digital erstellen und einreichen zu können. \cite{ethikkommission_fh_campus_wien_fh_2023} Die Einreichplattform ermöglicht Antragstellenden dabei die Verwaltung und Einsichtnahme von offenen, eingereichten und abgeschlossenen Ethikanträgen. Abbildung \ref{fig:startseite-einreichplattform-fhcw} auf Seite \pageref{fig:startseite-einreichplattform-fhcw} zeigt die Start- beziehungsweise Übersichtsseite im eingeloggtem Zustand, auf der die Anträge in den drei genannten Kategorien eingesehen werden können. Neben der Möglichkeit zur Einsicht in bestehende Anträge bietet die Startseite auch die Möglichkeit, einen neuen Ethikantrag zu stellen sowie über die Menü-Leiste zum Download-Bereich zu navigieren.
+Die Ethikkommission der FH Campus Wien setzt auf eine online abrufbare Einreichplattform\footnote{Einreichplattform für Anträge bei der Ethikkommission der FH Campus Wien (\url{https://ethikantrag.fh-campuswien.org/})}, die von Antragsteller:innen genutzt werden kann, um Ethikanträge digital erstellen und einreichen zu können. \cite{ethikkommission_fh_campus_wien_fh_2023} Die Einreichplattform ermöglicht Antragstellenden dabei die Verwaltung und Einsichtnahme von offenen, eingereichten und abgeschlossenen Ethikanträgen. Abbildung \ref{fig:startseite-einreichplattform-fhcw} auf Seite \pageref{fig:startseite-einreichplattform-fhcw} zeigt die Start- beziehungsweise Übersichtsseite im eingeloggtem Zustand, auf der die Anträge in den drei genannten Kategorien eingesehen werden können. Neben der Möglichkeit zur Einsicht in bestehende Anträge bietet die Startseite auch die Möglichkeit, einen neuen Ethikantrag zu stellen sowie über die Menü-Leiste zum Download-Bereich zu navigieren.
 
 \begin{figure}[ht]
     \centering
@@ -804,12 +813,12 @@ Neben den bereits genannten Punkten ist bei der Analyse des Prozesses und des On
 
 Die Einreichplattform der Ethikkommission der FH Campus Wien bietet in verschiedenen Bereichen Anhaltspunkte und Ideen, wie eine etwaiger Lösungsansatz im Rahmen dieser Masterarbeit aussehen könnte.
 
-Unabhängig vom inhaltlichen Aspekt des Ethikantrages, der im Regelfall von der jeweiligen (Forschungs-)Ethikkommission bestimmt wird, sind vor allem das nahtlose Zwischenspeichern (trotz der Limitierungen) und freie Navigieren zwischen den einzelnen Abschnitten, das freie Hinzufügen und Hochladen von Dokumenten sowie der Fokus auf die wesentlichen Bestandteile entsprechende Anhaltspunkte. Der im Download-Bereich zur Verfügung gestellte Kriterienkatalog, um festlegen zu können, ob ein Ethikantrag notwenig ist, könnte ebenso Einfluss auf den den Lösungsansatz nehmen, da ähnliche Hilfestellungen auch in Abschnitt \ref{sub-sub-sec:kommunikation-email} auf Seite \pageref{sub-sub-sec:kommunikation-email} von Antragssteller:innen angesprochen wurden.
+Unabhängig vom inhaltlichen Aspekt des Ethikantrages, der im Regelfall von der jeweiligen (Forschungs-)Ethikkommission bestimmt wird, sind vor allem das nahtlose Zwischenspeichern (trotz der Limitierungen) und freie Navigieren zwischen den einzelnen Abschnitten, das freie Hinzufügen und Hochladen von Dokumenten sowie der Fokus auf die wesentlichen Bestandteile entsprechende Anhaltspunkte. Der im Download-Bereich zur Verfügung gestellte Kriterienkatalog, um festlegen zu können, ob ein Ethikantrag notwenig ist, könnte ebenso Einfluss auf den den Lösungsansatz nehmen, da ähnliche Hilfestellungen auch in Abschnitt \ref{sub-sub-sec:kommunikation-email} auf Seite \pageref{sub-sub-sec:kommunikation-email} von Antragsteller:innen angesprochen wurden.
 
 \subsection{Ethics Committee System}
 \label{sub-sec:ecs}
 
-Das \enquote{\ac{ecs}} beziehunsweise \enquote{Ethic Commission System} -- beide Namen werden mehrfach genannt -- wird von den Medizinischen Universitäten Wien, Innsbruck und Graz sowie weiterer Einrichtungen entwickelt und ist ein Webservice, der das Erstellen und Einreichen von Ethikanträgen zu klinischen Studien, den Votums-Prozess sowie das dazugehörige Antragswesen in einem System vereint. \cite{medizinische_universitat_wien_ecs_2021-1}
+Das \enquote{\ac{ecs}} beziehunsweise \enquote{Ethic Commission System} -- beide Namen werden mehrfach genannt -- wird von den Medizinischen Universitäten Wien, Innsbruck und Graz sowie weiterer Einrichtungen entwickelt und ist ein Webservice, der das Erstellen und Einreichen von Ethikanträgen zu klinischen Studien, den Votums-Prozess sowie das dazugehörige Antragswesen in einem System vereint. \cite{medizinische_universitat_wien_ecs-docs_about-2021}
 
 \medskip
 
@@ -827,11 +836,11 @@ Die Ethikkommissionen der Medizinischen Universitäten Wien und Innsbruck akzept
 \subsubsection*{Technischer Aufbau}
 \label{sub-sub-sec:ecs-technischer-aufbau}
 
-Die Entwickler:innen des \acl{ecs} stellen, als einziges der in dieser Arbeit bisher analysierten Systeme auf Online-Basis, den Quellcode zur gesamten Applikation offen zur Verfügung\footnote{\ac{ecs} Quellcode online abrufbar auf GitHub (\url{https://github.com/ecs-org/ecs})} und bieten zusätzlich eine ausführliche Online-Dokumentation sowohl für die Nutzung als auch für die Entwicklung an. \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_development_2021, medizinische_universitat_wien_installationusage_2021}
+Die Entwickler:innen des \acl{ecs} stellen, als einziges der in dieser Arbeit bisher analysierten Systeme auf Online-Basis, den Quellcode zur gesamten Applikation offen zur Verfügung\footnote{\ac{ecs} Quellcode online abrufbar auf GitHub (\url{https://github.com/ecs-org/ecs})} und bieten zusätzlich eine ausführliche Online-Dokumentation sowohl für die Nutzung als auch für die Entwicklung an. \cite{medizinische_universitat_wien_ecs-docs_about-2021, medizinische_universitat_wien_development_2021, medizinische_universitat_wien_installationusage_2021}
 
 \medskip
 
-Vergleichbar zur Einreichplattform der FH Campus Wien (siehe Abschnitt \ref{sub-sec:einreichplattform-fh-campus-wien} ab Seite \pageref{sub-sec:einreichplattform-fh-campus-wien}) basiert die Antragsstellung von Ethikanträgen, aus Sicht von Antragssteller:innen, aus mehreren Formular-Masken, die sowohl mit Freitext-Feldern, Kontrollkästchen als auch Dropdown-Elementen arbeiten und dabei in 12 verschiedene Kategorien beziehungsweise Unterpunkte aufgeteilt sind. Ebenfalls ähnlich zur Einreichplattform können dem Ethikantrag über den Unterpunkt \enquote{Unterlagen} im \ac{ecs} beliebig viele Dokumente und Unterlagen hinzugefügt werden, wobei auch hier verschiedene Kategorien und Typen als mögliche Anhaltspunkte bereitgestellt werden. Im Gegensatz zur Einreichplattform der FH Campus Wien findet jedoch keine automatische Speicherung der eingegebenen Daten und Informationen statt -- das (Zwischen-)Speicher der Daten erfolgt im \ac{ecs} über einen dedizierten Button im rechten oberen Bereich der Benutzeroberfläche. Das freie Wechseln zwischen den einzelnen Abschnitten ist während der Bearbeitung des Antrages dennoch möglich.
+Vergleichbar zur Einreichplattform der FH Campus Wien (siehe Abschnitt \ref{sub-sec:einreichplattform-fh-campus-wien} ab Seite \pageref{sub-sec:einreichplattform-fh-campus-wien}) basiert die Antragsstellung von Ethikanträgen, aus Sicht von Antragsteller:innen, aus mehreren Formular-Masken, die sowohl mit Freitext-Feldern, Kontrollkästchen als auch Dropdown-Elementen arbeiten und dabei in 12 verschiedene Kategorien beziehungsweise Unterpunkte aufgeteilt sind. Ebenfalls ähnlich zur Einreichplattform können dem Ethikantrag über den Unterpunkt \enquote{Unterlagen} im \ac{ecs} beliebig viele Dokumente und Unterlagen hinzugefügt werden, wobei auch hier verschiedene Kategorien und Typen als mögliche Anhaltspunkte bereitgestellt werden. Im Gegensatz zur Einreichplattform der FH Campus Wien findet jedoch keine automatische Speicherung der eingegebenen Daten und Informationen statt -- das (Zwischen-)Speicher der Daten erfolgt im \ac{ecs} über einen dedizierten Button im rechten oberen Bereich der Benutzeroberfläche. Das freie Wechseln zwischen den einzelnen Abschnitten ist während der Bearbeitung des Antrages dennoch möglich.
 
 Wie in Abbildung \ref{fig:ecs-studien-nachrichten-notizen} auf Seite \pageref{fig:ecs-studien-nachrichten-notizen} zu sehen ist, bietet das \ac{ecs} den antragsstellenden Personen, neben der konkreten Möglichkeit zur Einreichung von Ethikantrage, zudem eine Nachrichten- sowie Notiz-Funktion an, die für den Erhalt von Informationen sowie zum erstellen persönlicher Notizen genutzt werden kann.
 
@@ -847,12 +856,12 @@ Wie in Abbildung \ref{fig:ecs-studien-nachrichten-notizen} auf Seite \pageref{fi
     \label{fig:ecs-studien-nachrichten-notizen}
 \end{figure}
 
-Das \acl{ecs} basiert dabei auf einer mittels Python\footnote{Python (\url{https://www.python.org/})} und dem dafür zur Verfügung stehenden Webframework Django\footnote{Django Webframework (\url{https://www.djangoproject.com/})} umgesetzten Webapplikation, welche die Applikationsdaten in einer mit dem PostgreSQL\footnote{PostgreSQL (\url{https://www.postgresql.org/)}} \ac{dbms} verwalteten Datenbank ablegt. Die Webapplikation beziehungsweise die Python-Umgebung läuft dabei auf einem Ubuntu Xenial Cloud Image\footnote{Ubuntu 16.04 LTS (Xenial Xerus) (\url{https://cloud-images.ubuntu.com/releases/server/xenial/release/})} der Version \texttt{16.04 LTS}. Das \ac{ecs} bedient sich zusätzlich weiterer Technologien, um die gesamte Anwendung (und auch die Anwendungsfälle, die in dieser Analyse außen vor gelassen werden) anbieten zu können. In Abbildung \ref{fig:ecs-service-architektur} auf Seite \pageref{fig:ecs-service-architektur} ist ersichtlich, welche weiteren Technologien, Frameworks und Services zum Einsatz kommen und die Abbildung gibt gleichzeitig auch ein Überblick über die Service-Architektur der gesamten Web-Applikation. \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_ecs_2021}
+Das \acl{ecs} basiert dabei auf einer mittels Python\footnote{Python (\url{https://www.python.org/})} und dem dafür zur Verfügung stehenden Webframework Django\footnote{Django Webframework (\url{https://www.djangoproject.com/})} umgesetzten Webapplikation, welche die Applikationsdaten in einer mit dem PostgreSQL\footnote{PostgreSQL (\url{https://www.postgresql.org/)}} \ac{dbms} verwalteten Datenbank ablegt. Die Webapplikation beziehungsweise die Python-Umgebung läuft dabei auf einem Ubuntu Xenial Cloud Image\footnote{Ubuntu 16.04 LTS (Xenial Xerus) (\url{https://cloud-images.ubuntu.com/releases/server/xenial/release/})} der Version \texttt{16.04 LTS}. Das \ac{ecs} bedient sich zusätzlich weiterer Technologien, um die gesamte Anwendung (und auch die Anwendungsfälle, die in dieser Analyse außen vor gelassen werden) anbieten zu können. In Abbildung \ref{fig:ecs-service-architektur} auf Seite \pageref{fig:ecs-service-architektur} ist ersichtlich, welche weiteren Technologien, Frameworks und Services zum Einsatz kommen und die Abbildung gibt gleichzeitig auch ein Überblick über die Service-Architektur der gesamten Web-Applikation. \cite{medizinische_universitat_wien_ecs-docs_about-2021, medizinische_universitat_wien_ecs-handbook_development-2021}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{thesis/images/ECS_Service-Architecture.png}
-    \caption[Übersicht verwendeter Technologien und Frameworks sowie der Service-Architektur des \acl{ecs}]{Übersicht verwendeter Technologien und Frameworks sowie der Service-Architektur des \acl{ecs} \cite{medizinische_universitat_wien_ecs_2021}}
+    \caption[Übersicht verwendeter Technologien und Frameworks sowie der Service-Architektur des \acl{ecs}]{Übersicht verwendeter Technologien und Frameworks sowie der Service-Architektur des \acl{ecs} \cite{medizinische_universitat_wien_ecs-handbook_development-2021}}
     \label{fig:ecs-service-architektur}
 \end{figure}
 
@@ -860,7 +869,7 @@ Das eingesetzte Django Framework ist laut Definition der Django Software Foundat
 
 \medskip
 
-Django ist als \ac{mvt}/\ac{mvc}-Framework darauf ausgelegt, sowohl für die Domänen- und Applikationslogik im für Antragssteller:innen nicht sichtbaren Teil der Applikation (sprich dem \texttt{Model} und dem \texttt{Controller} im Sinne von \ac{mvc}) als auch für das direkt im Browser sichtbare \ac{ui} (sprich dem \texttt{View} im Sinne von \ac{mvc}) genutzt zu werden, wovon das \ac{ecs} nach grundlegender Durchsicht des Quellcodes entsprechend auch Gebrauch macht. \cite{ethics_commission_system_organization_ecs_2021}
+Django ist als \ac{mvt}/\ac{mvc}-Framework darauf ausgelegt, sowohl für die Domänen- und Applikationslogik im für Antragsteller:innen nicht sichtbaren Teil der Applikation (sprich dem \texttt{Model} und dem \texttt{Controller} im Sinne von \ac{mvc}) als auch für das direkt im Browser sichtbare \ac{ui} (sprich dem \texttt{View} im Sinne von \ac{mvc}) genutzt zu werden, wovon das \ac{ecs} nach grundlegender Durchsicht des Quellcodes entsprechend auch Gebrauch macht. \cite{ethics_commission_system_organization_ecs_2021}
 
 \subsubsection*{Inhaltlicher Aufbau}
 \label{sub-sub-sec:ecs-inhaltlicher-aufbau}
@@ -870,7 +879,7 @@ Da das \ac{ecs} sich an den vom \acl{föe} herausgegebenen Antrag sowohl inhaltl
 \subsubsection*{Ähnlichkeiten \& Auffälligkeiten}
 \label{sub-sub-sec:ähnlichkeiten-auffälligkeiten-ecs}
 
-Das \acl{ecs} verfügt als \ac{oss} über eine sehr ausführliche und detailreiche Dokumentation (siehe dazu \cite{medizinische_universitat_wien_ecs_2021-1, medizinische_universitat_wien_development_2021, medizinische_universitat_wien_installationusage_2021, medizinische_universitat_wien_ecs_2021, ethics_commission_system_organization_ecs_2021}), sowohl für die Nutzung aus Sicht als Antragssteller:in beziehungsweise Verwalter:in des Systems als auch für Entwickler:innen, die die Applikation potenziell weiterentwickeln oder betreuen möchten. Diese Hilfestellungen stehen dabei nicht nur über das Entwicklerportal zur Verfügung, sondern werden auch direkt in den jeweiligen Instanzen des Systems verlinkt und Benutzer:innen als Hilfestellung angeboten.\footnote{Siehe beispielsweise die \ac{ecs}-Instanz der Ethikkommission der Medizinischen Universität Innsbruck: \url{https://ek-mui-tirol.at/help/}}
+Das \acl{ecs} verfügt als \ac{oss} über eine sehr ausführliche und detailreiche Dokumentation (siehe dazu \cite{medizinische_universitat_wien_ecs-docs_about-2021, medizinische_universitat_wien_development_2021, medizinische_universitat_wien_installationusage_2021, medizinische_universitat_wien_ecs-handbook_development-2021, ethics_commission_system_organization_ecs_2021}), sowohl für die Nutzung aus Sicht als Antragsteller:in beziehungsweise Verwalter:in des Systems als auch für Entwickler:innen, die die Applikation potenziell weiterentwickeln oder betreuen möchten. Diese Hilfestellungen stehen dabei nicht nur über das Entwicklerportal zur Verfügung, sondern werden auch direkt in den jeweiligen Instanzen des Systems verlinkt und Benutzer:innen als Hilfestellung angeboten.\footnote{Siehe beispielsweise die \ac{ecs}-Instanz der Ethikkommission der Medizinischen Universität Innsbruck: \url{https://ek-mui-tirol.at/help/}}
 
 \medskip
 
@@ -897,7 +906,7 @@ Nichtsdestotrotz bietet das \ac{ecs}, welches von verschiedenen Ethikkommissione
 \section{Systeme ohne konkreten Bezug}
 \label{sec:systeme-ohne-bezug}
 
-Die Anforderungen an eine Neuentwicklung des Ethikantrag-Tools der \ac{fek} der \ac{fhv} werden zwar erst in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} definiert, jedoch ist bereits im Vorfeld ersichtlich, dass der Datenschutz sowie die Anpassungs- und Erweiterungsmöglichkeiten bei der potenziellen Auswahl anderer Systeme eine wichtige Rolle spielen. Dies ergibt sich sowohl aus dem Prozess als auch aus den von den Antragssteller:innen bereitgestellten Daten, mit denen die \acl{fek} arbeitet. Die nachfolgend analysierten Systeme werden daher vor allem auf diese Aspekte hin beleuchtet, neben den Möglichkeiten, die diese unabhängig davon bieten.
+Die Anforderungen an eine Neuentwicklung des Ethikantrag-Tools der \ac{fek} der \ac{fhv} werden zwar erst in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} definiert, jedoch ist bereits im Vorfeld ersichtlich, dass der Datenschutz sowie die Anpassungs- und Erweiterungsmöglichkeiten bei der potenziellen Auswahl anderer Systeme eine wichtige Rolle spielen. Dies ergibt sich sowohl aus dem Prozess als auch aus den von den Antragsteller:innen bereitgestellten Daten, mit denen die \acl{fek} arbeitet. Die nachfolgend analysierten Systeme werden daher vor allem auf diese Aspekte hin beleuchtet, neben den Möglichkeiten, die diese unabhängig davon bieten.
 
 \subsection{\aclp{cms}}
 \label{sub-sec:cms-syteme}
@@ -943,7 +952,7 @@ Neben den gängigen \acp{cms}-Lösungen gibt es sowohl von Google als auch Micro
     \label{fig:microsoft-google-forms-testformulare}
 \end{figure}
 
-Ähnlich zu den in Abschnitt \ref{sub-sec:cms-syteme} ab Seite \pageref{sub-sec:cms-syteme} behandelten \aclp{cms} stellt sich die weiterführende Umsetzung als schwierig beziehungsweise nicht möglich dar, wenn sowohl die für den Prozess notwendigen als auch die von den Antragssteller:innen sowie der \ac{fek} gewünschten Funktionalitäten umgesetzt werden sollen. Eingelangte Antworten werden bei beiden Tools aggregiert gesammelt und können lediglich als Excel-Datei exportiert und von dort aus weiter bearbeitet werden. \cite{microsoft_corporation_wie_2021, google_ireland_limited_ergebnisse_2023} Unabhängig davon stellt sich bei beiden Tools die Frage, in wie weit die hohen Anforderungen der \acl{fek} an den Datenschutz erfüllt werden können, da die schlussendliche Datenspeicherung bei den jeweiligen Tools -- in diesem Fall Microsoft beziehungsweise Google -- liegt und keine direkte Kontrolle möglich ist.\footnote{\cite{visitor_analytics_gmbh_ist_2022} erklärt in diesem Zusammenhang, dass Google Forms nur stellenweise der seit 2018 in Kraft getretenen Datenschutzgrundverordnung entspricht und neben einer vorhandenen Premium- oder Geschäftslizenz mehrere Schritte unternommen werden müssen, um Konformität gewährleisten zu können.}
+Ähnlich zu den in Abschnitt \ref{sub-sec:cms-syteme} ab Seite \pageref{sub-sec:cms-syteme} behandelten \aclp{cms} stellt sich die weiterführende Umsetzung als schwierig beziehungsweise nicht möglich dar, wenn sowohl die für den Prozess notwendigen als auch die von den Antragsteller:innen sowie der \ac{fek} gewünschten Funktionalitäten umgesetzt werden sollen. Eingelangte Antworten werden bei beiden Tools aggregiert gesammelt und können lediglich als Excel-Datei exportiert und von dort aus weiter bearbeitet werden. \cite{microsoft_corporation_wie_2021, google_ireland_limited_ergebnisse_2023} Unabhängig davon stellt sich bei beiden Tools die Frage, in wie weit die hohen Anforderungen der \acl{fek} an den Datenschutz erfüllt werden können, da die schlussendliche Datenspeicherung bei den jeweiligen Tools -- in diesem Fall Microsoft beziehungsweise Google -- liegt und keine direkte Kontrolle möglich ist.\footnote{\cite{visitor_analytics_gmbh_ist_2022} erklärt in diesem Zusammenhang, dass Google Forms nur stellenweise der seit 2018 in Kraft getretenen Datenschutzgrundverordnung entspricht und neben einer vorhandenen Premium- oder Geschäftslizenz mehrere Schritte unternommen werden müssen, um Konformität gewährleisten zu können.}
 
 \chapter{Anforderungen an das neue System}
 \label{chap:anforderung-neues-system}
@@ -1048,7 +1057,7 @@ Anhand der Auswertung lässt sich feststellen, dass eingebrachtes Feedback vor a
 
 \medskip
 
-Neben dem getätigten Feedback konnten in den Interviews und der Gruppendiskussion auch Aussagen klassifiziert werden, die aufgrund der expliziten Nennung nicht nur als Verbesserungsvorschlag oder Wunsch sondern als konkrete Anforderung zu definieren sind. Abbildung \ref{fig:anforderungen-x-prozess} auf Seite \pageref{fig:anforderungen-x-prozess} zeigt die Verteilung der Anforderungen in Bezug auf die einzelnen Prozessschritte. Es ist deutlich erkennbar, dass diese hauptsächlich die Erstellung und Einreichung eines Ethikantrages sowie den Prozess nach der Einreichung durch die Antragssteller:innen betreffen.
+Neben dem getätigten Feedback konnten in den Interviews und der Gruppendiskussion auch Aussagen klassifiziert werden, die aufgrund der expliziten Nennung nicht nur als Verbesserungsvorschlag oder Wunsch sondern als konkrete Anforderung zu definieren sind. Abbildung \ref{fig:anforderungen-x-prozess} auf Seite \pageref{fig:anforderungen-x-prozess} zeigt die Verteilung der Anforderungen in Bezug auf die einzelnen Prozessschritte. Es ist deutlich erkennbar, dass diese hauptsächlich die Erstellung und Einreichung eines Ethikantrages sowie den Prozess nach der Einreichung durch die Antragsteller:innen betreffen.
 
 \begin{figure}[ht]
     \centering
@@ -1243,6 +1252,170 @@ Alle definierten Anforderungen finden sich in den ersten beiden Quadranten wiede
 
 Im Zusammenhang mit der Priorisierung kann Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3} genauer betrachtet und möglicherweise eine Zeile nach unten verschoben werden. Die inhaltliche Ausarbeitung des Ethikantrags liegt letztendlich bei der \ac{fek} der \ac{fhv} und kann während dieser Umsetzung nur begrenzt angepasst werden. Dennoch wird diese Anforderung in derselben Priorisierungsstufe beibehalten, da sie technische Implikationen für zukünftige Änderungen mit sich bringt.
 
+\chapter{Ausarbeitung \& Umsetzung des Prototyps}
+\label{chap:ausarbeitung-umsetzung-prototyp}
+
+Anhand der Analyse des Nutzerkontextes und der Definition konkreter Anforderungen (siehe dazu Kapitel \ref{chap:user-centered-design} ab Seite \pageref{chap:user-centered-design} sowie konkret die in Abschnitt \ref{sec:ucd-verknüpfung-arbeit} ab Seite \pageref{sec:ucd-verknüpfung-arbeit} definierten Verknüpfungen mit den Kapiteln dieser Arbeit) ist es im nächsten Schritt nun möglich, mit der Umsetzung eines ersten Konzeptes sowie des darauf aufbauenden, initialen Prototyps zu beginnen.
+
+Das folgende Kapitel beschäftigt sich im Zuge dessen daher sowohl mit dem Aspekt des \aclp{ui} sowie der \ac{ux}, der verwendeten Design-Elemente und der zur Verfügung stehenden Funktionalitäten als auch mit der zugrundeliegenden technischen Umsetzung. Dabei wird jeweils begründet, warum und weshalb welche Ansätze und Herangehensweisen gewählt wurden und welche möglichen (langfristigen) Implikationen diese haben.
+
+\section{Wahl der technischen Basis}
+\label{sec:ausarbeitung-wahl-technische-basis}
+
+Um das Konzept beziehungsweise den angedachten Prototyp umsetzen zu können, muss grundlegend eine Entscheidung getroffen werden, welche technische Basis für die Entwicklung und Umsetzung der in Abschnitt \ref{sec:definition-anforderungen} ab Seite \pageref{sec:definition-anforderungen} definierten Anforderungen verwendet werden soll. Die in Abschnitt \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} durchgeführte Analyse von anderen Prozessen und Systemen dient dabei als Grundlage, um eine begründete weiterführende Entscheidung treffen zu können. Die schlussendliche Auswahl beschränkt sich dabei jedoch nicht ausschließlich auf die analysierten Systeme, um eine Auswahl darunter zu treffen, sondern setzt sich kritisch mit den jeweiligen Gegebenheiten auseinander.
+
+\subsubsection*{Systeme mit mit Fokus auf Ethikanträgen}
+\label{sub-sub-sec:technische-basis-fokus-ethikanträge}
+
+Vor allem das \acl{ecs} der Medizinischen Universitäten Wien, Innsbruck und weiterer Einrichtungen sticht als System mit direkter Verbindung zum Antragswesen von Ethikanträgen als mögliche Basis hervor. Der in Abschnitt \ref{sub-sec:ecs} ab Seite \pageref{sub-sec:ecs} angesprochene Funktionsumfang und Detaillierungsgrad des Systems stellt auf den ersten Blick eine geeignte Ausgangsposition dar, um die entsprechenden Anpassungen für die definierten Anforderungen vornehmen zu können.
+
+Bei genauerer Betrachtung der technischen Gegebenheiten (welche im genannten Abschnitt in Bezug auf die \ac{dx} nur teilweise aufgearbeitet wurden) differenziert sich dieses Bild jedoch:
+\begin{itemize}
+    \item Das \ac{ecs} setzt als Basis des Applikations-Stack auf ein Ubuntu-Image der Version \texttt{16.04 LTS}. Diese Version wurde erstmals im Jahr 2016 veröffentlicht und enthält laut dem Entwickler Canonical bis Anfang 2026 Sicherheitsupdates im Rahmen des sogenannten \textit{Extended Security Maintenance} Programms -- das letzte verfügbare Update, Version \texttt{16.04.7}, wurde jedoch im August 2020 veröffentlicht. \cite{medizinische_universitat_wien_ecs-handbook_development-2021, canonical_ltd_ubuntu_2023, canonical_ltd_ubuntu_2023-1}\\
+    \textbf{Schlussfolgerung:} Es ist davon auszugehen, dass eine Aktualisierung des zugrundeliegenden Betriebssystems auf den aktuellsten Stand (Version \texttt{22.04 LTS} mit initialer Veröffentlichung im April 2022) mit erheblichem Aufwand verbunden ist und bei zahlreichen Abhängigkeiten der Applikation zu Komplikationen führen wird.
+    \item Das \ac{ecs} ist auf zwei Git-Projekte aufgeteilt, die insgesamt über 8.000 Commits in den Repositories aufweisen, welche die Hauptapplikation mit über 196.000 Zeilen Code\footnote{196.780 Zeilen Code; ermittelt anhand von \cite{ethics_commission_system_organization_ecs_2021} und dem Befehl \texttt{git ls-files | xargs wc -l}} beinhalten. \cite{medizinische_universitat_wien_development_2021, ethics_commission_system_organization_ecs_2021, ethics_commission_system_organization_ecs-appliance_2021}\\
+    \textbf{Schlussfolgerung:} Die erforderliche Einarbeitung in das Projekt, um die notwendigen Anpassungen anhand der Anforderungen vornehmen, nicht benötigte Funktionalitäten evaluieren und entfernen sowie neue Möglichkeiten hinzufügen zu können, würde den Umfang dieser Masterarbeit deutlich überschreiten.
+    \item Das \ac{ecs} ist auf eine Nutzung von 20 bis hin zu mehreren Hundert Anträgen pro Monat ausgelegt. Der benötigte Speicherplatz bei 20 Anträgen pro Monat wird pro zehn Jahre auf zirka 92 GB geschätzt, während die Entwicklungs-Instanz bereits mindestens 10 GB Speicherplatz benötigt. \cite{medizinische_universitat_wien_ecs-handbook_requirements-2021, ethics_commission_system_organization_ecs_2021}\\
+    \textbf{Schlussfolgerung:} Der genannte Speicherbedarf entspricht im produktiven Einsatz zwar keinem außergewöhnlich hohem Verbrauch, gerade für eine Entwicklungsumgebung spielt der Speicherplatz und damit auch der \ac{dx} jedoch eine wichtige Rolle.
+\end{itemize}
+
+Unter Berücksichtigung der technischen Analyse in Abschnitt \ref{sub-sec:ecs} ab Seite \pageref{sub-sec:ecs} sowie der bisher genannten Punkte wird deutlich, dass das \acl{ecs} eine ausgereifte und umfangreiche Software"=Lösung für das Erstellen und Bearbeiten von Ethikanträgen darstellt. Vor allem aufgrund der zeitlichen Begrenzungen, die mit der Entwicklung eines initialen Prototyps für die in dieser Arbeit definierten Anforderungen einhergehen, kann das \ac{ecs} jedoch nicht als Basis für die Umsetzung der angedachten Funktionen herangezogen werden.
+
+\subsubsection*{Systeme ohne konkreten Bezug}
+\label{sub-sub-sec:technische-basis-systeme-ohne-bezug}
+
+Neben den Systemen mit konkreten Bezug, wovon lediglich das \ac{ecs} als quelloffene Software"=Lösung als mögliche Basis zur Verfügung steht, behandelt Abschnitt \ref{sec:systeme-ohne-bezug} ab Seite \pageref{sec:systeme-ohne-bezug} mehrere Systeme, die eine Umsetzung von Formularen und einem damit verbundenen Antragswesen grundlegend ermöglichen. Bei genauerer Betrachtung und der Einbeziehung der definierten Anforderungen können jedoch auch diese Systeme für die Umsetzung ausgeschlossen werden:
+\begin{itemize}
+    \item WordPress ist als \ac{cms} primär darauf ausgelegt, benutzerdefinierte Inhalte wie beispielsweise Blog-Artikel oder statische Seiten darzustellen. Wie die Analyse zeigt, werden Plugins und Erweiterungen von Drittanbietern benötigt, um grundlegende Formular-Funktionalitäten bieten zu können. Gerade in Bezug auf die Komplexität der Anforderungen ist nicht ausreichend gewährleistet, dass die zur Verfügung stehenden Erweiterungen diese auch jederzeit erfüllen können, während die Anpassung und Weiterentwicklung von proprietären Erweiterungen eng mit der Unterstützung des jeweiligen Anbieters verknüpft ist, die ebenfalls nicht garantiert werden kann.
+    \item Die analysierten Online Formular-Tools von Microsoft und Google können ebenso zwar theoretisch die grundlegenden Anforderungen an die Erstellung eines Online-Formulars erfüllen. Wie in der ursprünglichen Analyse bereits genannt, stellen diese Tools im weiteren Verlauf jedoch keine adäquaten Mittel zur Verfügung, um die eingelangten Daten von Antragsteller:innen in einem einheitlichen System weiter zu verarbeiten, während unabhängig davon Fragen und Unklarheiten zum Datenschutz bestehen.
+\end{itemize}
+
+\subsubsection*{Eigenentwicklung als technische Basis}
+\label{sub-sub-sec:technische-basis-eigenentwicklung}
+
+Da sich die in Kapitel \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} analysierten externen Prozesse und Systeme nur bedingt für die Umsetzung eines Konzeptes und Prototyps dieser Arbeit eignen, eine Umsetzung im Rahmen des \acl{ucd} Prozesses jedoch eine essenzielle Rolle spielt, fällt die Entscheidung in Folge dessen auf eine eigens umgesetztes System beziehungsweise eine Eigenentwicklung.
+
+\medskip
+
+Die Wahl des Technologie-Stacks -- sprich der ausgewählten Technologien und Sprachen -- fällt dabei auf das auf JavaScript/TypeScrit aufbauende \ac{spa} Webframework \textit{Angular}\footnote{Angular: \url{https://angular.io/}} für die Umsetzung des \aclp{ui}, während das auf PHP basierende Framework \textit{Symfony}\footnote{Symfony: \url{https://symfony.com/}} für die Domänenlogik sowie die Persistierung und Bereitstellung der Daten zum Einsatz kommt.
+
+Die Frameworks und Technologien wurden zum einen aufgrund bestehender Vorkenntnisse gewählt, zum anderen jedoch vor allem mit dem Hintergedanken, dass damit sowohl das \ac{ui} als auch die \enquote{im Hintergrund} liegende Logik jederzeit unabhängig voneinander ausgetauscht werden können, sollte dies notwendig sein. Genauere technische Erläuterungen und die Erhebung langfristiger Implikationen dieser Entscheidung finden sich in Abschnitt \ref{sec:ausarbeitung-technische-umsetzung} ab Seite \pageref{sec:ausarbeitung-technische-umsetzung}.
+
+\section{Erläuterung des Konzeptes}
+\label{sec:erläuterung-konzept}
+
+Für die Ausarbeitung des initialen Konzeptes sowie Prototyps wurden die in Kapitel \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} erarbeiteten Schlussfolgerungen sowie die in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} definierten Anforderungen herangezogen. Das daraus resultierende Ergebnis der ersten Umsetzung ist das Konzept der \textit{EthicsVision} Plattform. Diese Plattform ermöglicht Antragssteller:innen als ersten Schritt die Erstellung, Bearbeitung, Einreichung und Anzeige von Ethikanträgen für die \acl{fek} der \acl{fhv} in einer Webapplikation, die über jeden Webbrowser online abrufbar ist. Abbildung \ref{fig:ethics-vision-übersicht} auf Seite \pageref{fig:ethics-vision-übersicht} zeigt die Übersichtsseite der entwickelten Plattform, auf der einige der genannten Funktionen zur Verfügung stehen.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-Übersicht.png}
+    \caption{Seite \enquote{Übersicht} der EthicsVision Plattform}
+    \label{fig:ethics-vision-übersicht}
+\end{figure}
+
+Die Umsetzung als online abrufbare Webapplikation wurde aus mehreren Gründen gewählt: Sowohl die Einreichplattform der FH Campus Wien als auch das \acl{ecs} wurden in ähnlicher Form als Webapplikationen entwickelt und das System der \ac{ieb} soll ebenfalls als Webapplikation umzusetzen werden, was somit dem Stand der Technik entspricht. Darüber hinaus ermöglicht der Fokus auf Webapplikationen die Anwendung weit verbreiteter Technologien, die zum einen die Nutzung auf unterschiedlicher Endgeräten (beispielsweise einem PC, Laptop oder auch Tablet) ermöglichen und zum anderen die Funktionalitäten unabhängig vom jeweiligen Betriebssystem anbieten.
+
+\subsection{Umgesetzte Funktionalitäten}
+\label{sub-sec:umgesetzte-funtionalitäten}
+
+Bevor die technische Umsetzung im Detail erläutert wird, werden im folgenden Abschnitt die umgesetzten Funktionalitäten anhand der in Abschnitt \ref{sec:priorisierung-anforderungen} ab Seite \pageref{sec:priorisierung-anforderungen} priorisierten Anforderungen dargelegt und im Zuge dessen in Bezug gestellt. Die entwickelten Lösungen decken dabei nicht immer die gesamte Anforderung ab, was im Zuge \colorbox{yellow}{TODO} der Evaluation des Prototyps in Kapitel \ref{chap:evaluation-prototyp} ab Seite \pageref{chap:evaluation-prototyp} stellenweise noch einmal aufgegriffen wird.
+
+\subsubsection*{Anforderungen \#1 \& \#3}
+\label{sub-sub-sec:umgesetzte-funktionalitäten-anforderung-1-3}
+
+\underline{Ausgangslage:} \textit{Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag]{\#1}} gibt vor, dass klare Richtlinien und Hilfestellungen bereitgestellt werden sollen, um die Entscheidung für beziehungsweise gegen einen Ethikantrag zu unterstützen. \textit{Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3}} gibt vor, dass die unterschiedlichen Typen von Forschungsvorhaben beachtet und Fragen darauf abgestimmt werden sollen.
+
+\medskip
+
+\noindent\underline{Ausgearbeitete Funktionalität:} Die beiden Anforderungen wurden in der EthicsVision Plattform in einer gemeinsamen Software"=Lösung kombiniert. Zu Beginn jeder Antragstellung werden Antragsteller:innen Informationen zum Ethikantrag sowie Verlinkungen zu weiterführendem Informations"=Material der \ac{fek} angeboten, wie in Abbildung \ref{} auf Seite \pageref{} ersichtlich ist. Diese Informationen werden dabei unabhängig von früheren Eingaben dargestellt und sollen erste Anhaltspunkte liefern, ob die Erstellung eines Ethikantrages für das jeweilige Forschungsprojekt notwendig ist.
+
+Wie in Abbildung \ref{fig:ethics-vision-formular-assistent-finanzierung} auf Seite \pageref{fig:ethics-vision-formular-assistent-finanzierung} zu erkennen ist, werden Antragssteller:innen im nächsten Schritt bei der Erstellung eines neuen Ethikantrages unterstützt, diesen den Gegebenheiten des jeweiligen Forschungsvorhabens beziehungsweise -projektes anzupassen. Neben der Finanzierungsgrundlage wird sowohl das Studiendesign als auch die Umsetzung eines Prototyps abgefragt.\footnote{Diese drei Bereiche wurden anhand des bestehenden Antragsformulars gezielt gewählt, da die \ac{fek} abhängig vom Typ des Forschungsvorhabens spezifische Informationen zu den Rahmenbedingungen benötigt sowie unterschiedliche inhaltliche Themenblöcke des Formulars von Relevanz sind. Siehe dazu Abschnitt \ref{sec:inhaltlicher-aufbau} ab Seite \pageref{sec:inhaltlicher-aufbau}.} Abhängig von den getätigten Angaben passt sich das im Anschluss generierte Formular des Ethikantrages entsprechend an, um zielgerichtet Fragen zu den für die \ac{fek} relevanten Themenschwerpunkten zu stellen.
+
+Gleichzeitig wird der:die Antragsteller:in bei der Entscheidung für beziehungsweise gegen einen Ethikantrag anhand der getätigten Angaben unterstützt: Sofern sowohl angegeben wird, dass \textit{keine} Studie an oder mit Menschen durchgeführt wird, als auch, dass \textit{kein} Prototyp umgesetzt wird, werden Antragsteller:innen darauf hingewiesen, dass ein Antrag womöglich nicht erforderlich ist beziehungsweise keine ethische Stellungnahme abgegeben werden kann -- Abbildung \ref{} auf Seite \ref{} zeigt diese zusätzliche Hilfestellung.
+
+\medskip
+
+\noindent\underline{Abbildungen:} Abschnitt \ref{appendix:ethics-vision-formular-assistent} ab Seite \pageref{appendix:ethics-vision-formular-assistent} enthält im Zusammenhang mit den ausgearbeiteten Funktionalitäten für Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag]{\#1} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3} die entsprechenden Abbildungen zu allen Schritten des Formular"=Assistenten sowie die angesprochenen allgemeinen und auf die Angaben bezogenen Hilfestellungen im Detail.
+
+\subsubsection*{Anforderungen \#2, \#5 \& \#8}
+\label{sub-sub-sec:umgesetzte-funktionalitäten-anforderung-2-5-8}
+
+\noindent\underline{Ausgangslage:} \textit{Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#2}} gibt vor, dass Ethikanträge künftig nicht mehr per E-Mail übermittelt werden sollen. \textit{Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#5}} gibt vor, dass die Eingabe der Informationen hauptsächlich auf Zeichen beschränkt werden soll. \textit{Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#8}} gibt vor, dass formale Checks durchgeführt und automatisierbare Schritte wie der E-Mail-Versand vom System vorgenommen werden sollen.
+
+\medskip
+
+\noindent\underline{Ausgearbeitete Funktionalität:} Auch die verbleibenden drei mit \textit{Dringend und Wichtig} kategorisierten Anforderungen konnten in der Umsetzung in einer gemeinsamen Lösung abgebildet werden: Wie Eingangs des Abschnitts bereits angesprochen, ermöglicht die EthicsVision Plattform das Erstellen, Bearbeiten, Einreichen und nachträgliche Ansehen von Ethikanträgen in einer Webapplikation. Die Übermittlung der von der \ac{fek} geforderten und von Antragsteller:innen bereitgestellten Informationen wird dabei über ein individuelle generiertes Formular abgewickelt (siehe Abbildung \ref{fig:ethics-vision-formular-start} auf Seite \pageref{fig:ethics-vision-formular-start}), welches zeitgleich die geforderten Informationen auf Vollständigkeit validiert.
+
+Die zur Verfügung gestellten Eingabefelder der Formularmaske unterstützen in der ersten Umsetzung des Prototyps ausschließlich Textfelder, deren eingabe auf herkömmliche Zeichen ohne jegliche Formatierungsmöglichkeiten beschränkt sind. Strukturelemente wie beispielsweise Bulletpoins können über die Zeichen \texttt{*} oder \texttt{-} realisiert werden.
+
+Neben der automatisierten Validierung der eingegebenen Daten ist der Prototyp bereits darauf ausgelegt, in späteren Versionen automatisiert E-Mails sowohl an die \acl{fek} als auch an Antragsteller:innen zu versenden. Weitere Details dazu können dem Abschnitt \ref{sec:ausarbeitung-technische-umsetzung} ab Seite \pageref{sec:ausarbeitung-technische-umsetzung} entnommen werden.
+
+\medskip
+
+\noindent\underline{Abbildungen:} Abschnitt \ref{appendix:ethics-vision-formular} ab Seite \pageref{appendix:ethics-vision-formular} enthält im Zusammenhang mit den ausgearbeiteten Funktionalitäten für Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag]{\#2} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#5} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#8} Abbildungen zum Aussehen und der Funktionsweise des dem Ethikantrag zugrundeliegenden Formulares sowie der automatisierten Validierung bereitgestellter Daten.
+
+\subsubsection*{Anforderungen \#7 \& \#9}
+\label{sub-sub-sec:umgesetzte-funktionalitäten-anforderung-7-9}
+
+\noindent\underline{Ausgangslage:} \textit{Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#7}} gibt vor, dass nachvollziehbar sein soll, in welchem Stadium sich ein Ethikantrag befindet. \textit{Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#9}} gibt vor, dass das System die Daten für einen beliebig langen Zeitraum sichern soll.
+
+\medskip
+
+\noindent\underline{Ausgearbeitete Funktionalität:} Die beiden mit \textit{Nicht Dringend und Wichtig} kategorisierten Anforderungen wurden im Prototyp zumindest grundlegend umgesetzt: Wie Abbildung \ref{fig:ethics-vision-übersicht} auf Seite \pageref{fig:ethics-vision-übersicht} zeigt, werden die Anträge im aktuellen Prototyp in den Status \texttt{Offen} oder \texttt{Eingereicht} kategorisiert. Offene Anträge stellen dabei jene Einreichungen dar, die noch nicht final abgesendet wurden und von den Antragsteller:innen weiterhin bearbeitet werden können. Eingereichte Anträge hingegen wurden zur Begutachtung an die \ac{fek} übermittelt und können lediglich angesehen, nicht jedoch bearbeitet werden. Weitere Stadien sind zum derzeitigen Stand nicht abgebildet, wobei das System für entsprechende Erweiterungen ausgelegt ist (siehe Abschnitt \ref{sec:ausarbeitung-technische-umsetzung} ab Seite \pageref{sec:ausarbeitung-technische-umsetzung}).
+
+Die beliebig lange Speicherung der Daten findet unabhängig von der Implementierung statt, da sowohl die von den Antragsteller:innen eingegebenen Daten als auch die Fragen des Ethikantrages selbst in einer Datenbank dauerhaft gespeichert werden.
+
+\subsubsection*{Verbleibende Anforderungen}
+\label{sub-sub-sec:umgesetzte-funktionalitäten-verbleibende-anforderungen}
+
+Die verbleibenden Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#4} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#6} wurden aufgrund der Einordnung als \textit{Nicht Dringend und Wichtig} im Zuge der ersten Ausarbeitung eines Konzeptes und Prototyps nicht weiter beachtet.
+
+\subsection{\acl{ui} \& \acl{ux}}
+\label{sub-sec:ausarbeitung-ui-ux}
+
+Während der Entwicklung des Prototyps wurde nicht nur auf die technische Erfüllung der Anforderungen geachtet, sondern im Zuge dessen auch Wert auf das \acl{ui} sowie die \acl{ux} gelegt. 
+
+\subsubsection*{Designelemente \& Farben}
+\label{sub-sub-sec:designelemente-farben}
+
+Wie in den bisher erwähnten Abbildungen in Abschnitt \ref{appendix:ethics-vision} ab Seite \pageref{appendix:ethics-vision} ersichtlich ist, orientiert sich das gesamte \ac{ui} des Prototyps am Corporate Design der \ac{fhv}. Abbildung \ref{fig:fhv-cd} auf Seite \pageref{fig:fhv-cd} zeigt ein Beispiel der Elemente und Farben, die sich auch im Prototyp wiederfinden.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.8\linewidth]{thesis/images/FHV_Corporate-Design-Beispiel.png}
+    \caption[Beispiele für das Corporate Design der \acl{fhv}]{Beispiele für das Corporate Design der \acl{fhv} \cite{fachhochschule_vorarlberg_gmbh_and_2022}}
+    \label{fig:fhv-cd}
+\end{figure}
+
+Primär wurden vor allem die Farben\footnote{Die jeweiligen HEX-Farbcodes sowie Bezeichnungen wurden vom Quellcode von \cite{fachhochschule_vorarlberg_gmbh_fachhochschule_2023}, der über gängige Webbrowser frei eingesehen werden kann, übernommen.}
+\begin{itemize}
+    \item \coloredSquare{97cff1} \texttt{blue (\#97CFF1)},
+    \item \coloredSquare{ffdc5f} \texttt{yellow (\#FFDC5F)} sowie
+    \item \coloredSquare{c0a9d2} \texttt{purple (\#C0A9D2)}
+\end{itemize}
+
+\noindent übernommen, die zum einen für den Header und Footer sowie das Seitenmenü und verschiedene Aktions"=Buttons zum Einsatz kommen. Ebenso kommt das Logo der \ac{fhv} in Form des horizontal und vertikal gespiegelten Buchstabens \texttt{F} im Footer als Designelement zum Einsatz.
+
+\subsubsection*{Automatisches Speichern}
+ \label{sub-sub-sec:automatsiches-speichern}
+
+ Ähnlich zur teilweise automatischen Speicherung der Einreichplattform der FH Campus Wien (siehe Abschnitt \ref{sub-sec:einreichplattform-fh-campus-wien} ab Seite \pageref{sub-sec:einreichplattform-fh-campus-wien}) werden die im Formular eingegeben Daten und Informationen der Antragsteller:innen automatisch zwischengespeichert. Die Zwischenspeicherung erfolgt dabei unabhängig vom geöffneten Themenblock und soll die \ac{ux} dahingehend verbessern, dass der Verlust von Daten auf ein absolutes Minimum reduziert wird. Der Fokus der Antragsteller:innen soll dadurch auf der Ausarbeitung des Ethikantrages liegen, während technische Hürden keine Rolle spielen sollen.
+
+\section{Technische Umsetzung}
+\label{sec:ausarbeitung-technische-umsetzung}
+
+\subsection{Infrastruktur}
+\label{sub-sec:ausarbeitung-infrastruktur}
+
+\subsection{Backend}
+\label{sub-sec:ausarbeitung-backend}
+
+\subsection{Frontend}
+\label{sub-sec:ausarbeitung-frontend}
+
+\chapter{Evaluation des Prototyps}
+\label{chap:evaluation-prototyp}
+
 % Literaturverzeichnis
 \clearpage
 \phantomsection
@@ -1265,7 +1438,7 @@ Anhang \ref{appendix:rückmeldung-fek} ab Seite \pageref{appendix:rückmeldung-f
 
 \subsubsection*{Anmerkungen}
 \label{appendix:anmerkungen-eingereichter-ethikantrag}
-Die übermittelte Version des Ethikantrages wurde sowohl von Karin Trommelschläger, MSc in der Funktion als Betreuerin dieser Masterarbeit als auch vom Antragssteller unterschrieben. Neben der Schwärzung der E-Mail-Adresse und der Telefonnummer wurden die Unterschriften in der angehängten Version für eine verbesserte Lesbarkeit entfernt.
+Die übermittelte Version des Ethikantrages wurde sowohl von Karin Trommelschläger, MSc in der Funktion als Betreuerin dieser Masterarbeit als auch vom Antragsteller unterschrieben. Neben der Schwärzung der E-Mail-Adresse und der Telefonnummer wurden die Unterschriften in der angehängten Version für eine verbesserte Lesbarkeit entfernt.
 
 \includepdf[pages=-]{documents/Luidold_Ethikantrag.pdf}
 
@@ -1387,7 +1560,7 @@ Jetzt würde ich direkt schon einmal ganz frech mit der ersten Frage starten, di
 
 \textbf{Interviewpartner:in A:} Ja, ich denke wir hätten es eventuell nicht unbedingt machen müssen, aber es waren doch Studierende mit einbezogen, wo eventuell, ja sagen wir, Schaden entstehen hätte können, wenn jemandem schwindelig wird. Wir haben ja Augmented Reality Brillen im Unterricht eingesetzt und weil wir mit Gruppen aus der Schweiz zusammengearbeitet haben, und die Schweizer hätten auf jeden Fall einen Ethikantrag stellen müssen, haben wir als Lead gesagt, wir übernehmen das, da wir selber die Ethikkommission bei uns an der Fachhochschule haben.
 
-\textbf{Dominic:} Okay. Und nachdem Sie den Ethikantrag jetzt gestellt haben und in dem Fall auch den Lead übernommen haben, weil es die Schweizer Kolleg:innen eh gebraucht hätten, können Sie mir einmal den grundlegenden Prozess aus Ihrer Sicht als Antragssteller:in beschreiben, wie denn so ein Ethikantrag abläuft? Von der Erstellung hin bis zur Einreichung einfach die ganzen Schritte, die Sie da vielleicht noch im Kopf haben.
+\textbf{Dominic:} Okay. Und nachdem Sie den Ethikantrag jetzt gestellt haben und in dem Fall auch den Lead übernommen haben, weil es die Schweizer Kolleg:innen eh gebraucht hätten, können Sie mir einmal den grundlegenden Prozess aus Ihrer Sicht als Antragsteller:in beschreiben, wie denn so ein Ethikantrag abläuft? Von der Erstellung hin bis zur Einreichung einfach die ganzen Schritte, die Sie da vielleicht noch im Kopf haben.
 
 \textbf{Interviewpartner:in A:} Ja, das war jetzt schon wieder relativ lange her. Also ich denke, dass ich Kontakt aufgenommen habe mit \textit{der Ethikkommission}\footnote{Im Interview wurde an dieser Stelle ein konkreter Name genannt. Im Sinne des Datenschutzes findet sich hier eine sinngemäße Verallgemeinerung wieder.} und das ist ja dann das Prozedere, das beschrieben ist, dass es klare Vorgaben gibt. Die habe ich dann alle eingereicht, was notwendig war, und das, was noch gefehlt hat, habe ich in diesem Zeitraum noch nachgereicht. Dann gab es ein Feedback, ein Votum von der Ethikkommission und das habe ich beziehungsweise haben wir dann als Gruppe, ich habe das ja nicht alleine gemacht, mit eingearbeitet und die Studierenden informiert und das alles aufeinander abgestimmt. Das, was wir überarbeitet haben, die Änderungen haben wir dann tatsächlich der Ethikkommission noch einmal vorgelegt, sodass sie sehen, dass das, was sie verlangt haben, wir dann auch wirklich geändert haben.
 
@@ -1395,7 +1568,7 @@ Jetzt würde ich direkt schon einmal ganz frech mit der ersten Frage starten, di
 
 \textbf{Interviewpartner:in A:} Grundlegend ist es für mich verständlich gewesen. Es ist natürlich ein Aufwand, aber ich fand es für mich schon klar strukturiert. Ich wusste schon, was ich zu machen hatte und ich denke, dass es schon auch gerechtfertigt ist von der Ethikkommission einen gewissen Level oder Standard einzuhalten, den man auch erbringen muss, denn es ist ja auch ein Gütesiegel, das sie vergeben. Ich weiß nicht mehr, ob mir im Einzelnen etwas unklar war, aber wenn habe ich mich an \textit{die Ethikkommission}\footnote{Im Interview wurde an dieser Stelle ein konkreter Name genannt. Im Sinne des Datenschutzes findet sich hier eine sinngemäße Verallgemeinerung wieder.} gewandt und nachgefragt. Aber es ist schon klar beschrieben.
 
-\textbf{Dominic:} Und gerade eine Frage dazu: In dem Fall, nachdem der Prozess für Sie nicht unbedingt unverständlich war, würden Sie trotzdem vielleicht Punkte daran ändern oder sagen Sie der Prozess an sich ist soweit eigentlich klar oder in sich schlüssig oder sehen Sie da, als jemand der wirklich einen Antrag gestellt hat, aus der Perspektive als Antragssteller:in Punkte, die Sie einfach noch einmal anders handhaben würden, wenn Sie persönlich in der Forschungsethik-Kommission wären?
+\textbf{Dominic:} Und gerade eine Frage dazu: In dem Fall, nachdem der Prozess für Sie nicht unbedingt unverständlich war, würden Sie trotzdem vielleicht Punkte daran ändern oder sagen Sie der Prozess an sich ist soweit eigentlich klar oder in sich schlüssig oder sehen Sie da, als jemand der wirklich einen Antrag gestellt hat, aus der Perspektive als Antragsteller:in Punkte, die Sie einfach noch einmal anders handhaben würden, wenn Sie persönlich in der Forschungsethik-Kommission wären?
 
 \textbf{Interviewpartner:in A:} Puh. Das weiß ich jetzt eigentlich auch nicht mehr. Ich denke, ich glaube es ist alles in Papierform gelaufen beziehungsweise Dateien hin und her geschickt. Vielleicht wäre das eine Vereinfachung, wenn man das alles in digitaler Form einreichen kann, dass das nicht per E-Mail hin und her geschickt werden muss. Das wäre vielleicht eine Möglichkeit, wie man den Prozess vereinfachen könnte.
 
@@ -1413,7 +1586,7 @@ Jetzt würde ich direkt schon einmal ganz frech mit der ersten Frage starten, di
 
 \textbf{Dominic:} Also würden Sie konkret zusammenfassen, dass es mehr externe Faktoren sind als die Arbeit oder der Prozess der Ethikkommission selbst?
 
-\textbf{Interviewpartner:in A:} Würde ich schon sagen. Es hat auch etwas mit der Haltung des Einzelnen zu tun. Und wenn es den Prozess selber erleichtern würde, oder wie der Prozess ist, ob der aufwendig ist, schwierig, das merkt jemand, ein Antragssteller, erst dann, wenn er es tatsächlich macht und er hat dann ja nicht unbedingt einen Vergleich damit oder tatsächlich mit den Auflagen oder dem Votum, das dann die Ethikkommission abgibt. Ich würde so spontan sagen, dass wenn jemand einen Antrag stellt, dass es dann gut ist, dass das Prozedere, der Ablauf und alles, was es zu machen gibt, so einfach wie möglich ist und dass man das mit allen möglichen Designs und Technologien, und auch mit dem, was Sie vielleicht beabsichtigen, verbessern könnte, ja? Aber dass das letztendlich, diese Perfektion und von dem, was man verändert, glaube ich nicht unbedingt etwas daran ändert, ob mehr oder weniger Anträge gestellt werden. Ich glaube jetzt auch nicht, dass das der Eine oder der Andere Ethikkommission A und B, die an anderen Hochschulen oder Universitäten oder irgendwo anders sind, dass man die vergleicht. Ich kenne es von Deutschland her, dass man vielleicht schaut: wo ist es am einfachsten, wo ist der Aufwand gering oder wie viel kostet es, wie schnell geht es, dass ich irgendwo meinen Antrag durchbekomme. Teilweise kostet es ja auch wirklich Geld, das wissen wir vielleicht, oder viele, gar nicht zu schätzen, dass das aktuell oder gar nie irgendetwas kostet hier an der Fachhochschule. Aber es gibt schon auch Ethikkommissionen, wo man wirklich auch Geld zahlen muss, das dann auch im Budget vom Forschungsprojekt mit vorgesehen ist.
+\textbf{Interviewpartner:in A:} Würde ich schon sagen. Es hat auch etwas mit der Haltung des Einzelnen zu tun. Und wenn es den Prozess selber erleichtern würde, oder wie der Prozess ist, ob der aufwendig ist, schwierig, das merkt jemand, ein Antragsteller, erst dann, wenn er es tatsächlich macht und er hat dann ja nicht unbedingt einen Vergleich damit oder tatsächlich mit den Auflagen oder dem Votum, das dann die Ethikkommission abgibt. Ich würde so spontan sagen, dass wenn jemand einen Antrag stellt, dass es dann gut ist, dass das Prozedere, der Ablauf und alles, was es zu machen gibt, so einfach wie möglich ist und dass man das mit allen möglichen Designs und Technologien, und auch mit dem, was Sie vielleicht beabsichtigen, verbessern könnte, ja? Aber dass das letztendlich, diese Perfektion und von dem, was man verändert, glaube ich nicht unbedingt etwas daran ändert, ob mehr oder weniger Anträge gestellt werden. Ich glaube jetzt auch nicht, dass das der Eine oder der Andere Ethikkommission A und B, die an anderen Hochschulen oder Universitäten oder irgendwo anders sind, dass man die vergleicht. Ich kenne es von Deutschland her, dass man vielleicht schaut: wo ist es am einfachsten, wo ist der Aufwand gering oder wie viel kostet es, wie schnell geht es, dass ich irgendwo meinen Antrag durchbekomme. Teilweise kostet es ja auch wirklich Geld, das wissen wir vielleicht, oder viele, gar nicht zu schätzen, dass das aktuell oder gar nie irgendetwas kostet hier an der Fachhochschule. Aber es gibt schon auch Ethikkommissionen, wo man wirklich auch Geld zahlen muss, das dann auch im Budget vom Forschungsprojekt mit vorgesehen ist.
 
 \textbf{Dominic:} Sie haben ganz zu Beginn des Interviews schon die Dokumente, die per E-Mail hin und her geschickt werden, angesprochen, die nicht unbedingt optimal sind, wenn man das so sagen kann. Es ist eine Antragsvorlage, die natürlich mit Microsoft Word kompatibel ist und natürlich auch mit den anderen, größeren freien Texteditoren. Was waren dort vielleicht Ihre konkreten Erfahrungen mit der Antragsvorlage? Haben Sie das noch im Kopf?
 
@@ -1431,7 +1604,7 @@ Jetzt würde ich direkt schon einmal ganz frech mit der ersten Frage starten, di
 
 \textbf{Interviewpartner:in A:} Ja, genau, ja.
 
-\textbf{Dominic:} Vielleicht jetzt noch die letzte Frage, das Interview ist tatsächlich gar nicht so lange. Nachdem Sie jetzt wissen, dass ich mich mit meiner Masterarbeit mit dem ganzen Thema beschäftige, was die Anforderungen sind, was die Wünsche sind, sowohl aus Sicht der Kommission als auch aus Sicht der Antragssteller:innen. Sie haben es eh schon erwähnt, die Word-Dokumente, die Sie herunterladen und per E-Mail verschicken sind nicht ganz optimal. Gibt es irgendetwas, dass Sie sich ganz konkret wünschen würden, wo Sie sagen, wenn Sie wieder einen Ethikantrag ausfüllen, dann würde Ihnen das das Ganze noch einmal erleichtern oder vielleicht auch Hilfestellungen, die Sie sich während dem Ausfüllen gewünscht hätten oder Beispiele oder irgendetwas in die Richtung?
+\textbf{Dominic:} Vielleicht jetzt noch die letzte Frage, das Interview ist tatsächlich gar nicht so lange. Nachdem Sie jetzt wissen, dass ich mich mit meiner Masterarbeit mit dem ganzen Thema beschäftige, was die Anforderungen sind, was die Wünsche sind, sowohl aus Sicht der Kommission als auch aus Sicht der Antragsteller:innen. Sie haben es eh schon erwähnt, die Word-Dokumente, die Sie herunterladen und per E-Mail verschicken sind nicht ganz optimal. Gibt es irgendetwas, dass Sie sich ganz konkret wünschen würden, wo Sie sagen, wenn Sie wieder einen Ethikantrag ausfüllen, dann würde Ihnen das das Ganze noch einmal erleichtern oder vielleicht auch Hilfestellungen, die Sie sich während dem Ausfüllen gewünscht hätten oder Beispiele oder irgendetwas in die Richtung?
 
 \textbf{Interviewpartner:in A:} Ich weiß jetzt nicht, ob das hier passt, aber dass es vielleicht auch Textbausteine gibt. Nein, das wird nicht funktionieren. Meistens wird es ja beantwortet aus meinem Forschungsdesign heraus. Also nicht wirklich etwas. Es ist schon etwas her.
 
@@ -1464,11 +1637,11 @@ Ich würde jetzt direkt einfach mit der ersten Frage ganz frech schon starten: W
 
 \textbf{Interviewpartner:in B:} Ja, gerade wenn es um Menschen geht. Es ist natürlich immer etwas schwierig, ab wann braucht man sowas, braucht man für einen normalen Usability-Test einen Ethikantrag? Also da sind die Grenzen schon noch etwas schwammig und da wär eine Unterstützung von einem Tool sicher hilfreich das zu entscheiden, ob es überhaupt einen Ethikantrag braucht.
 
-\textbf{Dominic:} Okay. Dann würde ich direkt mit der nächsten Frage weitermachen, und zwar: Nachdem jetzt eigentlich relativ klar war, dass ein Ethikantrag gestellt werden muss, weil eben Menschen involviert sind, würde mich interessieren, wie denn die Schritte aus Sicht eines:einer Antragssteller:in, also aus deiner Sicht, aussehen, die man durchläuft, wenn man Ethikantrag einreicht? Wie da der Prozess so ist?
+\textbf{Dominic:} Okay. Dann würde ich direkt mit der nächsten Frage weitermachen, und zwar: Nachdem jetzt eigentlich relativ klar war, dass ein Ethikantrag gestellt werden muss, weil eben Menschen involviert sind, würde mich interessieren, wie denn die Schritte aus Sicht eines:einer Antragsteller:in, also aus deiner Sicht, aussehen, die man durchläuft, wenn man Ethikantrag einreicht? Wie da der Prozess so ist?
 
 \textbf{Interviewpartner:in B:} Also konkret in meinem Fall war es so, man lädt sich den Antrag runter, liest den durch, stellt fest, dass man da allerhand anderer Dinge noch vorbereiten muss damit man den Antrag ausfüllen kann und ja, bearbeitet nach und nach die Punkte, die dafür notwendig sind. Was ganz wichtig ist, ist eben, dass das Forschungsdesign schon vorher ziemlich detailliert ausgearbeitet sein muss, damit man den Antrag überhaupt ausfüllen kann.
 
-\textbf{Dominic:} Der weitere Ablauf, im Sinne was passiert wenn der Ethikantrag bei der Kommission eingereicht wurde und wie dann der Ablauf für dich als Antragssteller:in ist, das ist soweit in dem Fall auch verständlich?
+\textbf{Dominic:} Der weitere Ablauf, im Sinne was passiert wenn der Ethikantrag bei der Kommission eingereicht wurde und wie dann der Ablauf für dich als Antragsteller:in ist, das ist soweit in dem Fall auch verständlich?
 
 \textbf{Interviewpartner:in B:} Das war relativ klar dass da dann die Ethikkommission zusammentreten muss, also zunächst begutachtet werden muss von den einzelnen Mitgliedern und dann irgendwann einmal das Feedback kommt.
 
@@ -1520,7 +1693,7 @@ Ich würde jetzt direkt einfach mit der ersten Frage ganz frech schon starten: W
 
 \textbf{Interviewpartner:in B:} Und auch die Frage, wer kann denn überhaupt einen Antrag bearbeiten, gibt es da vielleicht ein Zuweisungssytem, wer bekommt diesen Antrag zur Begutachtung.
 
-\textbf{Dominic:} Ist das aus Sicht von Antragssteller:innen auch interessant, weil meistens arbeitet man ja in einem Team, wenn es um ein Forschungsprojekt geht. Wie war es bei euch, war da wirklich nur eine Person damit beschäftigt?
+\textbf{Dominic:} Ist das aus Sicht von Antragsteller:innen auch interessant, weil meistens arbeitet man ja in einem Team, wenn es um ein Forschungsprojekt geht. Wie war es bei euch, war da wirklich nur eine Person damit beschäftigt?
 
 \textbf{Interviewpartner:in B:} Bei uns ist es so, wenn wir vom \textit{Forschungszentrum}\footnote{Im Interview wurde an dieser Stelle ein konkreter Name genannt. Im Sinne des Datenschutzes findet sich hier eine sinngemäße Verallgemeinerung wieder.} einen Antrag stellen, dann dürfen natürlich nicht die \textit{Forschungszentrum}\footnote{Im Interview wurde an dieser Stelle ein konkreter Name genannt. Im Sinne des Datenschutzes findet sich hier eine sinngemäße Verallgemeinerung wieder.}-Mitglieder die in der Kommission sind darüber befinden, ob das durchgeht oder nicht. Also da gibt es die Ausschlussgründe, wenn man befangen ist.
 
@@ -1591,9 +1764,9 @@ Das Transkript des Interviews enthält beinahe 1:1 das gesprochene Wort, wobei F
 
 \textbf{Dominic:} Wenn ich das so zusammenfassen darf, es gibt im Endeffekt sehr viel gute Gründe, warum man einen Ethikantrag stellen kann und soll und auch einige Gründe, die nachvollziehbar sind, wie beispielsweise Zeit und Ressourcen und auch solche, die nicht unbedingt mit dem Ethikantrag oder der Kommission zu tun hat sondern mehr einfach wirklich gesellschaftlich verankert sind mit Definition, Verständnis und Wertschätzung von Ethik im Alltag und der Gesellschaft an sich.
 
-Mit dem Wissen im Hintergrund würde ich euch gerne mehr zum Prozess des Ethikantrages bringen und fragen, wie sieht denn der Prozess aus eurer Sicht aus, zum einen, und aus Sicht der Antragssteller:innen als andere Sichtweise? Welche Schritte durchlauft ihr und welche Schritte müssen die Antragssteller:innen ebenfalls durchlaufen? Oder wie seht denn da das Ganze aus?
+Mit dem Wissen im Hintergrund würde ich euch gerne mehr zum Prozess des Ethikantrages bringen und fragen, wie sieht denn der Prozess aus eurer Sicht aus, zum einen, und aus Sicht der Antragsteller:innen als andere Sichtweise? Welche Schritte durchlauft ihr und welche Schritte müssen die Antragsteller:innen ebenfalls durchlaufen? Oder wie seht denn da das Ganze aus?
 
-\textbf{Interviewpartner:in D:} Aus Sicht des:der Vorsitzenden gesprochen, kommen die ersten Kontaktanfragen per E-Mail, so es ist ja auf der Hompage hinterlegt. Entweder kommt jemand zurecht mit den Antragsunterlagen, also es gibt ein Antragsformular das auszufüllen ist auf Deutsch oder Englisch mit den entsprechenden Anlagen wie Informed Consent oder Fragebogeninstrumente, sodass wir uns ein Bild von diesem Forschungsvorhaben und den Methoden machen können. Entweder erreicht uns eine E-Mail mit den entsprechenden Anlagen oder aber es gibt Vorab-Fragen, die zu klären sind. Dann macht man einen formalen Check, das ist eine DIN-A4-Seite. Da schaut man, ist eine Unterschrift vom Betreuer drauf, wenn es eine Masterarbeit ist; sind alle Punkte, die wichtig sind, ausgefüllt, also ist er vollständig, sind die Anlagen dabei. Wenn ja, dann geht eine Nachricht an die Antragsstellenden wo drin steht, die Kommission wird informiert und der Bewertungs- beziehungsweise Begutachtungsprozess wird eingeleitet und eben wann die Sitzung stattfindet und wann man sich wieder austauscht. Dann geht die Mail an die Kollegen raus mit der Bitte, den Kriterienkatalog heranzuziehen, den Antrag zu sichten mit den Anlagen und entsprechend individuell eine Bewertung anhand des Kritierienkataloges vorzunehmen. In der nächsten Sitzung kommen wir dann, die stimmberechtigten Mitglieder -- das ist auch noch einmal wichtig, da wird noch einmal festgelegt, wer stimmberechtigt ist und wer nicht. Wenn jetzt jemand Antragsstellender aus der Kommission ist, dann ist klar, dass man nicht stimmberechtigt ist. Oder aber wenn man direkt als Betreuender tätig ist, oder aber, wenn man stark involviert ist in das Projekt, dann entfällt die Stimmberechtigung -- dann kommen wir in der Sitzung zusammen, diskutieren. Also der Diskurs ist entscheidend, ein entscheidendes Qualitätsmerkmal aus meiner Sicht. Der Kriterienkatalog ist immens hilfreich plus der Diskurs, der geführt wird. Dann wird in der Regel von dem:der Vorsitzenden das Gesprochene protokolliert und verfasst dann das Votum, das im Umlauf an die Kommissionsmitglieder geschickt wird, die stimmmberechtigt sind und holt noch einmal das Okay, so wie ausformuliert aussenden zu dürfen. Es werden dann vielleicht noch kleinere Korrekturen vorgenommen, dann erfolgt die Aussendung des Votums an die Antragssteller:in. Genau. Ein Votum kann eigentlich drei Formen haben. Gar keine Bedenken, keine Empfehlungen und keine Auflagen. Kam glaube ich noch nie vor, also es war mindestens eine Auflage oder eine Empfehlung.\footnote{Anmerkung: In diesem Absatz kamen mehrfach indirekt Informationen vor, die Rückschluss auf Personen möglich gemacht hätten. Diese Formulierungen wurden ohne Abänderung des ursprünglichen Inhaltes durch generische Formen und Formulierungen ersetzt.}
+\textbf{Interviewpartner:in D:} Aus Sicht des:der Vorsitzenden gesprochen, kommen die ersten Kontaktanfragen per E-Mail, so es ist ja auf der Hompage hinterlegt. Entweder kommt jemand zurecht mit den Antragsunterlagen, also es gibt ein Antragsformular das auszufüllen ist auf Deutsch oder Englisch mit den entsprechenden Anlagen wie Informed Consent oder Fragebogeninstrumente, sodass wir uns ein Bild von diesem Forschungsvorhaben und den Methoden machen können. Entweder erreicht uns eine E-Mail mit den entsprechenden Anlagen oder aber es gibt Vorab-Fragen, die zu klären sind. Dann macht man einen formalen Check, das ist eine DIN-A4-Seite. Da schaut man, ist eine Unterschrift vom Betreuer drauf, wenn es eine Masterarbeit ist; sind alle Punkte, die wichtig sind, ausgefüllt, also ist er vollständig, sind die Anlagen dabei. Wenn ja, dann geht eine Nachricht an die Antragsstellenden wo drin steht, die Kommission wird informiert und der Bewertungs- beziehungsweise Begutachtungsprozess wird eingeleitet und eben wann die Sitzung stattfindet und wann man sich wieder austauscht. Dann geht die Mail an die Kollegen raus mit der Bitte, den Kriterienkatalog heranzuziehen, den Antrag zu sichten mit den Anlagen und entsprechend individuell eine Bewertung anhand des Kritierienkataloges vorzunehmen. In der nächsten Sitzung kommen wir dann, die stimmberechtigten Mitglieder -- das ist auch noch einmal wichtig, da wird noch einmal festgelegt, wer stimmberechtigt ist und wer nicht. Wenn jetzt jemand Antragsstellender aus der Kommission ist, dann ist klar, dass man nicht stimmberechtigt ist. Oder aber wenn man direkt als Betreuender tätig ist, oder aber, wenn man stark involviert ist in das Projekt, dann entfällt die Stimmberechtigung -- dann kommen wir in der Sitzung zusammen, diskutieren. Also der Diskurs ist entscheidend, ein entscheidendes Qualitätsmerkmal aus meiner Sicht. Der Kriterienkatalog ist immens hilfreich plus der Diskurs, der geführt wird. Dann wird in der Regel von dem:der Vorsitzenden das Gesprochene protokolliert und verfasst dann das Votum, das im Umlauf an die Kommissionsmitglieder geschickt wird, die stimmmberechtigt sind und holt noch einmal das Okay, so wie ausformuliert aussenden zu dürfen. Es werden dann vielleicht noch kleinere Korrekturen vorgenommen, dann erfolgt die Aussendung des Votums an die Antragsteller:in. Genau. Ein Votum kann eigentlich drei Formen haben. Gar keine Bedenken, keine Empfehlungen und keine Auflagen. Kam glaube ich noch nie vor, also es war mindestens eine Auflage oder eine Empfehlung.\footnote{Anmerkung: In diesem Absatz kamen mehrfach indirekt Informationen vor, die Rückschluss auf Personen möglich gemacht hätten. Diese Formulierungen wurden ohne Abänderung des ursprünglichen Inhaltes durch generische Formen und Formulierungen ersetzt.}
 
 \textbf{Interviewpartner:in E:} Bisschen anstrengend.
 
@@ -1617,7 +1790,7 @@ Mit dem Wissen im Hintergrund würde ich euch gerne mehr zum Prozess des Ethikan
 
 \textbf{Interviewpartner:in F:} Wenn die Kriterien in dem Antrag nicht vorkommen, dann sind wir auch nicht zuständig. Das ist vielleicht die einzige Ergänzung noch.
 
-\textbf{Dominic:} Wenn ich den Prozess für mich noch einmal zusammenfassen darf. Ich kenne ihn zwar eh auch aus Sicht als Antragssteller, aber dennoch: Man füllt die Vorlagen beziehungsweise Dokumente soweit aus, schickt sie an den:die Vorsitzende und dann nimmt das intern im Endeffekt seinen Lauf. Wenn man ein PDF geschickt bekommt wird das wahrscheinlich weitergeschickt, ansonsten das Word-Dokument. Dann schauen es sich die Mitglieder persönlich an, nehmen Stellung, bespricht es in der Sitzung, einigt sich auf ein Votum. Dann wird das Protokoll davon als Entwurf an alle geschickt, man schaut drüber un wenn es für alle passt wird es an den den Antragsstellenden versendet. Somit wäre es für die Ethikkommission theoretisch eigentlich ab dem Zeitpunkt erledigt.
+\textbf{Dominic:} Wenn ich den Prozess für mich noch einmal zusammenfassen darf. Ich kenne ihn zwar eh auch aus Sicht als Antragsteller, aber dennoch: Man füllt die Vorlagen beziehungsweise Dokumente soweit aus, schickt sie an den:die Vorsitzende und dann nimmt das intern im Endeffekt seinen Lauf. Wenn man ein PDF geschickt bekommt wird das wahrscheinlich weitergeschickt, ansonsten das Word-Dokument. Dann schauen es sich die Mitglieder persönlich an, nehmen Stellung, bespricht es in der Sitzung, einigt sich auf ein Votum. Dann wird das Protokoll davon als Entwurf an alle geschickt, man schaut drüber un wenn es für alle passt wird es an den den Antragsstellenden versendet. Somit wäre es für die Ethikkommission theoretisch eigentlich ab dem Zeitpunkt erledigt.
 
 Jetzt kommt vielleicht eine interessante Frage. Sie kennen den Prozess in und auswendig, ich, weil ich mich jetzt relativ viel damit beschäftige mittlerweile auch ganz gut würde ich einmal behaupten. Seht ihr konkrete Punkte, die ihr am Prozess verändern würdet? Oder habt ihr den schon so weit angepasst, wie ihr denkt, dass der sinnvoll ist?
 
@@ -1627,7 +1800,7 @@ Jetzt kommt vielleicht eine interessante Frage. Sie kennen den Prozess in und au
 
 \textbf{Interviewpartner:in C:} Genau, ob das jetzt Word ist oder was auch immer oder ein Formular. Das sollte nicht das große Kriterium sein. Das große Kriterium ist, ob die Fragen alle adäquat, auch in Bezug auf den Aufwand, den man betreiben muss, um sie zu beantworten. Ehrlich gesagt, ich habe noch nie einen Antrag gestellt, ich sitze immer auf der anderen Seite, ich kann es nicht sagen. Die Beantwortung, kannst du selber dir besser geben. Alle technischen Hindernisse müssen sofort ausgeräumt werden. Da bin ich sofort dabei. Was \textit{Interviewpartner:in E} vorhin sagte, wäre jetzt ein Wandel im Prozess selber. Kann ich mir gut vorstellen, aber es müsste auch dann zeitlich sehr gut definiert sein, wie lange haben sie Zeit, was ist das System. Es darf nur nicht ausarten, es soll auch nicht ausarten. Ich mache es gern, aber es ist nicht mein Haupthobby.
 
-\textbf{Interviewpartner:in E:} Ich würde auch sagen, es braucht gar nicht mehr Ressourcen. Bei der Landes-Ethikkommission kommen wir in die Sitzung, die Sitzung die wir sonst zusammensitzen um es zu diskutieren ist einfach der:die Antragssteller:in dabei.
+\textbf{Interviewpartner:in E:} Ich würde auch sagen, es braucht gar nicht mehr Ressourcen. Bei der Landes-Ethikkommission kommen wir in die Sitzung, die Sitzung die wir sonst zusammensitzen um es zu diskutieren ist einfach der:die Antragsteller:in dabei.
 
 \textbf{Interviewpartner:in C:} Genau, dass kann ich mir gut vorstellen, ja.
 
@@ -1655,9 +1828,9 @@ Jetzt kommt vielleicht eine interessante Frage. Sie kennen den Prozess in und au
 
 \textbf{Interviewpartner:in E:} Aber dass man zehn Mal dasselbe schreibt, aus unterschiedlichen Perspektiven, das wird sich wahrscheinlich nicht komplett auflösen lassen.
 
-\textbf{Dominic:} Wenn wir eh schon beim Antrag sind, gab es von Antragssteller:innen irgendwelches Feedback oder Kritik oder Verbesserungsvorschläge, die einfach nicht eingearbeitet werden konnten, da die Word-Antragsvorlage das nicht hergibt oder die Zeit und Ressourcen gefehlt haben, also das technische Know-How?
+\textbf{Dominic:} Wenn wir eh schon beim Antrag sind, gab es von Antragsteller:innen irgendwelches Feedback oder Kritik oder Verbesserungsvorschläge, die einfach nicht eingearbeitet werden konnten, da die Word-Antragsvorlage das nicht hergibt oder die Zeit und Ressourcen gefehlt haben, also das technische Know-How?
 
-\textbf{Interviewpartner:in D:} Also von zwei Antragsstellenden gab es Feedback. Einmal, dass man in das Formular nichts hineinkopieren kann und dass der Cursor auch gesprungen ist, an einer Stelle, wo man es nicht haben wollte und dass man mit Zotero oder Literaturverwaltungsprogrammen keine Literatur einfügen konnte. Ein:e Antragssteller:in hatte auch das Problem, dass man die Unterschrift nicht hineinbekommen hat, also die digitale Unterschrift ins Dokument reinzukopieren. Das waren so die ganz konkreten Usability-Probleme, die mir zugetragen wurden, zum ausfüllen des Formulars. Viele haben sich aber durchgekämpft, Hut ab.
+\textbf{Interviewpartner:in D:} Also von zwei Antragsstellenden gab es Feedback. Einmal, dass man in das Formular nichts hineinkopieren kann und dass der Cursor auch gesprungen ist, an einer Stelle, wo man es nicht haben wollte und dass man mit Zotero oder Literaturverwaltungsprogrammen keine Literatur einfügen konnte. Ein:e Antragsteller:in hatte auch das Problem, dass man die Unterschrift nicht hineinbekommen hat, also die digitale Unterschrift ins Dokument reinzukopieren. Das waren so die ganz konkreten Usability-Probleme, die mir zugetragen wurden, zum ausfüllen des Formulars. Viele haben sich aber durchgekämpft, Hut ab.
 
 \textbf{Dominic:} Der Komfort beim Ausfüllen ist also nicht unbedingt vorhanden, was ich auch aus meiner eigenen Erfahrung bei der Antragsstellung so wahrgenommen habe. Das bringt mich zur Frage, ob das vielleicht dazu führt, dass wenn man sich dazu entschieden hat, einen Ethikantrag auszufüllen und Zweifel hat, dass die Word-Antragsvorlage dann zwar schon funktioniert aber nicht so nutzerzentriert fuktioniert, wie man sich das wünschen würde. Ob das vielleicht nicht auch dazu geführt hat, dass Forschende einen Ethikantrag nicht gestellt haben. Ich weiß nicht, ob ihr dazu Zahlen habt?
 
@@ -1695,7 +1868,7 @@ Jetzt kommt vielleicht eine interessante Frage. Sie kennen den Prozess in und au
 
 \textbf{Interviewpartner:in E:} Bulletpoints kannst du mit normalem Text auch machen.
 
-\textbf{Dominic:} Vielleicht noch für euch als Info, wie denn der Fokus meiner Arbeit aussehen wird. Ich habe es vorhin eh schon angeschnitten, es ist im Rahmen einer Masterarbeit natürlich etwas schwierig, ein ganzes System aus dem Boden zu stampfen. Es wird auf einen Prototyp erst einmal hinauslaufen und ich würde mich im ersten Anlauf wahrscheinlich wirklich darauf fokussieren, wie die Antragsstellung aussieht für die Antragssteller:innen. Im weiteren Verlauf wäre es natürlich möglich, dass man das System weiter modelliert und schafft. Aber der Fokus wird jetzt erst einmal sein, wie kann man einen Antrag erstellen, wie kann man einen Antrag einreichen. Was dahinter kommt, ist dann ausbaufähig würde ich sagen. Gibt es aber in dem abgegrenzten Bereich jetzt wirklich etwas zusätzlich, wo ihr sagen würdet, haben wir heute jetzt noch nicht erwähnt aber wäre für euch sehr wichtig, dass das irgendwie noch eingebaut wird und dass die Antragssteller:innen die Möglichkeit haben.
+\textbf{Dominic:} Vielleicht noch für euch als Info, wie denn der Fokus meiner Arbeit aussehen wird. Ich habe es vorhin eh schon angeschnitten, es ist im Rahmen einer Masterarbeit natürlich etwas schwierig, ein ganzes System aus dem Boden zu stampfen. Es wird auf einen Prototyp erst einmal hinauslaufen und ich würde mich im ersten Anlauf wahrscheinlich wirklich darauf fokussieren, wie die Antragsstellung aussieht für die Antragsteller:innen. Im weiteren Verlauf wäre es natürlich möglich, dass man das System weiter modelliert und schafft. Aber der Fokus wird jetzt erst einmal sein, wie kann man einen Antrag erstellen, wie kann man einen Antrag einreichen. Was dahinter kommt, ist dann ausbaufähig würde ich sagen. Gibt es aber in dem abgegrenzten Bereich jetzt wirklich etwas zusätzlich, wo ihr sagen würdet, haben wir heute jetzt noch nicht erwähnt aber wäre für euch sehr wichtig, dass das irgendwie noch eingebaut wird und dass die Antragsteller:innen die Möglichkeit haben.
 
 \textbf{Interviewpartner:in E:} Ja. Zur Entlastung des:der Vorsitzenden würde ich aktuell sagen, wenn man darüber nachdenkt das nicht über ein Word-Dokument zu machen, sondern über eine Plattform. Dann automatisierte Eingangsbestätigungen, vielleicht eine automatisierte Mail wenn es um gewisse Prozesse, administrative Informationsaspekte geht, die automatisierbar sind. Einfach, um den Aufwand für uns geringer zu halten. Weil die Ressourcen-Thematik haben wir genau so wie Antragsstellende.
 
@@ -1711,11 +1884,11 @@ Jetzt kommt vielleicht eine interessante Frage. Sie kennen den Prozess in und au
 
 \textbf{Dominic:} Das ist kein Problem. Das ist der Fokus meiner Arbeit. Es ist nicht darauf ausgelegt, dass etwas neu entwickelt werden muss. Wenn es schon ein System gibt, dann ist es ja für mich auch einfacher, statt dass ich alles selbst aus dem Boden stampfen muss. Das bestehende hernehmen und anpassen und schauen, wie weit es anpassungsfähig ist. Und wenn am Ende der Masterarbeit herauskommt, das System funktioniert und man kann es anpassen, aber es ist im Rahmen des Prototyps nicht weiter gegangen oder es ist vielleicht technisch doch nicht möglich am Ende in dieser Zeit, dann hat man wenigstens einen Anhaltspunkt was man beim nächsten Mal nicht mehr probieren muss.
 
-\textbf{Interviewpartner:in D:} Diese Schritte, die jetzt eben angesprochen wurden, laufen im Moment so, dass wir gesagt haben, wir versuchen auch zu vermeiden, über E-Mail die Anträge hin und her zu schicken, auch aus Datenschutzgründen. Wir haben auf einem Server einen eigenen Bereich, wo nur die Mitglieder der Forschungsethik-Kommission hier intern an der FH Zugriff haben. Dort sind Ordner angelegt und die Zuordnung der Bewertungsformulare und des Votums zu diesem Antragsformular sind dort dann auch gegeben. Im Moment kriegt jeder Antragssteller eine Nummer und dort sind alle Dokumente kompakt drin. Das Matching braucht es dann natürlich auch. Dort wird es archiviert.
+\textbf{Interviewpartner:in D:} Diese Schritte, die jetzt eben angesprochen wurden, laufen im Moment so, dass wir gesagt haben, wir versuchen auch zu vermeiden, über E-Mail die Anträge hin und her zu schicken, auch aus Datenschutzgründen. Wir haben auf einem Server einen eigenen Bereich, wo nur die Mitglieder der Forschungsethik-Kommission hier intern an der FH Zugriff haben. Dort sind Ordner angelegt und die Zuordnung der Bewertungsformulare und des Votums zu diesem Antragsformular sind dort dann auch gegeben. Im Moment kriegt jeder Antragsteller eine Nummer und dort sind alle Dokumente kompakt drin. Das Matching braucht es dann natürlich auch. Dort wird es archiviert.
 
 \textbf{Interviewpartner:in C:} Unter uns. Das sind Word-Dokumente und wenn ich ausversehen löschen sage, dann ist das weg. Klar gibt es wieder eine Sicherung, aber ist das der Letztstand, ist es nicht. Und so weiter. Als Webanwendung wäre so etwas schon sehr strukturiert und mit genauen Regeln und ich sehe nur meines.
 
-\textbf{Dominic:} Dann hätte ich noch zwei abschließende Fragen. Vielleicht ganz konkret, wenn das System neu entwickelt wird und es über den Prototyp hinausgeht und es das Ganze modernisiert und die Anforderungen von Antragssteller:innen und von euch vereint. Ist es dann auch gewünscht, dass mehr oder viel mehr Anträge eingehen oder ist es einfach dann schon wieder problematisch, weil es zeit- und ressourcenintensiv wird? Wahrscheinlich ein zweischneidiges Schwert.
+\textbf{Dominic:} Dann hätte ich noch zwei abschließende Fragen. Vielleicht ganz konkret, wenn das System neu entwickelt wird und es über den Prototyp hinausgeht und es das Ganze modernisiert und die Anforderungen von Antragsteller:innen und von euch vereint. Ist es dann auch gewünscht, dass mehr oder viel mehr Anträge eingehen oder ist es einfach dann schon wieder problematisch, weil es zeit- und ressourcenintensiv wird? Wahrscheinlich ein zweischneidiges Schwert.
 
 \textbf{Interviewpartner:in E:} Beides. Also natürlich muss unser Ziel sein, dass das möglichst breit wahrgenommen wird und dann muss die Geschäftsführung Farbe bekennen. So sieht es aus.
 
@@ -1738,6 +1911,81 @@ Jetzt kommt vielleicht eine interessante Frage. Sie kennen den Prozess in und au
 \textbf{Interviewpartner:in D:} Vielen Dank.
 
 \textbf{Interviewpartner:in C:} Danke.
+
+\chapter{\enquote{EthicsVision} Plattform}
+\label{appendix:ethics-vision}
+
+Anhang \ref{appendix:ethics-vision} enthält die Verlinkung zum Quellcode von \textit{EthicsVision} sowie eine Reihe von Abbildungen und Grafiken zur Plattform, die verschiedene Funktionalitäten des ersten Prototyps zeigen.
+
+\section{Quellcode}
+\label{appendix:ethics-vision-quellcode}
+
+Der Quellcode der EthicsVision Plattform wurde auf GitHub veröffentlicht und ist unter folgendem Link abrufbar: \url{https://github.com/DominicLuidold/ethics-vision}
+
+\clearpage
+
+\section{Abbildungen zur Seite \enquote{Übersicht}}
+
+\textbf{Anmerkung:} Die Seite \enquote{Übersicht} entspricht der momentanen Startseite des umgesetzten Prototyps.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-Übersicht_Menü.png}
+    \caption{Seite \enquote{Übersicht} mit geöffnetem Seitenmenü}
+    \label{fig:ethics-vision-übersicht-menü}
+\end{figure}
+
+\section{Abbildungen zum Formular"=Assistent}
+\label{appendix:ethics-vision-formular-assistent}
+
+\textbf{Anmerkung:} Der Formular"=Assistent wird Nutzer:innen im Rahmen der Erstellung eines neuen Ethikantrages angezeigt.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.85\linewidth]{thesis/images/Luidold_EthicsVision-Formular-Assistent_Finanzierung.png}
+    \caption{Schritt \#1 des Formular-Assistenten}
+    \label{fig:ethics-vision-formular-assistent-finanzierung}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.85\linewidth]{thesis/images/Luidold_EthicsVision-Formular-Assistent_Studiendesign.png}
+    \caption{Schritt \#2 des Formular-Assistenten}
+    \label{fig:ethics-vision-formular-assistent-studiendesign}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.85\linewidth]{thesis/images/Luidold_EthicsVision-Formular-Assistent_Prototyp.png}
+    \caption{Schritt \#3 des Formular-Assistenten}
+    \label{fig:ethics-vision-formular-assistent-prototyp}
+\end{figure}
+
+\section{Abbildungen zum generierten Ethikantrag}
+\label{appendix:ethics-vision-formular}
+
+\textbf{Anmerkung:} Der dargestellte Ethikantrag wurde mit den Eingaben \texttt{F\&E-Arbeit von Studierenden} zur Frage \enquote{In welchem Rahemn wird das Forschungsvorhaben bzw. -projekt umgesetzt und finanzeirt?}, \texttt{Ja} zur Frage \enquote{Wird eine Studie an oder mit Menschen durchgeführt?} und \texttt{Ja} zur Frage \enquote{Wird ein Prototyp entwickelt?} generiert.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-Formular_Start.png}
+    \caption{Generierter Ethikantrag mit geöffnetem Abschnitt mit Fragen zum \enquote{Forschungs- oder Entwicklungsvorhaben}}
+    \label{fig:ethics-vision-formular-start}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-Formular_Ende.png}
+    \caption{Generierter Ethikantrag mit Überblick über die weiteren inhaltlichen Themenblöcke}
+    \label{fig:ethics-vision-formular-ende}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-Formular_unvollständig.png}
+    \caption{Unvollständig ausgefüllter Ethikantrag mit sichtbaren Hinweisen zu Validierungsfehlern}
+    \label{fig:ethics-vision-formular-unvollständig}
+\end{figure}
 
 % Eidesstattliche Erklärung
 \clearpage
