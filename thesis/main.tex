@@ -39,6 +39,8 @@
   \textcolor{white}{\rule{1em}{1em}}%
   \textcolor[HTML]{#1}{\rule{0.8em}{0.8em}}%
 }
+\renewcommand{\listingscaption}{Quellcode}
+\renewcommand\listoflistingscaption{Quellcodeverzeichnis}
 
 %% Dokument
 \begin{document}
@@ -122,6 +124,12 @@
 \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 \listoftables
 
+% Quellcodeverzeichnis
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Quellcodeverzeichnis}
+\listoflistings
+
 % Abkürzungsverzeichnis
 \clearpage
 \phantomsection
@@ -132,6 +140,8 @@
     \acro{cms}[CMS]{Content Management System}
     \acroplural{cms}[CMS]{Content Management Systeme}
     \acro{dbms}[DBMS]{Datenbankmanagementsystem}
+    \acro{ddd}[DDD]{Domain-driven Design}
+    \acroplural{ddd}[DDD]{Domain-driven Designs}
     \acro{dx}[DX]{Development Experience}
     \acro{ecs}[ECS]{Ethics Committee System}
     \acro{fek}[FE-K]{Forschungsethik"=Kommission}
@@ -1255,31 +1265,32 @@ Im Zusammenhang mit der Priorisierung kann Anforderung \hyperref[sub-sub-sec:abg
 \chapter{Ausarbeitung \& Umsetzung des Prototyps}
 \label{chap:ausarbeitung-umsetzung-prototyp}
 
-Anhand der Analyse des Nutzerkontextes und der Definition konkreter Anforderungen (siehe dazu Kapitel \ref{chap:user-centered-design} ab Seite \pageref{chap:user-centered-design} sowie konkret die in Abschnitt \ref{sec:ucd-verknüpfung-arbeit} ab Seite \pageref{sec:ucd-verknüpfung-arbeit} definierten Verknüpfungen mit den Kapiteln dieser Arbeit) ist es im nächsten Schritt nun möglich, mit der Umsetzung eines ersten Konzeptes sowie des darauf aufbauenden, initialen Prototyps zu beginnen.
+Anhand der Analyse des Nutzerkontextes und der Definition konkreter Anforderungen (siehe dazu Kapitel \ref{chap:user-centered-design} ab Seite \pageref{chap:user-centered-design} sowie konkret die in Abschnitt \ref{sec:ucd-verknüpfung-arbeit} ab Seite \pageref{sec:ucd-verknüpfung-arbeit} definierten Verknüpfungen mit den Kapiteln dieser Arbeit) ist es im nächsten Schritt nun möglich, mit der Umsetzung eines ersten Konzeptes sowie des darauf aufbauenden, initialen Prototyps und \aclp{poc} zu beginnen.
 
 Das folgende Kapitel beschäftigt sich im Zuge dessen daher sowohl mit dem Aspekt des \aclp{ui} sowie der \ac{ux}, der verwendeten Design-Elemente und der zur Verfügung stehenden Funktionalitäten als auch mit der zugrundeliegenden technischen Umsetzung. Dabei wird jeweils begründet, warum und weshalb welche Ansätze und Herangehensweisen gewählt wurden und welche möglichen (langfristigen) Implikationen diese haben.
 
 \section{Wahl der technischen Basis}
 \label{sec:ausarbeitung-wahl-technische-basis}
 
-Um das Konzept beziehungsweise den angedachten Prototyp umsetzen zu können, muss grundlegend eine Entscheidung getroffen werden, welche technische Basis für die Entwicklung und Umsetzung der in Abschnitt \ref{sec:definition-anforderungen} ab Seite \pageref{sec:definition-anforderungen} definierten Anforderungen verwendet werden soll. Die in Abschnitt \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} durchgeführte Analyse von anderen Prozessen und Systemen dient dabei als Grundlage, um eine begründete weiterführende Entscheidung treffen zu können. Die schlussendliche Auswahl beschränkt sich dabei jedoch nicht ausschließlich auf die analysierten Systeme, um eine Auswahl darunter zu treffen, sondern setzt sich kritisch mit den jeweiligen Gegebenheiten auseinander.
+Um das Konzept beziehungsweise den angedachten Prototyp umsetzen zu können, muss grundlegend eine Entscheidung getroffen werden, welche technische Basis für die Entwicklung und Umsetzung der in Abschnitt \ref{sec:definition-anforderungen} ab Seite \pageref{sec:definition-anforderungen} definierten Anforderungen verwendet werden soll. Die in Abschnitt \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} durchgeführte Analyse von anderen Prozessen und Systemen dient dabei als Grundlage, um eine begründete weiterführende Entscheidung treffen zu können. Die schlussendliche Auswahl beschränkt sich dabei jedoch nicht ausschließlich auf die analysierten Systeme, sondern setzt sich kritisch mit den jeweiligen Gegebenheiten auseinander.
 
-\subsubsection*{Systeme mit mit Fokus auf Ethikanträgen}
+\subsubsection*{Systeme mit Fokus auf Ethikanträgen}
 \label{sub-sub-sec:technische-basis-fokus-ethikanträge}
 
 Vor allem das \acl{ecs} der Medizinischen Universitäten Wien, Innsbruck und weiterer Einrichtungen sticht als System mit direkter Verbindung zum Antragswesen von Ethikanträgen als mögliche Basis hervor. Der in Abschnitt \ref{sub-sec:ecs} ab Seite \pageref{sub-sec:ecs} angesprochene Funktionsumfang und Detaillierungsgrad des Systems stellt auf den ersten Blick eine geeignte Ausgangsposition dar, um die entsprechenden Anpassungen für die definierten Anforderungen vornehmen zu können.
 
-Bei genauerer Betrachtung der technischen Gegebenheiten (welche im genannten Abschnitt in Bezug auf die \ac{dx} nur teilweise aufgearbeitet wurden) differenziert sich dieses Bild jedoch:
+Bei genauerer Betrachtung der technischen Gegebenheiten (welche im genannten Abschnitt auch in Bezug auf die \ac{dx} nur teilweise aufgearbeitet wurden) differenziert sich dieses Bild jedoch:
 \begin{itemize}
-    \item Das \ac{ecs} setzt als Basis des Applikations-Stack auf ein Ubuntu-Image der Version \texttt{16.04 LTS}. Diese Version wurde erstmals im Jahr 2016 veröffentlicht und enthält laut dem Entwickler Canonical bis Anfang 2026 Sicherheitsupdates im Rahmen des sogenannten \textit{Extended Security Maintenance} Programms -- das letzte verfügbare Update, Version \texttt{16.04.7}, wurde jedoch im August 2020 veröffentlicht. \cite{medizinische_universitat_wien_ecs-handbook_development-2021, canonical_ltd_ubuntu_2023, canonical_ltd_ubuntu_2023-1}\\
-    \textbf{Schlussfolgerung:} Es ist davon auszugehen, dass eine Aktualisierung des zugrundeliegenden Betriebssystems auf den aktuellsten Stand (Version \texttt{22.04 LTS} mit initialer Veröffentlichung im April 2022) mit erheblichem Aufwand verbunden ist und bei zahlreichen Abhängigkeiten der Applikation zu Komplikationen führen wird.
-    \item Das \ac{ecs} ist auf zwei Git-Projekte aufgeteilt, die insgesamt über 8.000 Commits in den Repositories aufweisen, welche die Hauptapplikation mit über 196.000 Zeilen Code\footnote{196.780 Zeilen Code; ermittelt anhand von \cite{ethics_commission_system_organization_ecs_2021} und dem Befehl \texttt{git ls-files | xargs wc -l}} beinhalten. \cite{medizinische_universitat_wien_development_2021, ethics_commission_system_organization_ecs_2021, ethics_commission_system_organization_ecs-appliance_2021}\\
-    \textbf{Schlussfolgerung:} Die erforderliche Einarbeitung in das Projekt, um die notwendigen Anpassungen anhand der Anforderungen vornehmen, nicht benötigte Funktionalitäten evaluieren und entfernen sowie neue Möglichkeiten hinzufügen zu können, würde den Umfang dieser Masterarbeit deutlich überschreiten.
-    \item Das \ac{ecs} ist auf eine Nutzung von 20 bis hin zu mehreren Hundert Anträgen pro Monat ausgelegt. Der benötigte Speicherplatz bei 20 Anträgen pro Monat wird pro zehn Jahre auf zirka 92 GB geschätzt, während die Entwicklungs-Instanz bereits mindestens 10 GB Speicherplatz benötigt. \cite{medizinische_universitat_wien_ecs-handbook_requirements-2021, ethics_commission_system_organization_ecs_2021}\\
-    \textbf{Schlussfolgerung:} Der genannte Speicherbedarf entspricht im produktiven Einsatz zwar keinem außergewöhnlich hohem Verbrauch, gerade für eine Entwicklungsumgebung spielt der Speicherplatz und damit auch der \ac{dx} jedoch eine wichtige Rolle.
+    \item Das \ac{ecs} setzt als Basis des Applikations-Stack auf ein Ubuntu-Image der Version \texttt{16.04 LTS}. Diese Version wurde erstmals im Jahr 2016 veröffentlicht und enthält laut dem Entwickler Canonical bis Anfang 2026 Sicherheitsupdates im Rahmen des sogenannten \textit{Extended Security Maintenance} Programms. Das letzte verfügbare Update, Version \texttt{16.04.7}, wurde jedoch im August 2020 veröffentlicht. \cite{medizinische_universitat_wien_ecs-handbook_development-2021, canonical_ltd_ubuntu_2023, canonical_ltd_ubuntu_2023-1}
+    \item Das \ac{ecs} ist auf zwei Git-Projekte aufgeteilt, die insgesamt über 8.000 Commits in den Repositories aufweisen, welche die Hauptapplikation mit über 196.000 Zeilen Code\footnote{196.780 Zeilen Code; ermittelt anhand von \cite{ethics_commission_system_organization_ecs_2021} und dem Befehl \texttt{git ls-files | xargs wc -l}} beinhalten. \cite{medizinische_universitat_wien_development_2021, ethics_commission_system_organization_ecs_2021, ethics_commission_system_organization_ecs-appliance_2021}
+    \item Das \ac{ecs} ist auf eine Nutzung von zwanzig bis hin zu mehreren Hundert Anträgen pro Monat ausgelegt. Der benötigte Speicherplatz bei zwanzig Anträgen pro Monat wird pro zehn Jahre auf zirka 92 GB geschätzt, während die Entwicklungs-Instanz bereits mindestens 10 GB Speicherplatz benötigt. \cite{medizinische_universitat_wien_ecs-handbook_requirements-2021, ethics_commission_system_organization_ecs_2021}
 \end{itemize}
 
-Unter Berücksichtigung der technischen Analyse in Abschnitt \ref{sub-sec:ecs} ab Seite \pageref{sub-sec:ecs} sowie der bisher genannten Punkte wird deutlich, dass das \acl{ecs} eine ausgereifte und umfangreiche Software"=Lösung für das Erstellen und Bearbeiten von Ethikanträgen darstellt. Vor allem aufgrund der zeitlichen Begrenzungen, die mit der Entwicklung eines initialen Prototyps für die in dieser Arbeit definierten Anforderungen einhergehen, kann das \ac{ecs} jedoch nicht als Basis für die Umsetzung der angedachten Funktionen herangezogen werden.
+Die angesprochenen Punkte stellen an sich, sowohl individuell als auch ganzheitlich betrachtet, keine Hürde dar. Auch unter Berücksichtigung der technischen Analyse in Abschnitt \ref{sub-sec:ecs} ab Seite \pageref{sub-sec:ecs} wird deutlich, dass das \acl{ecs} eine ausgereifte und umfangreiche Software"=Lösung für das Erstellen und Bearbeiten von Ethikanträgen darstellt. Mit der zeitlichen Einschränkung und dem Hintergrund dieser Masterarbeit, eine Software"=Lösung in Form eines Prototyps beziehungsweise eines \ac{poc} zu entwickeln, ändert sich die Ausgangslage jedoch.
+
+Zum Einen ist davon auszugehen, dass eine Aktualisierung des zugrundeliegenden Betriebssystems auf den aktuellsten Stand (laut \cite{canonical_ltd_ubuntu_2023-1} Version \texttt{22.04 LTS} mit initialer Veröffentlichung im April 2022) mit erheblichem Aufwand verbunden ist, um aktuelle Sicherheitsupdates und Funktionalitäten nutzen zu können. Ebenso steigt die Wahrscheinlichkeit, dass die damit einhergehende Aktualisierung der Abhängigkeiten der Applikation zu Komplikationen führen wird. Zusätzlich dazu würde die erforderliche Einarbeitung in das Projekt, um die notwendigen Anpassungen anhand der Anforderungen vornehmen, nicht benötigte Funktionalitäten evaluieren und entfernen sowie neue Möglichkeiten hinzufügen zu können, den Umfang dieser Masterarbeit deutlich überschreiten. Auch im Sinne des Speicherplatzbedarfs stellen die Anforderungen an die Entwicklungsumgebung ein Hindernis dar, um den Prototyp entwickeln und auch testen beziehungsweise evaluieren zu können.
+
+Als abschließende Schlussfolgerung der genannten Punkte kann das \ac{ecs} daher nicht als Basis für die Umsetzung der angedachten Funktionen herangezogen werden.
 
 \subsubsection*{Systeme ohne konkreten Bezug}
 \label{sub-sub-sec:technische-basis-systeme-ohne-bezug}
@@ -1293,13 +1304,13 @@ Neben den Systemen mit konkreten Bezug, wovon lediglich das \ac{ecs} als quellof
 \subsubsection*{Eigenentwicklung als technische Basis}
 \label{sub-sub-sec:technische-basis-eigenentwicklung}
 
-Da sich die in Kapitel \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} analysierten externen Prozesse und Systeme nur bedingt für die Umsetzung eines Konzeptes und Prototyps dieser Arbeit eignen, eine Umsetzung im Rahmen des \acl{ucd} Prozesses jedoch eine essenzielle Rolle spielt, fällt die Entscheidung in Folge dessen auf eine eigens umgesetztes System beziehungsweise eine Eigenentwicklung.
+Da sich die in Kapitel \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} analysierten externen Prozesse und Systeme nur bedingt für die Umsetzung eines Konzeptes und Prototyps dieser Arbeit eignen, eine Umsetzung im Rahmen des \acl{ucd} Prozesses jedoch eine essenzielle Rolle spielt, fällt die Entscheidung in Folge dessen auf ein eigens umgesetztes System beziehungsweise eine Eigenentwicklung.
 
 \medskip
 
 Die Wahl des Technologie-Stacks -- sprich der ausgewählten Technologien und Sprachen -- fällt dabei auf das auf JavaScript/TypeScrit aufbauende \ac{spa} Webframework \textit{Angular}\footnote{Angular: \url{https://angular.io/}} für die Umsetzung des \aclp{ui}, während das auf PHP basierende Framework \textit{Symfony}\footnote{Symfony: \url{https://symfony.com/}} für die Domänenlogik sowie die Persistierung und Bereitstellung der Daten zum Einsatz kommt.
 
-Die Frameworks und Technologien wurden zum einen aufgrund bestehender Vorkenntnisse gewählt, zum anderen jedoch vor allem mit dem Hintergedanken, dass damit sowohl das \ac{ui} als auch die \enquote{im Hintergrund} liegende Logik jederzeit unabhängig voneinander ausgetauscht werden können, sollte dies notwendig sein. Genauere technische Erläuterungen und die Erhebung langfristiger Implikationen dieser Entscheidung finden sich in Abschnitt \ref{sec:ausarbeitung-technische-umsetzung} ab Seite \pageref{sec:ausarbeitung-technische-umsetzung}.
+Die Frameworks und Technologien wurden zum einen aufgrund bestehender Vorkenntnisse gewählt, zum anderen jedoch vor allem mit dem Hintergedanken, dass damit sowohl das \ac{ui} als auch die \enquote{im Hintergrund} agierende Logik jederzeit unabhängig voneinander ausgetauscht werden können, sollte dies notwendig sein. Genauere technische Erläuterungen und die Erhebung langfristiger Implikationen dieser Entscheidung finden sich in Abschnitt \ref{sec:ausarbeitung-technische-umsetzung} ab Seite \pageref{sec:ausarbeitung-technische-umsetzung} wieder.
 
 \section{Erläuterung des Konzeptes}
 \label{sec:erläuterung-konzept}
@@ -1313,7 +1324,7 @@ Für die Ausarbeitung des initialen Konzeptes sowie Prototyps wurden die in Kapi
     \label{fig:ethics-vision-übersicht}
 \end{figure}
 
-Die Umsetzung als online abrufbare Webapplikation wurde aus mehreren Gründen gewählt: Sowohl die Einreichplattform der FH Campus Wien als auch das \acl{ecs} wurden in ähnlicher Form als Webapplikationen entwickelt und das System der \ac{ieb} soll ebenfalls als Webapplikation umzusetzen werden, was somit dem Stand der Technik entspricht. Darüber hinaus ermöglicht der Fokus auf Webapplikationen die Anwendung weit verbreiteter Technologien, die zum einen die Nutzung auf unterschiedlicher Endgeräten (beispielsweise einem PC, Laptop oder auch Tablet) ermöglichen und zum anderen die Funktionalitäten unabhängig vom jeweiligen Betriebssystem anbieten.
+Die Umsetzung als online abrufbare Webapplikation wurde aus mehreren Gründen gewählt: Sowohl die Einreichplattform der FH Campus Wien als auch das \acl{ecs} wurden in ähnlicher Form als Webapplikationen entwickelt und das System der \ac{ieb} soll ebenfalls als Webapplikation umgesetzt werden, was somit dem Stand der Technik entspricht. Darüber hinaus ermöglicht der Fokus auf Webapplikationen die Anwendung weit verbreiteter Technologien, die zum einen die Nutzung auf unterschiedlichen Endgeräten (beispielsweise einem PC, Laptop oder auch Tablet) ermöglichen und zum anderen die Funktionalitäten unabhängig vom jeweiligen Betriebssystem anbieten.
 
 \subsection{Umgesetzte Funktionalitäten}
 \label{sub-sec:umgesetzte-funtionalitäten}
@@ -1335,7 +1346,7 @@ Gleichzeitig wird der:die Antragsteller:in bei der Entscheidung für beziehungsw
 
 \medskip
 
-\noindent\underline{Abbildungen:} Abschnitt \ref{appendix:ethics-vision-formular-assistent} ab Seite \pageref{appendix:ethics-vision-formular-assistent} enthält im Zusammenhang mit den ausgearbeiteten Funktionalitäten für Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag]{\#1} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3} die entsprechenden Abbildungen zu allen Schritten des Formular"=Assistenten sowie die angesprochenen allgemeinen und auf die Angaben bezogenen Hilfestellungen im Detail.
+\noindent\underline{Relevante Abbildungen:} Abschnitt \ref{appendix:ethics-vision-formular-assistent} ab Seite \pageref{appendix:ethics-vision-formular-assistent} enthält im Zusammenhang mit den ausgearbeiteten Funktionalitäten für Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag]{\#1} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3} die entsprechenden Abbildungen zu allen Schritten des Formular"=Assistenten sowie die angesprochenen allgemeinen und auf die Angaben bezogenen Hilfestellungen im Detail.
 
 \subsubsection*{Anforderungen \#2, \#5 \& \#8}
 \label{sub-sub-sec:umgesetzte-funktionalitäten-anforderung-2-5-8}
@@ -1352,7 +1363,7 @@ Neben der automatisierten Validierung der eingegebenen Daten ist der Prototyp be
 
 \medskip
 
-\noindent\underline{Abbildungen:} Abschnitt \ref{appendix:ethics-vision-formular} ab Seite \pageref{appendix:ethics-vision-formular} enthält im Zusammenhang mit den ausgearbeiteten Funktionalitäten für Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag]{\#2} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#5} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#8} Abbildungen zum Aussehen und der Funktionsweise des dem Ethikantrag zugrundeliegenden Formulares sowie der automatisierten Validierung bereitgestellter Daten.
+\noindent\underline{Relevante Abbildungen:} Abschnitt \ref{appendix:ethics-vision-formular} ab Seite \pageref{appendix:ethics-vision-formular} enthält im Zusammenhang mit den ausgearbeiteten Funktionalitäten für Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-vorfeld-antrag]{\#2} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#5} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-nach-einreichung]{\#8} Abbildungen zum Aussehen und der Funktionsweise des Formulars sowie der automatisierten Validierung bereitgestellter Daten.
 
 \subsubsection*{Anforderungen \#7 \& \#9}
 \label{sub-sub-sec:umgesetzte-funktionalitäten-anforderung-7-9}
@@ -1404,11 +1415,145 @@ Primär wurden vor allem die Farben\footnote{Die jeweiligen HEX-Farbcodes sowie 
 \section{Technische Umsetzung}
 \label{sec:ausarbeitung-technische-umsetzung}
 
+Wie im Zuge der Wahl der technischen Basis in Abschnitt \ref{sec:ausarbeitung-wahl-technische-basis} ab Seite \pageref{sec:ausarbeitung-wahl-technische-basis} bereits initial angesprochen wurde, basiert die technische Umsetzung des Prototyps auf dem TypeScript"=Framework Angular und dem auf PHP basierenden Framework Symfony. Neben den zwei Frameworks, die für die Entwicklung des sogenannten \enquote{Frontends} und \enquote{Backends} -- sprich der für Anwender:innen sichtbare Teil der Webapplikation und der Serverkomponente -- eingesetzt werden, spielt jedoch auch die Infrastruktur, in der diese eingebettet sind, eine wichtige Rolle.
+
+Die nachfolgenden Abschnitte erklären die in Abbildung \ref{fig:ethics-vision-diagramm} auf Seite \pageref{fig:ethics-vision-diagramm} dargestellte Übersicht des Aufbaus, die Kommunikation zwischen den einzelnen Bestandteilen der Plattform sowie die Funktionsweise und die jeweils angewandten Konzepte.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.84\linewidth]{thesis/images/Luidold_EthicsVision-Diagramm.png}
+    \caption{Übersicht des Aufbaus und der Kommunikation der EthicsVision Plattform}
+    \label{fig:ethics-vision-diagramm}
+\end{figure}
+
 \subsection{Infrastruktur}
 \label{sub-sec:ausarbeitung-infrastruktur}
 
+Die EthicsVision-Plattform besteht aus zwei wesentlichen Komponenten: dem Angular-Frontend und dem Symfony-Backend.  Um sicherzustellen, dass die Anwendungen von Antragsteller:innen genutzt werden können, eine reibungslose Kommunikation und Datenübertragung stattfinden kann und eine langfristige Datenspeicherung möglich ist, ist eine entsprechende Infrastruktur erforderlich. Diese Infrastruktur erfüllt nicht nur die angesprochenen Aufgaben, sondern gewährleistet auch die Nutzbarkeit sowohl in einer Entwicklungs- als auch in einer Produktivumgebung. Das Diagramm in Abbildung \ref{fig:ethics-vision-diagramm} auf Seite \pageref{fig:ethics-vision-diagramm} veranschaulicht im Zusammenhang damit die verschiedenen Bestandteile der Plattform sowie die implementierte Infrastruktur, die mithilfe von Docker\footnote{Docker: \url{https://www.docker.com/}} realisiert wurde.
+
+\subsubsection*{Funktionsweise von Docker}
+\label{funktionsweise-docker}
+
+Docker bietet die Möglichkeit, Applikationen und zugehörige Bestandteile unabhängig von der benötigten Infrastruktur zu entwickeln. Zeitgleich kann die Infrastruktur, ähnlich zu klassischem Quellcode, so verwaltet werden, dass standardisierte und reproduzierbare Instanzen und Umgebungen erzeugt werden können. \cite{docker_inc_docker_2023}
+
+Docker bedient sich dabei mehrere Konzepte und Begriffe, die auch im angesprochenen Diagramm teilweise zu erkennen sind:
+\begin{itemize}
+    \item \textbf{Image:} Ein Image entspricht einer Vorlage, die alle Anweisungen, Abhängigkeiten und Komponenten enthält, um das Ausführen einer Anwendung in einer isolierten Umgebung zu ermöglichen. Ein Image kann dabei sowohl aus einer öffentlich zugänglichen Registry bezogen, als auch selbstständig erzeugt werden. Images bestehen typischerweise aus verschiedenen sogenannten \enquote{Layern}, bei der jede Anweisung und jedes verwendete Basis-Image einer Schicht entspricht. Werden Änderungen vorgenommen, muss lediglich der betroffene Layer aktualisiert werden, während der bestehende Cache für die anderen Schichten genutzt wird. \cite{docker_inc_docker_2023, montemagno_docker_2023}
+    \item \textbf{Conainer:} Ein Container entspricht einer ausführbaren Instanz eines Image, welcher jederzeit gestartet sowie gestoppt werden kann und, ohne zusätzliche Konfiguration, isoliert ist. Der Zustand eines Containers muss explizit mittels eines Volumes persistiert werden, um wiederverwendet werden zu können. Innerhalb des Containers wird eine einzelne Applikation oder ein Service ausgeführt, der bei Bedarf mittels mehrerer Container skaliert werden kann. \cite{docker_inc_docker_2023, montemagno_docker_2023}
+    \item \textbf{Volume}: Ein Volume ermöglicht es dem read-only Image (beziehungsweise dessen Instanz in Form eines Containers)  Zugriff auf das Dateisystem zu erlangen, um auch schreibende Operationen ausführen und den jeweiligen Zustand persistieren zu können. Volumes werden auf dem Host-System, auf dem Docker installiert ist, gespeichert und von Docker verwaltet. \cite{montemagno_docker_2023}
+    \item \textbf{Network:} Docker Container sind, wie angesprochen, standardmäßig isoliert. Damit eine Kommunikation untereinander möglich ist, können mehrere Container in einem Netzwerk zusammengefasst werden. Die einzelnen Container wissen dabei nicht, welche anderen Container innerhalb des Netzwerks zur Verfügung stehen, da lediglich ein Netzwerk-Interface angeboten wird. Um auch eine Kommunikation mit dem Netzwerk des Host-Systems zu ermöglichen, kann für jeden Container mittels Port-Forwarding festgelegt werden, welcher Port nach außen hin freigegeben werden soll. \cite{docker_inc_networking_overview_2023}
+\end{itemize}
+
+\subsubsection*{Konkrete Anwendung von Docker im Prototyp}
+\label{anwendung-docker}
+
+Wie Abbildung \ref{fig:ethics-vision-diagramm} auf Seite \pageref{fig:ethics-vision-diagramm} zu entnehmen ist, besteht der Docker-Stack für den realisierten Prototypen aus insgesamt fünf verschiedenen Containern. Jeder Container erfüllt dabei eine spezifische Aufgabe innerhalb der EthicsVision Plattform -- mehr dazu in Abschnitt \ref{sub-sec:ausarbeitung-backend} sowie \ref{sub-sec:ausarbeitung-frontend} ab Seite \pageref{sub-sec:ausarbeitung-backend} beziehungsweise Seite \pageref{sub-sec:ausarbeitung-frontend}.
+
+\medskip
+
+Da die schlussendliche Applikation aus den angesprochenen fünf Anwendungen und Services besteht, kommt \textit{Docker Compose} zum Einsatz. Docker Compose stellt ein Command-Line Tool sowie ein \texttt{.yaml} Dateiformat zur Verfügung, um mehrere Images gleichzeitig starten und stoppen sowie notwendige Konfigurationen vornehmen zu können. Docker Compose erstellt zudem automatisch ein Netzwerk, das von allen Containern genutzt werden kann. \cite{montemagno_docker_2023, docker_inc_networking_compose_2023}
+
+Quellcode \ref{code:docker-compose-excerpt} auf Seite \pageref{code:docker-compose-excerpt} zeigt einen Ausschnitt der Docker Compose Konfigurationsdatei, die für das Starten der Entwicklungsumgebung erstellt wurde. Die drei dargestellten Services umfassen sowohl den Frontend- sowie Backend-Container als auch das \ac{dbms} PostgreSQL. Gut zu erkennen ist, dass für alle drei Container jeweils ein Port-Forwarding konfiguriert wurde: Die PostgreSQL-Datenbank ist beispielsweise im Docker-Netzwerk unter dem Port \texttt{5432} erreichbar, während über das Host-System eine Verbindung über den Port \texttt{8585} aufgebaut werden kann. 
+
+\begin{listing}[ht]
+    \inputminted[fontsize=\footnotesize,linenos,xleftmargin=8mm]{yaml}{code/Luidold_Docker-Compose.yml}
+    \caption{Auszug aus dem \texttt{docker-compose.development.yml} der EthicsVision Plattform}
+    \label{code:docker-compose-excerpt}
+\end{listing}
+
+Ebenso lässt sich erkennen, dass dem \texttt{postgres} Container ein Volume zugewiesen wurde, um die in der Datenbank gespeicherten Daten permanent persistieren und wiederverwenden zu können. Für die Datenbank wird das in einer Docker Registry veröffentliche \texttt{postgres} Image herangezogen, während das Image für den \texttt{frontend} und \texttt{backend} Container jeweils einer eigenen Umsetzung entspricht.\footnote{In allen drei Images kommen Variablen vor, die außerhalb der Docker Compose Konfigurationsdatei in einer \texttt{.env} Datei angegeben wurden, um die Wartung der eingesetzten Versionen und des Projektnamens zu zentralisieren.}
+
+\medskip
+
+Quellcode \ref{code:docker-compose-commands} auf Seite \pageref{code:docker-compose-commands} zeigt, wie der Docker-Stack mittels Docker Compose gestartet und gestoppt werden kann. Um das häufig vorkommende Starten und Stoppen zu vereinfachen, findet im umgesetzten Projekt ein Makefile Anwendung, welches die Befehle noch einmal vereinfacht und die Nutzung von Umgebungsvariablen unterstützt.\footnote{Siehe \url{https://github.com/DominicLuidold/ethics-vision/blob/main/Makefile}}.
+
+\begin{listing}[ht]
+    \inputminted[fontsize=\footnotesize,linenos,xleftmargin=8mm]{bash}{code/Luidold_Docker-Compose-Commands.sh}
+    \caption{Docker Compose Befehle zum Starten und Stoppen des EthicsVision Docker-Stacks}
+    \label{code:docker-compose-commands}
+\end{listing}
+
+\subsubsection*{Individuelle Docker Images}
+\label{sub-sub-sec:individuelle-docker-images}
+
+Wie in Quellcode \ref{code:docker-compose-excerpt} auf Seite \pageref{code:docker-compose-excerpt} deutlich wird, nutzen die \texttt{frontend} und \texttt{backend} Container jeweils eigens erstellte Docker Images. Neben den Basis-Images (\texttt{node: 18.16-alpine} für den Frontend"=Container und \texttt{php:8.2-fpm-bullseye} für den Backend"=Container) werden spezifische Abhängigkeiten und Komponenten installiert, um die Ausführung der Anwendungen zu ermöglichen. Konkret wird für die Angular"=Anwendung das \texttt{@angular/cli} Package installiert, während für die Symfony-Anwendung verschiedene PHP-Erweiterungen, wie zum Beispiel \texttt{pdo\_pgsql}, hinzugefügt und zusätzliche Konfigurationsdateien kopiert werden.
+
+\subsubsection*{Entscheidung für Docker \& langfristige Implikationen}
+\label{sub-sub-sec:entscheidung-docker}
+
+Die Entscheidung, die gesamte Applikation auf einem Technologie-Stack basierend auf mehreren Containern aufzubauen, wurde aus verschiedenen Gründen getroffen. Einerseits beruht die Entscheidung auf dem technischen Hintergrund von Docker und seiner konkreten Anwendungsmöglichkeiten, dass sowohl die Entwicklung als auch der potenzielle Einsatz der Applikation in einer Produktivumgebung abgebildet werden können. Andererseits ermöglicht der gegenwärtige Stand des Prototyps die Installation auf jedem Docker-kompatiblen Host-System, ohne dass die betreffenden Services direkt auf dem Host-System selbst installiert werden müssen. Zusätzlich ermöglicht dieser Ansatz im weiteren Verlauf eine spezifische Konfiguration für den Einsatz in einer produktiven Umgebung, in der häufig unterschiedliche Anforderungen an Konfigurationen und Skalierung der Services bestehen.
+
 \subsection{Backend}
 \label{sub-sec:ausarbeitung-backend}
+
+Das sogenannte \enquote{Backend} hat im Kontext der EthicsVision Plattform mehrere Aufgaben, die aus technischer Sicht mit dem Symfony-Framework, dem \ac{dbms} PostgreSQL sowie einigen Patterns und Konzepten realisiert wurden. Zu den Aufgaben gehören
+\begin{itemize}
+    \item das Bereitstellen von Formularen und Formular"=Einträgen im Kontext des Ethikantrages,
+    \item die Möglichkeit, Formulare und Formular"=Einträge zu erstellen, zu bearbeiten und zu löschen sowie
+    \item der Versand von Benachrichtigungen in Form von E-Mails bei Eintreten spezifischer Ereignisse.
+\end{itemize}
+
+Um einen Überblick über die Herangehensweise zu ermöglichen, werden im Folgenden der Aufbau der Datenstruktur, das Symfony-Framework als Grundlage, die angewandten Patterns sowie die verwendete Infrastruktur genauer beleuchtet.
+
+\subsubsection*{Datenstruktur}
+\label{sub-sub-sec:backend-datenstruktur}
+
+Als erster Schritt der Entwicklung wurde der bestehende Ethikantrag herangezogen, um eine grundlegende Datenstruktur und vor allem eine auf Softwareebene umsetzbare Abbildung davon auszuarbeiten. Im Zuge dieses Schrittes wurde der Fokus jedoch nicht rein auf den in dieser Arbeit behandelten Ethikantrag gelegt, sondern breiter gesetzt, um die grundlegend ähnlichen Komponenten eines Antrages sowie Formulares herauszuarbeiten. Dadurch soll der Prototyp bei Bedarf auch für anderweitige, zukünftige Formulare der \ac{fek} oder gänzlich andere Einsatzzwecke verwendet werden können.
+
+Unter Zuhilfenahme der in Abschnitt \ref{sec:inhaltlicher-aufbau} ab Seite \pageref{sec:inhaltlicher-aufbau} durchgeführten Analyse der Word"=Antragsvorlage konnten die folgenden Kernelemente identifiziert werden, die in Folge dessen die Domänenschicht im Backend sowie die Darstellung im Frontend maßgeblich vorgeben:
+\begin{itemize}
+    \item \textbf{Element:} Die kleinste Einheit in einem Formular beziehungsweise dem Ethikantrag stellt ein einzelnes Textfeld, ein Kontrollkästchen oder ein anderweitiges Konstrukt dar, mit dem Antragsteller:innen aktiv interagieren müssen. Diese Bestandteile eines Formulars werden in der Umsetzung des Prototyps \textit{Element} genannt. Ein Element besitzt dabei sowohl einen Titel (sprich eine konkrete Frage oder eine Aussage), eine Ausprägung (ein Textfeld oder ähnliches) sowie eine optionale Beschreibung, eine Position innerhalb der übergeordneten Section und einen möglichen Platzhalter.
+    \item \textbf{Section:} Die nächst größere Einheit, die im Ethikantrag und oftmals ebenso in anderweitigen Formularen vorkommt, sind thematische Blöcke, in die die einzelnen Fragen beziehungsweise Elemente aufgeteilt sind. Diese thematischen Blöcke, sogenannte \textit{Section}s, gruppieren zusammengehörige Elemente und verfügen ebenso über einen Titel, eine optionale Beschreibung sowie eine Position innerhalb des Formulars.\\
+    Um den Ethikantrag und anderweitige Formulare im weiteren Verlauf an spezifische Gegebenheiten anpassen und gewisse Fragen ein- und ausblenden zu können, werden für jede Section zusätzlich Meta"=Informationen definiert, die aussagen, zu welchem thematischen Block diese zugehörig sind.
+    \item \textbf{Screen:} Um die Möglichkeit zu schaffen, Antragsteller:innen zusätzliche Informationen bereitzustellen, bevor mit der Beantwortung von Fragen begonnen wird und nachdem das Formular vollständig ausgefüllt wurde, werden zwei sogenannte \textit{Screen}s eingeführt. Diese haben jeweils einen Titel sowie einen Inhalt und sind Teil des in Abschnitt \ref{sec:erläuterung-konzept} ab Seite \pageref{sec:erläuterung-konzept} angesprochenen Formular-Assistenten.
+    \item \textbf{Form:} Als abschließende Einheit fungiert im \ac{poc} das \textit{Form}, welches die Screens und Sections (und somit die einzelnen Elemente) enthält und ebenfalls über einen Titel sowie eine Beschreibung verfügt.
+\end{itemize}
+
+Um neben der Definition eines Formulars auch konkrete Einreichungen und übermittelte Daten der Antragsteller:innen abbilden zu können, wurden zwei weitere Konzepte ausgearbeitet, die diese Funktionalität abbilden:
+\begin{itemize}
+    \item \textbf{Entry:} Ein eingereichtes Formular wird in der Umsetzung \textit{Entry} genannt und enthält neben verschiedenen Zeitstempeln zur Erstellung, letzten Aktualisierung und Einreichung auch einen Status (konkret \texttt{Offen} oder \texttt{Eingereicht}).\\
+    Ähnlich zur Section werden auch für ein Entry Meta"=Informationen gespeichert, um später reproduzieren zu können, welche konkreten Sections mit dem Formular-Assistenten ausgewählt wurden, um das generierte Formular an die Projektumstände anzupassen.
+    \item \textbf{ElementEntry:} Jeder Entry besteht aus sogenannten \textit{ElementEntry}s, die eine konkrete Verknüpfung zu einem Element besitzen und den eingegeben Wert beinhalten.
+\end{itemize}
+
+\subsubsection*{Domänenschicht}
+\label{sub-sub-sec:backend-domänenschicht}
+
+Die Domänenschicht basiert auf der definierten Datenstruktur und enthält zeitgleich entsprechende Logik, um Ethikanträge der \acl{fek} der \acl{fhv} abbilden zu können. Wie bereits angesprochen, ist in Abbildung \ref{fig:ethics-vision-uml} auf Seite \pageref{fig:ethics-vision-uml} ersichtlich, dass der Bezug zu einem Ethikantrag nur indirekt gegeben ist und die \texttt{Form} Klasse stattdessen eine zentrale Rolle spielt. Alle anderen Klassen hängen sowohl direkt als auch indirekt von ihr ab, was auch durch die eingezeichneten Kompositionen als Relationen zwischen den Klassen verdeutlich wird.
+
+\begin{figure}[ht]
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-Klassendiagramm.png}
+    \caption{Vereinfachtes UML"=Klassendiagramm der EthicsVision Domäne}
+    \label{fig:ethics-vision-uml}
+\end{figure}
+
+Die Modellierung der Domänenschicht und auch der als Basis dienenden Datenstruktur orientiert sich an den Prinzipien des \acp{ddd}, die zumindest in grundlegender Form\footnote{Aufgrund des Fokus auf die schnelle Entwicklung eines ersten Prototyps und der überschaubaren Komplexität des Systems wurden nicht alle Konzepte des \ac{ddd} konsequent übernommen.} Anwendung während der Modellierung gefunden hat.
+
+Im Bereich des \ac{ddd} nimmt das Verständnis der Prozesse, die mittels einer Software"=Lösung abgebildet werden sollen, eine essenzielle Rolle ein. Die Domäne, in der diese Prozesse stattfinden und in der eine Applikation schlussendlich verwendet wird, stellt den Kontext bereit, in dem Aktionen ausgeführt und Daten bereitgestellt sowie validiert werden. Zusätzlich dazu bringt die Domäne eine \textit{Ubiquitous Language}, eine einheitliche Sprache, mit sich, die von Anwender:innen und Entwickler:innen genutzt werden kann, um für beide Seiten verständliche Begrifflichkeiten zu definieren und zu verwenden. \cite{airbrake_technologies_inc_domain-driven_2022, fowler_domaindrivendesign_2020}
+
+Innerhalb des \ac{ddd}-Konzepts kommen zudem unterschiedliche Abstraktionen zur Anwendung, wie beispielsweise \textit{Entities}, \textit{Value Objects} und \textit{Aggregates} sowie \textit{Aggregate Roots}. Aggregate Roots nehmen eine zentrale Rolle ein, da sie als Anlaufstellen für die Ausführung und Validierung von domänenspezifischen Aktionen und Methoden genutzt werden -- die \texttt{Form} Klasse ist ein Beispiel dafür. Aggregates sind verantwortlich für die Zusammenfassung mehrerer Entities innerhalb eines definierten \textit{Bounded Contexts}. Value Objects  haben hingegen die Aufgabe, Daten in unveränderlicher Form zu halten. \cite{airbrake_technologies_inc_domain-driven_2022, fowler_domaindrivendesign_2020, fowler_ddd_aggregate_2013}
+
+\medskip
+
+Quellcode \ref{code:form-aggregate-root} auf Seite \pageref{code:form-aggregate-root} bezieht sich auf spezifische Methodensignaturen der \texttt{Form} Klasse, welche verdeutlichen, dass die Klasse hauptverantwortlich für das Erstellen und Verwenden von Formularen sowie den zugehörigen \texttt{Section} und \texttt{Element} Objekten ist. Trotz ihrer Auslegung als Aggregate Root ist die Klasse jedoch nicht für das Erstellen und Bearbeiten von \texttt{Entry} und \texttt{ElementEntry} Objekten zuständig. Diese Vorgehensweise wurde gewählt, um in zukünftigen Versionen eine Entkopplung von \texttt{Entry} Objekten von \texttt{Form} Objekten und deren Abhängigkeiten zu erleichtern. Dadurch könnten Einreichungen weiterhin bestehen bleiben, selbst wenn Formulare oder einzelne Elemente geändert oder gelöscht werden, was derzeit noch nicht möglich ist.
+
+\begin{listing}[ht]
+    \inputminted[fontsize=\footnotesize,linenos,xleftmargin=8mm]{php}{code/Luidold_Form-Aggregate-Root.php}
+    \caption{Ausgewählte Methoden"=Signaturen der \texttt{Form} Aggregate Root Klasse der EthicsVision Plattform}
+    \label{code:form-aggregate-root}
+\end{listing}
+
+\subsubsection*{Aufbau der Symfony-Applikation}
+\label{sub-sub-sec:aufbau-symfony-applikation}
+
+Die Symfony-Applikation wurde als technische Grundlage für das Backend gewählt, 
+
+
+- Symfony
+- CQRS
+- Postgres
+- Redis
+- Maildev
 
 \subsection{Frontend}
 \label{sub-sec:ausarbeitung-frontend}

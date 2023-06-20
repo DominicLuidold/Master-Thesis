@@ -1,0 +1,25 @@
+services:
+    frontend:
+        image: ${PROJECT_NAME}-frontend:dev
+        ports:
+            - "4200:4200"
+        # [...]
+
+    backend:
+        image: ${PROJECT_NAME}-backend:dev
+        ports:
+            - "8080:8000"
+        # [...]
+
+    postgres:
+        image: postgres:${POSTGRES_VERSION}-alpine
+        ports:
+            - "8585:5432"
+        volumes:
+            - data-postgres:/var/lib/postgresql/data
+        # [...]
+
+    # [...]
+
+volumes:
+    data-postgres:
