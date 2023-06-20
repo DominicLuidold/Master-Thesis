@@ -137,11 +137,16 @@
 \chapter*{Abkürzungsverzeichnis}
 
 \begin{acronym}
+    \acro{api}[API]{Application Porgramming Interface}
     \acro{cms}[CMS]{Content Management System}
     \acroplural{cms}[CMS]{Content Management Systeme}
+    \acro{cqs}[CQS]{Command Query Separation}
+    \acro{cqrs}[CQRS]{Command Query Responsibility Segregation}
     \acro{dbms}[DBMS]{Datenbankmanagementsystem}
     \acro{ddd}[DDD]{Domain-driven Design}
     \acroplural{ddd}[DDD]{Domain-driven Designs}
+    \acro{dto}[DTO]{Data Transfer Object}
+    \acroplural{dto}[DTO]{Data Transfer Objects}
     \acro{dx}[DX]{Development Experience}
     \acro{ecs}[ECS]{Ethics Committee System}
     \acro{fek}[FE-K]{Forschungsethik"=Kommission}
@@ -149,11 +154,15 @@
     \acro{föe}[FÖE]{Forum Österreichischer Ethikkommissionen}
     \acro{hcd}[HCD]{Human-Centered Design}
     \acro{ieb}[IEB]{Institutionelle Ethikboard der Fachhochschule Gesundheitsberufe OÖ}
+    \acro{json}[JSON]{JavaScript Object Notation}
     \acro{mvc}[MVC]{Model-View-Controller}
     \acro{mvt}[MVT]{Model-View-Template}
+    \acro{orm}[ORM]{Object-relational Mapping}
     \acro{oss}[OSS]{Open-Source-Software}
     \acro{poc}[PoC]{Proof of Concept}
     \acro{qda}[QDA]{Quality Data Analysis}
+    \acro{rest}[REST]{Representational State Transfer}
+    \acroplural{rest}[REST]{Representational State Transfers}
     \acro{spa}[SPA]{Single-page Application}
     \acro{ucd}[UCD]{User-Centered Design}
     \acro{ui}[UI]{User Interface}
@@ -1512,14 +1521,14 @@ Unter Zuhilfenahme der in Abschnitt \ref{sec:inhaltlicher-aufbau} ab Seite \page
 Um neben der Definition eines Formulars auch konkrete Einreichungen und übermittelte Daten der Antragsteller:innen abbilden zu können, wurden zwei weitere Konzepte ausgearbeitet, die diese Funktionalität abbilden:
 \begin{itemize}
     \item \textbf{Entry:} Ein eingereichtes Formular wird in der Umsetzung \textit{Entry} genannt und enthält neben verschiedenen Zeitstempeln zur Erstellung, letzten Aktualisierung und Einreichung auch einen Status (konkret \texttt{Offen} oder \texttt{Eingereicht}).\\
-    Ähnlich zur Section werden auch für ein Entry Meta"=Informationen gespeichert, um später reproduzieren zu können, welche konkreten Sections mit dem Formular-Assistenten ausgewählt wurden, um das generierte Formular an die Projektumstände anzupassen.
+    Ähnlich zur Section werden auch für einen Eintrag Meta"=Informationen gespeichert, um später reproduzieren zu können, welche konkreten Sections mit dem Formular-Assistenten ausgewählt wurden, um das generierte Formular an die Projektumstände anzupassen.
     \item \textbf{ElementEntry:} Jeder Entry besteht aus sogenannten \textit{ElementEntry}s, die eine konkrete Verknüpfung zu einem Element besitzen und den eingegeben Wert beinhalten.
 \end{itemize}
 
 \subsubsection*{Domänenschicht}
 \label{sub-sub-sec:backend-domänenschicht}
 
-Die Domänenschicht basiert auf der definierten Datenstruktur und enthält zeitgleich entsprechende Logik, um Ethikanträge der \acl{fek} der \acl{fhv} abbilden zu können. Wie bereits angesprochen, ist in Abbildung \ref{fig:ethics-vision-uml} auf Seite \pageref{fig:ethics-vision-uml} ersichtlich, dass der Bezug zu einem Ethikantrag nur indirekt gegeben ist und die \texttt{Form} Klasse stattdessen eine zentrale Rolle spielt. Alle anderen Klassen hängen sowohl direkt als auch indirekt von ihr ab, was auch durch die eingezeichneten Kompositionen als Relationen zwischen den Klassen verdeutlich wird.
+Die Domänenschicht basiert auf der definierten Datenstruktur und enthält zeitgleich entsprechende Logik, um Ethikanträge der \acl{fek} der \acl{fhv} abbilden zu können. Wie bereits angesprochen, ist in Abbildung \ref{fig:ethics-vision-uml} auf Seite \pageref{fig:ethics-vision-uml} ersichtlich, dass der Bezug zu einem Ethikantrag nur indirekt gegeben ist und die \texttt{Form} Klasse stattdessen eine zentrale Rolle einnimmt. Alle anderen Klassen hängen sowohl direkt als auch indirekt von ihr ab, was auch durch die eingezeichneten Kompositionen als Relationen zwischen den Klassen verdeutlicht wird.
 
 \begin{figure}[ht]
     \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-Klassendiagramm.png}
@@ -1527,15 +1536,15 @@ Die Domänenschicht basiert auf der definierten Datenstruktur und enthält zeitg
     \label{fig:ethics-vision-uml}
 \end{figure}
 
-Die Modellierung der Domänenschicht und auch der als Basis dienenden Datenstruktur orientiert sich an den Prinzipien des \acp{ddd}, die zumindest in grundlegender Form\footnote{Aufgrund des Fokus auf die schnelle Entwicklung eines ersten Prototyps und der überschaubaren Komplexität des Systems wurden nicht alle Konzepte des \ac{ddd} konsequent übernommen.} Anwendung während der Modellierung gefunden hat.
+Die Modellierung der Domänenschicht und auch der als Basis dienenden Datenstruktur orientiert sich an den Prinzipien des \acp{ddd}, die zumindest in grundlegender Form\footnote{Aufgrund des Fokus auf die schnelle Entwicklung eines ersten Prototyps und der überschaubaren Komplexität des Systems wurden nicht alle Konzepte des \ac{ddd} konsequent übernommen.} Anwendung gefunden haben.
 
 Im Bereich des \ac{ddd} nimmt das Verständnis der Prozesse, die mittels einer Software"=Lösung abgebildet werden sollen, eine essenzielle Rolle ein. Die Domäne, in der diese Prozesse stattfinden und in der eine Applikation schlussendlich verwendet wird, stellt den Kontext bereit, in dem Aktionen ausgeführt und Daten bereitgestellt sowie validiert werden. Zusätzlich dazu bringt die Domäne eine \textit{Ubiquitous Language}, eine einheitliche Sprache, mit sich, die von Anwender:innen und Entwickler:innen genutzt werden kann, um für beide Seiten verständliche Begrifflichkeiten zu definieren und zu verwenden. \cite{airbrake_technologies_inc_domain-driven_2022, fowler_domaindrivendesign_2020}
 
-Innerhalb des \ac{ddd}-Konzepts kommen zudem unterschiedliche Abstraktionen zur Anwendung, wie beispielsweise \textit{Entities}, \textit{Value Objects} und \textit{Aggregates} sowie \textit{Aggregate Roots}. Aggregate Roots nehmen eine zentrale Rolle ein, da sie als Anlaufstellen für die Ausführung und Validierung von domänenspezifischen Aktionen und Methoden genutzt werden -- die \texttt{Form} Klasse ist ein Beispiel dafür. Aggregates sind verantwortlich für die Zusammenfassung mehrerer Entities innerhalb eines definierten \textit{Bounded Contexts}. Value Objects  haben hingegen die Aufgabe, Daten in unveränderlicher Form zu halten. \cite{airbrake_technologies_inc_domain-driven_2022, fowler_domaindrivendesign_2020, fowler_ddd_aggregate_2013}
+Innerhalb des \ac{ddd}-Konzepts kommen zudem unterschiedliche Abstraktionen zur Anwendung, wie beispielsweise \textit{Entities}, \textit{Value Objects} und \textit{Aggregates} sowie \textit{Aggregate Roots}. Aggregate Roots nehmen eine zentrale Rolle ein, da sie als Anlaufstellen für die Ausführung und Validierung von domänenspezifischen Aktionen und Methoden genutzt werden -- die \texttt{Form} Klasse ist ein Beispiel dafür. Aggregates sind verantwortlich für die Zusammenfassung mehrerer Entities innerhalb eines definierten \textit{Bounded Contexts}. Value Objects haben die Aufgabe, Daten in unveränderlicher Form zu halten. \cite{airbrake_technologies_inc_domain-driven_2022, fowler_domaindrivendesign_2020, fowler_ddd_aggregate_2013}
 
 \medskip
 
-Quellcode \ref{code:form-aggregate-root} auf Seite \pageref{code:form-aggregate-root} bezieht sich auf spezifische Methodensignaturen der \texttt{Form} Klasse, welche verdeutlichen, dass die Klasse hauptverantwortlich für das Erstellen und Verwenden von Formularen sowie den zugehörigen \texttt{Section} und \texttt{Element} Objekten ist. Trotz ihrer Auslegung als Aggregate Root ist die Klasse jedoch nicht für das Erstellen und Bearbeiten von \texttt{Entry} und \texttt{ElementEntry} Objekten zuständig. Diese Vorgehensweise wurde gewählt, um in zukünftigen Versionen eine Entkopplung von \texttt{Entry} Objekten von \texttt{Form} Objekten und deren Abhängigkeiten zu erleichtern. Dadurch könnten Einreichungen weiterhin bestehen bleiben, selbst wenn Formulare oder einzelne Elemente geändert oder gelöscht werden, was derzeit noch nicht möglich ist.
+Quellcode \ref{code:form-aggregate-root} auf Seite \pageref{code:form-aggregate-root} bezieht sich auf ausgewählte Methodensignaturen der \texttt{Form} Klasse, welche verdeutlichen, dass die Klasse hauptverantwortlich für das Erstellen und Verwenden von Formularen sowie den zugehörigen \texttt{Section} und \texttt{Element} Objekten ist. Trotz ihrer Auslegung als Aggregate Root ist die Klasse jedoch nicht für das Erstellen und Bearbeiten von \texttt{Entry} und \texttt{ElementEntry} Objekten zuständig. Diese Vorgehensweise wurde gewählt, um in zukünftigen Versionen eine Entkopplung von \texttt{Entry} Objekten von \texttt{Form} Objekten und deren Abhängigkeiten zu erleichtern. Dadurch könnten Einreichungen weiterhin bestehen bleiben, selbst wenn Formulare oder einzelne Elemente geändert oder gelöscht werden, was derzeit noch nicht möglich ist.
 
 \begin{listing}[ht]
     \inputminted[fontsize=\footnotesize,linenos,xleftmargin=8mm]{php}{code/Luidold_Form-Aggregate-Root.php}
@@ -1546,11 +1555,50 @@ Quellcode \ref{code:form-aggregate-root} auf Seite \pageref{code:form-aggregate-
 \subsubsection*{Aufbau der Symfony-Applikation}
 \label{sub-sub-sec:aufbau-symfony-applikation}
 
-Die Symfony-Applikation wurde als technische Grundlage für das Backend gewählt, 
+Das Symfony-Framework wurde als technische Grundlage für die Umsetzung des Backends gewählt, da mit dem Framework und den dafür zur Verfügung stehenden First-Party sowie Third-Party Erweiterungen, regelmäßigen Updates und einer detaillierten Dokumentation eine Vielzahl an Möglichkeiten zur Verfügung stehen, die definierten Anforderungen umsetzen zu können. Daneben ermöglicht das Symfony-Framework mit seiner \acl{mvc} Architektur eine saubere Trennung der unterschiedlichen Schichten einer modernen Applikation und bietet gleichzeitig die Möglichkeit, den Projektgegebenheiten angepasst und bei Bedarf erweitert zu werden. Wie bereits in Abschnitt \ref{sec:ausarbeitung-wahl-technische-basis} ab Seite \pageref{sec:ausarbeitung-wahl-technische-basis} angesprochen wurde, eignet sich das Symfony-Framework zudem, um eine vom \acl{ui} entkoppelte Applikation umzusetzen, die bei Bedarf ebenso in andere Systemen integriert werden kann. \cite{symfony_sas_six-reasons_2023, kszczanowicz_why_2021} 
 
+In der Umsetzung des \ac{poc} wird Symfony konkret in der Version \texttt{6.3} mit PHP \texttt{8.2} betrieben, was jeweils den aktuellsten Versionen zum Zeitpunkt dieser Arbeit im Sommersemester 2023 entspricht. Zum Einsatz kommen dabei zudem \textit{Composer}\footnote{Composer: \url{https://getcomposer.org/}} für die Verwaltung von Abhängigkeiten und verwendeten Paketen sowie unter anderem \textit{Doctrine}\footnote{Doctrine: \url{https://www.doctrine-project.org/}} als \ac{orm} Tool sowie Schnittstelle zwischen Applikation und Datenbank.
 
-- Symfony
-- CQRS
+\medskip
+
+Wie in Abbildung \ref{fig:ethics-vision-api-docs} auf Seite \pageref{fig:ethics-vision-api-docs} zu sehen ist, stellt der Hauptbestandteil der mit Symfony umgesetzten Backend-Anwendung das \ac{api} dar, mit der beliebige \ac{ui}-Umsetzungen auf die verschiedenen Funktionalitäten und Operationen des Systems zugreifen können. Die in der Abbildung aufgelisteten Endpunkte können dabei im realisierten Prototypen ohne Authentifizierung angesteuert werden und sind nach dem Prinzip des \acp{rest} stateless. \cite{gupta_stateless_2018}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-API-Docs.png}
+    \caption{\acs{api}-Dokumentation der EthicsVision Plattform}
+    \label{fig:ethics-vision-api-docs}
+\end{figure}
+
+Die Applikation rund um die insgesamt sechs Endpunkte ist intern in die drei Schichten der \ac{mvc}-Architektur aufgeteilt:
+\begin{itemize}
+    \item \textbf{Model:} Das Model entspricht der Domänenschicht, die in diesem Abschnitt bereits ausführlich erläutert wurde und enthält die Aggreagate Roots und Entities im Kontext des \ac{ddd}. Diese werden von Doctrine im Rahmen des \ac{orm} als Entities mit Daten angereichert. Der Zugriff auf die Datenbank, um mit den angereicherten Objekten in der Applikationslogik interagieren zu können, wird dabei durch sogenannte \textit{Repositories} ermöglicht. Diese befinden sich, zusammen mit den zugehörigen \ac{orm}-Konfigurationsdateien im \texttt{XML}-Format, in einem separaten Namespace\footnote{Die Domänenschicht befindet sich im \url{App\\Form\\Domain\\Model} Namespace, während die konkreten Implementierungen der Repositories in \url{App\\Form\\Infrastructure\\Repository} zu finden sind.}, um eine Vermischung der Schichten zu verhindern.
+    \item \textbf{View:} In der Umsetzung des \aclp{poc} wird die View"=Schicht über mehrere \acp{dto} realisiert, die von den verschiedenen \ac{api}-Endpunkten als serialisierte \ac{json} Objekte zurückgegeben werden.
+    \item \textbf{Controller:} In ähnlicher Weise zur View-Schicht nutzen die umgesetzten \textit{Controller} vom Framework bereitgestellte, deserialisierte \ac{json}-Objekte in Form von \ac{dto}s, die zusätzlich validiert werden. Die in den \acp{dto}s enthaltenen Daten werden im weiteren Verlauf dabei nicht direkt von den jeweiligen Controllern verarbeitet, sondern, wie von \cite{symfony_sas_best-practices_2023} empfohlen, an dedizierte \textit{Command-} und \textit{QueryHandler} delegiert.
+\end{itemize}
+
+\clearpage
+
+Quellcode \ref{code:form-controller} auf Seite \pageref{code:form-controller} zeigt beispielhaft jene Methode des \texttt{FormController}s, die für die Erstellung eines neuen Eintrags für ein Formular zuständig ist. Die Methode nimmt dabei den \texttt{CreateEntryCommand} entgegen, delegiert diesen an den dafür zuständigen CommandHandler und retourniert das bereitgestellte Ergebnis in Form einer \ac{json}-Response.
+
+\begin{listing}[ht]
+    \inputminted[fontsize=\footnotesize,linenos,xleftmargin=8mm,breaklines]{php}{code/Luidold_Form-Controller.php}
+    \caption{Ausschnitt des \texttt{FormController}s der EthicsVision Plattform}
+    \label{code:form-controller}
+\end{listing}
+
+Das hierbei angewandte und stellenweise auch schon angedeutete Pattern basiert auf den Prinzipien der \ac{cqrs}. Die Begriffe \textit{Command} und \textit{Query}, die ursprünglich auf die \ac{cqs} zurückgehen, definieren dabei Zugriffsarten, bei denen lesende und schreibende Aktionen explizit von einander getrennt werden: \cite{noauthor_cqrs_2010, fowler_commandqueryseparation_2005}, \cite[238\psq]{ingeno_software_2018}
+
+\begin{itemize}
+    \item \textbf{Query:} Lesende Operationen werden in Form von Queries durchgeführt, um auf die Daten eines Systems zuzugreifen, ohne diese oder den Systemzustand zu verändern. In der konkreten Umsetzung werden, wie angesprochen, QueryHandler verwendet, die von Symfony über die \texttt{symfony/messenger} Komponente verarbeitet werden. \cite{fowler_commandqueryseparation_2005} \cite[238\psq]{ingeno_software_2018}
+    \item \textbf{Command:} Schreibende Operationen hingegen werden in Form von Commands ausgeführt und führen zu Änderungen der Daten und des Systemzustands mit potenziellen Seiteneffekten. Laut Definition liefern Commands beziehungsweise CommandHandler, die sowohl synchron als auch asynchron ausgeführt werden können, kein Ergebnis zurück. Im vorliegenden \texttt{FormController} werden jedoch bestimmte Daten vom Angular-Frontend benötigt, die daher direkt als Ergebnis bereitgestellt werden. \cite{fowler_commandqueryseparation_2005} \cite[238\psq]{ingeno_software_2018}
+\end{itemize}
+
+Der \ac{cqrs}-Ansatz wurde gewählt, da dieser mehrere Vorteile in verschiedenen Bereichen bietet: Durch die gezielte Aufteilung von lesenden und schreibenden Aktionen kann die Wartbarkeit, Erweiterbarkeit und Flexibilität eines Systems verbessert werden. Zudem ermöglicht dieser Ansatz eine präzisere Implementierung von Funktionen, bei denen die Sicherheit (\textit{Security} im Englischen) und damit verbundene Aspekte eine Rolle spielen, da lesende und schreibende Operationen voneinander getrennt sind. Auch kann eine Steigerung der Performance erreicht werden, indem die verschiedenen Operationen unterschiedlich skaliert werden. Die Vorteile, wie von \cite{ingeno_software_2018} erwähnt, kommen dabei vor allem komplexeren Systemen zugute. Der implementierte Prototyp ist dadurch jedoch bereits darauf ausgelegt, mögliche Weiterentwicklungen mit weniger Hindernissen hinsichtlich Größe und Komplexität zu bewältigen (vgl. \cite[240]{ingeno_software_2018}).
+
+\subsubsection*{Genutzte Infrastruktur}
+\label{sub-sub-sec:backend-genutzte-infrastruktur}
+
 - Postgres
 - Redis
 - Maildev
@@ -2109,7 +2157,7 @@ Der Quellcode der EthicsVision Plattform wurde auf GitHub veröffentlicht und is
 \section{Abbildungen zum generierten Ethikantrag}
 \label{appendix:ethics-vision-formular}
 
-\textbf{Anmerkung:} Der dargestellte Ethikantrag wurde mit den Eingaben \texttt{F\&E-Arbeit von Studierenden} zur Frage \enquote{In welchem Rahemn wird das Forschungsvorhaben bzw. -projekt umgesetzt und finanzeirt?}, \texttt{Ja} zur Frage \enquote{Wird eine Studie an oder mit Menschen durchgeführt?} und \texttt{Ja} zur Frage \enquote{Wird ein Prototyp entwickelt?} generiert.
+\textbf{Anmerkung:} Der dargestellte Ethikantrag wurde mit den Eingaben \texttt{F\&E-Arbeit von Studierenden} zur Frage \enquote{In welchem Rahemn wird das Forschungsvorhaben beziehungsweise -projekt umgesetzt und finanzeirt?}, \texttt{Ja} zur Frage \enquote{Wird eine Studie an oder mit Menschen durchgeführt?} und \texttt{Ja} zur Frage \enquote{Wird ein Prototyp entwickelt?} generiert.
 
 \begin{figure}[ht]
     \centering
