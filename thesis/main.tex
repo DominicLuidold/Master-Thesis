@@ -140,11 +140,13 @@
     \acro{api}[API]{Application Porgramming Interface}
     \acro{cms}[CMS]{Content Management System}
     \acroplural{cms}[CMS]{Content Management Systeme}
+    \acro{cli}[CLI]{Command Line Interface}
     \acro{cqs}[CQS]{Command Query Separation}
     \acro{cqrs}[CQRS]{Command Query Responsibility Segregation}
     \acro{dbms}[DBMS]{Datenbankmanagementsystem}
     \acro{ddd}[DDD]{Domain-driven Design}
     \acroplural{ddd}[DDD]{Domain-driven Designs}
+    \acro{dom}[DOM]{Document Object Model}
     \acro{dto}[DTO]{Data Transfer Object}
     \acroplural{dto}[DTO]{Data Transfer Objects}
     \acro{dx}[DX]{Development Experience}
@@ -156,6 +158,7 @@
     \acro{ieb}[IEB]{Institutionelle Ethikboard der Fachhochschule Gesundheitsberufe OÖ}
     \acro{json}[JSON]{JavaScript Object Notation}
     \acro{mvc}[MVC]{Model-View-Controller}
+    \acro{mpa}[MPA]{Mulit-page Application}
     \acro{mvt}[MVT]{Model-View-Template}
     \acro{orm}[ORM]{Object-relational Mapping}
     \acro{oss}[OSS]{Open-Source-Software}
@@ -163,7 +166,9 @@
     \acro{qda}[QDA]{Quality Data Analysis}
     \acro{rest}[REST]{Representational State Transfer}
     \acroplural{rest}[REST]{Representational State Transfers}
+    \acro{smtp}[SMTP]{Simple Mail Transfer Protocol}
     \acro{spa}[SPA]{Single-page Application}
+    \acro{sql}[SQL]{Structured Query Language}
     \acro{ucd}[UCD]{User-Centered Design}
     \acro{ui}[UI]{User Interface}
     \acro{ux}[UX]{User Experience}
@@ -410,7 +415,7 @@ Vier der sieben angewandten Bewertungskriterien der \ac{fek} lassen sich bei gen
 \begin{itemize}
     \item Kriterium \enquote{Autonomie} in Anlehnung an Beauchamp's und Childress' \enquote{Respect for Autonomy} \cite[101-149]{beauchamp_principles_1994}
     \item Kriterium \enquote{Fürsorge} in Anlehnung an Beauchamp's und Childress' \enquote{Beneficence} \cite[202-248]{beauchamp_principles_1994}
-    \item Kriterium \enquote{Gerechtigkeit} in Anlehnung an an Beauchamp's und Childress' \enquote{Justice} \cite[249-301]{beauchamp_principles_1994}
+    \item Kriterium \enquote{Gerechtigkeit} in Anlehnung an Beauchamp's und Childress' \enquote{Justice} \cite[249-301]{beauchamp_principles_1994}
     \item Kriterium \enquote{Menschliche Sicherheit} im allgemeineren Sinne in Anlehnung an Beauchamp's und Childress' \enquote{Nonmaleficience} \cite[150-201]{beauchamp_principles_1994}
 \end{itemize}
 
@@ -780,10 +785,10 @@ Die Erstellung und Einreichung von Ethikanträgen basiert im genannten System au
 
 \begin{figure}[htp]
     \centering
-    \begin{minipage}[t]{.99\linewidth}
+    \begin{minipage}[t]{.97\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_Einreichplattform-Formular-Schritt-1.png}
     \end{minipage}
-    \begin{minipage}[b]{.99\linewidth}
+    \begin{minipage}[b]{.97\linewidth}
         \includegraphics[width=\linewidth]{thesis/images/Luidold_Einreichplattform-Formular-Schritt-2.png}
     \end{minipage}
     \caption[Schritt 1 und Schritt 7 der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien]{Schritt 1 (oben) und Schritt 7 (unten) der Erstellung eines Ethikantrages mittels der Einreichplattform der FH Campus Wien \cite{ethikkommission_fh_campus_wien_fh_2023}}
@@ -875,7 +880,7 @@ Wie in Abbildung \ref{fig:ecs-studien-nachrichten-notizen} auf Seite \pageref{fi
     \label{fig:ecs-studien-nachrichten-notizen}
 \end{figure}
 
-Das \acl{ecs} basiert dabei auf einer mittels Python\footnote{Python (\url{https://www.python.org/})} und dem dafür zur Verfügung stehenden Webframework Django\footnote{Django Webframework (\url{https://www.djangoproject.com/})} umgesetzten Webapplikation, welche die Applikationsdaten in einer mit dem PostgreSQL\footnote{PostgreSQL (\url{https://www.postgresql.org/)}} \ac{dbms} verwalteten Datenbank ablegt. Die Webapplikation beziehungsweise die Python-Umgebung läuft dabei auf einem Ubuntu Xenial Cloud Image\footnote{Ubuntu 16.04 LTS (Xenial Xerus) (\url{https://cloud-images.ubuntu.com/releases/server/xenial/release/})} der Version \texttt{16.04 LTS}. Das \ac{ecs} bedient sich zusätzlich weiterer Technologien, um die gesamte Anwendung (und auch die Anwendungsfälle, die in dieser Analyse außen vor gelassen werden) anbieten zu können. In Abbildung \ref{fig:ecs-service-architektur} auf Seite \pageref{fig:ecs-service-architektur} ist ersichtlich, welche weiteren Technologien, Frameworks und Services zum Einsatz kommen und die Abbildung gibt gleichzeitig auch ein Überblick über die Service-Architektur der gesamten Web-Applikation. \cite{medizinische_universitat_wien_ecs-docs_about-2021, medizinische_universitat_wien_ecs-handbook_development-2021}
+Das \acl{ecs} basiert dabei auf einer mittels Python\footnote{Python (\url{https://www.python.org/})} und dem dafür zur Verfügung stehenden Webframework Django\footnote{Django Webframework (\url{https://www.djangoproject.com/})} umgesetzten Webapplikation, welche die Applikationsdaten in einer mit dem PostgreSQL\footnote{PostgreSQL (\url{https://www.postgresql.org/})} \ac{dbms} verwalteten Datenbank ablegt. Die Webapplikation beziehungsweise die Python-Umgebung läuft dabei auf einem Ubuntu Xenial Cloud Image\footnote{Ubuntu 16.04 LTS (Xenial Xerus) (\url{https://cloud-images.ubuntu.com/releases/server/xenial/release/})} der Version \texttt{16.04 LTS}. Das \ac{ecs} bedient sich zusätzlich weiterer Technologien, um die gesamte Anwendung (und auch die Anwendungsfälle, die in dieser Analyse außen vor gelassen werden) anbieten zu können. In Abbildung \ref{fig:ecs-service-architektur} auf Seite \pageref{fig:ecs-service-architektur} ist ersichtlich, welche weiteren Technologien, Frameworks und Services zum Einsatz kommen und die Abbildung gibt gleichzeitig auch ein Überblick über die Service-Architektur der gesamten Web-Applikation. \cite{medizinische_universitat_wien_ecs-docs_about-2021, medizinische_universitat_wien_ecs-handbook_development-2021}
 
 \begin{figure}[ht]
     \centering
@@ -1338,7 +1343,7 @@ Die Umsetzung als online abrufbare Webapplikation wurde aus mehreren Gründen ge
 \subsection{Umgesetzte Funktionalitäten}
 \label{sub-sec:umgesetzte-funtionalitäten}
 
-Bevor die technische Umsetzung im Detail erläutert wird, werden im folgenden Abschnitt die umgesetzten Funktionalitäten anhand der in Abschnitt \ref{sec:priorisierung-anforderungen} ab Seite \pageref{sec:priorisierung-anforderungen} priorisierten Anforderungen dargelegt und im Zuge dessen in Bezug gestellt. Die entwickelten Lösungen decken dabei nicht immer die gesamte Anforderung ab, was im Zuge \colorbox{yellow}{TODO} der Evaluation des Prototyps in Kapitel \ref{chap:evaluation-prototyp} ab Seite \pageref{chap:evaluation-prototyp} stellenweise noch einmal aufgegriffen wird.
+Bevor die technische Umsetzung im Detail erläutert wird, werden im folgenden Abschnitt die umgesetzten Funktionalitäten anhand der in Abschnitt \ref{sec:priorisierung-anforderungen} ab Seite \pageref{sec:priorisierung-anforderungen} priorisierten Anforderungen dargelegt und im Zuge dessen in Bezug gestellt. Die entwickelten Lösungen decken dabei nicht immer die gesamte Anforderung ab, was im Zuge von Kapitel \ref{chap:möglichkeiten-zur-weiterentwicklung} sowie Kapitel \ref{chap:evaluation-prototyp} ab Seite \pageref{chap:möglichkeiten-zur-weiterentwicklung} beziehungsweise Seite \pageref{chap:evaluation-prototyp} stellenweise noch einmal aufgegriffen wird.
 
 \subsubsection*{Anforderungen \#1 \& \#3}
 \label{sub-sub-sec:umgesetzte-funktionalitäten-anforderung-1-3}
@@ -1445,7 +1450,7 @@ Die EthicsVision-Plattform besteht aus zwei wesentlichen Komponenten: dem Angula
 
 Docker bietet die Möglichkeit, Applikationen und zugehörige Bestandteile unabhängig von der benötigten Infrastruktur zu entwickeln. Zeitgleich kann die Infrastruktur, ähnlich zu klassischem Quellcode, so verwaltet werden, dass standardisierte und reproduzierbare Instanzen und Umgebungen erzeugt werden können. \cite{docker_inc_docker_2023}
 
-Docker bedient sich dabei mehrere Konzepte und Begriffe, die auch im angesprochenen Diagramm teilweise zu erkennen sind:
+Docker bedient sich dabei mehrerer Konzepte und Begriffe, die auch im angesprochenen Diagramm teilweise zu erkennen sind:
 \begin{itemize}
     \item \textbf{Image:} Ein Image entspricht einer Vorlage, die alle Anweisungen, Abhängigkeiten und Komponenten enthält, um das Ausführen einer Anwendung in einer isolierten Umgebung zu ermöglichen. Ein Image kann dabei sowohl aus einer öffentlich zugänglichen Registry bezogen, als auch selbstständig erzeugt werden. Images bestehen typischerweise aus verschiedenen sogenannten \enquote{Layern}, bei der jede Anweisung und jedes verwendete Basis-Image einer Schicht entspricht. Werden Änderungen vorgenommen, muss lediglich der betroffene Layer aktualisiert werden, während der bestehende Cache für die anderen Schichten genutzt wird. \cite{docker_inc_docker_2023, montemagno_docker_2023}
     \item \textbf{Conainer:} Ein Container entspricht einer ausführbaren Instanz eines Image, welcher jederzeit gestartet sowie gestoppt werden kann und, ohne zusätzliche Konfiguration, isoliert ist. Der Zustand eines Containers muss explizit mittels eines Volumes persistiert werden, um wiederverwendet werden zu können. Innerhalb des Containers wird eine einzelne Applikation oder ein Service ausgeführt, der bei Bedarf mittels mehrerer Container skaliert werden kann. \cite{docker_inc_docker_2023, montemagno_docker_2023}
@@ -1460,7 +1465,7 @@ Wie Abbildung \ref{fig:ethics-vision-diagramm} auf Seite \pageref{fig:ethics-vis
 
 \medskip
 
-Da die schlussendliche Applikation aus den angesprochenen fünf Anwendungen und Services besteht, kommt \textit{Docker Compose} zum Einsatz. Docker Compose stellt ein Command-Line Tool sowie ein \texttt{.yaml} Dateiformat zur Verfügung, um mehrere Images gleichzeitig starten und stoppen sowie notwendige Konfigurationen vornehmen zu können. Docker Compose erstellt zudem automatisch ein Netzwerk, das von allen Containern genutzt werden kann. \cite{montemagno_docker_2023, docker_inc_networking_compose_2023}
+Da die schlussendliche Applikation aus den angesprochenen fünf Anwendungen und Services besteht, kommt \textit{Docker Compose} zum Einsatz. Docker Compose stellt ein \ac{cli} Tool sowie ein \texttt{.yaml} Dateiformat zur Verfügung, um mehrere Images gleichzeitig starten und stoppen sowie notwendige Konfigurationen vornehmen zu können. Docker Compose erstellt zudem automatisch ein Netzwerk, das von allen Containern genutzt werden kann. \cite{montemagno_docker_2023, docker_inc_networking_compose_2023}
 
 Quellcode \ref{code:docker-compose-excerpt} auf Seite \pageref{code:docker-compose-excerpt} zeigt einen Ausschnitt der Docker Compose Konfigurationsdatei, die für das Starten der Entwicklungsumgebung erstellt wurde. Die drei dargestellten Services umfassen sowohl den Frontend- sowie Backend-Container als auch das \ac{dbms} PostgreSQL. Gut zu erkennen ist, dass für alle drei Container jeweils ein Port-Forwarding konfiguriert wurde: Die PostgreSQL-Datenbank ist beispielsweise im Docker-Netzwerk unter dem Port \texttt{5432} erreichbar, während über das Host-System eine Verbindung über den Port \texttt{8585} aufgebaut werden kann. 
 
@@ -1474,7 +1479,7 @@ Ebenso lässt sich erkennen, dass dem \texttt{postgres} Container ein Volume zug
 
 \medskip
 
-Quellcode \ref{code:docker-compose-commands} auf Seite \pageref{code:docker-compose-commands} zeigt, wie der Docker-Stack mittels Docker Compose gestartet und gestoppt werden kann. Um das häufig vorkommende Starten und Stoppen zu vereinfachen, findet im umgesetzten Projekt ein Makefile Anwendung, welches die Befehle noch einmal vereinfacht und die Nutzung von Umgebungsvariablen unterstützt.\footnote{Siehe \url{https://github.com/DominicLuidold/ethics-vision/blob/main/Makefile}}.
+Quellcode \ref{code:docker-compose-commands} auf Seite \pageref{code:docker-compose-commands} zeigt, wie der Docker-Stack mittels Docker Compose gestartet und gestoppt werden kann. Um das häufig vorkommende Starten und Stoppen zu vereinfachen, findet im umgesetzten \ac{poc} ein \textit{Makefile} Anwendung, welches die Befehle noch einmal vereinfacht und die Nutzung von Umgebungsvariablen unterstützt.\footnote{Siehe \url{https://github.com/DominicLuidold/ethics-vision/blob/main/Makefile}}.
 
 \begin{listing}[ht]
     \inputminted[fontsize=\footnotesize,linenos,xleftmargin=8mm]{bash}{code/Luidold_Docker-Compose-Commands.sh}
@@ -1499,7 +1504,7 @@ Das sogenannte \enquote{Backend} hat im Kontext der EthicsVision Plattform mehre
 \begin{itemize}
     \item das Bereitstellen von Formularen und Formular"=Einträgen im Kontext des Ethikantrages,
     \item die Möglichkeit, Formulare und Formular"=Einträge zu erstellen, zu bearbeiten und zu löschen sowie
-    \item der Versand von Benachrichtigungen in Form von E-Mails bei Eintreten spezifischer Ereignisse.
+    \item die permanente Speicherung und Verwaltung der Daten und Datenstruktur auf Datenbank"=Ebene.
 \end{itemize}
 
 Um einen Überblick über die Herangehensweise zu ermöglichen, werden im Folgenden der Aufbau der Datenstruktur, das Symfony-Framework als Grundlage, die angewandten Patterns sowie die verwendete Infrastruktur genauer beleuchtet.
@@ -1521,7 +1526,7 @@ Unter Zuhilfenahme der in Abschnitt \ref{sec:inhaltlicher-aufbau} ab Seite \page
 Um neben der Definition eines Formulars auch konkrete Einreichungen und übermittelte Daten der Antragsteller:innen abbilden zu können, wurden zwei weitere Konzepte ausgearbeitet, die diese Funktionalität abbilden:
 \begin{itemize}
     \item \textbf{Entry:} Ein eingereichtes Formular wird in der Umsetzung \textit{Entry} genannt und enthält neben verschiedenen Zeitstempeln zur Erstellung, letzten Aktualisierung und Einreichung auch einen Status (konkret \texttt{Offen} oder \texttt{Eingereicht}).\\
-    Ähnlich zur Section werden auch für einen Eintrag Meta"=Informationen gespeichert, um später reproduzieren zu können, welche konkreten Sections mit dem Formular-Assistenten ausgewählt wurden, um das generierte Formular an die Projektumstände anzupassen.
+    Ähnlich zur Section werden auch für einen Eintrag Meta"=Informationen gespeichert, um später reproduzieren zu können, welche konkreten Sections mit dem Formular-Assistenten ausgewählt wurden, um das generierte Formular an das Forschungsvorhaben anzupassen.
     \item \textbf{ElementEntry:} Jeder Entry besteht aus sogenannten \textit{ElementEntry}s, die eine konkrete Verknüpfung zu einem Element besitzen und den eingegeben Wert beinhalten.
 \end{itemize}
 
@@ -1538,7 +1543,7 @@ Die Domänenschicht basiert auf der definierten Datenstruktur und enthält zeitg
 
 Die Modellierung der Domänenschicht und auch der als Basis dienenden Datenstruktur orientiert sich an den Prinzipien des \acp{ddd}, die zumindest in grundlegender Form\footnote{Aufgrund des Fokus auf die schnelle Entwicklung eines ersten Prototyps und der überschaubaren Komplexität des Systems wurden nicht alle Konzepte des \ac{ddd} konsequent übernommen.} Anwendung gefunden haben.
 
-Im Bereich des \ac{ddd} nimmt das Verständnis der Prozesse, die mittels einer Software"=Lösung abgebildet werden sollen, eine essenzielle Rolle ein. Die Domäne, in der diese Prozesse stattfinden und in der eine Applikation schlussendlich verwendet wird, stellt den Kontext bereit, in dem Aktionen ausgeführt und Daten bereitgestellt sowie validiert werden. Zusätzlich dazu bringt die Domäne eine \textit{Ubiquitous Language}, eine einheitliche Sprache, mit sich, die von Anwender:innen und Entwickler:innen genutzt werden kann, um für beide Seiten verständliche Begrifflichkeiten zu definieren und zu verwenden. \cite{airbrake_technologies_inc_domain-driven_2022, fowler_domaindrivendesign_2020}
+Im Bereich des \ac{ddd} nimmt das Verständnis der Prozesse, die mittels einer Software"=Lösung abgebildet werden sollen, eine essenzielle Rolle ein. Die Domäne, in der diese Prozesse stattfinden und in der eine Applikation schlussendlich verwendet wird, stellt den Kontext bereit, in dem Aktionen ausgeführt und Daten bereitgestellt sowie validiert werden. Zusätzlich dazu bringt die Domäne eine \textit{Ubiquitous Language}, eine einheitliche Sprache, mit sich, die von Anwender:innen und Entwickler:innen genutzt werden kann, um allgemein verständliche Begrifflichkeiten definieren und verwenden zu können. \cite{airbrake_technologies_inc_domain-driven_2022, fowler_domaindrivendesign_2020}
 
 Innerhalb des \ac{ddd}-Konzepts kommen zudem unterschiedliche Abstraktionen zur Anwendung, wie beispielsweise \textit{Entities}, \textit{Value Objects} und \textit{Aggregates} sowie \textit{Aggregate Roots}. Aggregate Roots nehmen eine zentrale Rolle ein, da sie als Anlaufstellen für die Ausführung und Validierung von domänenspezifischen Aktionen und Methoden genutzt werden -- die \texttt{Form} Klasse ist ein Beispiel dafür. Aggregates sind verantwortlich für die Zusammenfassung mehrerer Entities innerhalb eines definierten \textit{Bounded Contexts}. Value Objects haben die Aufgabe, Daten in unveränderlicher Form zu halten. \cite{airbrake_technologies_inc_domain-driven_2022, fowler_domaindrivendesign_2020, fowler_ddd_aggregate_2013}
 
@@ -1570,7 +1575,7 @@ Wie in Abbildung \ref{fig:ethics-vision-api-docs} auf Seite \pageref{fig:ethics-
     \label{fig:ethics-vision-api-docs}
 \end{figure}
 
-Die Applikation rund um die insgesamt sechs Endpunkte ist intern in die drei Schichten der \ac{mvc}-Architektur aufgeteilt:
+Die Applikation rund um die insgesamt sechs \ac{api}"=Endpunkte ist intern in die drei Schichten der \ac{mvc}-Architektur aufgeteilt:
 \begin{itemize}
     \item \textbf{Model:} Das Model entspricht der Domänenschicht, die in diesem Abschnitt bereits ausführlich erläutert wurde und enthält die Aggreagate Roots und Entities im Kontext des \ac{ddd}. Diese werden von Doctrine im Rahmen des \ac{orm} als Entities mit Daten angereichert. Der Zugriff auf die Datenbank, um mit den angereicherten Objekten in der Applikationslogik interagieren zu können, wird dabei durch sogenannte \textit{Repositories} ermöglicht. Diese befinden sich, zusammen mit den zugehörigen \ac{orm}-Konfigurationsdateien im \texttt{XML}-Format, in einem separaten Namespace\footnote{Die Domänenschicht befindet sich im \url{App\\Form\\Domain\\Model} Namespace, während die konkreten Implementierungen der Repositories in \url{App\\Form\\Infrastructure\\Repository} zu finden sind.}, um eine Vermischung der Schichten zu verhindern.
     \item \textbf{View:} In der Umsetzung des \aclp{poc} wird die View"=Schicht über mehrere \acp{dto} realisiert, die von den verschiedenen \ac{api}-Endpunkten als serialisierte \ac{json} Objekte zurückgegeben werden.
@@ -1594,20 +1599,127 @@ Das hierbei angewandte und stellenweise auch schon angedeutete Pattern basiert a
     \item \textbf{Command:} Schreibende Operationen hingegen werden in Form von Commands ausgeführt und führen zu Änderungen der Daten und des Systemzustands mit potenziellen Seiteneffekten. Laut Definition liefern Commands beziehungsweise CommandHandler, die sowohl synchron als auch asynchron ausgeführt werden können, kein Ergebnis zurück. Im vorliegenden \texttt{FormController} werden jedoch bestimmte Daten vom Angular-Frontend benötigt, die daher direkt als Ergebnis bereitgestellt werden. \cite{fowler_commandqueryseparation_2005} \cite[238\psq]{ingeno_software_2018}
 \end{itemize}
 
-Der \ac{cqrs}-Ansatz wurde gewählt, da dieser mehrere Vorteile in verschiedenen Bereichen bietet: Durch die gezielte Aufteilung von lesenden und schreibenden Aktionen kann die Wartbarkeit, Erweiterbarkeit und Flexibilität eines Systems verbessert werden. Zudem ermöglicht dieser Ansatz eine präzisere Implementierung von Funktionen, bei denen die Sicherheit (\textit{Security} im Englischen) und damit verbundene Aspekte eine Rolle spielen, da lesende und schreibende Operationen voneinander getrennt sind. Auch kann eine Steigerung der Performance erreicht werden, indem die verschiedenen Operationen unterschiedlich skaliert werden. Die Vorteile, wie von \cite{ingeno_software_2018} erwähnt, kommen dabei vor allem komplexeren Systemen zugute. Der implementierte Prototyp ist dadurch jedoch bereits darauf ausgelegt, mögliche Weiterentwicklungen mit weniger Hindernissen hinsichtlich Größe und Komplexität zu bewältigen (vgl. \cite[240]{ingeno_software_2018}).
+Der \ac{cqrs}-Ansatz wurde gewählt, da dieser mehrere Vorteile in verschiedenen Bereichen bietet: Durch die gezielte Aufteilung von lesenden und schreibenden Aktionen kann die Wartbarkeit, Erweiterbarkeit und Flexibilität eines Systems verbessert werden. Zudem ermöglicht dieser Ansatz eine präzisere Implementierung von Funktionen, bei denen die Sicherheit (\textit{Security} im Englischen) und damit verbundene Aspekte eine Rolle spielen, da lesende und schreibende Operationen voneinander getrennt sind. Auch kann eine Steigerung der Performance erreicht werden, indem die verschiedenen Operationen unterschiedlich skaliert werden. Die Vorteile, wie von \cite{ingeno_software_2018} erwähnt, kommen dabei vor allem komplexeren Systemen zugute. Der implementierte Prototyp ist dadurch jedoch bereits darauf ausgelegt, mögliche Weiterentwicklungen mit weniger Hindernissen hinsichtlich Größe und Komplexität zu bewältigen. \cite[240]{ingeno_software_2018}
 
 \subsubsection*{Genutzte Infrastruktur}
 \label{sub-sub-sec:backend-genutzte-infrastruktur}
 
-- Postgres
-- Redis
-- Maildev
+Wie im Verlauf dieses Abschnitts bereits mehrfach angesprochen, umfasst die EthicsVision Plattform auch eine für die Anwendungszwecke angepasste Infrastruktur, die auf Docker basiert. Im Rahmen des Backends kommen, inklusive des Containers für die Symfony-Applikation selbst, vier Images und Container zum Einsatz:
+\begin{itemize}
+    \item \textbf{\textit{backend} Container:} Der \textit{backend} Container umfasst die Symfony"=Applikation und als Service konkret den Symfony Local Web Server\footnote{Symfony Local Web Server: \url{https://symfony.com/doc/current/setup/symfony_server.html}}. Dieser wird in der Entwicklungsumgebung dafür genutzt, um über das Netzwerk des Host-Systems und dem Port \texttt{8080} auf die einzelnen \ac{api}"=Endpunkte via HTTP zuzugreifen, Aktionen auszuführen und Daten erhalten zu können.
+    \item \textbf{\textit{postgres} Container}: Der \textit{postgres} Container wird genutzt, um das \acl{dbms} PostgreSQL als Service innerhalb der Infrastruktur anzubieten und damit Formulardaten sowie konkrete Einreichungen (im entsprechenden Volume) speichern zu können. Der Container wird innerhalb des Docker"=Netzwerks über den Standard"=Port \texttt{5432} von der Symfony"=Anwendung angesprochen, um lesende und schreibende Aktionen auf der Datenbank vorzunehmen, während der Zugriff im Entwicklungsmodus über den nach außen freigegebenen Port \texttt{8585} möglich ist. In einem produktiven Einsatz entfällt das Port-Forwarding nach außen, wodurch ein Zugriff auf die Daten lediglich über die Symfony-Anwendung möglich ist. Dadurch kann der Zugriff konkret geregelt und Datenschutz- sowie Datensicherheitsanforderungen effizient realisiert werden.\\
+    Die Wahl für PostgreSQL wurde getroffen, da PostgreSQL als eines der wenigen \ac{dbms} die \ac{sql}"=Spezifikation beinahe vollständig umsetzen kann, womit bei Bedarf auf eine Vielzahl der Funktionalitäten zurückgegriffen werden kann. Ebenso wird der \ac{json}"=Datentyp umfangreich unterstützt, was vor allem der Nutzung der Value Objects zur Speicherung der Meta"=Informationen zugute kommt. \cite{brumm_why_2019}
+    \item \textbf{\textit{redis} Container:} Der \textit{redis} Container ist als Cache"=Speicher für die Symfony-Applikation konfiguriert und stellt Redis\footnote{Redis: \url{https://redis.io/}} als Service zur Verfügung. Der Service wird verwendet, um von der Symfony-Applikation mehrfach benötigte Daten und Elemente, zur Laufzeit und unabhängig vom backend Container, zu speichern und abzufragen, um die Last aufteilen zu können. 
+    \item \textbf{\textit{maildev} Container:} Der \textit{maildev} Container stellt in der Entwicklungsumgebung MailDev\footnote{MailDev: \url{https://maildev.github.io/maildev/}} als Tool zur Verfügung, mit dem von der Symfony"=Applikation via \ac{smtp} versendete E-Mails abgefangen und eingesehen werden können.\\
+    Zwar werden in der aktuellen Umsetzung des Prototyps noch keine E-Mails (beispielsweise im Zuge der abschließenden Einreichung eines Formulars) versendet, das System ist somit aber bereits auf eine weiterführende Entwicklung ausgelegt.
+\end{itemize}
 
 \subsection{Frontend}
 \label{sub-sec:ausarbeitung-frontend}
 
+Das sogenannte \enquote{Frontend} hat im Kontext der EthicsVision Plattform die Aufgabe, den Anwender:innen ein entsprechendes \acl{ui} zur Verfügung zu stellen, mit denen diese interagieren und Ethikanträge erstellen, bearbeiten, einreichen sowie ansehen können. Die Umsetzung des im Webbrowser sichtbaren Teils des Frontends orientiert sich dabei, wie in Abschnitt \ref{sub-sec:ausarbeitung-ui-ux} ab Seite \pageref{sub-sec:ausarbeitung-ui-ux} beschrieben, am Auftritt der \acl{fhv}. Die technische Umsetzung bedient sich, neben der durch das Backend in Abschnitt \ref{sub-sec:ausarbeitung-backend} ab Seite \pageref{sub-sec:ausarbeitung-backend} definierten Datenstruktur, einiger Herangehensweisen und Konzepte sowie auch der Infrastruktur, die im Folgenden genauer erläutert werden.
+
+\subsubsection*{Konzept und Bestandteile einer \acl{spa}}
+\label{sub-sub-sec:konzept-bestandteile-spa}
+
+Die Umsetzung des Frontends der EthicsVision Plattform mithilfe von Angular entspricht einer \acl{spa}. Im Gegensatz zu einer klassischen \ac{mpa}, bei der der Server für die Präsentation zuständig ist und das fertige Resultat an den Browser übermittelt, ist die Präsentationsschicht sowie weitere Logik Teil des Webbrowsers, der die Applikation ausführt. Konkret bedeutet das, dass jede Navigation zu einer neuen Seite lokal im Browser stattfindet, indem Teile des \ac{ui} dynamisch ausgetauscht werden. Die sogenannten \textit{View}s werden dabei im \ac{dom} abhängig von ausgeführten Aktionen ersetzt und stellen neben statischen Inhalten jene Daten dar, die mittels Abfrage vom Server beziehungsweise dem Backend bereitgestellt wurden. \cite[5\psqq]{scott_spa_2015}
+
+Abbildung \ref{fig:scott-spa-shell} auf Seite \pageref{fig:scott-spa-shell} zeigt die von Scott in \cite{scott_spa_2015} beschriebene \textit{Shell}, die der Hauptbestandteil einer \ac{spa} darstellt und  einer statischen HTML-Datei entspricht, die beim initialen Öffnen der Webapplikation vollständig heruntergeladen wird. Diese Datei enthält neben allgemeinen Strukturen und dem Styling vor allem ein Element\footnote{Im zitierten Beispiel handelt es sich um ein \texttt{div}-Element, im umgesetzten Prototyp hingegen um einen von Angular bereitgestelltes \texttt{app-root} Container"=Element.}, das den dynamisch eingesetzten Views übergeordnet ist. Der für Anwender:innen ohne sichtbaren Reload durchgeführte Austausch des Inhalt wird dabei über die angesprochene \ac{dom}"=Manipulation umgesetzt, welche ein Kernelement einer \ac{spa} darstellt und das Gefühl einer nativen Applikation vermittelt. \cite[8, 10\psqq]{scott_spa_2015}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.8\linewidth]{thesis/images/Scott_SPA-Shell.png}
+    \caption[Aufbau der Shell einer \acs{spa}]{Aufbau der Shell einer \acs{spa} \cite[8]{scott_spa_2015}}
+    \label{fig:scott-spa-shell}
+\end{figure}
+
+Die Entscheidung für die Nutzung einer \ac{spa} und somit des Angular"=Frameworks beziehungsweise der Angular"=Plattform für die Implementierung des \ac{poc} basiert auf mehreren Vorteilen, die \acp{spa} bieten. Wie bereits erwähnt, ermöglichen \acp{spa} den Austausch des Inhalts der Webanwendung ähnlich wie bei einer herkömmlichen Desktop"=Anwendung, ohne dass die Seite vollständig neu geladen werden muss. Dadurch können sowohl die Leistung als auch die Ladezeiten der Anwendung reduziert werden, da die relevante Businesslogik und Darstellungslogik direkt im Webbrowser ausgeführt werden, während der Server hauptsächlich für Validierung und Langzeitspeicherung zuständig ist. Ein weiteres starkes Argument ist die Plattformunabhängigkeit von Webapplikationen, die es ermöglicht, die Anwendung zentral an einem Ort zu aktualisieren, ohne mehrere gleichzeitige Versionen unterstützen und mit (Sicherheits-)Updates versorgen zu müssen. \cite[20\psq]{mikowski_single_2013}
+
+\subsubsection*{Aufbau der Angular-Applikation}
+\label{sub-sub-sec:aufbau-angular-applikation}
+
+Für die Umsetzung des Prototyps wird Angular in der Version \texttt{16.0} mit Node\footnote{Node: \url{https://nodejs.org/}} \texttt{18.16 LTS} betrieben, was zum Start der Entwicklung den jeweils aktuellsten Versionen entsprochen hat, während für die Verwaltung von Abhängigkeiten und verwendeten Paketen zudem \textit{Yarn}\footnote{Yarn: \url{https://yarnpkg.com/}} verwendet wird.
+
+\medskip
+
+Zusätzlich zu den bereits genannten Gründen für die Entwicklung einer \acl{spa} spricht für die Wahl von Angular als entsprechendes Framework beziehungsweise Plattform eine Reihe weiterer Faktoren. Laut Wilken werden die verfügbaren Funktionen von Angular gemäß gängiger Standards entwickelt, und die Nutzung dieser Funktionen wird durch ein einheitliches \ac{cli}"=Tool im Sinne der \ac{dx} erleichtert. Darüber hinaus stehen eine Vielzahl von Third-Party"=Erweiterungen, Komponenten, UI"=Libraries und Hilfsmitteln zur Verfügung, die von der Community und dem breiten Ökosystem bereitgestellt werden. Ein weiterer wichtiger Faktor ist die Unterstützung von Google, das Mitarbeiter:innen bereitstellt, um die Weiterentwicklung von Angular voranzutreiben und zu unterstützen. \cite[2]{wilken_angular_2018}
+
+\medskip
+
+Die Applikationen und das \acl{ui}, die rund um die in Abschnitt \ref{sec:erläuterung-konzept} ab Seite \pageref{sec:erläuterung-konzept} erläuterten Funktionalitäten aufgebaut sind, bestehen aus insgesamt sechs verschiedenen, sogenannten \textit{Component}s. Components, oder zu Deutsch \enquote{Komponenten}, stellen den zentralen Baustein bei der Entwicklung von Webanwendungen mit Angular dar und sind in vier Bestandteile aufgeteilt:
+\begin{itemize}
+    \item \textbf{HTML-Template:} Das HTML-Template einer Komponente wird verwendet, um festzulegen, wie diese in der Applikation dargestellt werden soll. Wie der Name bereits vermuten lässt, kann das Template aus beliebigem HTML"=Inhalt bestehen. Gleichzeitig bietet Angular verschiedene Möglichkeiten, um den Inhalt dynamisch anzupassen und mit Logik zu verknüpfen, darunter \textit{Interpolation}, \textit{Data Binding} sowie \textit{Directives}. \cite{google_llc_2023_angular-components, google_llc_2023_angular-template}.
+    \item \textbf{TypeScript Klasse:} Die TypeScript-Klasse einer Angular-Komponente erfüllt mehrere Aufgaben. Sie definiert das Verhalten der Komponente, ermöglicht die Interaktion mit dem Template durch \textit{Data Binding} und \textit{Event Handler} und reagiert auf den \textit{Component Lifecycle}. In der Klasse wird die Logik implementiert, um auf Interaktionen der Anwender:innen zu reagieren, Daten zu verarbeiten und den Zustand der Komponente zu verwalten. \cite{google_llc_2023_angular-components, google_llc_2023-component-lifecycle}
+    \item \textbf{CSS Selector:} Der CSS-Selector wird verwendet, um eine Komponente an beliebiger Stelle in einem Template einzubinden und darzustellen. Der Selector kann wie ein HTML-Tag verwendet werden, beispielsweise \texttt{<app-selector>} .
+    \item \textbf{CSS Styling:} Um neben dem globalen Styling die Darstellung von Komponenten individuell anzupassen, können zusätzliche CSS"=Anweisungen definiert werden. \cite{google_llc_2023_angular-components}
+\end{itemize}
+
+Abbildung \ref{fig:ethics-vision-übersicht-components} auf Seite \pageref{fig:ethics-vision-übersicht-components} veranschaulicht exemplarisch die Darstellung der Seite \enquote{Übersicht} und der zugrundeliegenden Komponenten. Neben der in grün hervorgehobenen \texttt{App}-Komponente, die als grundlegende Struktur das Menü sowie den Footer für sämtliche Seiten und Ansichten beinhaltet, enthält das \texttt{Dashboard} eine zusätzliche \texttt{EntryTable} Komponente. Die Auslagerung der Tabelle ermöglicht ermöglicht die Wiederverwendung der Logik, ohne diese redundant einführen zu müssen. Zudem besteht die Möglichkeit, die Tabelle über \textit{Property Binding} anzupassen und Daten bereitzustellen.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{thesis/images/Luidold_EthicsVision-Übersicht-Components.png}
+    \caption{Komponentenaufteilung der Seite \enquote{Übersicht} der EthicsVision Plattform}
+    \label{fig:ethics-vision-übersicht-components}
+\end{figure}
+
+Eine ähnliche Strukturierung ist auch auf den anderen Seiten zum Einsatz gekommen. Insbesondere auf der Seite zur Erstellung, Bearbeitung und Ansicht eines Ethikantrags wird die Funktionalität über eine gemeinsame Komponente realisiert, während der Formular-Assistent und die damit verbundenen Dialoge in zwei separate Komponenten aufgeteilt wurden. Diese Aufteilung ermöglicht eine klarere Trennung der Verantwortlichkeiten und fördert die Wiederverwendbarkeit der einzelnen Komponenten.
+
+\subsubsection*{Datenstruktur \& Generierung eines Forumlars}
+\label{sub-sub-sec:angular-datenstruktur-generierung-formular}
+
+Wie in Abschnitt \ref{sub-sec:ausarbeitung-backend} ab Seite \pageref{sub-sec:ausarbeitung-backend} bereits angesprochen wurde, beeinflusst die im Backend ausgearbeitete Datenstruktur sowohl die Darstellung als auch die Handhabung der Daten in der Frontend"=Applikation maßgeblich.
+
+Die Angular"=Webapplikation verwendet mehrere gleichnamige \aclp{dto}, um die Klassen \textit{Element}, \textit{Section}, \textit{Screen}, \textit{Form}, \textit{Entry} und \textit{ElementEntry} aus der Domänenschicht des Backends abzubilden. Diese \ac{dto}s stellen dabei eine direkte Eins-zu-Eins-Repräsentation der Daten dar, wie sie im Backend und in der Datenbank gespeichert sind. Sie werden beispielsweise verwendet, um die Formulareinträge in Abbildung \ref{fig:ethics-vision-übersicht} auf Seite \pageref{fig:ethics-vision-übersicht} darzustellen oder den Prozess des Ausfüllens eines Ethikantrags und die Details der einzelnen Elemente, wie in Abbildung \ref{fig:ethics-vision-formular-unvollständig} auf Seite \pageref{fig:ethics-vision-formular-unvollständig} gezeigt, zu ermöglichen.
+
+\medskip
+
+Die Generierung eines Formulares 
+
+\subsubsection*{Kommunikation mit dem Backend}
+\label{sub-sub-sec:angular-kommunikation-backend}
+
+\subsubsection*{Genutzte Infrastruktur}
+\label{sub-sub-sec:frontend-genutzte-infrastruktur}
+
+Das Frontend der EthicsVision Plattform nimmt im Vergleich zum Backend nur einen geringen Teil der zugrunde liegenden Infrastruktur in Anspruch. Der \textit{frontend} Container beherbergt die Angular"=Applikation, wobei konkret der Angular Development Server ausgeführt wird. Im Netzwerk des Host-Systems kann auf diesen über den Port \texttt{4200} zugegriffen werden.
+
+Unabhängig vom Docker"=Netzwerk wird die gesamte Kommunikation zwischen dem Frontend und dem Backend über das Netzwerk des Host-Systems und dem nach außen geöffneten Port \texttt{8080} des Backends abgewickelt, da die Webapplikation lokal im jeweiligen Browser ausgeführt wird, der nicht Teil des internen Netzwerks ist.
+
+\section{Nutzung des Prototyps}
+\label{section:nutzung-prototyp}
+
+Um den entwickelten Prototyp aktiv nutzen zu können, müssen folgende Schritte ausgeführt werden:
+
+\begin{enumerate}
+    \item Installation von Docker auf dem Host-System gemäß der Anleitung unter \url{https://docs.docker.com/get-docker/}.
+    \item Klonen des EthicsVision Git-Repositories über den Link \url{https://github.com/DominicLuidold/ethics-vision}.
+    \item Starten des Docker-Stacks durch Ausführen von \texttt{make start}.
+    \item Durchführen des Setups des Backends mittels \texttt{make setup}.
+\end{enumerate}
+
+\noindent Nach dem Ausführen der vorherigen Schritte kann die Angular"=Webapplikation unter der URL \url{http://127.0.0.1:4200} aufgerufen werden. Zusätzlich steht die API-Dokumentation der Symfony"=Applikation unter \url{http://127.0.0.1:8080} zur Verfügung.
+
+\subsubsection*{Anmerkungen}
+Der im Rahmen dieser Masterarbeit entwickelte \ac{poc} entspricht einer frühen Version, die \textit{ausschließlich} in einer Entwicklungsumgebung eingesetzt werden soll. Sowohl die umgesetzte Infrastruktur als auch konkrete Einstellungen und Parameter der beiden Anwendungen sind nicht für den produktiven Einsatz ausgelegt.
+
+\medskip
+
+Der Ethikantrag der \acl{fek} der \acl{fhv} wird momentan beim Ausführen von \texttt{make setup} standardmäßig in die Datenbank eingespielt und ist in der Frontend"=Applikation an mehreren Stellen durch eine eindeutige ID als vorläufig fester Bestandteil fest vorgegeben. Das Abändern des Ethikantrages ist hingegen über das Bearbeiten der \texttt{FormFixtures} Klasse im Namespace \url{App\\Form\\DataFixtures\\Production} möglich.
+
+\chapter{Möglichkeiten zur Weiterentwicklung des Prototyps}
+\label{chap:möglichkeiten-zur-weiterentwicklung}
+
+- funktionsumfang
+- technisch
+  - aktuell nur text
+  - entry unabhängig von form/element
+
 \chapter{Evaluation des Prototyps}
 \label{chap:evaluation-prototyp}
+
+\chapter{Zusammenfassung \& Ausblick}
+\label{chap:zusammenfassung-ausblick}
 
 % Literaturverzeichnis
 \clearpage
