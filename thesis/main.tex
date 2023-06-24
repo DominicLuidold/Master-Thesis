@@ -49,6 +49,7 @@
 \pagenumbering{roman}
 
 \begin{titlepage}
+    \pdfbookmark{Titelblatt}{titelblatt}
     \begin{flushright}
     \includegraphics[width=0.4\linewidth]{images/FHV_FHV-Logo.png}
     \end{flushright}
@@ -79,19 +80,21 @@
 
     Vorgelegt von\newline
     Dominic Luidold, BSc\newline
-    Dornbirn, [Monat Jahr]
+    Dornbirn, \colorbox{yellow}{xx.} Juli 2023
     \end{flushleft}
 \end{titlepage}
 
 % Widmung
-\newpage
+\cleardoublepage
+\pdfbookmark{Widmung}{widmung}
 \section*{Widmung}
 \label{sec:widmung}
 
 \colorbox{yellow}{TODO - Widmung}
 
 % Abstract [DE]
-\newpage
+\cleardoublepage
+\pdfbookmark{Kurzreferat}{kurzreferat}
 \section*{Kurzreferat}
 \label{sec:abstract-de}
 
@@ -101,6 +104,7 @@
 
 % Abstract [EN]
 \newpage
+\pdfbookmark{Abstract}{abstract}
 \section*{Abstract}
 \label{sec:abstract-en}
 
@@ -110,6 +114,7 @@
 
 % Inhaltsverzeichnis
 \cleardoublepage
+\pdfbookmark{\contentsname}{toc}
 \tableofcontents
 
 % Abbildungsverzeichnis
@@ -157,8 +162,8 @@
     \acro{hcd}[HCD]{Human-Centered Design}
     \acro{ieb}[IEB]{Institutionelle Ethikboard der Fachhochschule Gesundheitsberufe OÖ}
     \acro{json}[JSON]{JavaScript Object Notation}
-    \acro{mvc}[MVC]{Model-View-Controller}
     \acro{mpa}[MPA]{Mulit-page Application}
+    \acro{mvc}[MVC]{Model-View-Controller}
     \acro{mvt}[MVT]{Model-View-Template}
     \acro{orm}[ORM]{Object-relational Mapping}
     \acro{oss}[OSS]{Open-Source-Software}
@@ -358,8 +363,8 @@ Tabelle \ref{tab:zurordnung-kapitel-ucd} auf Seite \pageref{tab:zurordnung-kapit
          & Kapitel \ref{chap:analyse-bestehendes-system-prozess} -- \nameref{chap:analyse-bestehendes-system-prozess} \\ \cline{2-2} 
          & Kapitel \ref{chap:analyse-anderer-prozesse} -- \nameref{chap:analyse-anderer-prozesse} \\ \hline
         Definition konkreter Anforderungen & Kapitel \ref{chap:anforderung-neues-system} -- \nameref{chap:anforderung-neues-system} \\ \hline
-        Entwicklung eines Konzeptes und Prototyps & \ref{chap:ausarbeitung-umsetzung-prototyp} -- \nameref{chap:ausarbeitung-umsetzung-prototyp} \\ \hline
-        Evaluation und Testung & \colorbox{yellow}{Kapitel 8}
+        Entwicklung eines Konzeptes und Prototyps & Kapitel \ref{chap:ausarbeitung-umsetzung-prototyp} -- \nameref{chap:ausarbeitung-umsetzung-prototyp} \\ \hline
+        Evaluation und Testung & Kapitel \ref{chap:evaluation-prototyp} -- \nameref{chap:evaluation-prototyp}
     \end{tabular}
     \caption{Zuordnung der Kapitel dieser Masterarbeit zu den Phasen des \acl{ucd}}
     \label{tab:zurordnung-kapitel-ucd}
@@ -1349,7 +1354,7 @@ Die Umsetzung als online abrufbare Webapplikation wurde aus mehreren Gründen ge
 \subsection{Umgesetzte Funktionalitäten}
 \label{sub-sec:umgesetzte-funtionalitäten}
 
-Bevor die technische Umsetzung im Detail erläutert wird, werden im folgenden Abschnitt die umgesetzten Funktionalitäten anhand der in Abschnitt \ref{sec:priorisierung-anforderungen} ab Seite \pageref{sec:priorisierung-anforderungen} priorisierten Anforderungen dargelegt und im Zuge dessen in Bezug gestellt. Die entwickelten Lösungen decken dabei nicht immer die gesamte Anforderung ab, was im Zuge von Kapitel \ref{chap:möglichkeiten-zur-weiterentwicklung} sowie Kapitel \ref{chap:evaluation-prototyp} ab Seite \pageref{chap:möglichkeiten-zur-weiterentwicklung} beziehungsweise Seite \pageref{chap:evaluation-prototyp} stellenweise noch einmal aufgegriffen wird.
+Bevor die technische Umsetzung im Detail erläutert wird, werden im folgenden Abschnitt die umgesetzten Funktionalitäten anhand der in Abschnitt \ref{sec:priorisierung-anforderungen} ab Seite \pageref{sec:priorisierung-anforderungen} priorisierten Anforderungen dargelegt und im Zuge dessen in Bezug gestellt. Die entwickelten Lösungen decken dabei nicht immer die gesamte Anforderung ab, was im Zuge der Evaluation des Prototyps in Kapitel \ref{chap:evaluation-prototyp} ab Seite \pageref{chap:evaluation-prototyp} stellenweise noch einmal aufgegriffen wird.
 
 \subsubsection*{Anforderungen \#1 \& \#3}
 \label{sub-sub-sec:umgesetzte-funktionalitäten-anforderung-1-3}
@@ -1723,20 +1728,26 @@ Der im Rahmen dieser Masterarbeit entwickelte \ac{poc} entspricht einer frühen 
 
 \medskip
 
-Der Ethikantrag der \acl{fek} der \acl{fhv} wird momentan beim Ausführen von \texttt{make setup} standardmäßig in die Datenbank eingespielt und ist in der Frontend"=Applikation an mehreren Stellen durch eine eindeutige ID als vorläufig fester Bestandteil fest vorgegeben. Das Abändern des Ethikantrages ist hingegen über das Bearbeiten der \texttt{FormFixtures} Klasse im Namespace \url{App\\Form\\DataFixtures\\Production} möglich.
+Der Ethikantrag der \acl{fek} der \acl{fhv} wird momentan beim Ausführen von \texttt{make setup} standardmäßig in die Datenbank eingespielt und ist in der Frontend"=Applikation an mehreren Stellen durch eine eindeutige ID als vorläufig fester Bestandteil fest vorgegeben. Das Abändern des Ethikantrages ist, unabhängig davon, durch das Bearbeiten der \texttt{FormFixtures} Klasse im Namespace \url{App\\Form\\DataFixtures\\Production} möglich.
 
 \cleardoublepage
-\chapter{Möglichkeiten zur Weiterentwicklung des Prototyps}
-\label{chap:möglichkeiten-zur-weiterentwicklung}
+\chapter{Evaluation des Prototyps}
+\label{chap:evaluation-prototyp}
+
+FE-K:
+- guter prototyp
+- klare struktur
+- gute hilfestellung
+- login-situation unklar
+- aufteilung der fragestellung muss fe-k entscheiden
+
+\section{Möglichkeiten zur Weiterentwicklung}
+\label{sec:möglichkeiten-weiterentwicklung}
 
 - funktionsumfang
 - technisch
   - aktuell nur text
   - entry unabhängig von form/element
-
-\cleardoublepage
-\chapter{Evaluation des Prototyps}
-\label{chap:evaluation-prototyp}
 
 \cleardoublepage
 \chapter{Zusammenfassung \& Ausblick}
