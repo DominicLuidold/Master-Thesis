@@ -260,6 +260,7 @@ Bevor mit der praktischen Anwendung der User-Centered Design Prinzipien für die
 
 \colorbox{yellow}{TODO - Auswertung, Endergebnis, Ausblick, etc.}
 
+\cleardoublepage
 \chapter{User-Centered Design}
 \label{chap:user-centered-design}
 
@@ -371,6 +372,7 @@ Die Ausarbeitung von Nutzerkontexten und Personas, wie in Abschnitt \ref{sub-sec
 
 Sollte der entwickelte Prototyp und das System außerhalb der \acl{fhv} verwendet werden und weitere Funktionalitäten und Arbeitsprozesse abdecken müssen, würde es Sinn machen, eine detaillierte Ausarbeitung der Nutzerkontexte sowie Personas und eine erneute Analyse der Anforderungen durchzuführen.
 
+\cleardoublepage
 \chapter{Kriterien der Forschungsethik}
 \label{chap:kriterien-forschungsethik}
 
@@ -423,6 +425,7 @@ In der Gruppendiskussion (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite
 
 Laut Aussage der Kommission sind die Kriterien ebenso Grundlage dafür, um eingereichte Ethikanträge ohne jegliches ethisches Votum an die Antragsstellenden zu retournieren, wenn das Forschungsvorhaben oder die mit dem Antrag verbundene Arbeit keinerlei ethischen Implikationen mit sich bringt.
 
+\cleardoublepage
 \chapter{Analyse des bestehenden Systems \& Prozesses}
 \label{chap:analyse-bestehendes-system-prozess}
 
@@ -658,6 +661,7 @@ Im Verlauf des Gespräch mit der \acl{fek} kommen sowohl gezielte als auch ungew
 
 Ein Mitglied der \ac{fek} äußert während des Interviews den Vorschlag, den Prozess grundlegend zu überdenken, um sowohl den administrativen Aufwand als auch die Belastung der Antragsteller:innen zu reduzieren und inhaltliche Wiederholungen in den Fragestellungen des Ethikantrages zu vermeiden. Die Kommission sieht die Möglichkeit, anstelle eines sehr detaillierten Antragsformulars einen kürzeren Antrag in Kombination mit einer verpflichtenden Präsentation des Forschungsvorhabens zu verwenden, ähnlich wie es andere Ethikkommissionen handhaben. Im Verlauf des Gesprächs stimmen einige der Mitglieder zu und sehen darin eine alternative Möglichkeit, auf bestimmte Aspekte des Antrages in der Präsentation genauer einzugehen um auf einem gleichen Qualitätsniveau bleiben zu können.
 
+\cleardoublepage
 \chapter{Analyse anderer Prozesse}
 \label{chap:analyse-anderer-prozesse}
 
@@ -978,6 +982,7 @@ Neben den gängigen \acp{cms}-Lösungen gibt es sowohl von Google als auch Micro
 
 Ähnlich zu den in Abschnitt \ref{sub-sec:cms-syteme} ab Seite \pageref{sub-sec:cms-syteme} behandelten \aclp{cms} stellt sich die weiterführende Umsetzung als schwierig beziehungsweise nicht möglich dar, wenn sowohl die für den Prozess notwendigen als auch die von den Antragsteller:innen sowie der \ac{fek} gewünschten Funktionalitäten umgesetzt werden sollen. Eingelangte Antworten werden bei beiden Tools aggregiert gesammelt und können lediglich als Excel-Datei exportiert und von dort aus weiter bearbeitet werden. \cite{microsoft_corporation_wie_2021, google_ireland_limited_ergebnisse_2023} Unabhängig davon stellt sich bei beiden Tools die Frage, in wie weit die hohen Anforderungen der \acl{fek} an den Datenschutz erfüllt werden können, da die schlussendliche Datenspeicherung bei den jeweiligen Tools -- in diesem Fall Microsoft beziehungsweise Google -- liegt und keine direkte Kontrolle möglich ist.\footnote{\cite{visitor_analytics_gmbh_ist_2022} erklärt in diesem Zusammenhang, dass Google Forms nur stellenweise der seit 2018 in Kraft getretenen Datenschutzgrundverordnung entspricht und neben einer vorhandenen Premium- oder Geschäftslizenz mehrere Schritte unternommen werden müssen, um Konformität gewährleisten zu können.}
 
+\cleardoublepage
 \chapter{Anforderungen an das neue System}
 \label{chap:anforderung-neues-system}
 
@@ -1276,6 +1281,7 @@ Alle definierten Anforderungen finden sich in den ersten beiden Quadranten wiede
 
 Im Zusammenhang mit der Priorisierung kann Anforderung \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#3} genauer betrachtet und möglicherweise eine Zeile nach unten verschoben werden. Die inhaltliche Ausarbeitung des Ethikantrags liegt letztendlich bei der \ac{fek} der \ac{fhv} und kann während dieser Umsetzung nur begrenzt angepasst werden. Dennoch wird diese Anforderung in derselben Priorisierungsstufe beibehalten, da sie technische Implikationen für zukünftige Änderungen mit sich bringt.
 
+\cleardoublepage
 \chapter{Ausarbeitung \& Umsetzung des Prototyps}
 \label{chap:ausarbeitung-umsetzung-prototyp}
 
@@ -1622,9 +1628,9 @@ Das sogenannte \enquote{Frontend} hat im Kontext der EthicsVision Plattform die 
 \subsubsection*{Konzept und Bestandteile einer \acl{spa}}
 \label{sub-sub-sec:konzept-bestandteile-spa}
 
-Die Umsetzung des Frontends der EthicsVision Plattform mithilfe von Angular entspricht einer \acl{spa}. Im Gegensatz zu einer klassischen \ac{mpa}, bei der der Server für die Präsentation zuständig ist und das fertige Resultat an den Browser übermittelt, ist die Präsentationsschicht sowie weitere Logik Teil des Webbrowsers, der die Applikation ausführt. Konkret bedeutet das, dass jede Navigation zu einer neuen Seite lokal im Browser stattfindet, indem Teile des \ac{ui} dynamisch ausgetauscht werden. Die sogenannten \textit{View}s werden dabei im \ac{dom} abhängig von ausgeführten Aktionen ersetzt und stellen neben statischen Inhalten jene Daten dar, die mittels Abfrage vom Server beziehungsweise dem Backend bereitgestellt wurden. \cite[5\psqq]{scott_spa_2015}
+Die Umsetzung des Frontends der EthicsVision Plattform mithilfe von Angular entspricht einer \acl{spa}. Im Gegensatz zu einer klassischen \ac{mpa}, bei der der Server für die Präsentation zuständig ist und das fertige Resultat an den Browser übermittelt, ist die Präsentationsschicht sowie weitere Logik Teil des Clients (sprich der Webbrowser), der die Applikation ausführt. Konkret bedeutet das, dass jede Navigation zu einer neuen Seite nur lokal im Browser stattfindet, indem Teile des \ac{ui} dynamisch ausgetauscht werden. Die sogenannten \textit{View}s werden dabei im \ac{dom} abhängig von ausgeführten Aktionen ersetzt und stellen neben statischen Inhalten jene Daten dar, die mittels Abfrage vom Server beziehungsweise dem Backend bereitgestellt werden. \cite[5\psqq]{scott_spa_2015}
 
-Abbildung \ref{fig:scott-spa-shell} auf Seite \pageref{fig:scott-spa-shell} zeigt die von Scott in \cite{scott_spa_2015} beschriebene \textit{Shell}, die der Hauptbestandteil einer \ac{spa} darstellt und  einer statischen HTML-Datei entspricht, die beim initialen Öffnen der Webapplikation vollständig heruntergeladen wird. Diese Datei enthält neben allgemeinen Strukturen und dem Styling vor allem ein Element\footnote{Im zitierten Beispiel handelt es sich um ein \texttt{div}-Element, im umgesetzten Prototyp hingegen um einen von Angular bereitgestelltes \texttt{app-root} Container"=Element.}, das den dynamisch eingesetzten Views übergeordnet ist. Der für Anwender:innen ohne sichtbaren Reload durchgeführte Austausch des Inhalt wird dabei über die angesprochene \ac{dom}"=Manipulation umgesetzt, welche ein Kernelement einer \ac{spa} darstellt und das Gefühl einer nativen Applikation vermittelt. \cite[8, 10\psqq]{scott_spa_2015}
+Abbildung \ref{fig:scott-spa-shell} auf Seite \pageref{fig:scott-spa-shell} zeigt die von Scott in \cite{scott_spa_2015} beschriebene \textit{Shell}, die den Hauptbestandteil einer \ac{spa} darstellt und  einer statischen HTML-Datei entspricht und beim initialen Öffnen der Webapplikation als einziger Bestandteil vollständig heruntergeladen wird. Diese Datei enthält neben allgemeinen Strukturen und dem Styling vor allem ein Element\footnote{Im zitierten Beispiel handelt es sich um ein \texttt{div}-Element, im umgesetzten Prototyp hingegen um einen von Angular bereitgestelltes \texttt{app-root} Container"=Element.}, das den dynamisch eingesetzten Views übergeordnet ist. Der für Anwender:innen ohne sichtbaren Reload durchgeführte Austausch des Inhalt wird dabei über die angesprochene \ac{dom}"=Manipulation umgesetzt, welche ein Kernelement einer \ac{spa} darstellt und das Gefühl einer nativen Applikation vermittelt. \cite[8, 10\psqq]{scott_spa_2015}
 
 \begin{figure}[ht]
     \centering
@@ -1650,11 +1656,11 @@ Die Applikationen und das \acl{ui}, die rund um die in Abschnitt \ref{sec:erläu
 \begin{itemize}
     \item \textbf{HTML-Template:} Das HTML-Template einer Komponente wird verwendet, um festzulegen, wie diese in der Applikation dargestellt werden soll. Wie der Name bereits vermuten lässt, kann das Template aus beliebigem HTML"=Inhalt bestehen. Gleichzeitig bietet Angular verschiedene Möglichkeiten, um den Inhalt dynamisch anzupassen und mit Logik zu verknüpfen, darunter \textit{Interpolation}, \textit{Data Binding} sowie \textit{Directives}. \cite{google_llc_2023_angular-components, google_llc_2023_angular-template}.
     \item \textbf{TypeScript Klasse:} Die TypeScript-Klasse einer Angular-Komponente erfüllt mehrere Aufgaben. Sie definiert das Verhalten der Komponente, ermöglicht die Interaktion mit dem Template durch \textit{Data Binding} und \textit{Event Handler} und reagiert auf den \textit{Component Lifecycle}. In der Klasse wird die Logik implementiert, um auf Interaktionen der Anwender:innen zu reagieren, Daten zu verarbeiten und den Zustand der Komponente zu verwalten. \cite{google_llc_2023_angular-components, google_llc_2023-component-lifecycle}
-    \item \textbf{CSS Selector:} Der CSS-Selector wird verwendet, um eine Komponente an beliebiger Stelle in einem Template einzubinden und darzustellen. Der Selector kann wie ein HTML-Tag verwendet werden, beispielsweise \texttt{<app-selector>} .
+    \item \textbf{CSS Selector:} Der CSS-Selector wird verwendet, um eine Komponente an beliebiger Stelle in einem Template einzubinden und darzustellen. Der Selector kann wie ein HTML-Tag verwendet werden, beispielsweise \texttt{<app-selector>}. \cite{google_llc_2023_angular-components}
     \item \textbf{CSS Styling:} Um neben dem globalen Styling die Darstellung von Komponenten individuell anzupassen, können zusätzliche CSS"=Anweisungen definiert werden. \cite{google_llc_2023_angular-components}
 \end{itemize}
 
-Abbildung \ref{fig:ethics-vision-übersicht-components} auf Seite \pageref{fig:ethics-vision-übersicht-components} veranschaulicht exemplarisch die Darstellung der Seite \enquote{Übersicht} und der zugrundeliegenden Komponenten. Neben der in grün hervorgehobenen \texttt{App}-Komponente, die als grundlegende Struktur das Menü sowie den Footer für sämtliche Seiten und Ansichten beinhaltet, enthält das \texttt{Dashboard} eine zusätzliche \texttt{EntryTable} Komponente. Die Auslagerung der Tabelle ermöglicht ermöglicht die Wiederverwendung der Logik, ohne diese redundant einführen zu müssen. Zudem besteht die Möglichkeit, die Tabelle über \textit{Property Binding} anzupassen und Daten bereitzustellen.
+Abbildung \ref{fig:ethics-vision-übersicht-components} auf Seite \pageref{fig:ethics-vision-übersicht-components} veranschaulicht exemplarisch die Darstellung der Seite \enquote{Übersicht} und der zugrundeliegenden Komponenten. Neben der in grün hervorgehobenen \texttt{App}-Komponente, die als grundlegende Struktur das Menü sowie den Footer für sämtliche Seiten und Ansichten beinhaltet, enthält das \texttt{Dashboard} eine zusätzliche \texttt{EntryTable} Komponente. Die Auslagerung der Tabelle ermöglicht die Wiederverwendung der Logik, ohne diese redundant verwenden zu müssen. Zudem besteht die Möglichkeit, die Tabelle über \textit{Property Binding} anzupassen und Daten bereitzustellen.
 
 \begin{figure}[ht]
     \centering
@@ -1663,21 +1669,33 @@ Abbildung \ref{fig:ethics-vision-übersicht-components} auf Seite \pageref{fig:e
     \label{fig:ethics-vision-übersicht-components}
 \end{figure}
 
-Eine ähnliche Strukturierung ist auch auf den anderen Seiten zum Einsatz gekommen. Insbesondere auf der Seite zur Erstellung, Bearbeitung und Ansicht eines Ethikantrags wird die Funktionalität über eine gemeinsame Komponente realisiert, während der Formular-Assistent und die damit verbundenen Dialoge in zwei separate Komponenten aufgeteilt wurden. Diese Aufteilung ermöglicht eine klarere Trennung der Verantwortlichkeiten und fördert die Wiederverwendbarkeit der einzelnen Komponenten.
+Eine ähnliche Strukturierung ist auch auf den anderen Seiten zum Einsatz gekommen. Insbesondere auf der Seite zur Erstellung, Bearbeitung und Ansicht eines Ethikantrages wird die Funktionalität über eine gemeinsame Komponente realisiert, während der Formular-Assistent und die damit verbundenen Dialoge in zwei separate Komponenten aufgeteilt wurden. Diese Aufteilung ermöglicht eine klarere Trennung der Verantwortlichkeiten und fördert die Wiederverwendbarkeit der einzelnen Komponenten.
 
 \subsubsection*{Datenstruktur \& Generierung eines Forumlars}
 \label{sub-sub-sec:angular-datenstruktur-generierung-formular}
 
 Wie in Abschnitt \ref{sub-sec:ausarbeitung-backend} ab Seite \pageref{sub-sec:ausarbeitung-backend} bereits angesprochen wurde, beeinflusst die im Backend ausgearbeitete Datenstruktur sowohl die Darstellung als auch die Handhabung der Daten in der Frontend"=Applikation maßgeblich.
 
-Die Angular"=Webapplikation verwendet mehrere gleichnamige \aclp{dto}, um die Klassen \textit{Element}, \textit{Section}, \textit{Screen}, \textit{Form}, \textit{Entry} und \textit{ElementEntry} aus der Domänenschicht des Backends abzubilden. Diese \ac{dto}s stellen dabei eine direkte Eins-zu-Eins-Repräsentation der Daten dar, wie sie im Backend und in der Datenbank gespeichert sind. Sie werden beispielsweise verwendet, um die Formulareinträge in Abbildung \ref{fig:ethics-vision-übersicht} auf Seite \pageref{fig:ethics-vision-übersicht} darzustellen oder den Prozess des Ausfüllens eines Ethikantrags und die Details der einzelnen Elemente, wie in Abbildung \ref{fig:ethics-vision-formular-unvollständig} auf Seite \pageref{fig:ethics-vision-formular-unvollständig} gezeigt, zu ermöglichen.
+Die Angular"=Webapplikation verwendet mehrere gleichnamige \aclp{dto}, um die Klassen \textit{Element}, \textit{Section}, \textit{Screen}, \textit{Form}, \textit{Entry} und \textit{ElementEntry} aus der Domänenschicht des Backends abzubilden. Diese \ac{dto}s stellen dabei eine direkte Eins-zu-Eins-Repräsentation der Daten dar, wie sie im Backend und in der Datenbank gespeichert sind. Sie werden beispielsweise verwendet, um die Formulareinträge in Abbildung \ref{fig:ethics-vision-übersicht} auf Seite \pageref{fig:ethics-vision-übersicht} darzustellen oder den Prozess des Ausfüllens eines Ethikantrags und die Details der einzelnen Elemente, wie Abbildung \ref{fig:ethics-vision-formular-unvollständig} auf Seite \pageref{fig:ethics-vision-formular-unvollständig} zeigt, zu ermöglichen.
 
 \medskip
 
-Die Generierung eines Formulares 
+Die Generierung eines Ethikantrages mithilfe des Formular-Assistenten basiert auf den \ac{dto}s sowie vor allem den Meta-Informationen, die für jede einzelne Section definiert sind und in weiterer Folge auch für erstellte Einträge festgelegt werden. Die Struktur des Ergebnisses des Formular-Assistenten ist in Quellcode \ref{code:application-assistant-result} auf Seite \pageref{code:application-assistant-result} dargestellt.
+
+\begin{listing}[ht]
+    \inputminted[fontsize=\footnotesize,linenos,xleftmargin=8mm]{typescript}{code/Luidold_Application-Assistant-Result.ts}
+    \caption{Datenstruktur der Meta"=Informationen des Formular-Assistenten der EthicsVision Plattform}
+    \label{code:application-assistant-result}
+\end{listing}
+
+Bei der Generierung und Filterung der einzelnen Sections wird konkret das Ergebnis mit den \texttt{Section}"=Daten des Symfony-Backends abgeglichen. Themenblöcke beziehungsweise Sections, die in jedem Formular dargestellt werden sollen, haben die Kategorie \texttt{universal} zugeordnet, während alle anderen Inhaltsblöcke einen der drei im Quellcode angegebenen Werte repräsentieren. Sofern eine Übereinstimmung vorhanden ist, werden die jeweiligen Fragen dargestellt, andernfalls ausgeblendet.
 
 \subsubsection*{Kommunikation mit dem Backend}
 \label{sub-sub-sec:angular-kommunikation-backend}
+
+Wie von Wilken empfohlen, findet die Kommunikation zwischen dem Angular"=Frontend und dem Symfony"=Backend über einen im gesamten Projekt verfügbaren Service statt. Dadurch können HTTP Request"=Methoden wie beispielsweise \texttt{GET}, \texttt{POST}, \texttt{PUT} und \texttt{DELETE} genutzt werden, ohne dass die spezifischen Komponenten die Logik mehrfach definieren müssen. \cite[142\psqq]{wilken_angular_2018}
+
+Konkret wird der \texttt{FormService} von den Komponenten genutzt, um ein typisiertes \texttt{Observable}"=Objekt zu erhalten, das die Ergebnisse der HTTP"=Anfrage asynchron retourniert. Der Service nutzt dabei den von Angular bereitgestellten \texttt{HttpClient} des \texttt{@angular/common/http} Packages, um die Anfragen zu versenden. \cite{google_llc_2023-angular-http-comm}
 
 \subsubsection*{Genutzte Infrastruktur}
 \label{sub-sub-sec:frontend-genutzte-infrastruktur}
@@ -1707,6 +1725,7 @@ Der im Rahmen dieser Masterarbeit entwickelte \ac{poc} entspricht einer frühen 
 
 Der Ethikantrag der \acl{fek} der \acl{fhv} wird momentan beim Ausführen von \texttt{make setup} standardmäßig in die Datenbank eingespielt und ist in der Frontend"=Applikation an mehreren Stellen durch eine eindeutige ID als vorläufig fester Bestandteil fest vorgegeben. Das Abändern des Ethikantrages ist hingegen über das Bearbeiten der \texttt{FormFixtures} Klasse im Namespace \url{App\\Form\\DataFixtures\\Production} möglich.
 
+\cleardoublepage
 \chapter{Möglichkeiten zur Weiterentwicklung des Prototyps}
 \label{chap:möglichkeiten-zur-weiterentwicklung}
 
@@ -1715,14 +1734,16 @@ Der Ethikantrag der \acl{fek} der \acl{fhv} wird momentan beim Ausführen von \t
   - aktuell nur text
   - entry unabhängig von form/element
 
+\cleardoublepage
 \chapter{Evaluation des Prototyps}
 \label{chap:evaluation-prototyp}
 
+\cleardoublepage
 \chapter{Zusammenfassung \& Ausblick}
 \label{chap:zusammenfassung-ausblick}
 
 % Literaturverzeichnis
-\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \printbibliography
@@ -1730,6 +1751,7 @@ Der Ethikantrag der \acl{fek} der \acl{fhv} wird momentan beim Ausführen von \t
 % Anhang
 \appendix
 
+\cleardoublepage
 \chapter{Eingereichter Ethikantrag}
 \label{appendix:eingereichter-ethikantrag}
 
@@ -1747,6 +1769,7 @@ Die übermittelte Version des Ethikantrages wurde sowohl von Karin Trommelschlä
 
 \includepdf[pages=-]{documents/Luidold_Ethikantrag.pdf}
 
+\cleardoublepage
 \chapter{Eingereichter Leitfaden für Interviews \& Fragebögen}
 \label{appendix:ursprünglicher-leitfaden}
 
@@ -1758,6 +1781,7 @@ Anhang \ref{appendix:interview-leitfaden} ab Seite \pageref{appendix:interview-l
 
 \includepdf[pages=-]{documents/Luidold_Ursprünglicher-Leitfaden-Interview-Fragebogen.pdf}
 
+\cleardoublepage
 \chapter{Eingereichtes Formular zur Einwilligungserklärung}
 \label{appendix:ursprüngliches-informed-consent-formular}
 
@@ -1769,6 +1793,7 @@ Anhang \ref{appendix:informed-consent-einzelinterview} ab Seite \pageref{appendi
 
 \includepdf[pages=-]{documents/Luidold_Ursprüngliches-Informed-Consent-Formular.pdf}
 
+\cleardoublepage
 \chapter{Rückmeldung der \acl{fek} zum eingereichten Ethikantrag}
 \label{appendix:rückmeldung-fek}
 
@@ -1785,6 +1810,7 @@ Siehe Abschnitt \ref{sec:angewandter-kriterienkatalog} ab Seite \pageref{sec:ang
 
 \includepdf[pages=-]{documents/Forschungsethik-Kommission-FHV_Votum-Ethikantrag.pdf}
 
+\cleardoublepage
 \chapter{Adaptierter und angewandter Interviewleitfaden}
 \label{appendix:interview-leitfaden}
 
@@ -1802,6 +1828,7 @@ Folgende Änderungen wurden im Vergleich zur ursprünglichen Variante vorgenomme
 
 \includepdf[pages=-]{documents/Luidold_Interviewleitfaden.pdf}
 
+\cleardoublepage
 \chapter{Einwilligungserklärung zur Teilnahme an einem Einzelinterview}
 \label{appendix:informed-consent-einzelinterview}
 
@@ -1824,6 +1851,7 @@ Die Einwilligungserklärung enthält im ersten Abschnitt einen Absatz, der fäls
 
 \includepdf[pages=-]{documents/Luidold_Informed-Consent_Einzelinterview.pdf}
 
+\cleardoublepage
 \chapter{Einwilligungserklärung zur Teilnahme an einer Gruppendiskussion}
 \label{appendix:informed-consent-gruppendiskussion}
 
@@ -1846,6 +1874,7 @@ Die Einwilligungserklärung enthält im ersten Abschnitt einen Absatz, der fäls
 
 \includepdf[pages=-]{documents/Luidold_Informed-Consent_Gruppendiskussion.pdf}
 
+\cleardoublepage
 \chapter{Einzelinterview \#1}
 \label{appendix:interview-1}
 
@@ -1919,6 +1948,7 @@ Soweit ich das sehen kann, waren das schon meine Fragen, ganz kurz und bündig. 
 
 \textbf{Interviewpartner:in A:} Danke.
 
+\cleardoublepage
 \chapter{Einzelinterview \#2}
 \label{appendix:interview-2}
 
@@ -2018,6 +2048,7 @@ Ich würde jetzt direkt einfach mit der ersten Frage ganz frech schon starten: W
 
 \textbf{Interviewpartner:in B:} Gerne.
 
+\cleardoublepage
 \chapter{Gruppendiskussion mit der \acl{fek}}
 \label{appendix:gruppendiskussion}
 
@@ -2217,6 +2248,7 @@ Jetzt kommt vielleicht eine interessante Frage. Sie kennen den Prozess in und au
 
 \textbf{Interviewpartner:in C:} Danke.
 
+\cleardoublepage
 \chapter{\enquote{EthicsVision} Plattform}
 \label{appendix:ethics-vision}
 
@@ -2293,9 +2325,10 @@ Der Quellcode der EthicsVision Plattform wurde auf GitHub veröffentlicht und is
 \end{figure}
 
 % Eidesstattliche Erklärung
-\clearpage
+\cleardoublepage
 \chapter*{Eidesstattliche Erklärung}
 \addcontentsline{toc}{chapter}{Eidesstattliche Erklärung}
+
 Ich erkläre hiermit an Eides statt, dass ich die vorliegende Masterarbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
 
 \vspace{5cm}
