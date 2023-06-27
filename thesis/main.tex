@@ -174,6 +174,7 @@
     \acro{smtp}[SMTP]{Simple Mail Transfer Protocol}
     \acro{spa}[SPA]{Single-page Application}
     \acro{sql}[SQL]{Structured Query Language}
+    \acro{sso}[SSO]{Single Sign-On}
     \acro{ucd}[UCD]{User-Centered Design}
     \acro{ui}[UI]{User Interface}
     \acro{ux}[UX]{User Experience}
@@ -1297,7 +1298,7 @@ Das folgende Kapitel beschäftigt sich im Zuge dessen daher sowohl mit dem Aspek
 \section{Wahl der technischen Basis}
 \label{sec:ausarbeitung-wahl-technische-basis}
 
-Um das Konzept beziehungsweise den angedachten Prototyp umsetzen zu können, muss grundlegend eine Entscheidung getroffen werden, welche technische Basis für die Entwicklung und Umsetzung der in Abschnitt \ref{sec:definition-anforderungen} ab Seite \pageref{sec:definition-anforderungen} definierten Anforderungen verwendet werden soll. Die in Abschnitt \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} durchgeführte Analyse von anderen Prozessen und Systemen dient dabei als Grundlage, um eine begründete weiterführende Entscheidung treffen zu können. Die schlussendliche Auswahl beschränkt sich dabei jedoch nicht ausschließlich auf die analysierten Systeme, sondern setzt sich kritisch mit den jeweiligen Gegebenheiten auseinander.
+Um das Konzept beziehungsweise den angedachten Prototyp umsetzen zu können, muss grundlegend eine Entscheidung getroffen werden, welche technische Basis für die Entwicklung und Umsetzung der in Abschnitt \ref{sec:definition-anforderungen} ab Seite \pageref{sec:definition-anforderungen} definierten Anforderungen verwendet werden soll. Die in Kapitel \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} durchgeführte Analyse von anderen Prozessen und Systemen dient dabei als Grundlage, um eine begründete weiterführende Entscheidung treffen zu können. Die schlussendliche Auswahl beschränkt sich dabei jedoch nicht ausschließlich auf die analysierten Systeme, sondern setzt sich kritisch mit den jeweiligen Gegebenheiten auseinander.
 
 \subsubsection*{Systeme mit Fokus auf Ethikanträgen}
 \label{sub-sub-sec:technische-basis-fokus-ethikanträge}
@@ -1313,7 +1314,7 @@ Bei genauerer Betrachtung der technischen Gegebenheiten (welche im genannten Abs
 
 Die angesprochenen Punkte stellen an sich, sowohl individuell als auch ganzheitlich betrachtet, keine Hürde dar. Auch unter Berücksichtigung der technischen Analyse in Abschnitt \ref{sub-sec:ecs} ab Seite \pageref{sub-sec:ecs} wird deutlich, dass das \acl{ecs} eine ausgereifte und umfangreiche Software"=Lösung für das Erstellen und Bearbeiten von Ethikanträgen darstellt. Mit der zeitlichen Einschränkung und dem Hintergrund dieser Masterarbeit, eine Software"=Lösung in Form eines Prototyps beziehungsweise eines \ac{poc} zu entwickeln, ändert sich die Ausgangslage jedoch.
 
-Zum Einen ist davon auszugehen, dass eine Aktualisierung des zugrundeliegenden Betriebssystems auf den aktuellsten Stand (laut \cite{canonical_ltd_ubuntu_2023-1} Version \texttt{22.04 LTS} mit initialer Veröffentlichung im April 2022) mit erheblichem Aufwand verbunden ist, um aktuelle Sicherheitsupdates und Funktionalitäten nutzen zu können. Ebenso steigt die Wahrscheinlichkeit, dass die damit einhergehende Aktualisierung der Abhängigkeiten der Applikation zu Komplikationen führen wird. Zusätzlich dazu würde die erforderliche Einarbeitung in das Projekt, um die notwendigen Anpassungen anhand der Anforderungen vornehmen, nicht benötigte Funktionalitäten evaluieren und entfernen sowie neue Möglichkeiten hinzufügen zu können, den Umfang dieser Masterarbeit deutlich überschreiten. Auch im Sinne des Speicherplatzbedarfs stellen die Anforderungen an die Entwicklungsumgebung ein Hindernis dar, um den Prototyp entwickeln und auch testen beziehungsweise evaluieren zu können.
+Zum Einen ist davon auszugehen, dass eine Aktualisierung des zugrundeliegenden Betriebssystems auf den aktuellsten Stand (laut \cite{canonical_ltd_ubuntu_2023-1} Version \texttt{22.04 LTS} mit initialer Veröffentlichung im April 2022) mit erheblichem Aufwand verbunden ist, um aktuelle Sicherheitsupdates und Funktionalitäten nutzen zu können. Ebenso steigt die Wahrscheinlichkeit, dass die damit einhergehende Aktualisierung der Abhängigkeiten der Applikation zu Komplikationen führen wird. Zusätzlich dazu würde die erforderliche Einarbeitung in das Projekt, um die notwendigen Anpassungen anhand der Anforderungen vornehmen, nicht benötigte Funktionalitäten evaluieren und entfernen sowie neue Möglichkeiten hinzufügen zu können, den Umfang dieser Masterarbeit deutlich überschreiten. Auch im Sinne des Speicherplatzbedarfs stellen die Anforderungen an die Entwicklungsumgebung ein Hindernis dar, um den Prototyp ortsunabhängig entwickeln und auch testen beziehungsweise evaluieren zu können.
 
 Als abschließende Schlussfolgerung der genannten Punkte kann das \ac{ecs} daher nicht als Basis für die Umsetzung der angedachten Funktionen herangezogen werden.
 
@@ -1620,7 +1621,7 @@ Wie im Verlauf dieses Abschnitts bereits mehrfach angesprochen, umfasst die Ethi
     \item \textbf{\textit{backend} Container:} Der \textit{backend} Container umfasst die Symfony"=Applikation und als Service konkret den Symfony Local Web Server\footnote{Symfony Local Web Server: \url{https://symfony.com/doc/current/setup/symfony_server.html}}. Dieser wird in der Entwicklungsumgebung dafür genutzt, um über das Netzwerk des Host-Systems und dem Port \texttt{8080} auf die einzelnen \ac{api}"=Endpunkte via HTTP zuzugreifen, Aktionen auszuführen und Daten erhalten zu können.
     \item \textbf{\textit{postgres} Container}: Der \textit{postgres} Container wird genutzt, um das \acl{dbms} PostgreSQL als Service innerhalb der Infrastruktur anzubieten und damit Formulardaten sowie konkrete Einreichungen (im entsprechenden Volume) speichern zu können. Der Container wird innerhalb des Docker"=Netzwerks über den Standard"=Port \texttt{5432} von der Symfony"=Anwendung angesprochen, um lesende und schreibende Aktionen auf der Datenbank vorzunehmen, während der Zugriff im Entwicklungsmodus über den nach außen freigegebenen Port \texttt{8585} möglich ist. In einem produktiven Einsatz entfällt das Port-Forwarding nach außen, wodurch ein Zugriff auf die Daten lediglich über die Symfony-Anwendung möglich ist. Dadurch kann der Zugriff konkret geregelt und Datenschutz- sowie Datensicherheitsanforderungen effizient realisiert werden.\\
     Die Wahl für PostgreSQL wurde getroffen, da PostgreSQL als eines der wenigen \ac{dbms} die \ac{sql}"=Spezifikation beinahe vollständig umsetzen kann, womit bei Bedarf auf eine Vielzahl der Funktionalitäten zurückgegriffen werden kann. Ebenso wird der \ac{json}"=Datentyp umfangreich unterstützt, was vor allem der Nutzung der Value Objects zur Speicherung der Meta"=Informationen zugute kommt. \cite{brumm_why_2019}
-    \item \textbf{\textit{redis} Container:} Der \textit{redis} Container ist als Cache"=Speicher für die Symfony-Applikation konfiguriert und stellt Redis\footnote{Redis: \url{https://redis.io/}} als Service zur Verfügung. Der Service wird verwendet, um von der Symfony-Applikation mehrfach benötigte Daten und Elemente, zur Laufzeit und unabhängig vom backend Container, zu speichern und abzufragen, um die Last aufteilen zu können. 
+    \item \textbf{\textit{redis} Container:} Der \textit{redis} Container ist als Cache"=Speicher für die Symfony-Applikation konfiguriert und stellt Redis\footnote{Redis: \url{https://redis.io/}} als Service zur Verfügung. Der Service wird verwendet, um von der Symfony-Applikation mehrfach benötigte Daten und Elemente zur Laufzeit und unabhängig vom backend Container zu speichern und abzufragen, um die Last aufteilen zu können. 
     \item \textbf{\textit{maildev} Container:} Der \textit{maildev} Container stellt in der Entwicklungsumgebung MailDev\footnote{MailDev: \url{https://maildev.github.io/maildev/}} als Tool zur Verfügung, mit dem von der Symfony"=Applikation via \ac{smtp} versendete E-Mails abgefangen und eingesehen werden können.\\
     Zwar werden in der aktuellen Umsetzung des Prototyps noch keine E-Mails (beispielsweise im Zuge der abschließenden Einreichung eines Formulars) versendet, das System ist somit aber bereits auf eine weiterführende Entwicklung ausgelegt.
 \end{itemize}
@@ -1633,7 +1634,7 @@ Das sogenannte \enquote{Frontend} hat im Kontext der EthicsVision Plattform die 
 \subsubsection*{Konzept und Bestandteile einer \acl{spa}}
 \label{sub-sub-sec:konzept-bestandteile-spa}
 
-Die Umsetzung des Frontends der EthicsVision Plattform mithilfe von Angular entspricht einer \acl{spa}. Im Gegensatz zu einer klassischen \ac{mpa}, bei der der Server für die Präsentation zuständig ist und das fertige Resultat an den Browser übermittelt, ist die Präsentationsschicht sowie weitere Logik Teil des Clients (sprich der Webbrowser), der die Applikation ausführt. Konkret bedeutet das, dass jede Navigation zu einer neuen Seite nur lokal im Browser stattfindet, indem Teile des \ac{ui} dynamisch ausgetauscht werden. Die sogenannten \textit{View}s werden dabei im \ac{dom} abhängig von ausgeführten Aktionen ersetzt und stellen neben statischen Inhalten jene Daten dar, die mittels Abfrage vom Server beziehungsweise dem Backend bereitgestellt werden. \cite[5\psqq]{scott_spa_2015}
+Die Umsetzung des Frontends der EthicsVision Plattform mithilfe von Angular entspricht einer \acl{spa}. Im Gegensatz zu einer klassischen \ac{mpa}, bei der der Server für die Präsentation zuständig ist und das fertige Resultat an den Browser übermittelt, ist die Präsentationsschicht sowie weitere Logik Teil des Clients (sprich des Webbrowsers), der die Applikation ausführt. Konkret bedeutet das, dass jede Navigation zu einer neuen Seite nur lokal im Browser stattfindet, indem Teile des \ac{ui} dynamisch ausgetauscht werden. Die sogenannten \textit{View}s werden dabei im \ac{dom} abhängig von ausgeführten Aktionen ersetzt und stellen neben statischen Inhalten jene Daten dar, die mittels Abfrage vom Server beziehungsweise dem Backend bereitgestellt werden. \cite[5\psqq]{scott_spa_2015}
 
 Abbildung \ref{fig:scott-spa-shell} auf Seite \pageref{fig:scott-spa-shell} zeigt die von Scott in \cite{scott_spa_2015} beschriebene \textit{Shell}, die den Hauptbestandteil einer \ac{spa} darstellt und  einer statischen HTML-Datei entspricht und beim initialen Öffnen der Webapplikation als einziger Bestandteil vollständig heruntergeladen wird. Diese Datei enthält neben allgemeinen Strukturen und dem Styling vor allem ein Element\footnote{Im zitierten Beispiel handelt es sich um ein \texttt{div}-Element, im umgesetzten Prototyp hingegen um einen von Angular bereitgestelltes \texttt{app-root} Container"=Element.}, das den dynamisch eingesetzten Views übergeordnet ist. Der für Anwender:innen ohne sichtbaren Reload durchgeführte Austausch des Inhalt wird dabei über die angesprochene \ac{dom}"=Manipulation umgesetzt, welche ein Kernelement einer \ac{spa} darstellt und das Gefühl einer nativen Applikation vermittelt. \cite[8, 10\psqq]{scott_spa_2015}
 
@@ -1687,13 +1688,13 @@ Die Angular"=Webapplikation verwendet mehrere gleichnamige \aclp{dto}, um die Kl
 
 Die Generierung eines Ethikantrages mithilfe des Formular-Assistenten basiert auf den \ac{dto}s sowie vor allem den Meta-Informationen, die für jede einzelne Section definiert sind und in weiterer Folge auch für erstellte Einträge festgelegt werden. Die Struktur des Ergebnisses des Formular-Assistenten ist in Quellcode \ref{code:application-assistant-result} auf Seite \pageref{code:application-assistant-result} dargestellt.
 
+Bei der Generierung und Filterung der einzelnen Sections wird konkret das Ergebnis mit den \texttt{Section}"=Daten des Symfony-Backends abgeglichen. Themenblöcke beziehungsweise Sections, die in jedem Formular dargestellt werden sollen, haben die Kategorie \texttt{universal} zugeordnet, während alle anderen Inhaltsblöcke einen der drei im Quellcode angegebenen Werte repräsentieren. Sofern eine Übereinstimmung vorhanden ist, werden die jeweiligen Fragen dargestellt, andernfalls ausgeblendet.
+
 \begin{listing}[ht]
     \inputminted[fontsize=\footnotesize,linenos,xleftmargin=8mm]{typescript}{code/Luidold_Application-Assistant-Result.ts}
     \caption{Datenstruktur der Meta"=Informationen des Formular-Assistenten der EthicsVision Plattform}
     \label{code:application-assistant-result}
 \end{listing}
-
-Bei der Generierung und Filterung der einzelnen Sections wird konkret das Ergebnis mit den \texttt{Section}"=Daten des Symfony-Backends abgeglichen. Themenblöcke beziehungsweise Sections, die in jedem Formular dargestellt werden sollen, haben die Kategorie \texttt{universal} zugeordnet, während alle anderen Inhaltsblöcke einen der drei im Quellcode angegebenen Werte repräsentieren. Sofern eine Übereinstimmung vorhanden ist, werden die jeweiligen Fragen dargestellt, andernfalls ausgeblendet.
 
 \subsubsection*{Kommunikation mit dem Backend}
 \label{sub-sub-sec:angular-kommunikation-backend}
@@ -1705,14 +1706,14 @@ Konkret wird der \texttt{FormService} von den Komponenten genutzt, um ein typisi
 \subsubsection*{Genutzte Infrastruktur}
 \label{sub-sub-sec:frontend-genutzte-infrastruktur}
 
-Das Frontend der EthicsVision Plattform nimmt im Vergleich zum Backend nur einen geringen Teil der zugrunde liegenden Infrastruktur in Anspruch. Der \textit{frontend} Container beherbergt die Angular"=Applikation, wobei konkret der Angular Development Server ausgeführt wird. Im Netzwerk des Host-Systems kann auf diesen über den Port \texttt{4200} zugegriffen werden.
+Das Frontend der EthicsVision Plattform nimmt im Vergleich zum Backend nur einen geringen Teil der zugrundeliegenden Infrastruktur in Anspruch. Der \textit{frontend} Container beherbergt die Angular"=Applikation, wobei konkret der Angular Development Server ausgeführt wird. Im Netzwerk des Host-Systems kann auf diesen über den Port \texttt{4200} zugegriffen werden.
 
 Unabhängig vom Docker"=Netzwerk wird die gesamte Kommunikation zwischen dem Frontend und dem Backend über das Netzwerk des Host-Systems und dem nach außen geöffneten Port \texttt{8080} des Backends abgewickelt, da die Webapplikation lokal im jeweiligen Browser ausgeführt wird, der nicht Teil des internen Netzwerks ist.
 
 \section{Nutzung des Prototyps}
 \label{section:nutzung-prototyp}
 
-Um den entwickelten Prototyp aktiv nutzen zu können, müssen folgende Schritte ausgeführt werden:
+Um den entwickelten Prototyp testen sowie aktiv nutzen zu können, müssen die folgende Schritte ausgeführt werden:
 
 \begin{enumerate}
     \item Installation von Docker auf dem Host-System gemäß der Anleitung unter \url{https://docs.docker.com/get-docker/}.
@@ -1734,20 +1735,89 @@ Der Ethikantrag der \acl{fek} der \acl{fhv} wird momentan beim Ausführen von \t
 \chapter{Evaluation des Prototyps}
 \label{chap:evaluation-prototyp}
 
-FE-K:
-- guter prototyp
-- klare struktur
-- gute hilfestellung
-- login-situation unklar
-- aufteilung der fragestellung muss fe-k entscheiden
+Als letzter Schritt des in Kapitel \ref{chap:user-centered-design} ab Seite \pageref{chap:user-centered-design} erläuterten \acl{ucd} Prozesses steht die Evaluation sowie das Testen des ausgearbeiteten Prototyps. Im nachfolgenden Kapitel wird daher sowohl Feedback von den Interviewpartner:innen zum Prototyp behandelt als auch ein Ausblick darauf gegeben, welche Weiterentwicklungen möglich sind. Ebenso wird der umgesetzte \acl{poc} in Bezug auf die im Kontext der Masterarbeit gestellte Forschungsfrage samt der einzelnen Teilaspekte gestellt.
+
+\section{Feedback der Interviewpartner:innen}
+\label{sec:feedback-interviewpartner}
+
+Im Rahmen der initialen Interviews beziehungsweise der Gruppendiskussion wurden die Interviewpartner:innen informiert, dass gegen Ende der Ausarbeitung dieser Masterarbeit ein weiterer Termin geplant ist, um den realisierten Prototyp vorzeigen und besprechen zu können. Dieser Termin konnte Mitte Juni 2023 mit eine:r Vertreter:in der \acl{fek} sowie eine:r Vertreter:in der Gruppe der Forschenden umgesetzt werden. Im Rahmen des Termins wurde jeweils der Prototyp vorgeführt und auf etwaige Fragen sowie Feedback eingegangen. Die Gespräche und die jeweiligen Interaktionen wurden dabei stichwortartig dokumentiert und finden sich zusammengefasst in den nachfolgenden Abschnitten wieder.
+
+\subsection{Feedback der \acl{fek}}
+\label{sub-sec:feedback-fek}
+
+Stellvertretend für die \ac{fek} der \ac{fhv} wurde der Termin vom 16.06.2023 online mit \textit{Interviewpartner:in D} durchgeführt. Während der Demo und des Gesprächs wurden dabei mehrere Themen angesprochen, die den realisierten Prototyp konkret betreffen.
+
+Grundsätzlich wird der \ac{poc} und die umgesetzten Funktionalitäten von \textit{Interviewpartner:in D} als gute Hilfestellung und Erleichterung für potenzielle Antragsteller:innen wahrgenommen. Die erste Ausarbeitung lässt aus Sicht der \acl{fek} erkennen, dass die gestellten Anforderungen initial gut umgesetzt werden konnten und ein langfristiges Ablösen der Word"=Antragsvorlage bei entsprechender Weiterentwicklung vorstellbar ist.
+
+Gleichzeitig sind im weiteren Verlauf des Gesprächs und der Demonstration Fragen und Unklarheiten aufgekommen, die im Rahmen von nachfolgenden Iterationen erneut evaluiert und angepasst werden sollten:
+\begin{itemize}
+    \item \textbf{Anmeldung:} Für \textit{Interviewpartner:in D} war nicht direkt ersichtlich, wie und mit welchen Login"=Daten sich Antragsteller:innen im System anmelden können, um auf Anträge und das Formular zum Ethikantrag zugreifen zu können. Im Gespräch wurde daraufhin erläutert, dass ein Login zum aktuellen Zeitpunkt noch nicht umgesetzt ist und der Prototyp, unabhängig von den jeweiligen Anwender:innen, alle offenen und eingereichten Ethikanträge darstellt und Interaktionen damit zulässt.
+    \item \textbf{Inhalt des Formular-Assistenten:} Im Rahmen der Demo wurde erläutert, dass die Inhalte des Formular-Assisten frei konfigurierbar sind und in der Umsetzung einen Vorschlag darstellen, welche Informationen den Antragsteller:innen damit übermittelt werden könnten. \textit{Interviewpartner:in D} erwähnt in diesem Zusammenhang, dass die inhaltliche Ausarbeitung schlussendlich im internen Gremium besprochen wird, die freie Inhaltswahl aber hilfreich ist, um die Informationen an die Bedürfnisse der Forschenden anpassen zu können.\\
+    Unabhängig zu den Hilfestellungen für Antragsteller:innen merkt \textit{Interviewpartner:in D} an, dass die erste der drei gestellten Fragen, konkret jene zur Finanzierung\footnote{Siehe Abbildung \ref{fig:ethics-vision-formular-assistent-finanzierung} auf Seite \pageref{fig:ethics-vision-formular-assistent-finanzierung}}, lediglich eine einzelne Antwort zulässt, während es durchaus Forschungsvorhaben und -projekte gibt, bei denen mehrere Punkte zutreffen können.
+    \clearpage
+    \item \textbf{Aufteilung der Fragen:} Im gemeinsamen Gespräch wird von beiden Seiten angesprochen, dass die konkrete Aufteilung der Fragen des Ethikantrages weiterhin Entwicklungspotenzial enthält. Aus Sicht der \ac{fek} ist noch nicht abschließend geklärt, wie der allgemeine Prozess eines Ethikantrages zukünftig aussehen könnte (siehe dazu Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}) und unter anderem auch in den Aufgabenbereich der zukünftigen Mitglieder der anstehenden Funktionsperiode hineinfallen wird. Aus Sicht des Umsetzenden stellen vor allem die Themenblöcke mit einer größeren Anzahl an Fragen noch gewisse Probleme dar und müssen aus \ac{ui} und vor allem \ac{ux} Sicht noch überarbeitet werden, um eine bessere und übersichtlichere Darstellung zu ermöglichen.
+    \item \textbf{Dokumentation und Zugänglichkeit zum Prototyp:} Als abschließenden Punkt spricht \textit{Interviewpartner:in D} an, dass für eine mögliche Weiterentwicklung entsprechende Dokumentation und auch die Zugänglichkeit zum Prototyp eine wichtige Rolle spielt, die mit der Ausarbeitung dieser Masterarbeit und der Veröffentlichung des Quellcodes auf GitHub\footnote{Siehe Anhang \ref{appendix:ethics-vision-quellcode} auf Seite \pageref{appendix:ethics-vision-quellcode}} gegeben ist.
+\end{itemize}
+
+\subsection{Feedback der Antragsteller:innen}
+\label{sub-sec:feedback-antragsteller}
+
+Für die Gruppe der Forschenden, die bereits einen Ethikantrag gestellt haben, konnte mit \textit{Interviewpartner:in B} ebenfalls am 16.06.2023 online ein Termin abgehalten werden, um den Prototyp vorstellen und gemeinsam besprechen zu können. Auch bei diesem Gespräch sind mehrere Punkte und Feedback zur Sprache gekommen, die für spätere Versionen mit in die Planung einfließen sollten:
+\begin{itemize}
+    \item \textbf{Informationen auf der Übersichtsseite:} Während der Demo der Seite \enquote{Übersicht} spricht \textit{Interviewpartner:in B} an, dass die dargestellten Informationen noch etwas unübersichtlich und nicht ganz eindeutig sind. Als wichtigster Punkt wird die fehlende Übersicht darüber genannt, welcher Ethikantrag zu welcher Eintrags"=Nummer gehört, da Informationen, wie beispielsweise der im Antrag angegebene Titel, in den Tabellen nicht ersichtlich sind.\\
+    Im weiteren Verlauf ist zudem die Frage aufgekommen, ob von der Ethikkommision behandelte und gänzlich abgeschlossene Ethikanträge ebenfalls in der in Tabelle der eingereichten Ethikanträge dargestellt werden. Aufgrund des Fokus auf die Antragstellung blieb diese Frage während des Gesprächs vorerst unbeantwortet.
+    \item \textbf{Download eines Ethikantrages:} \textit{Interviewpartner:in B} gibt bei der Präsentation der Funktion zur Einsicht eingereichter Anträge zu bedenken, dass eine Download"=Funktion oder ein Export des Ethikantrages in Form einer PDF"=Datei vor allem in der Zusammenarbeit in einem Team und zur Ablagage beziehungsweise Dokumentation eine wichtige Funktionalität ist, die aktuell noch fehlt. 
+    \item \textbf{Hilfestellung des Formular-Assistenten:} Bezugnehmend auf die vom Formular-Assistenten angebotene Hilfestellung gibt \textit{Interviewpartner:in B} zu bedenken, dass die dargestellten Informationen womöglich weiterhin nicht ausreichend sein könnten, um bei der Entscheidung für oder gegen einen Ethikantrag zu helfen. Ebenso wird angemerkt, dass die aktuellen Fragen womöglich zu ungenau sein könnten.
+\end{itemize}
+
+Ungeachtet der genannten Punkte empfindet auch \textit{Interviewpartner:in B} den besprochenen Prototypen als guten ersten Schritt und Basis für mögliche Weiterentwicklungen. Positiv hervorgehoben wurde dabei auch das Wegkommen von der bestehenden Word"=Antragsvorlage hin zu einer Lösung, die dem in der Arbeit analysierten Stand der Technik entspricht.
 
 \section{Möglichkeiten zur Weiterentwicklung}
 \label{sec:möglichkeiten-weiterentwicklung}
 
+Mit dem im vorherigen Abschnitt definierten Feedback ist es im weiteren Verlauf nun möglich, konkrete Schritte für die Weiterentwicklung des Prototyps anhand des realisierten \ac{poc} zu planen. Gleichzeitig bietet sich nach der initialen Umsetzung auch die Möglichkeit an, sowohl aus technischer als auch aus funktionaler Sicht weitere Vorschläge auszuarbeiten, um diese mit den betroffenen Anwender:innen als nächsten Schritt zu dieser Masterarbeit weiterführend ausarbeiten zu können.
+
+\subsection{Änderungen anhand des Feedbacks}
+\label{sub-sec:änderung-anhand-feedback}
+
+Die ersten Gespräche und Demonstrationen des Prototyps haben zu unterschiedlichem Feedback geführt, das im nächsten Schritt nun, wie in Abbildung \ref{fig:ucd-prozess-ablauf} auf Seite \pageref{fig:ucd-prozess-ablauf} dargestellt wird, wieder in zukünftige Iteration(en) des \acl{ucd} Prozesses aufgenommen werden müssen. Die nachfolgenden Punkte stellen einen ersten, groben Überblick dar, welche Aspekte im Rahmen einer erneuten Analyse des Nutzerkontextes und der anschließenden Definition von Anforderungen genauer betrachtet werden sollten.
+
+\subsubsection*{Zugriffs- und Berechtigungsmodell}
+\label{sub-sub-sec:zugriffs-berechtigungsmodell}
+
+Aufgrund von weitreichenden technischen Implikationen hat das Ausarbeiten eines Zugriffs- und Berechtigungsmodells für Anwender:innen der EthicsVision Plattform eine hohe Priorität. Zum einen muss geklärt werden, ob die bestehenden Zugangsdaten von Mitarbeitenden und Studierenden der \ac{fhv} gültig sein sollen oder ob eine davon unabhängige Authentifizierung stattfinden soll. Im Zuge dessen gilt zu evaluieren ob der bestehende \ac{sso} der \acl{fhv} genutzt werden kann oder ob ein anderweitiges, kompatibles System zum Einsatz kommen muss.
+
+Vielmehr gilt für diesen Aspekt aber auch zu klären, welche Aktionen Anwender:innen zu welchem Zeitpunkt durchführen können sollen, welche weiteren Funktionalitäten für die Mitglieder der \acl{fek} geplant sind und ob es das Ziel der Plattform sein soll, ein kollaboratives Arbeiten an geteilten Anträgen zu ermöglichen.
+
+\subsubsection*{Überarbeitung des Formular-Assistenten}
+\label{sub-sub-sec:überarbeitung-formular-assistent}
+
+Der Formular-Assistent bedarf an mehreren Stellen einer grundlegenden Überarbeitung und Neukonzeption. Neben offensichtlichen Änderungen, wie der Anpassung der Antwortmöglichkeiten bestehender Fragen, müssen gemeinsam mit der \ac{fek} weitere Fragen und Faktoren evaluiert werden, um besser feststellen zu können, ob ein Ethikantrag sowie eine ethische Stellungnahme für ein Vorhaben erforderlich sind. Neben einer Ausarbeitung innerhalb des Gremiums der \ac{fek} und der technischen Umsetzung könnte hierbei beispielsweise eine Funktionalität implementiert werden, die die Wahrscheinlichkeit für einen Ethikantrag anhand früherer Ergebnisse des Formular-Assistenten und der abschließenden Bewertung der \ac{fek} errechnet und die bereitgestellten Informationen daraufhin anpasst.
+
+\subsubsection*{Anpassung der Seite \enquote{Übersicht}}
+\label{sub-sub-sec:anpassung-seite-übersicht}
+
+Um den Anwender:innen eine klarere Übersicht über offene, eingereichte und in weiteren Iterationen auch abgeschlossene Ethikanträge geben zu können, muss sowohl mit Antragsteller:innen als auch der \ac{fek} noch einmal evaluiert werden, welche Informationen auf der de facto \enquote{Startseite} der Applikation dargestellt werden sollen. Neben der Darstellung auf der Seite \enquote{Übersicht} steht beispielsweise das seitliche Menü zur Verfügung, über die (abgeschlossene) Anträge und weitere Informationen in eigens dafür umgesetzten Views untergebracht werden könnten. Denkbar wäre in diesem Zug auch das Einführen perosnalisierbaren Einstellungen, um individuelle Präferenzen abbilden zu können.
+
+\medskip
+
+Zeitgleich zur Überarbeitung der einzelnen Darstellungen kann mittels der für das Symfony-Backend zur Verfügung stehende \textit{Twig} Template"=Engine\footnote{https://twig.symfony.com/} auch ein Download von Ethikanträgen im \texttt{HTML} und \texttt{PDF} Format implementiert werden, um Anträge auch außerhalb der EthicsVision Plattform teilen, dokumentieren und ablegen zu können. Diese Funktionalität kann dabei auch bereits auf Anträge mit dem Status \texttt{Offen} ausgeweitet werden, um in Ausarbeitung befindliche Anträge mit Personen besprechen und in bestehende Workflows einbinden zu können.
+
+\subsubsection*{Verbesserung der Antrags"=Darstellung}
+\label{sub-sub-sec:verbesserung-antrags-darstellung}
+
+Ein weiterer Aspekt, der auf dem Feedback der Interviewpartner:innen basiert, betrifft die Verbesserung der Darstellung der Ethikanträge während des Erstellens oder Bearbeitens. In Abbildung \ref{fig:ethics-vision-formular-start} auf Seite \pageref{fig:ethics-vision-formular-start} ist zu erkennen, dass jede zu beantwortende Frage oder Aussage als Zeile in voller Breite dargestellt wird. Um diese Darstellung und Aufteilung bestmöglich anpassen zu können, sollte in Zusammenarbeit mit den (künftigen) Mitgliedern der \ac{fek} evaluiert werden, wie der grundlegende Prozess adaptiert werden könnte und welche Rolle dabei die EthicsVision Plattform spielt. Auf dieser Grundlage können die Fragen und Themenblöcke überarbeitet werden, idealerweise in Kombination mit der Anpassung des Formular-Assistenten.
+
+\subsection{Ausblick auf weitere Funktionalitäten}
+
 - funktionsumfang
+  - ausblick auf funktionalitäten für fe-k
+    - kommentieren
+    - hilfestellungen während des ausfüllens
 - technisch
   - aktuell nur text
   - entry unabhängig von form/element
+  - email
 
 \cleardoublepage
 \chapter{Zusammenfassung \& Ausblick}
