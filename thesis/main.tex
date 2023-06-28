@@ -1821,7 +1821,9 @@ Der erste Prototyp fokussiert sich vor allem auf die Antragstellung aus Sicht de
     \label{fig:ethics-vision-kommentarfunktion}
 \end{figure}
 
-Gleichzeitig könnten sowohl die Antragstellung als auch die Beurteilung von Anträgen in zukünftigen Versionen dahingehend verbessert werden, dass den Antragsteller:innen und der Kommission Unterstützung in Form von Hilfestellungen, Textvorschlägen und zielgerichteten Hinweisen geboten wird. Die Herausforderung besteht jedoch insbesondere darin, eine ausreichende Datenbasis zu schaffen, die sowohl einer inhaltlichen als auch kontextuellen Analyse unterzogen wird und den hohen Datenschutzanforderungen aller Beteiligten gerecht wird. Ebenso gilt es, die verbleibenden zwei Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#4} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#6}, welche noch nicht umgesetzt wurden, ebenfalls einzuplanen und Konzepte dafür zu erstellen.
+Gleichzeitig könnten sowohl die Antragstellung als auch die Beurteilung von Anträgen in zukünftigen Versionen dahingehend verbessert werden, dass den Antragsteller:innen und der Kommission Unterstützung in Form von Hilfestellungen, Textvorschlägen und zielgerichteten Hinweisen geboten wird. Die Herausforderung besteht jedoch insbesondere darin, eine ausreichende Datenbasis zu schaffen, die sowohl einer inhaltlichen als auch kontextuellen Analyse unterzogen wird und den hohen Datenschutzanforderungen aller Beteiligten gerecht wird.
+
+Auch die verbleibenden zwei Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#4} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#6}, welche noch nicht umgesetzt wurden, gilt es einzuplanen und Konzepte dafür zu erstellen. Unabhängig von den definierten Anforderungen kann der Ethikantrag und potenzielle weitere Formulare momentan nur über die vom Symfony"=Backend bereitgestellten DataFixtures erstellt und bearbeitet werden. Um der \ac{fek} entsprechende Funktionalitäten bereitstellen zu können, Änderungen auch ohne technisches Know"=How vorzunehmen, bedarf es der Ausarbeitung eines entsprechenden Konzeptes, bei dem vor allem auch das \ac{ui} sowie die \ac{ux} eine wichtige Rolle spielen müssen.
 
 \subsubsection*{Technische Todos}
 
@@ -1861,6 +1863,34 @@ Bei der Entwicklung des Konzeptes und des Prototyps wurde im ersten Schritt die 
 \medskip
 
 Als letzten Schritt des \ac{ucd} Prozesses behandelt die Arbeit die Evaluation des Prototyps, bei der konkret Feedback der Interviewpartner:innen im Rahmen von Demos erhoben wurde. Das Feedback erstreckt sich dabei sowohl auf allgemeine Aspekte sowie detailliertere Darstellungen und fehlerhafte Umsetzungen, während der Protoyp allgemein als sehr positiv wahrgenommen wurde. Das Feedback der Evaluation des ersten Prototyps wurde im Anschluss genutzt, um Möglichkeiten zur Weiterentwicklung zu definieren und mehrere Vorschläge zu machen, wie gewünschte Änderungen in die Anwendung integriert werden können. Ebenso wurden weitere, vom Feedback unabhängige Vorschläge für zusätzliche Funktionalitäten ausgearbeitet sowie einen Ausblick auf zukünftig und notwendige technische Änderungen am Domänenmodell des Backends und der Generierung von Anträgen im Frontend gegeben.
+
+\section{Ergebnis}
+\label{sec:ergebnis}
+
+Um das Ergebnis dieser Masterarbeit diskutieren zu können, muss vor allem die im \hyperref[chap:einleitung]{Einleitungskapitel} ab Seite \pageref{chap:einleitung} gestellte Forschungsfrage herangezogen werden:\newline
+\textbf{Welche technischen Lösungen können eingesetzt werden, um den Prozess der Erstellung und Einreichung eines Ethikantrages weitestgehend zu automatisieren und für alle Beteiligten zu vereinfachen?}
+
+\medskip
+
+Kurz und prägnant kann die Forschungsfrage damit beantwortet werden, dass die umgesetzte EthicsVision Plattform und die zugrundeliegenden Technologien, wie in Kapitel \ref{chap:ausarbeitung-umsetzung-prototyp} ab Seite \pageref{chap:ausarbeitung-umsetzung-prototyp} beschrieben, als technische Lösung eingesetzt werden können, um die Anforderungen der Antragsteller:innen sowie die der \acl{fek} der \acl{fhv} in adäquater Form abzubilden.
+
+\smallskip
+
+Um die Frage genauer zu beantworten, ist es notwendig, einen erneuten Blick auf die im erwähnten Kapitel entwickelte Infrastruktur sowie die Frontend"= und Backend"=Anwendung zu werfen. Die umgesetzte Docker"=basierte Infrastruktur ermöglicht den Einsatz der Softwarelösung sowohl in einer Entwicklungs"= als auch in einer späteren produktiven Umgebung. Das gesamte System kann betrieben werden, ohne dass das Host"=System die einzelnen Komponenten unterstützen muss, solange Docker selbst installiert ist. In Bezug auf die separat implementierten Systeme für das sichtbare \ac{ui} und das Hintergrundsystem zur Datenspeicherung kann festgestellt werden, dass beide Systeme mit ihren großen Ökosystemen eine Vielzahl an anpassbaren und erweiterbaren Möglichkeiten bieten, um Anforderungen gezielt umzusetzen. Das \ac{ui} konnte beispielsweise problemlos an das Corporate Design der \ac{fhv} angepasst werden, während der Formular"=Assistent und die dynamische Generierung von Anträgen starke und gleichzeitig erweiterbare Konzepte darstellen. Die Speicherung der Daten wird von einer technisch robusten Architektur unterstützt, die bei Bedarf beliebig skaliert werden kann. Gleichzeitig erfolgt eine erneute Validierung der übermittelten Daten durch die Domänenschicht, die den Prozessen nachempfunden ist.
+
+Ein besonders wichtiger Aspekt ist jedoch das Konzept der Wiederverwendbarkeit. Sowohl das Frontend als auch das Backend wurden so konzipiert und umgesetzt, dass sie den Datenaustausch anhand gängiger Standards unterstützen. Bei Bedarf könnte die Angular"=Anwendung beispielsweise durch eine nativen App"=Umsetzung für Smartphones und Tablets ersetzt werden. Ebenso könnte das Symfony"=Backend durch eine in C\# geschriebene Applikation ersetzt werden, die auf den Erkenntnissen dieser Arbeit basiert.
+
+\medskip
+
+Nicht unerwähnt soll dennoch der Umstand bleiben, dass das \ac{ecs} der Medizinischen Universätiten 
+
+\subsubsection*{Teilaspekte der Forschungsfrage}
+
+Neben der primären Forschungsfrage wurden vier weitere Fragen definiert, die spezifische Aspekte der Ausarbeitung genauer definiert haben und nun ebenfalls beantwortet werden können.
+
+\medskip
+
+Sowohl die Frage \textit{\enquote{Wie kann eine Neuentwicklung des Systems beziehungsweise Tools [...] anhand der \acl{ucd} Prinzipien aussehen?}} als auch die darauf aufbauende Frage \textit{\enquote{Wie kann die Beteiligung der Anwender:innen am Designprozess sichergestellt werden, um ihre Bedürfnisse und Erwartungen besser zu verstehen und zu berücksichtigen?}} kann mit den in dieser Arbeit konkret durchgeführten Schritten beantwortet werden. Wie bereits angesprochen wurde, sind die einzelnen Kapitel den Prozessschritten des \ac{ucd} nachempfunden, während die Arbeit als Ganzes einer kompletten Iteration entspricht. Kapitel \ref{chap:kriterien-forschungsethik}, \ref{chap:analyse-bestehendes-system-prozess} sowie \ref{chap:analyse-anderer-prozesse} beschäftigen sich mit der detaillierten Ausarbeitung und Analyse des Nutzerkontextes, bei dem sowohl die zugrundeliegende Forschungsethik als auch der bestehende Prozess sowie anderweitige, vergleichbare Herangehensweisen beleuchtet werden. Kapitel \ref{chap:anforderung-neues-system} widmet sich ausführlich der Definition von Anforderungen an das neue System, während Kapitel \ref{chap:ausarbeitung-umsetzung-prototyp} diese im Form eines Konzeptes sowie Prototyps umsetzt. Kapitel \ref{chap:evaluation-prototyp} stellt den letzten Schritt dar und evaluiert gemeinsam mit den Interviewpartner:innen den umgesetzten \ac{poc} und stellt in Aussicht, was in der nächsten Iteration wichtige Elemente darstellen. Das Kernelement für all diese Schritt stellen jeweils die mit den Forschenden sowie der \ac{fek} durchgeführten Interviews und der Gruppendiskussion dar, mit denen die Beteiligung und Berücksichtigung der zukünftigen Anwender:innen sichergestellt ist.
 
 % Literaturverzeichnis
 \cleardoublepage
