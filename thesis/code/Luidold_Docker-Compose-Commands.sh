@@ -1,6 +1,6 @@
 # Build and start the Docker stack.
 docker compose \
-    --f ./docker/docker-compose.development.yml \
+    -f ./docker/docker-compose.development.yml \
     -p ${PROJECT_NAME} \
     up -d --build
 
