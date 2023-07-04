@@ -30,6 +30,7 @@
 \usepackage{xcolor}                 % Farbige Hervorhebungen
 \usepackage{enumitem}               % Angepasste Aufzählungspunkte in Enumerations
 \usepackage{multirow}               % Kombinierte Zeilen & Spalten in Tabellen
+\usepackage[titletoc]{appendix}     % Anhang
 
 %% Einstellungen
 \addbibresource{references.bib}
@@ -467,7 +468,7 @@ Die einzelnen Bewertungskriterien orientieren sich dabei an unterschiedlichen Qu
 
 In manchen Fällen, wie auch bei der erhaltenen Rückmeldung zum Ethikantrag dieser Masterarbeit (siehe Anhang \ref{appendix:rückmeldung-fek} ab Seite \pageref{appendix:rückmeldung-fek}), kann es vorkommen, dass die gefällte Bewertung im dreistufigen System nicht eindeutig die Meinung der Kommission beziehungsweise der einzelnen Mitglieder widerspiegeln kann. Im angesprochenen Anhang ist ersichtlich, dass zwei Bewertungskriterien sowohl mit \enquote{Stufe I} als auch mit \enquote{Stufe II} bewertet wurden. Die \ac{fek} erklärt (siehe Anhang \ref{appendix:gruppendiskussion} ab Seite \pageref{appendix:gruppendiskussion}), dass es auf Grundlage des Diskurses zwar zu einer schlussendlichen Bewertung gekommen ist, es dennoch unterschiedliche Meinungen, Einschätzungen und auch Bedenken der einzelnen Mitglieder gegeben hat, die entsprechend kommuniziert und nicht komplett außen vor gelassen werden.
 
-\medskip
+\newpage
 
 Vier der sieben angewandten Bewertungskriterien der \ac{fek} lassen sich bei genauerer Betrachtung den Thesen von Beauchamp und Childress zuordnen, die in \cite{beauchamp_principles_1994} vier moralische Prinzipien definiert haben. Auch die im Kriterienkatalog genannten Quellen (siehe \cite[2]{forschungsethik-kommission_der_fachhochschule_vorarlberg_kriterienkatalog_2021}) beziehen sich stellenweise explizit darauf\footnote{Sowohl \cite{marckmann_was_2000} als auch \cite{schuchter_care_2018} nennen die vier moralischen Prinzipien explizit in ihren Arbeiten.}:
 \begin{itemize}
@@ -1392,7 +1393,7 @@ Die Wahl des Technologie-Stacks -- sprich der ausgewählten Technologien und Spr
 
 Die Frameworks und Technologien wurden zum einen aufgrund bestehender Vorkenntnisse gewählt, zum anderen jedoch vor allem mit dem Hintergedanken, dass damit sowohl das \ac{ui} als auch die \enquote{im Hintergrund} agierende Logik jederzeit unabhängig voneinander ausgetauscht werden können, sollte dies notwendig sein. Genauere technische Erläuterungen und die Erhebung langfristiger Implikationen dieser Entscheidung finden sich in Abschnitt \ref{sec:ausarbeitung-technische-umsetzung} ab Seite \pageref{sec:ausarbeitung-technische-umsetzung} wieder.
 
-\section{Erläuterung des Konzeptes}
+\section{Erläuterung des Konzepts}
 \label{sec:erläuterung-konzept}
 
 Für die Ausarbeitung des initialen Konzepts sowie Prototyps wurden die in Kapitel \ref{chap:analyse-anderer-prozesse} ab Seite \pageref{chap:analyse-anderer-prozesse} erarbeiteten Schlussfolgerungen sowie die in Kapitel \ref{chap:anforderung-neues-system} ab Seite \pageref{chap:anforderung-neues-system} definierten Anforderungen herangezogen. Das daraus resultierende Ergebnis der ersten Umsetzung ist das Konzept der \textit{EthicsVision} Plattform. Diese Plattform ermöglicht Antragsteller:innen als ersten Schritt die Erstellung, Bearbeitung, Einreichung und Anzeige von Ethikanträgen für die \acl{fek} der \acl{fhv} in einer Webapplikation, die über jeden Webbrowser online abrufbar ist. Abbildung \ref{fig:ethics-vision-übersicht} auf Seite \pageref{fig:ethics-vision-übersicht} zeigt die Übersichtsseite der entwickelten Plattform, auf der einige der genannten Funktionen zur Verfügung stehen.
@@ -1491,6 +1492,8 @@ Primär wurden vor allem die Farben\footnote{Die jeweiligen HEX-Farbcodes sowie 
  \label{sub-sub-sec:automatsiches-speichern}
 
  Ähnlich zur teilweise automatischen Speicherung der Einreichplattform der FH Campus Wien (siehe Abschnitt \ref{sub-sec:einreichplattform-fh-campus-wien} ab Seite \pageref{sub-sec:einreichplattform-fh-campus-wien}) werden die im Formular eingegebenen Daten und Informationen der Antragsteller:innen automatisch zwischengespeichert. Die Zwischenspeicherung erfolgt dabei unabhängig vom geöffneten Themenblock und soll die \ac{ux} dahingehend verbessern, dass der Verlust von Daten auf ein absolutes Minimum reduziert wird. Der Fokus der Antragsteller:innen soll dadurch auf der Ausarbeitung des Ethikantrags liegen, während technische Hürden keine Rolle spielen sollen.
+
+ \newpage
 
 \section{Technische Umsetzung}
 \label{sec:ausarbeitung-technische-umsetzung}
@@ -1877,7 +1880,7 @@ Der erste Prototyp fokussiert sich vor allem auf die Antragstellung aus Sicht de
 
 Gleichzeitig wäre es möglich, sowohl die Antragstellung als auch die Beurteilung von Anträgen in zukünftigen Versionen dahingehend zu verbessern, dass den Antragsteller:innen und der Kommission Unterstützung in Form von Hilfestellungen, Textvorschlägen und zielgerichteten Hinweisen geboten wird. Die Herausforderung besteht jedoch insbesondere darin, eine ausreichende Datenbasis zu schaffen, die sowohl einer inhaltlichen als auch kontextuellen Analyse unterzogen werden kann und den hohen Datenschutzanforderungen aller Beteiligten gerecht wird.
 
-Auch die verbleibenden zwei Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#4} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#6}, welche noch nicht umgesetzt wurden, gilt es einzuplanen und Konzepte dafür zu erstellen. Unabhängig von den definierten Anforderungen können der Ethikantrag und potenzielle weitere Formulare momentan nur über die vom Symfony"=Backend bereitgestellten DataFixtures erstellt und bearbeitet werden. Um der \ac{fek} entsprechende Funktionalitäten bereitstellen zu können, Änderungen auch ohne technisches Know"=How vorzunehmen, bedarf es der Ausarbeitung eines entsprechenden Konzeptes, bei dem vor allem auch das \ac{ui} sowie die \ac{ux} eine wichtige Rolle spielen müssen.
+Auch die verbleibenden zwei Anforderungen \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#4} und \hyperref[sub-sub-sec:abgeleitete-anforderungen-während-erstellung-einreichung]{\#6}, welche noch nicht umgesetzt wurden, gilt es einzuplanen und Konzepte dafür zu erstellen. Unabhängig von den definierten Anforderungen können der Ethikantrag und potenzielle weitere Formulare momentan nur über die vom Symfony"=Backend bereitgestellten DataFixtures erstellt und bearbeitet werden. Um der \ac{fek} entsprechende Funktionalitäten bereitstellen zu können, Änderungen auch ohne technisches Know"=How vorzunehmen, bedarf es der Ausarbeitung eines entsprechenden Konzepts, bei dem vor allem auch das \ac{ui} sowie die \ac{ux} eine wichtige Rolle spielen müssen.
 
 \subsubsection*{Technische Todos}
 
@@ -1947,13 +1950,15 @@ Neben der primären Forschungsfrage wurden vier weitere Fragestellungen formulie
 
 Sowohl die Frage \textit{\enquote{Wie kann eine Neuentwicklung des Systems beziehungsweise Tools anhand der \acl{ucd} Prinzipien aussehen?}} als auch die darauf aufbauende Frage \textit{\enquote{Wie kann die Beteiligung der Anwender:innen am Designprozess sichergestellt werden, um ihre Bedürfnisse und Erwartungen besser zu verstehen und zu berücksichtigen?}} kann mit den in dieser Arbeit konkret durchgeführten Schritten beantwortet werden. Wie bereits angesprochen wurde, sind die einzelnen Kapitel den Prozessschritten des \ac{ucd} nachempfunden, während die Arbeit als Ganzes einer kompletten Iteration entspricht. Kapitel \ref{chap:kriterien-forschungsethik}, \ref{chap:analyse-bestehendes-system-prozess} sowie \ref{chap:analyse-anderer-prozesse} beschäftigen sich mit der detaillierten Ausarbeitung und Analyse des Nutzerkontextes, bei dem sowohl die zugrundeliegende Forschungsethik als auch der bestehende Prozess sowie anderweitige, vergleichbare Herangehensweisen beleuchtet wurden. Kapitel \ref{chap:anforderung-neues-system} widmet sich ausführlich der Definition von Anforderungen an das neue System, während diese in Kapitel \ref{chap:ausarbeitung-umsetzung-prototyp} in Form eines Konzepts sowie Prototyps umgesetzt wurden. Kapitel \ref{chap:evaluation-prototyp} stellt den letzten Schritt dar und evaluiert gemeinsam mit den Interviewpartner:innen den umgesetzten \ac{poc} und stellt in Aussicht, welche Aspekte in der nächsten Iteration eine wichtige Rolle darstellen. Das Kernelement für all diese Schritte stellen jeweils die mit den Forschenden sowie der \ac{fek} durchgeführten Interviews und die Gruppendiskussion dar, mit denen die Beteiligung und Berücksichtigung der Bedürfnisse der zukünftigen Anwender:innen sichergestellt wurde.
 
-\medskip
+\newpage
 
 Die Frage \textit{\enquote{Wie kann im Rahmen der Erstellung und Einreichung eines Antrags die grundlegende ethische Komponente und Wichtigkeit vermittelt werden?}} kann durch die Herangehensweise und Implementierung des Formular"=Assistenten beantwortet werden. Neben dem bereitgestellten, allgemeinen Informationsmaterial und den Hinweisen der \acl{fek} auf der Website der \ac{fhv} wurde ein klar strukturierter und zugleich flexibel anpassbarer Mechanismus entwickelt, den alle Antragsteller:innen im Antragsprozess durchlaufen. Dies ermöglicht es der Kommission, den Forschenden sowohl allgemeine als auch auf ihre spezifischen Antworten zugeschnittene Hilfestellungen und Informationen anzubieten. Dabei ist der vorgeschlagene Inhalt in der Umsetzung lediglich als Empfehlung zu verstehen und kann jederzeit inhaltlich und strukturell angepasst werden, um dem sich stetig entwickelnden Verständnis der (Forschungs-)Ethik gerecht zu werden. Zudem verdeutlichen die konkreten Fragen selbst, welche grundlegenden Themenbereiche des jeweiligen Forschungsvorhabens relevant für eine ethische Beurteilung und Stellungnahme sind und wie diese den thematischen Schwerpunkt des generierten Antrags beeinflussen.
 
 \medskip
 
 Auch der Aspekt des Datenschutzes, der aus der Frage \textit{\enquote{Wie kann sichergestellt werden, dass der Prozess der Erstellung und Einreichung eines Ethikantrags den Datenschutz- und Datensicherheitsanforderungen entspricht?}} hervorgeht, wurde im Rahmen der Implementierung des \acl{poc} behandelt und beantwortet. Durch den Einsatz des \ac{cqrs}"=Patterns sowie der Aufteilung der Infrastruktur in separate, isolierte Container konnte eine präzise Kontrolle des Zugriffs auf die sensiblen Daten realisiert werden. Die lesenden und schreibenden Operationen können getrennt voneinander in der Symfony"=Applikation entwickelt und getestet werden, während der Zugriff auf die Datenbank in einer Produktivumgebung ausschließlich innerhalb des isolierten Docker"=Netzwerks über die nach außen verfügbare API erfolgt. Obwohl der Prototyp derzeit noch keine weiterführende Authentifizierung enthält, bieten sowohl das Symfony"=Backend als auch das Angular"=Frontend eine Vielzahl von Möglichkeiten, den Datenzugriff in weiteren Schritten abzusichern und zu schützen.
+
+\newpage
 
 \section{Ausblick}
 \label{sec:ausblick}
@@ -1969,9 +1974,9 @@ Unabhängig von der konkret umgesetzten Implementierung lässt sich als weiterer
 \printbibliography
 
 % Anhang
-\appendix
-
 \cleardoublepage
+\begin{appendices}
+
 \chapter{Eingereichter Ethikantrag}
 \label{appendix:eingereichter-ethikantrag}
 
@@ -2559,6 +2564,8 @@ Der Quellcode der EthicsVision Plattform wurde auf GitHub veröffentlicht und is
     \caption{Unvollständig ausgefüllter Ethikantrag mit sichtbaren Hinweisen zu Validierungsfehlern}
     \label{fig:ethics-vision-formular-unvollständig}
 \end{figure}
+
+\end{appendices}
 
 % Eidesstattliche Erklärung
 \cleardoublepage
